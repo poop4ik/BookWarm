@@ -32,6 +32,7 @@
             this.Login = new System.Windows.Forms.Label();
             this.Registration = new System.Windows.Forms.Label();
             this.Exit = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,19 +79,30 @@
             this.Exit.BackColor = System.Drawing.Color.Transparent;
             this.Exit.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Exit.ForeColor = System.Drawing.Color.Black;
-            this.Exit.Location = new System.Drawing.Point(514, 9);
+            this.Exit.Location = new System.Drawing.Point(499, 9);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(22, 23);
             this.Exit.TabIndex = 4;
             this.Exit.Text = "Х";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(101, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(332, 30);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Вітає у додатку BookWorm!";
+            // 
             // Authentication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(548, 501);
+            this.ClientSize = new System.Drawing.Size(533, 458);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Registration);
             this.Controls.Add(this.Login);
@@ -111,5 +123,6 @@
         private System.Windows.Forms.Label Login;
         private System.Windows.Forms.Label Registration;
         private System.Windows.Forms.Label Exit;
+        private System.Windows.Forms.Label label1;
     }
 }
