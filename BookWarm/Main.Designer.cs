@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LogoMain = new System.Windows.Forms.PictureBox();
             this.Exit = new System.Windows.Forms.Label();
             this.Resize = new System.Windows.Forms.Label();
+            this.LogoMain = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             this.SuspendLayout();
-            // 
-            // LogoMain
-            // 
-            this.LogoMain.Location = new System.Drawing.Point(350, 150);
-            this.LogoMain.Name = "LogoMain";
-            this.LogoMain.Size = new System.Drawing.Size(100, 50);
-            this.LogoMain.TabIndex = 0;
-            this.LogoMain.TabStop = false;
             // 
             // Exit
             // 
@@ -68,6 +60,14 @@
             this.Resize.TabIndex = 6;
             this.Resize.Text = "O";
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
+            // 
+            // LogoMain
+            // 
+            this.LogoMain.Location = new System.Drawing.Point(350, 150);
+            this.LogoMain.Name = "LogoMain";
+            this.LogoMain.Size = new System.Drawing.Size(100, 50);
+            this.LogoMain.TabIndex = 0;
+            this.LogoMain.TabStop = false;
             // 
             // Main
             // 

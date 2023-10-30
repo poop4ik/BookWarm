@@ -36,10 +36,6 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label Text;
             System.Windows.Forms.Label aGELabel;
-            this.bookWarmDBDataSet = new BookWarm.BookWarmDBDataSet();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
-            this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.passwordHashTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -53,6 +49,11 @@
             this.AgeTextBox = new System.Windows.Forms.TextBox();
             this.LogoMain = new System.Windows.Forms.PictureBox();
             this.LOGIN = new System.Windows.Forms.Label();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bookWarmDBDataSet = new BookWarm.BookWarmDBDataSet();
+            this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
+            this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
+            this.ShowPassword = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
             passwordHashLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
@@ -60,39 +61,19 @@
             lastNameLabel = new System.Windows.Forms.Label();
             Text = new System.Windows.Forms.Label();
             aGELabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bookWarmDBDataSet
-            // 
-            this.bookWarmDBDataSet.DataSetName = "BookWarmDBDataSet";
-            this.bookWarmDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.bookWarmDBDataSet;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             // 
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            usernameLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             usernameLabel.Location = new System.Drawing.Point(427, 174);
             usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(72, 15);
+            usernameLabel.Size = new System.Drawing.Size(87, 18);
             usernameLabel.TabIndex = 0;
             usernameLabel.Text = "Username:";
             // 
@@ -100,21 +81,22 @@
             // 
             this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.usernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "Username", true));
+            this.usernameTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.usernameTextBox.Location = new System.Drawing.Point(538, 175);
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.usernameTextBox.Size = new System.Drawing.Size(132, 16);
+            this.usernameTextBox.Size = new System.Drawing.Size(179, 19);
             this.usernameTextBox.TabIndex = 1;
             // 
             // passwordHashLabel
             // 
             passwordHashLabel.AutoSize = true;
-            passwordHashLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            passwordHashLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             passwordHashLabel.Location = new System.Drawing.Point(427, 225);
             passwordHashLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             passwordHashLabel.Name = "passwordHashLabel";
-            passwordHashLabel.Size = new System.Drawing.Size(69, 15);
+            passwordHashLabel.Size = new System.Drawing.Size(82, 18);
             passwordHashLabel.TabIndex = 2;
             passwordHashLabel.Text = "Password:";
             // 
@@ -122,21 +104,22 @@
             // 
             this.passwordHashTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passwordHashTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "PasswordHash", true));
+            this.passwordHashTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordHashTextBox.Location = new System.Drawing.Point(538, 224);
             this.passwordHashTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.passwordHashTextBox.Name = "passwordHashTextBox";
             this.passwordHashTextBox.PasswordChar = '*';
-            this.passwordHashTextBox.Size = new System.Drawing.Size(132, 16);
+            this.passwordHashTextBox.Size = new System.Drawing.Size(179, 19);
             this.passwordHashTextBox.TabIndex = 3;
             // 
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            emailLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             emailLabel.Location = new System.Drawing.Point(427, 271);
             emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(45, 15);
+            emailLabel.Size = new System.Drawing.Size(51, 18);
             emailLabel.TabIndex = 4;
             emailLabel.Text = "Email:";
             // 
@@ -144,20 +127,21 @@
             // 
             this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "Email", true));
+            this.emailTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailTextBox.Location = new System.Drawing.Point(538, 270);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(132, 16);
+            this.emailTextBox.Size = new System.Drawing.Size(179, 19);
             this.emailTextBox.TabIndex = 5;
             // 
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            firstNameLabel.Location = new System.Drawing.Point(728, 174);
+            firstNameLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            firstNameLabel.Location = new System.Drawing.Point(765, 174);
             firstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(77, 15);
+            firstNameLabel.Size = new System.Drawing.Size(91, 18);
             firstNameLabel.TabIndex = 6;
             firstNameLabel.Text = "First Name:";
             // 
@@ -165,20 +149,21 @@
             // 
             this.firstNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "FirstName", true));
-            this.firstNameTextBox.Location = new System.Drawing.Point(810, 173);
+            this.firstNameTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.firstNameTextBox.Location = new System.Drawing.Point(847, 173);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(132, 16);
+            this.firstNameTextBox.Size = new System.Drawing.Size(179, 19);
             this.firstNameTextBox.TabIndex = 7;
             // 
             // lastNameLabel
             // 
             lastNameLabel.AutoSize = true;
-            lastNameLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            lastNameLabel.Location = new System.Drawing.Point(727, 218);
+            lastNameLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            lastNameLabel.Location = new System.Drawing.Point(765, 225);
             lastNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(75, 15);
+            lastNameLabel.Size = new System.Drawing.Size(90, 18);
             lastNameLabel.TabIndex = 8;
             lastNameLabel.Text = "Last Name:";
             // 
@@ -186,10 +171,11 @@
             // 
             this.lastNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "LastName", true));
-            this.lastNameTextBox.Location = new System.Drawing.Point(810, 217);
+            this.lastNameTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastNameTextBox.Location = new System.Drawing.Point(848, 225);
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(132, 16);
+            this.lastNameTextBox.Size = new System.Drawing.Size(179, 19);
             this.lastNameTextBox.TabIndex = 9;
             // 
             // Exit
@@ -210,7 +196,7 @@
             // 
             Text.AutoSize = true;
             Text.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            Text.Location = new System.Drawing.Point(559, 90);
+            Text.Location = new System.Drawing.Point(632, 90);
             Text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             Text.Name = "Text";
             Text.Size = new System.Drawing.Size(196, 27);
@@ -232,11 +218,12 @@
             // RegAuth
             // 
             this.RegAuth.AutoSize = true;
+            this.RegAuth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RegAuth.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RegAuth.Location = new System.Drawing.Point(424, 358);
+            this.RegAuth.Location = new System.Drawing.Point(637, 360);
             this.RegAuth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RegAuth.Name = "RegAuth";
-            this.RegAuth.Size = new System.Drawing.Size(185, 27);
+            this.RegAuth.Size = new System.Drawing.Size(187, 29);
             this.RegAuth.TabIndex = 15;
             this.RegAuth.Text = "Зареєстуватися";
             this.RegAuth.Click += new System.EventHandler(this.RegAuth_Click);
@@ -244,6 +231,7 @@
             // UsernameExist
             // 
             this.UsernameExist.AutoSize = true;
+            this.UsernameExist.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UsernameExist.ForeColor = System.Drawing.Color.Firebrick;
             this.UsernameExist.Location = new System.Drawing.Point(535, 194);
             this.UsernameExist.Name = "UsernameExist";
@@ -255,6 +243,7 @@
             // EmailExist
             // 
             this.EmailExist.AutoSize = true;
+            this.EmailExist.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EmailExist.ForeColor = System.Drawing.Color.Firebrick;
             this.EmailExist.Location = new System.Drawing.Point(535, 289);
             this.EmailExist.Name = "EmailExist";
@@ -267,9 +256,10 @@
             // aGELabel
             // 
             aGELabel.AutoSize = true;
-            aGELabel.Location = new System.Drawing.Point(728, 270);
+            aGELabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            aGELabel.Location = new System.Drawing.Point(765, 270);
             aGELabel.Name = "aGELabel";
-            aGELabel.Size = new System.Drawing.Size(34, 15);
+            aGELabel.Size = new System.Drawing.Size(40, 18);
             aGELabel.TabIndex = 17;
             aGELabel.Text = "Age:";
             // 
@@ -277,9 +267,10 @@
             // 
             this.AgeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AgeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "AGE", true));
-            this.AgeTextBox.Location = new System.Drawing.Point(810, 270);
+            this.AgeTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AgeTextBox.Location = new System.Drawing.Point(847, 270);
             this.AgeTextBox.Name = "AgeTextBox";
-            this.AgeTextBox.Size = new System.Drawing.Size(132, 16);
+            this.AgeTextBox.Size = new System.Drawing.Size(179, 19);
             this.AgeTextBox.TabIndex = 18;
             // 
             // LogoMain
@@ -297,12 +288,43 @@
             // LOGIN
             // 
             this.LOGIN.AutoSize = true;
-            this.LOGIN.Location = new System.Drawing.Point(500, 474);
+            this.LOGIN.Location = new System.Drawing.Point(175, 57);
             this.LOGIN.Name = "LOGIN";
             this.LOGIN.Size = new System.Drawing.Size(45, 15);
             this.LOGIN.TabIndex = 19;
             this.LOGIN.Text = "LOGIN";
             this.LOGIN.Click += new System.EventHandler(this.LOGIN_Click);
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.bookWarmDBDataSet;
+            // 
+            // bookWarmDBDataSet
+            // 
+            this.bookWarmDBDataSet.DataSetName = "BookWarmDBDataSet";
+            this.bookWarmDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
+            // 
+            // ShowPassword
+            // 
+            this.ShowPassword.AutoSize = true;
+            this.ShowPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowPassword.Location = new System.Drawing.Point(724, 224);
+            this.ShowPassword.Name = "ShowPassword";
+            this.ShowPassword.Size = new System.Drawing.Size(27, 18);
+            this.ShowPassword.TabIndex = 25;
+            this.ShowPassword.Text = "👁️";
+            this.ShowPassword.Click += new System.EventHandler(this.ShowPassword_Click);
             // 
             // Registration
             // 
@@ -310,6 +332,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1074, 519);
+            this.Controls.Add(this.ShowPassword);
             this.Controls.Add(this.LOGIN);
             this.Controls.Add(aGELabel);
             this.Controls.Add(this.AgeTextBox);
@@ -337,9 +360,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registration";
             this.Load += new System.EventHandler(this.Registration_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,5 +387,6 @@
         private System.Windows.Forms.Label EmailExist;
         private System.Windows.Forms.TextBox AgeTextBox;
         private System.Windows.Forms.Label LOGIN;
+        private System.Windows.Forms.Label ShowPassword;
     }
 }
