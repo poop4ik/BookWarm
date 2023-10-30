@@ -80,6 +80,12 @@
     <Compile Include="Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestorePassword.Designer.cs">
+      <DependentUpon>RestorePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Success.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </Compile>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorePassword.resx">
+      <DependentUpon>RestorePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Success.resx">
       <DependentUpon>Success.cs</DependentUpon>

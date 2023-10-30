@@ -49,11 +49,11 @@
             this.AgeTextBox = new System.Windows.Forms.TextBox();
             this.LogoMain = new System.Windows.Forms.PictureBox();
             this.LOGIN = new System.Windows.Forms.Label();
+            this.ShowPassword = new System.Windows.Forms.Label();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookWarmDBDataSet = new BookWarm.BookWarmDBDataSet();
             this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
             this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
-            this.ShowPassword = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
             passwordHashLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
@@ -288,12 +288,23 @@
             // LOGIN
             // 
             this.LOGIN.AutoSize = true;
-            this.LOGIN.Location = new System.Drawing.Point(175, 57);
+            this.LOGIN.Location = new System.Drawing.Point(706, 399);
             this.LOGIN.Name = "LOGIN";
             this.LOGIN.Size = new System.Drawing.Size(45, 15);
             this.LOGIN.TabIndex = 19;
             this.LOGIN.Text = "LOGIN";
             this.LOGIN.Click += new System.EventHandler(this.LOGIN_Click);
+            // 
+            // ShowPassword
+            // 
+            this.ShowPassword.AutoSize = true;
+            this.ShowPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowPassword.Location = new System.Drawing.Point(724, 224);
+            this.ShowPassword.Name = "ShowPassword";
+            this.ShowPassword.Size = new System.Drawing.Size(27, 18);
+            this.ShowPassword.TabIndex = 25;
+            this.ShowPassword.Text = "👁️";
+            this.ShowPassword.Click += new System.EventHandler(this.ShowPassword_Click);
             // 
             // usersBindingSource
             // 
@@ -314,17 +325,6 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
-            // 
-            // ShowPassword
-            // 
-            this.ShowPassword.AutoSize = true;
-            this.ShowPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ShowPassword.Location = new System.Drawing.Point(724, 224);
-            this.ShowPassword.Name = "ShowPassword";
-            this.ShowPassword.Size = new System.Drawing.Size(27, 18);
-            this.ShowPassword.TabIndex = 25;
-            this.ShowPassword.Text = "👁️";
-            this.ShowPassword.Click += new System.EventHandler(this.ShowPassword_Click);
             // 
             // Registration
             // 

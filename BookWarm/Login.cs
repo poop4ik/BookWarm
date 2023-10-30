@@ -118,5 +118,12 @@ namespace BookWarm
                 }
             }
         }
+
+        private void RestorePassword_Click(object sender, EventArgs e)
+        {
+            RestorePassword RestorePassword = new RestorePassword();
+            RestorePassword.Show();
+            this.Close();
+        }
     }
 }

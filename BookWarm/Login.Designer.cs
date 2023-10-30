@@ -35,23 +35,23 @@
             System.Windows.Forms.Label LoginInAccount;
             this.Exit = new System.Windows.Forms.Label();
             this.Back = new System.Windows.Forms.Label();
-            this.LogoMain = new System.Windows.Forms.PictureBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.passwordHashTextBox = new System.Windows.Forms.TextBox();
             this.bookWarmDBDataSet = new BookWarm.BookWarmDBDataSet();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
             this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
-            this.label1 = new System.Windows.Forms.Label();
+            this.RestorePassword = new System.Windows.Forms.Label();
             this.ShowPassword = new System.Windows.Forms.Label();
             this.ValidLoginAndPassword = new System.Windows.Forms.Label();
+            this.LogoMain = new System.Windows.Forms.PictureBox();
             usernameLabel = new System.Windows.Forms.Label();
             passwordHashLabel = new System.Windows.Forms.Label();
             Text = new System.Windows.Forms.Label();
             LoginInAccount = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -69,7 +69,7 @@
             // 
             passwordHashLabel.AutoSize = true;
             passwordHashLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            passwordHashLabel.Location = new System.Drawing.Point(369, 190);
+            passwordHashLabel.Location = new System.Drawing.Point(369, 200);
             passwordHashLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             passwordHashLabel.Name = "passwordHashLabel";
             passwordHashLabel.Size = new System.Drawing.Size(82, 18);
@@ -113,18 +113,6 @@
             this.Back.Text = "←";
             this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
-            // LogoMain
-            // 
-            this.LogoMain.BackColor = System.Drawing.Color.Transparent;
-            this.LogoMain.Image = global::BookWarm.Properties.Resources.Без_назви_1;
-            this.LogoMain.Location = new System.Drawing.Point(6, 76);
-            this.LogoMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.LogoMain.Name = "LogoMain";
-            this.LogoMain.Size = new System.Drawing.Size(363, 299);
-            this.LogoMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.LogoMain.TabIndex = 16;
-            this.LogoMain.TabStop = false;
-            // 
             // usernameTextBox
             // 
             this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -140,7 +128,7 @@
             // 
             this.passwordHashTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passwordHashTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordHashTextBox.Location = new System.Drawing.Point(477, 189);
+            this.passwordHashTextBox.Location = new System.Drawing.Point(477, 199);
             this.passwordHashTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.passwordHashTextBox.Name = "passwordHashTextBox";
             this.passwordHashTextBox.PasswordChar = '*';
@@ -167,21 +155,23 @@
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             // 
-            // label1
+            // RestorePassword
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(369, 208);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Забули пароль?";
+            this.RestorePassword.AutoSize = true;
+            this.RestorePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RestorePassword.ForeColor = System.Drawing.Color.Blue;
+            this.RestorePassword.Location = new System.Drawing.Point(369, 218);
+            this.RestorePassword.Name = "RestorePassword";
+            this.RestorePassword.Size = new System.Drawing.Size(88, 13);
+            this.RestorePassword.TabIndex = 23;
+            this.RestorePassword.Text = "Забули пароль?";
+            this.RestorePassword.Click += new System.EventHandler(this.RestorePassword_Click);
             // 
             // ShowPassword
             // 
             this.ShowPassword.AutoSize = true;
             this.ShowPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ShowPassword.Location = new System.Drawing.Point(676, 190);
+            this.ShowPassword.Location = new System.Drawing.Point(676, 200);
             this.ShowPassword.Name = "ShowPassword";
             this.ShowPassword.Size = new System.Drawing.Size(27, 18);
             this.ShowPassword.TabIndex = 24;
@@ -205,12 +195,24 @@
             // 
             this.ValidLoginAndPassword.AutoSize = true;
             this.ValidLoginAndPassword.ForeColor = System.Drawing.Color.Firebrick;
-            this.ValidLoginAndPassword.Location = new System.Drawing.Point(474, 211);
+            this.ValidLoginAndPassword.Location = new System.Drawing.Point(474, 221);
             this.ValidLoginAndPassword.Name = "ValidLoginAndPassword";
             this.ValidLoginAndPassword.Size = new System.Drawing.Size(248, 13);
             this.ValidLoginAndPassword.TabIndex = 26;
             this.ValidLoginAndPassword.Text = "Користувача або пароль введено не правильно";
             this.ValidLoginAndPassword.Visible = false;
+            // 
+            // LogoMain
+            // 
+            this.LogoMain.BackColor = System.Drawing.Color.Transparent;
+            this.LogoMain.Image = global::BookWarm.Properties.Resources.Без_назви_1;
+            this.LogoMain.Location = new System.Drawing.Point(6, 76);
+            this.LogoMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.LogoMain.Name = "LogoMain";
+            this.LogoMain.Size = new System.Drawing.Size(363, 299);
+            this.LogoMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LogoMain.TabIndex = 16;
+            this.LogoMain.TabStop = false;
             // 
             // Login
             // 
@@ -221,7 +223,7 @@
             this.Controls.Add(this.ValidLoginAndPassword);
             this.Controls.Add(LoginInAccount);
             this.Controls.Add(this.ShowPassword);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.RestorePassword);
             this.Controls.Add(Text);
             this.Controls.Add(passwordHashLabel);
             this.Controls.Add(this.passwordHashTextBox);
@@ -235,9 +237,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,7 +256,7 @@
         private System.Windows.Forms.BindingSource usersBindingSource;
         private BookWarmDBDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private BookWarmDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label RestorePassword;
         private System.Windows.Forms.Label ShowPassword;
         private System.Windows.Forms.Label ValidLoginAndPassword;
     }
