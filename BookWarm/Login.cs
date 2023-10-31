@@ -85,6 +85,16 @@ namespace BookWarm
             string username = usernameTextBox.Text;
             string password = passwordHashTextBox.Text;
 
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                emptytextbox.Visible = true;
+                return;
+            }
+            else
+            {
+                emptytextbox.Visible = false;
+            }
+
             if (IsUserValid(username, password))
             {
                 Success success = new Success();
@@ -96,9 +106,10 @@ namespace BookWarm
             }
             else
             {
-                ValidLoginAndPassword.Visible = true; 
+                ValidLoginAndPassword.Visible = true;
             }
         }
+
 
         private bool IsUserValid(string username, string password)
         {

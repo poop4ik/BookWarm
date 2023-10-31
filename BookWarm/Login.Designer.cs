@@ -45,6 +45,7 @@
             this.ShowPassword = new System.Windows.Forms.Label();
             this.ValidLoginAndPassword = new System.Windows.Forms.Label();
             this.LogoMain = new System.Windows.Forms.PictureBox();
+            this.emptytextbox = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
             passwordHashLabel = new System.Windows.Forms.Label();
             Text = new System.Windows.Forms.Label();
@@ -86,6 +87,19 @@
             Text.Size = new System.Drawing.Size(148, 27);
             Text.TabIndex = 22;
             Text.Text = "Меню Входу";
+            // 
+            // LoginInAccount
+            // 
+            LoginInAccount.AutoSize = true;
+            LoginInAccount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            LoginInAccount.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            LoginInAccount.Location = new System.Drawing.Point(484, 263);
+            LoginInAccount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LoginInAccount.Name = "LoginInAccount";
+            LoginInAccount.Size = new System.Drawing.Size(81, 29);
+            LoginInAccount.TabIndex = 25;
+            LoginInAccount.Text = "Увійти";
+            LoginInAccount.Click += new System.EventHandler(this.LoginInAccount_Click);
             // 
             // Exit
             // 
@@ -178,19 +192,6 @@
             this.ShowPassword.Text = "👁️";
             this.ShowPassword.Click += new System.EventHandler(this.ShowPassword_Click);
             // 
-            // LoginInAccount
-            // 
-            LoginInAccount.AutoSize = true;
-            LoginInAccount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            LoginInAccount.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            LoginInAccount.Location = new System.Drawing.Point(484, 263);
-            LoginInAccount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            LoginInAccount.Name = "LoginInAccount";
-            LoginInAccount.Size = new System.Drawing.Size(81, 29);
-            LoginInAccount.TabIndex = 25;
-            LoginInAccount.Text = "Увійти";
-            LoginInAccount.Click += new System.EventHandler(this.LoginInAccount_Click);
-            // 
             // ValidLoginAndPassword
             // 
             this.ValidLoginAndPassword.AutoSize = true;
@@ -214,12 +215,25 @@
             this.LogoMain.TabIndex = 16;
             this.LogoMain.TabStop = false;
             // 
+            // emptytextbox
+            // 
+            this.emptytextbox.AutoSize = true;
+            this.emptytextbox.BackColor = System.Drawing.Color.Transparent;
+            this.emptytextbox.ForeColor = System.Drawing.Color.Firebrick;
+            this.emptytextbox.Location = new System.Drawing.Point(474, 221);
+            this.emptytextbox.Name = "emptytextbox";
+            this.emptytextbox.Size = new System.Drawing.Size(185, 26);
+            this.emptytextbox.TabIndex = 27;
+            this.emptytextbox.Text = "Будь ласка, заповніть обидва поля\r\n.";
+            this.emptytextbox.Visible = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(739, 377);
+            this.Controls.Add(this.emptytextbox);
             this.Controls.Add(this.ValidLoginAndPassword);
             this.Controls.Add(LoginInAccount);
             this.Controls.Add(this.ShowPassword);
@@ -259,5 +273,6 @@
         private System.Windows.Forms.Label RestorePassword;
         private System.Windows.Forms.Label ShowPassword;
         private System.Windows.Forms.Label ValidLoginAndPassword;
+        private System.Windows.Forms.Label emptytextbox;
     }
 }
