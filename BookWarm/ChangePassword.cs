@@ -95,5 +95,33 @@ namespace BookWarm
                 return false;
             }
         }
+
+        private void ShowConfirmPassword_Click(object sender, EventArgs e)
+        {
+            if (confirmPasswordHashTextBox.PasswordChar == '*')
+            {
+                // Показувати текст паролю
+                confirmPasswordHashTextBox.PasswordChar = '\0'; // '\0' відображає текст як звичайний текст
+            }
+            else
+            {
+                // Приховувати текст паролю з зірочкою '*'
+                confirmPasswordHashTextBox.PasswordChar = '*';
+            }
+        }
+
+        private void ShowPassword_Click(object sender, EventArgs e)
+        {
+            if (passwordHashTextBox.PasswordChar == '*')
+            {
+                // Показувати текст паролю
+                passwordHashTextBox.PasswordChar = '\0'; // '\0' відображає текст як звичайний текст
+            }
+            else
+            {
+                // Приховувати текст паролю з зірочкою '*'
+                passwordHashTextBox.PasswordChar = '*';
+            }
+        }
     }
 }
