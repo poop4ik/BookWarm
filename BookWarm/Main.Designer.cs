@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.Exit = new System.Windows.Forms.Label();
             this.Resize = new System.Windows.Forms.Label();
             this.LogoMain = new System.Windows.Forms.PictureBox();
@@ -41,9 +42,10 @@
             this.Exit.BackColor = System.Drawing.Color.Transparent;
             this.Exit.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Exit.ForeColor = System.Drawing.Color.Black;
-            this.Exit.Location = new System.Drawing.Point(766, 9);
+            this.Exit.Location = new System.Drawing.Point(1021, 11);
+            this.Exit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(22, 23);
+            this.Exit.Size = new System.Drawing.Size(28, 28);
             this.Exit.TabIndex = 5;
             this.Exit.Text = "Х";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
@@ -54,31 +56,35 @@
             this.Resize.AutoSize = true;
             this.Resize.BackColor = System.Drawing.Color.Transparent;
             this.Resize.Font = new System.Drawing.Font("MS Outlook", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.Resize.Location = new System.Drawing.Point(743, 13);
+            this.Resize.Location = new System.Drawing.Point(991, 16);
+            this.Resize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Resize.Name = "Resize";
-            this.Resize.Size = new System.Drawing.Size(17, 17);
+            this.Resize.Size = new System.Drawing.Size(21, 21);
             this.Resize.TabIndex = 6;
             this.Resize.Text = "O";
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
             // 
             // LogoMain
             // 
-            this.LogoMain.Location = new System.Drawing.Point(350, 150);
+            this.LogoMain.Location = new System.Drawing.Point(467, 185);
+            this.LogoMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LogoMain.Name = "LogoMain";
-            this.LogoMain.Size = new System.Drawing.Size(100, 50);
+            this.LogoMain.Size = new System.Drawing.Size(133, 62);
             this.LogoMain.TabIndex = 0;
             this.LogoMain.TabStop = false;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.Resize);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.LogoMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookWarm";
