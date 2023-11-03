@@ -45,5 +45,10 @@ namespace BookWarm
             registration.Show(); // Відкриваємо форму реєстрації
             this.Hide(); // Приховуємо поточну форму
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
