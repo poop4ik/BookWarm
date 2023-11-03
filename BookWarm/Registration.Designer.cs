@@ -36,6 +36,7 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label Text;
             System.Windows.Forms.Label aGELabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookWarmDBDataSet = new BookWarm.BookWarmDBDataSet();
@@ -383,9 +384,9 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox5.Location = new System.Drawing.Point(65, 255);
+            this.pictureBox5.Location = new System.Drawing.Point(65, 318);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(100, 185);
+            this.pictureBox5.Size = new System.Drawing.Size(100, 122);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 30;
             this.pictureBox5.TabStop = false;
@@ -483,6 +484,7 @@
             this.Controls.Add(this.LogoMain);
             this.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Registration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

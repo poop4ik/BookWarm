@@ -33,6 +33,7 @@
             System.Windows.Forms.Label passwordHashLabel;
             System.Windows.Forms.Label Text;
             System.Windows.Forms.Label LoginInAccount;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.Exit = new System.Windows.Forms.Label();
             this.Back = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
@@ -210,7 +211,7 @@
             // 
             this.LogoMain.BackColor = System.Drawing.Color.Transparent;
             this.LogoMain.Image = global::BookWarm.Properties.Resources.Без_назви_1;
-            this.LogoMain.Location = new System.Drawing.Point(-36, 66);
+            this.LogoMain.Location = new System.Drawing.Point(-16, 66);
             this.LogoMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.LogoMain.Name = "LogoMain";
             this.LogoMain.Size = new System.Drawing.Size(363, 299);
@@ -274,6 +275,7 @@
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.LogoMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
