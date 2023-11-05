@@ -9,14 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace BookWarm
 {
     public partial class ChangePassword : Form
     {
         public string Username { get; set; }
+        AppSettings appSettings = new AppSettings();
+        string connectionString;
+
         public ChangePassword()
         {
             InitializeComponent();
+            connectionString = appSettings.ConnectionString;
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -73,7 +78,7 @@ namespace BookWarm
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=(localdb)\\BookWarm;Initial Catalog=BookWarmDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 

@@ -92,7 +92,7 @@
             usernameLabel.Location = new System.Drawing.Point(407, 158);
             usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(87, 18);
+            usernameLabel.Size = new System.Drawing.Size(110, 24);
             usernameLabel.TabIndex = 0;
             usernameLabel.Text = "Username:";
             // 
@@ -103,7 +103,7 @@
             passwordHashLabel.Location = new System.Drawing.Point(407, 209);
             passwordHashLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             passwordHashLabel.Name = "passwordHashLabel";
-            passwordHashLabel.Size = new System.Drawing.Size(82, 18);
+            passwordHashLabel.Size = new System.Drawing.Size(105, 24);
             passwordHashLabel.TabIndex = 2;
             passwordHashLabel.Text = "Password:";
             // 
@@ -114,7 +114,7 @@
             emailLabel.Location = new System.Drawing.Point(407, 255);
             emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(51, 18);
+            emailLabel.Size = new System.Drawing.Size(68, 24);
             emailLabel.TabIndex = 4;
             emailLabel.Text = "Email:";
             // 
@@ -122,10 +122,10 @@
             // 
             firstNameLabel.AutoSize = true;
             firstNameLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            firstNameLabel.Location = new System.Drawing.Point(745, 158);
+            firstNameLabel.Location = new System.Drawing.Point(743, 158);
             firstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(91, 18);
+            firstNameLabel.Size = new System.Drawing.Size(118, 24);
             firstNameLabel.TabIndex = 6;
             firstNameLabel.Text = "First Name:";
             // 
@@ -133,10 +133,10 @@
             // 
             lastNameLabel.AutoSize = true;
             lastNameLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            lastNameLabel.Location = new System.Drawing.Point(745, 209);
+            lastNameLabel.Location = new System.Drawing.Point(743, 208);
             lastNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(90, 18);
+            lastNameLabel.Size = new System.Drawing.Size(115, 24);
             lastNameLabel.TabIndex = 8;
             lastNameLabel.Text = "Last Name:";
             // 
@@ -148,7 +148,7 @@
             Text.Location = new System.Drawing.Point(612, 74);
             Text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             Text.Name = "Text";
-            Text.Size = new System.Drawing.Size(198, 29);
+            Text.Size = new System.Drawing.Size(246, 35);
             Text.TabIndex = 12;
             Text.Text = "Меню Реєстрації";
             // 
@@ -156,9 +156,9 @@
             // 
             aGELabel.AutoSize = true;
             aGELabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            aGELabel.Location = new System.Drawing.Point(745, 254);
+            aGELabel.Location = new System.Drawing.Point(743, 254);
             aGELabel.Name = "aGELabel";
-            aGELabel.Size = new System.Drawing.Size(40, 18);
+            aGELabel.Size = new System.Drawing.Size(51, 24);
             aGELabel.TabIndex = 17;
             aGELabel.Text = "Age:";
             // 
@@ -171,7 +171,7 @@
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.usernameTextBox.Size = new System.Drawing.Size(179, 19);
+            this.usernameTextBox.Size = new System.Drawing.Size(179, 23);
             this.usernameTextBox.TabIndex = 1;
             // 
             // usersBindingSource
@@ -193,7 +193,7 @@
             this.passwordHashTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.passwordHashTextBox.Name = "passwordHashTextBox";
             this.passwordHashTextBox.PasswordChar = '*';
-            this.passwordHashTextBox.Size = new System.Drawing.Size(179, 19);
+            this.passwordHashTextBox.Size = new System.Drawing.Size(179, 23);
             this.passwordHashTextBox.TabIndex = 3;
             // 
             // emailTextBox
@@ -204,7 +204,7 @@
             this.emailTextBox.Location = new System.Drawing.Point(518, 254);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(179, 19);
+            this.emailTextBox.Size = new System.Drawing.Size(179, 23);
             this.emailTextBox.TabIndex = 5;
             // 
             // firstNameTextBox
@@ -212,10 +212,10 @@
             this.firstNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "FirstName", true));
             this.firstNameTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(827, 157);
+            this.firstNameTextBox.Location = new System.Drawing.Point(868, 158);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(179, 19);
+            this.firstNameTextBox.Size = new System.Drawing.Size(179, 23);
             this.firstNameTextBox.TabIndex = 7;
             // 
             // lastNameTextBox
@@ -223,10 +223,10 @@
             this.lastNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "LastName", true));
             this.lastNameTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(828, 209);
+            this.lastNameTextBox.Location = new System.Drawing.Point(868, 210);
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(179, 19);
+            this.lastNameTextBox.Size = new System.Drawing.Size(179, 23);
             this.lastNameTextBox.TabIndex = 9;
             // 
             // Exit
@@ -238,7 +238,7 @@
             this.Exit.Location = new System.Drawing.Point(1076, 9);
             this.Exit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(24, 24);
+            this.Exit.Size = new System.Drawing.Size(32, 32);
             this.Exit.TabIndex = 10;
             this.Exit.Text = "Х";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
@@ -250,7 +250,7 @@
             this.Back.Location = new System.Drawing.Point(11, -1);
             this.Back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(47, 41);
+            this.Back.Size = new System.Drawing.Size(59, 52);
             this.Back.TabIndex = 14;
             this.Back.Text = "←";
             this.Back.Click += new System.EventHandler(this.Back_Click);
@@ -263,7 +263,7 @@
             this.RegAuth.Location = new System.Drawing.Point(617, 344);
             this.RegAuth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RegAuth.Name = "RegAuth";
-            this.RegAuth.Size = new System.Drawing.Size(185, 27);
+            this.RegAuth.Size = new System.Drawing.Size(230, 33);
             this.RegAuth.TabIndex = 15;
             this.RegAuth.Text = "Зареєстуватися";
             this.RegAuth.Click += new System.EventHandler(this.RegAuth_Click);
@@ -275,7 +275,7 @@
             this.UsernameExist.ForeColor = System.Drawing.Color.Firebrick;
             this.UsernameExist.Location = new System.Drawing.Point(515, 178);
             this.UsernameExist.Name = "UsernameExist";
-            this.UsernameExist.Size = new System.Drawing.Size(370, 15);
+            this.UsernameExist.Size = new System.Drawing.Size(471, 19);
             this.UsernameExist.TabIndex = 16;
             this.UsernameExist.Text = "Дане ім\'я уже використовується, змініть його будь ласка.";
             this.UsernameExist.Visible = false;
@@ -285,11 +285,11 @@
             this.EmailExist.AutoSize = true;
             this.EmailExist.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EmailExist.ForeColor = System.Drawing.Color.Firebrick;
-            this.EmailExist.Location = new System.Drawing.Point(515, 273);
+            this.EmailExist.Location = new System.Drawing.Point(514, 280);
             this.EmailExist.Name = "EmailExist";
-            this.EmailExist.Size = new System.Drawing.Size(445, 30);
+            this.EmailExist.Size = new System.Drawing.Size(411, 38);
             this.EmailExist.TabIndex = 17;
-            this.EmailExist.Text = "Дана електронна адреса уже використовується, змініть її будь ласка.\r\nАбо введіть " +
+            this.EmailExist.Text = "Дана електронна адреса уже використовується,\r\nзмініть її будь ласка, або введіть " +
     "коректний email.\r\n";
             this.EmailExist.Visible = false;
             // 
@@ -298,9 +298,9 @@
             this.AgeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AgeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "AGE", true));
             this.AgeTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AgeTextBox.Location = new System.Drawing.Point(827, 254);
+            this.AgeTextBox.Location = new System.Drawing.Point(868, 255);
             this.AgeTextBox.Name = "AgeTextBox";
-            this.AgeTextBox.Size = new System.Drawing.Size(179, 19);
+            this.AgeTextBox.Size = new System.Drawing.Size(179, 23);
             this.AgeTextBox.TabIndex = 18;
             // 
             // LogoMain
@@ -320,7 +320,7 @@
             this.LOGIN.AutoSize = true;
             this.LOGIN.Location = new System.Drawing.Point(686, 383);
             this.LOGIN.Name = "LOGIN";
-            this.LOGIN.Size = new System.Drawing.Size(45, 15);
+            this.LOGIN.Size = new System.Drawing.Size(59, 19);
             this.LOGIN.TabIndex = 19;
             this.LOGIN.Text = "LOGIN";
             this.LOGIN.Visible = false;
@@ -332,7 +332,7 @@
             this.ShowPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ShowPassword.Location = new System.Drawing.Point(704, 208);
             this.ShowPassword.Name = "ShowPassword";
-            this.ShowPassword.Size = new System.Drawing.Size(27, 18);
+            this.ShowPassword.Size = new System.Drawing.Size(34, 24);
             this.ShowPassword.TabIndex = 25;
             this.ShowPassword.Text = "👁️";
             this.ShowPassword.Click += new System.EventHandler(this.ShowPassword_Click);
@@ -344,8 +344,17 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BookReadsTableAdapter = null;
+            this.tableAdapterManager.BooksTableAdapter = null;
+            this.tableAdapterManager.BookViewsTableAdapter = null;
+            this.tableAdapterManager.ForeignBooksTableAdapter = null;
+            this.tableAdapterManager.MainBooksTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UserFavoritesTableAdapter = null;
+            this.tableAdapterManager.UserPreferencesTableAdapter = null;
+            this.tableAdapterManager.UserReviewsTableAdapter = null;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
+            this.tableAdapterManager.UserStatisticsTableAdapter = null;
             // 
             // pictureBox2
             // 
@@ -362,7 +371,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox1.Location = new System.Drawing.Point(986, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(1018, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 520);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -448,7 +457,7 @@
             // 
             // Registration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1121, 431);

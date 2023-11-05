@@ -9,14 +9,18 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BookWarm
 {
     public partial class Registration : Form
     {
+        AppSettings appSettings = new AppSettings();
+        string connectionString;
         public Registration()
         {
             InitializeComponent();
+            connectionString = appSettings.ConnectionString;
         }
 
         private void usersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -79,6 +83,12 @@ namespace BookWarm
                 string email = emailTextBox.Text;
                 string age = AgeTextBox.Text;
 
+/*                if (System.Text.RegularExpressions.Regex.IsMatch(AgeTextBox.Text, "[^0-9]"))
+                {
+                    MessageBox.Show("Для того щоб вказати вік, використовуйте тільки цифри.");
+                    AgeTextBox.Text = AgeTextBox.Text.Remove(AgeTextBox.Text.Length - 1);
+                }*/
+
                 // Перевірка, чи всі дані введені
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(passwordHash) ||
                     string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(age))
@@ -121,7 +131,7 @@ namespace BookWarm
                 else
                 {
                     // Тут виконайте вставку даних у вашу базу даних
-                    using (SqlConnection connection = new SqlConnection("Data Source=(localdb)\\BookWarm;Initial Catalog=BookWarmDB;Integrated Security=True"))
+                    using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         connection.Open();
 
@@ -178,7 +188,7 @@ namespace BookWarm
 
         private bool IsUsernameExists(string username)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=(localdb)\\BookWarm;Initial Catalog=BookWarmDB;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
@@ -197,7 +207,7 @@ namespace BookWarm
 
         private bool IsEmailExists(string email)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=(localdb)\\BookWarm;Initial Catalog=BookWarmDB;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 

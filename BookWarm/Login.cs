@@ -13,9 +13,12 @@ namespace BookWarm
 {
     public partial class Login : Form
     {
+        AppSettings appSettings = new AppSettings();
+        string connectionString;
         public Login()
         {
             InitializeComponent();
+            connectionString = appSettings.ConnectionString;
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -113,7 +116,7 @@ namespace BookWarm
 
         private bool IsUserValid(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=(localdb)\\BookWarm;Initial Catalog=BookWarmDB;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 

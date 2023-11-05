@@ -50,5 +50,20 @@ namespace BookWarm
         {
 
         }
+
+        private void usersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.usersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.bookWarmDBDataSet);
+
+        }
+
+        private void Authentication_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'bookWarmDBDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.bookWarmDBDataSet.Users);
+
+        }
     }
 }
