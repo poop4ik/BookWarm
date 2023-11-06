@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
@@ -166,7 +167,7 @@ namespace BookWarm
 
                     // Встановіть флаг, що дані вставлені
                     isDataInserted = true;
-                    Success success = new Success();
+                    Success success = new Success(username);
                     success.Show();
                     this.Close();
                 }
@@ -222,13 +223,13 @@ namespace BookWarm
             }
         }
 
-        private void LOGIN_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            // Відкриття форми Main
-            Success success = new Success();
-            success.Show();
-        }
+        //private void LOGIN_Click(object sender, EventArgs e)
+        //{
+        //    this.Close();
+        //    // Відкриття форми Main
+        //    Success success = new Success(username);
+        //    success.Show();
+        //}
 
         private void ShowPassword_Click(object sender, EventArgs e)
         {

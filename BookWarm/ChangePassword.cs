@@ -63,7 +63,7 @@ namespace BookWarm
                 if (UpdatePasswordInDatabase(username, newPassword))
                 {
                     this.Close();
-                    Success success = new Success();
+                    Success success = new Success(username);
                     success.Show();
                 }
                 else

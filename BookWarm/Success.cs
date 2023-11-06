@@ -7,15 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
     public partial class Success : Form
     {
         private Timer timer;
-        public Success()
+        private string username; // Додайте поле для username
+
+        public Success(string username) // Додайте параметр username до конструктора
         {
             InitializeComponent();
+
+            this.username = username; // Збережіть username в полі класу
 
             // Створення і налаштування таймера
             timer = new Timer();
@@ -27,7 +32,7 @@ namespace BookWarm
         private void Timer_Tick(object sender, EventArgs e)
         {
             timer.Stop(); // Зупиніть таймер
-            Main mainForm = new Main();
+            Main mainForm = new Main(username); // Передайте username в конструктор головної форми
             mainForm.Show();
             this.Close(); // Закрити поточну форму Success
         }

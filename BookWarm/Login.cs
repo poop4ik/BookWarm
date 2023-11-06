@@ -100,7 +100,8 @@ namespace BookWarm
 
             if (IsUserValid(username, password))
             {
-                Success success = new Success();
+                Main mainForm = new Main(username); // Передаємо username в конструктор головної форми
+                Success success = new Success(username);
                 success.Show();
                 this.Close();
                 passwordHashTextBox.Clear();
