@@ -167,7 +167,7 @@ namespace BookWarm
 
                     // Встановіть флаг, що дані вставлені
                     isDataInserted = true;
-                    Success success = new Success(username);
+                    Success success = new Success();
                     success.Show();
                     this.Close();
                 }

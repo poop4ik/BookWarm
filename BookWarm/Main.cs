@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
@@ -17,14 +18,12 @@ namespace BookWarm
     {
         AppSettings appSettings = new AppSettings();
         string connectionString;
-        public string Username { get; set; }
 
-        public Main(string username)
+
+        public Main()
         {
             InitializeComponent();
             connectionString = appSettings.ConnectionString;
-            Username = username; // Присвоюємо значення властивості Username
-            DisplayUserProfilePhoto(); // Отримуємо та відображаємо фотографію користувача
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -52,9 +51,9 @@ namespace BookWarm
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None; // Встановлюємо рамку вікна (опціонально)
                 CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                ProfileLogo.Size = new Size(ProfileLogo.Width = 54, ProfileLogo.Height = 54);// Зменшення розміру 
-                ProfileLogo.Location = new Point(ProfileLogo.Location.X, ProfileLogo.Location.Y + 20);
-
+                profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 54, profilePhotoPictureBox.Height = 54);// Зменшення розміру 
+                profilePhotoPictureBox.Location = new Point(profilePhotoPictureBox.Location.X, profilePhotoPictureBox.Location.Y + 20);
+                LineLogo.Location = new Point(-7, 375);
                 isMaximized = false;
             }
             else
@@ -63,56 +62,11 @@ namespace BookWarm
                 this.WindowState = FormWindowState.Maximized;
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
                 CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                ProfileLogo.Size = new Size(ProfileLogo.Width = 74, ProfileLogo.Height = 74); // Збільшення розміру 
-                ProfileLogo.Location = new Point(ProfileLogo.Location.X, ProfileLogo.Location.Y - 20);
-
+                profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 74, profilePhotoPictureBox.Height = 74); // Збільшення розміру 
+                profilePhotoPictureBox.Location = new Point(profilePhotoPictureBox.Location.X, profilePhotoPictureBox.Location.Y - 20);
+                LineLogo.Location = new Point(profilePhotoPictureBox.Location.X, profilePhotoPictureBox.Location.Y - 10);
                 isMaximized = true;
             }
-        }
-
-
-        public byte[] GetProfilePhotoFromDatabase(string username)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string selectQuery = "SELECT ProfilePhoto FROM Users WHERE Username = @Username";
-
-                using (SqlCommand command = new SqlCommand(selectQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@Username", username);
-
-                    // Виконуємо запит та отримуємо результат
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        // Отримуємо фото як масив байтів
-                        if (reader["ProfilePhoto"] != DBNull.Value)
-                        {
-                            return (byte[])reader["ProfilePhoto"];
-                        }
-                    }
-                }
-            }
-
-            return null; // Якщо фото не знайдено
-        }
-
-        private void DisplayUserProfilePhoto()
-        {
-            // Отримайте фото користувача з бази даних
-            byte[] profilePhotoBytes = GetProfilePhotoFromDatabase(Username);
-
-            if (profilePhotoBytes != null)
-            {
-                using (MemoryStream ms = new MemoryStream(profilePhotoBytes))
-                {
-                    Image profileImage = Image.FromStream(ms);
-                    SetRoundPictureBox(ProfileLogo, profileImage); // Використовуйте метод для встановлення круглої фотографії
-                }
-            }
-
         }
 
         private void SetRoundPictureBox(PictureBox pictureBox, Image image)
@@ -138,5 +92,26 @@ namespace BookWarm
             pictureBox.Image = roundImage;
         }
 
+        private void usersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.usersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.bookWarmDBDataSet);
+
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'bookWarmDBDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.bookWarmDBDataSet.Users);
+        }
+
+        private void profilePhotoPictureBox_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            // Відкриття форми Main
+            UserProfile userProfile = new UserProfile();
+            userProfile.Show();
+        }   
     }
 }

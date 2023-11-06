@@ -14,14 +14,11 @@ namespace BookWarm
     public partial class Success : Form
     {
         private Timer timer;
-        private string username; // Додайте поле для username
-
-        public Success(string username) // Додайте параметр username до конструктора
+        private string username;
+        public Success() // Додайте параметр username до конструктора
         {
             InitializeComponent();
-
-            this.username = username; // Збережіть username в полі класу
-
+            this.username = username;
             // Створення і налаштування таймера
             timer = new Timer();
             timer.Interval = 3000; // (3 секунди)
@@ -32,7 +29,7 @@ namespace BookWarm
         private void Timer_Tick(object sender, EventArgs e)
         {
             timer.Stop(); // Зупиніть таймер
-            Main mainForm = new Main(username); // Передайте username в конструктор головної форми
+            Main mainForm = new Main(); // Передайте username в конструктор головної форми
             mainForm.Show();
             this.Close(); // Закрити поточну форму Success
         }

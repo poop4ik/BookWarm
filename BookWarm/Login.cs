@@ -13,6 +13,7 @@ namespace BookWarm
 {
     public partial class Login : Form
     {
+        public string Username { get; private set; }
         AppSettings appSettings = new AppSettings();
         string connectionString;
         public Login()
@@ -100,8 +101,7 @@ namespace BookWarm
 
             if (IsUserValid(username, password))
             {
-                Main mainForm = new Main(username); // Передаємо username в конструктор головної форми
-                Success success = new Success(username);
+                Success success = new Success();
                 success.Show();
                 this.Close();
                 passwordHashTextBox.Clear();
