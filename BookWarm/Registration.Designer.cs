@@ -50,7 +50,6 @@
             this.UsernameExist = new System.Windows.Forms.Label();
             this.EmailExist = new System.Windows.Forms.Label();
             this.AgeTextBox = new System.Windows.Forms.TextBox();
-            this.LogoMain = new System.Windows.Forms.PictureBox();
             this.LOGIN = new System.Windows.Forms.Label();
             this.ShowPassword = new System.Windows.Forms.Label();
             this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
@@ -58,12 +57,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.LogoMain = new System.Windows.Forms.PictureBox();
             usernameLabel = new System.Windows.Forms.Label();
             passwordHashLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
@@ -73,16 +67,10 @@
             aGELabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -92,7 +80,7 @@
             usernameLabel.Location = new System.Drawing.Point(407, 158);
             usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(87, 18);
+            usernameLabel.Size = new System.Drawing.Size(110, 24);
             usernameLabel.TabIndex = 0;
             usernameLabel.Text = "Username:";
             // 
@@ -103,7 +91,7 @@
             passwordHashLabel.Location = new System.Drawing.Point(407, 209);
             passwordHashLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             passwordHashLabel.Name = "passwordHashLabel";
-            passwordHashLabel.Size = new System.Drawing.Size(82, 18);
+            passwordHashLabel.Size = new System.Drawing.Size(105, 24);
             passwordHashLabel.TabIndex = 2;
             passwordHashLabel.Text = "Password:";
             // 
@@ -114,7 +102,7 @@
             emailLabel.Location = new System.Drawing.Point(407, 255);
             emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(51, 18);
+            emailLabel.Size = new System.Drawing.Size(68, 24);
             emailLabel.TabIndex = 4;
             emailLabel.Text = "Email:";
             // 
@@ -125,7 +113,7 @@
             firstNameLabel.Location = new System.Drawing.Point(743, 158);
             firstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(91, 18);
+            firstNameLabel.Size = new System.Drawing.Size(118, 24);
             firstNameLabel.TabIndex = 6;
             firstNameLabel.Text = "First Name:";
             // 
@@ -136,7 +124,7 @@
             lastNameLabel.Location = new System.Drawing.Point(743, 208);
             lastNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(90, 18);
+            lastNameLabel.Size = new System.Drawing.Size(115, 24);
             lastNameLabel.TabIndex = 8;
             lastNameLabel.Text = "Last Name:";
             // 
@@ -148,7 +136,7 @@
             Text.Location = new System.Drawing.Point(612, 74);
             Text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             Text.Name = "Text";
-            Text.Size = new System.Drawing.Size(198, 29);
+            Text.Size = new System.Drawing.Size(246, 35);
             Text.TabIndex = 12;
             Text.Text = "Меню Реєстрації";
             // 
@@ -158,7 +146,7 @@
             aGELabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             aGELabel.Location = new System.Drawing.Point(743, 254);
             aGELabel.Name = "aGELabel";
-            aGELabel.Size = new System.Drawing.Size(40, 18);
+            aGELabel.Size = new System.Drawing.Size(51, 24);
             aGELabel.TabIndex = 17;
             aGELabel.Text = "Age:";
             // 
@@ -171,7 +159,7 @@
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.usernameTextBox.Size = new System.Drawing.Size(179, 19);
+            this.usernameTextBox.Size = new System.Drawing.Size(179, 23);
             this.usernameTextBox.TabIndex = 1;
             // 
             // usersBindingSource
@@ -193,7 +181,7 @@
             this.passwordHashTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.passwordHashTextBox.Name = "passwordHashTextBox";
             this.passwordHashTextBox.PasswordChar = '*';
-            this.passwordHashTextBox.Size = new System.Drawing.Size(179, 19);
+            this.passwordHashTextBox.Size = new System.Drawing.Size(179, 23);
             this.passwordHashTextBox.TabIndex = 3;
             // 
             // emailTextBox
@@ -204,7 +192,7 @@
             this.emailTextBox.Location = new System.Drawing.Point(518, 254);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(179, 19);
+            this.emailTextBox.Size = new System.Drawing.Size(179, 23);
             this.emailTextBox.TabIndex = 5;
             // 
             // firstNameTextBox
@@ -215,7 +203,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(868, 158);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(179, 19);
+            this.firstNameTextBox.Size = new System.Drawing.Size(179, 23);
             this.firstNameTextBox.TabIndex = 7;
             // 
             // lastNameTextBox
@@ -226,7 +214,7 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(868, 210);
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(179, 19);
+            this.lastNameTextBox.Size = new System.Drawing.Size(179, 23);
             this.lastNameTextBox.TabIndex = 9;
             // 
             // Exit
@@ -238,7 +226,7 @@
             this.Exit.Location = new System.Drawing.Point(1076, 9);
             this.Exit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(24, 24);
+            this.Exit.Size = new System.Drawing.Size(32, 32);
             this.Exit.TabIndex = 10;
             this.Exit.Text = "Х";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
@@ -250,7 +238,7 @@
             this.Back.Location = new System.Drawing.Point(-1, -5);
             this.Back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(47, 41);
+            this.Back.Size = new System.Drawing.Size(59, 52);
             this.Back.TabIndex = 14;
             this.Back.Text = "←";
             this.Back.Click += new System.EventHandler(this.Back_Click);
@@ -263,7 +251,7 @@
             this.RegAuth.Location = new System.Drawing.Point(617, 344);
             this.RegAuth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RegAuth.Name = "RegAuth";
-            this.RegAuth.Size = new System.Drawing.Size(185, 27);
+            this.RegAuth.Size = new System.Drawing.Size(230, 33);
             this.RegAuth.TabIndex = 15;
             this.RegAuth.Text = "Зареєстуватися";
             this.RegAuth.Click += new System.EventHandler(this.RegAuth_Click);
@@ -275,7 +263,7 @@
             this.UsernameExist.ForeColor = System.Drawing.Color.Firebrick;
             this.UsernameExist.Location = new System.Drawing.Point(515, 178);
             this.UsernameExist.Name = "UsernameExist";
-            this.UsernameExist.Size = new System.Drawing.Size(370, 15);
+            this.UsernameExist.Size = new System.Drawing.Size(471, 19);
             this.UsernameExist.TabIndex = 16;
             this.UsernameExist.Text = "Дане ім\'я уже використовується, змініть його будь ласка.";
             this.UsernameExist.Visible = false;
@@ -287,7 +275,7 @@
             this.EmailExist.ForeColor = System.Drawing.Color.Firebrick;
             this.EmailExist.Location = new System.Drawing.Point(514, 280);
             this.EmailExist.Name = "EmailExist";
-            this.EmailExist.Size = new System.Drawing.Size(324, 30);
+            this.EmailExist.Size = new System.Drawing.Size(411, 38);
             this.EmailExist.TabIndex = 17;
             this.EmailExist.Text = "Дана електронна адреса уже використовується,\r\nзмініть її будь ласка, або введіть " +
     "коректний email.\r\n";
@@ -300,27 +288,15 @@
             this.AgeTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AgeTextBox.Location = new System.Drawing.Point(868, 255);
             this.AgeTextBox.Name = "AgeTextBox";
-            this.AgeTextBox.Size = new System.Drawing.Size(179, 19);
+            this.AgeTextBox.Size = new System.Drawing.Size(179, 23);
             this.AgeTextBox.TabIndex = 18;
-            // 
-            // LogoMain
-            // 
-            this.LogoMain.BackColor = System.Drawing.Color.Transparent;
-            this.LogoMain.Image = global::BookWarm.Properties.Resources.Без_назви_1;
-            this.LogoMain.Location = new System.Drawing.Point(16, 90);
-            this.LogoMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.LogoMain.Name = "LogoMain";
-            this.LogoMain.Size = new System.Drawing.Size(363, 299);
-            this.LogoMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.LogoMain.TabIndex = 11;
-            this.LogoMain.TabStop = false;
             // 
             // LOGIN
             // 
             this.LOGIN.AutoSize = true;
             this.LOGIN.Location = new System.Drawing.Point(686, 383);
             this.LOGIN.Name = "LOGIN";
-            this.LOGIN.Size = new System.Drawing.Size(45, 15);
+            this.LOGIN.Size = new System.Drawing.Size(59, 19);
             this.LOGIN.TabIndex = 19;
             this.LOGIN.Text = "LOGIN";
             this.LOGIN.Visible = false;
@@ -331,7 +307,7 @@
             this.ShowPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ShowPassword.Location = new System.Drawing.Point(704, 208);
             this.ShowPassword.Name = "ShowPassword";
-            this.ShowPassword.Size = new System.Drawing.Size(27, 18);
+            this.ShowPassword.Size = new System.Drawing.Size(34, 24);
             this.ShowPassword.TabIndex = 25;
             this.ShowPassword.Text = "👁️";
             this.ShowPassword.Click += new System.EventHandler(this.ShowPassword_Click);
@@ -388,83 +364,24 @@
             this.pictureBox3.TabIndex = 28;
             this.pictureBox3.TabStop = false;
             // 
-            // pictureBox5
+            // LogoMain
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox5.Location = new System.Drawing.Point(65, 318);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(100, 122);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 30;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox6.Location = new System.Drawing.Point(65, -1);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(100, 51);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 32;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox7.Location = new System.Drawing.Point(228, -1);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(100, 64);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 31;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox8.Location = new System.Drawing.Point(228, 370);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(100, 62);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 33;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox9.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox9.Location = new System.Drawing.Point(0, 133);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(80, 64);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 34;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox10.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox10.Location = new System.Drawing.Point(0, 227);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(56, 64);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 35;
-            this.pictureBox10.TabStop = false;
+            this.LogoMain.BackColor = System.Drawing.Color.Transparent;
+            this.LogoMain.Image = global::BookWarm.Properties.Resources.Без_назви_1;
+            this.LogoMain.Location = new System.Drawing.Point(16, 90);
+            this.LogoMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.LogoMain.Name = "LogoMain";
+            this.LogoMain.Size = new System.Drawing.Size(363, 299);
+            this.LogoMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LogoMain.TabIndex = 11;
+            this.LogoMain.TabStop = false;
             // 
             // Registration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1121, 431);
-            this.Controls.Add(this.pictureBox10);
-            this.Controls.Add(this.pictureBox9);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox7);
             this.Controls.Add(Text);
             this.Controls.Add(emailLabel);
             this.Controls.Add(passwordHashLabel);
@@ -488,7 +405,6 @@
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.LogoMain);
             this.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -500,16 +416,10 @@
             this.Load += new System.EventHandler(this.Registration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,11 +448,5 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }
