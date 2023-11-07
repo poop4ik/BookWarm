@@ -20,8 +20,9 @@ namespace BookWarm
             InitializeComponent();
             this.username = username;
             // Створення і налаштування таймера
-            timer = new Timer();
-            timer.Interval = 3000; // (3 секунди)
+            timer = new Timer() { Interval = 3000};
+            //timer.Interval = 3000; // (3 секунди)
+            timer.Enabled = true;
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -29,8 +30,8 @@ namespace BookWarm
         private void Timer_Tick(object sender, EventArgs e)
         {
             timer.Stop(); // Зупиніть таймер
-            Main mainForm = new Main(); // Передайте username в конструктор головної форми
-            mainForm.Show();
+            //Main mainForm = new Main(); // Передайте username в конструктор головної форми
+            //mainForm.Show();
             this.Close(); // Закрити поточну форму Success
         }
     }

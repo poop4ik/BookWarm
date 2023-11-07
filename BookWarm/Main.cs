@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookWarm.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,15 +17,60 @@ namespace BookWarm
 {
     public partial class Main : Form
     {
-        AppSettings appSettings = new AppSettings();
-        string connectionString;
+        private User user;
+        private Size originPhotoSize;
+        private Point originPhotoLocation;
 
-
-        public Main()
+        public Main(string username)
         {
             InitializeComponent();
-            connectionString = appSettings.ConnectionString;
+
+            originPhotoLocation = profilePhotoPictureBox.Location;
+            originPhotoSize = profilePhotoPictureBox.Size;
+
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                string sqlQuery = "SELECT * FROM Users WHERE Username = @username;";
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            user = new User
+                            {
+                                UserId = (int)reader["UserID"],
+                                FirstName = reader["FirstName"].ToString(),
+                                LastName = reader["LastName"].ToString(),
+                                UserName = reader["UserName"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Age = (int)reader["Age"],
+                                PasswordHash = reader["PasswordHash"].ToString(),
+                                ProfilePhoto = (reader["ProfilePhoto"] == DBNull.Value ? null : (byte[])reader["ProfilePhoto"])
+                            };
+                        }
+                    }
+                }
+            }
+
+            if (user.ProfilePhoto != null) // User has a photo.
+            {
+                using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
+                {
+                    profilePhotoPictureBox.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                profilePhotoPictureBox.Image = Properties.Resources.logo;
+            }
+
+            Resize_Click(this, EventArgs.Empty);
         }
+
 
         private void Exit_Click(object sender, EventArgs e)
         {
@@ -41,20 +87,20 @@ namespace BookWarm
             Application.Exit();
         }
 
-        private bool isMaximized = true; // Перевірка стану максимізації
+        private bool isMinimized = false; // Перевірка стану максимізації
 
         private void Resize_Click(object sender, EventArgs e)
         {
-            if (isMaximized)
+            if (isMinimized)
             {
                 // Повертаємо вікно до звичайного розміру
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None; // Встановлюємо рамку вікна (опціонально)
                 CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 54, profilePhotoPictureBox.Height = 54);// Зменшення розміру 
-                profilePhotoPictureBox.Location = new Point(profilePhotoPictureBox.Location.X, profilePhotoPictureBox.Location.Y + 20);
-                LineLogo.Location = new Point(-7, 375);
-                isMaximized = false;
+                profilePhotoPictureBox.Size = originPhotoSize; // Збільшння розміру 
+                profilePhotoPictureBox.Location = originPhotoLocation;
+                //profilePhotoPictureBox.Location = new Point(440, 520);
+                isMinimized = false;
             }
             else
             {
@@ -62,10 +108,9 @@ namespace BookWarm
                 this.WindowState = FormWindowState.Maximized;
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
                 CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 74, profilePhotoPictureBox.Height = 74); // Збільшення розміру 
-                profilePhotoPictureBox.Location = new Point(profilePhotoPictureBox.Location.X, profilePhotoPictureBox.Location.Y - 20);
-                LineLogo.Location = new Point(profilePhotoPictureBox.Location.X, profilePhotoPictureBox.Location.Y - 10);
-                isMaximized = true;
+                profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 70, profilePhotoPictureBox.Height = 70);// Зменшення розміру 
+                profilePhotoPictureBox.Location = new Point(((int)(Width / 2) - (int)(profilePhotoPictureBox.Width / 2)), profilePhotoPictureBox.Location.Y - 10);
+                isMinimized = true;
             }
         }
 
@@ -108,10 +153,11 @@ namespace BookWarm
 
         private void profilePhotoPictureBox_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             // Відкриття форми Main
             UserProfile userProfile = new UserProfile();
-            userProfile.Show();
-        }   
+            userProfile.ShowDialog();
+            this.Show();
+        }
     }
 }

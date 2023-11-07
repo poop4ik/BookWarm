@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace BookWarm
 {
-    public class AppSettings
+    public static class AppSettings
     {
-        public string ConnectionString { get; set; }
+        public static readonly string ConnectionString = "Data Source=(localdb)\\BookWarm;Initial Catalog=BookWarmDB;Integrated Security=True";
 
-        public AppSettings()
-        {
-            // Встановлюємо значення рядка підключення до бази даних в конструкторі
-            ConnectionString = "Data Source=(localdb)\\BookWarm;Initial Catalog=BookWarmDB;Integrated Security=True";
-        }
     }
 }
 

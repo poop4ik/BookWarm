@@ -16,12 +16,9 @@ namespace BookWarm
 {
     public partial class Registration : Form
     {
-        AppSettings appSettings = new AppSettings();
-        string connectionString;
         public Registration()
         {
             InitializeComponent();
-            connectionString = appSettings.ConnectionString;
         }
 
         private void usersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -132,7 +129,7 @@ namespace BookWarm
                 else
                 {
                     // Тут виконайте вставку даних у вашу базу даних
-                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                     {
                         connection.Open();
 
@@ -170,6 +167,8 @@ namespace BookWarm
                     Success success = new Success();
                     success.Show();
                     this.Close();
+                    Main mainForm = new Main(username); // Передайте username в конструктор головної форми
+                    mainForm.Show();
                 }
             }
         }
@@ -189,7 +188,7 @@ namespace BookWarm
 
         private bool IsUsernameExists(string username)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
                 connection.Open();
 
@@ -208,7 +207,7 @@ namespace BookWarm
 
         private bool IsEmailExists(string email)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
                 connection.Open();
 

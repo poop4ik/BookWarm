@@ -13,12 +13,9 @@ namespace BookWarm
 {
     public partial class RestorePassword : Form
     {
-        AppSettings appSettings = new AppSettings();
-        string connectionString;
         public RestorePassword()
         {
             InitializeComponent();
-            connectionString = appSettings.ConnectionString;
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -78,7 +75,7 @@ namespace BookWarm
 
         private bool IsUserValid(string username, string email)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
                 connection.Open();
 

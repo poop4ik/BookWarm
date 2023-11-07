@@ -14,12 +14,9 @@ namespace BookWarm
     public partial class Login : Form
     {
         public string Username { get; private set; }
-        AppSettings appSettings = new AppSettings();
-        string connectionString;
         public Login()
         {
             InitializeComponent();
-            connectionString = appSettings.ConnectionString;
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -101,12 +98,13 @@ namespace BookWarm
 
             if (IsUserValid(username, password))
             {
-                Success success = new Success();
-                success.Show();
                 this.Close();
-                passwordHashTextBox.Clear();
-                usernameTextBox.Clear();
+                Success success = new Success();
+                success.ShowDialog();
+                
                 ValidLoginAndPassword.Visible = false;
+                Main mainForm = new Main(username); // Передайте username в конструктор головної форми
+                mainForm.Show();
             }
             else
             {
@@ -117,7 +115,7 @@ namespace BookWarm
 
         private bool IsUserValid(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
                 connection.Open();
 
