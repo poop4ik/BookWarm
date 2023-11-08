@@ -103,7 +103,8 @@ namespace BookWarm
                 success.ShowDialog();
                 
                 ValidLoginAndPassword.Visible = false;
-                Main mainForm = new Main(username); // Передайте username в конструктор головної форми
+                Main mainForm = new Main(username);
+                UserProfile userProfile = new UserProfile(username);
                 mainForm.Show();
             }
             else

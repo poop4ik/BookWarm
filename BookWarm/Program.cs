@@ -16,7 +16,7 @@ namespace BookWarm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main("danylevych"));          
+            Application.Run(new Main("_poop4ik_"));          
             //Application.Run(new Authentication());
         }
     }

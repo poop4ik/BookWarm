@@ -67,8 +67,6 @@ namespace BookWarm
             {
                 profilePhotoPictureBox.Image = Properties.Resources.logo;
             }
-
-            Resize_Click(this, EventArgs.Empty);
         }
 
 
@@ -87,7 +85,7 @@ namespace BookWarm
             Application.Exit();
         }
 
-        private bool isMinimized = false; // Перевірка стану максимізації
+        private bool isMinimized = true; // Перевірка стану максимізації
 
         private void Resize_Click(object sender, EventArgs e)
         {
@@ -108,33 +106,10 @@ namespace BookWarm
                 this.WindowState = FormWindowState.Maximized;
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
                 CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 70, profilePhotoPictureBox.Height = 70);// Зменшення розміру 
-                profilePhotoPictureBox.Location = new Point(((int)(Width / 2) - (int)(profilePhotoPictureBox.Width / 2)), profilePhotoPictureBox.Location.Y - 10);
+                //profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 70, profilePhotoPictureBox.Height = 70);// Зменшення розміру 
+                //profilePhotoPictureBox.Location = new Point(((int)(Width / 2) - (int)(profilePhotoPictureBox.Width / 2)), profilePhotoPictureBox.Location.Y - 10);
                 isMinimized = true;
             }
-        }
-
-        private void SetRoundPictureBox(PictureBox pictureBox, Image image)
-        {
-            int diameter = Math.Min(pictureBox.Width, pictureBox.Height);
-            Bitmap roundImage = new Bitmap(diameter, diameter);
-
-            using (Graphics g = Graphics.FromImage(roundImage))
-            using (Brush brush = new SolidBrush(Color.Transparent))
-            {
-                g.FillRegion(brush, new Region(new Rectangle(0, 0, diameter, diameter)));
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-
-                GraphicsPath path = new GraphicsPath();
-                path.AddEllipse(0, 0, diameter, diameter);
-
-                g.SetClip(path, CombineMode.Replace);
-                g.DrawImage(image, 0, 0, diameter, diameter);
-            }
-
-            pictureBox.Image = roundImage;
         }
 
         private void usersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -155,9 +130,14 @@ namespace BookWarm
         {
             this.Hide();
             // Відкриття форми Main
-            UserProfile userProfile = new UserProfile();
+            UserProfile userProfile = new UserProfile(user.UserName);
             userProfile.ShowDialog();
             this.Show();
+        }
+
+        private void Minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
