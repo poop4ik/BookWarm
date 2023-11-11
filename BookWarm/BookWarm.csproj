@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Без-назви-3.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Design, Version=4.5.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <HintPath>..\packages\Krypton.Components.Suite.4.5.9\lib\net20\ComponentFactory.Krypton.Design.dll</HintPath>
@@ -98,6 +101,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\Models\User.cs" />
+    <Compile Include="Forms\ChangeUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeUserInfo.Designer.cs">
+      <DependentUpon>ChangeUserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeUserInfo.resx">
+      <DependentUpon>ChangeUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -242,6 +254,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Без назви-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\savegif.gif" />
+    <None Include="Resources\savepng.png" />
+    <Content Include="Без-назви-3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

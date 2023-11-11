@@ -1,17 +1,11 @@
 ﻿using BookWarm.Data.Models;
+using BookWarm.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
@@ -24,6 +18,8 @@ namespace BookWarm
         public UserProfile(string username)
         {
             InitializeComponent();
+
+            Resize_Click(this, EventArgs.Empty);
 
             ChangeInfo.MouseEnter += new EventHandler(ChangeInfo_MouseEnter);
             ChangeInfo.MouseLeave += new EventHandler(ChangeInfo_MouseLeave);
@@ -158,7 +154,10 @@ namespace BookWarm
 
         private void ChangeInfo_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            ChangeUserInfo changeUserInfo = new ChangeUserInfo(user.UserName);
+            changeUserInfo.ShowDialog();
+            this.Show();
         }
     }
 }

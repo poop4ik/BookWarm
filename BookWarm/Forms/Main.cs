@@ -26,6 +26,8 @@ namespace BookWarm
             originPhotoLocation = profilePhotoPictureBox.Location;
             originPhotoSize = profilePhotoPictureBox.Size;
 
+            Resize_Click(this, EventArgs.Empty);
+
             Resize.MouseEnter += new EventHandler(Resize_MouseEnter);
             Resize.MouseLeave += new EventHandler(Resize_MouseLeave);
 
