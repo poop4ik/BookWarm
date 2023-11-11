@@ -1,25 +1,23 @@
 ﻿using BookWarm.Data.Models;
+using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
-    public partial class Main : Form
+    public partial class Main : KryptonForm
     {
         private User user;
         private Size originPhotoSize;
         private Point originPhotoLocation;
+        private bool isMaximized = false; // Перевірка стану максимізації
+        private FormBorderStyle originalFormBorderStyle;
+        private Size originalSize;
 
         public Main(string username)
         {
@@ -27,6 +25,9 @@ namespace BookWarm
 
             originPhotoLocation = profilePhotoPictureBox.Location;
             originPhotoSize = profilePhotoPictureBox.Size;
+
+            Resize.MouseEnter += new EventHandler(Resize_MouseEnter);
+            Resize.MouseLeave += new EventHandler(Resize_MouseLeave);
 
             using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
@@ -49,6 +50,7 @@ namespace BookWarm
                                 Email = reader["Email"].ToString(),
                                 Age = (int)reader["Age"],
                                 PasswordHash = reader["PasswordHash"].ToString(),
+                                Description = reader["Description"].ToString(),
                                 ProfilePhoto = (reader["ProfilePhoto"] == DBNull.Value ? null : (byte[])reader["ProfilePhoto"])
                             };
                         }
@@ -85,30 +87,32 @@ namespace BookWarm
             Application.Exit();
         }
 
-        private bool isMinimized = true; // Перевірка стану максимізації
-
         private void Resize_Click(object sender, EventArgs e)
         {
-            if (isMinimized)
+            if (isMaximized)
             {
                 // Повертаємо вікно до звичайного розміру
                 this.WindowState = FormWindowState.Normal;
-                this.FormBorderStyle = FormBorderStyle.None; // Встановлюємо рамку вікна (опціонально)
+                this.FormBorderStyle = originalFormBorderStyle;
+                this.Size = originalSize;
                 CenterToScreen(); // Розміщуємо вікно в центрі екрану
+                isMaximized = false;
                 profilePhotoPictureBox.Size = originPhotoSize; // Збільшння розміру 
                 profilePhotoPictureBox.Location = originPhotoLocation;
                 //profilePhotoPictureBox.Location = new Point(440, 520);
-                isMinimized = false;
             }
             else
             {
-                // Максимізуємо вікно на весь екран
-                this.WindowState = FormWindowState.Maximized;
+                this.WindowState = FormWindowState.Normal;
+                originalFormBorderStyle = this.FormBorderStyle;
+                originalSize = this.Size;
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
-                CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                //profilePhotoPictureBox.Size = new Size(profilePhotoPictureBox.Width = 70, profilePhotoPictureBox.Height = 70);// Зменшення розміру 
-                //profilePhotoPictureBox.Location = new Point(((int)(Width / 2) - (int)(profilePhotoPictureBox.Width / 2)), profilePhotoPictureBox.Location.Y - 10);
-                isMinimized = true;
+
+                // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
+                this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+                this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+
+                isMaximized = true;
             }
         }
 
@@ -138,6 +142,23 @@ namespace BookWarm
         private void Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void AuthenticationPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Resize_MouseEnter(object sender, EventArgs e)
+        {
+            // Змінити зображення при наведенні
+            Resize.Image = Properties.Resources.resizegif;
+        }
+
+        private void Resize_MouseLeave(object sender, EventArgs e)
+        {
+            // Повернутися до попереднього зображення при виході миші
+            Resize.Image = Properties.Resources.resizepng;
         }
     }
 }

@@ -30,7 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Success));
             this.label2 = new System.Windows.Forms.Label();
+            this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.Exit = new System.Windows.Forms.Label();
             this.LogoMain = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
+            this.AuthenticationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +49,29 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Операцію успішно виконано\r\nЛаскаво просимо \r\nдо BookWarm :3\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AuthenticationPanel
+            // 
+            this.AuthenticationPanel.Controls.Add(this.Exit);
+            this.AuthenticationPanel.Location = new System.Drawing.Point(-11, -3);
+            this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.AuthenticationPanel.Name = "AuthenticationPanel";
+            this.AuthenticationPanel.Size = new System.Drawing.Size(394, 25);
+            this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
+            this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
+            this.AuthenticationPanel.TabIndex = 58;
+            // 
+            // Exit
+            // 
+            this.Exit.AutoSize = true;
+            this.Exit.BackColor = System.Drawing.Color.Silver;
+            this.Exit.Font = new System.Drawing.Font("Arial Black", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Exit.ForeColor = System.Drawing.Color.Black;
+            this.Exit.Location = new System.Drawing.Point(706, 10);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(23, 24);
+            this.Exit.TabIndex = 27;
+            this.Exit.Text = "Х";
             // 
             // LogoMain
             // 
@@ -64,13 +91,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(355, 183);
+            this.Controls.Add(this.AuthenticationPanel);
             this.Controls.Add(this.LogoMain);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Success";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.Rounding = 10;
             this.Text = "Success";
+            ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
+            this.AuthenticationPanel.ResumeLayout(false);
+            this.AuthenticationPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -80,5 +115,7 @@
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox LogoMain;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel AuthenticationPanel;
+        private System.Windows.Forms.Label Exit;
     }
 }

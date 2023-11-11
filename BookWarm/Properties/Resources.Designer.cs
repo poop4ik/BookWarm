@@ -63,6 +63,46 @@ namespace BookWarm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gear {
+            get {
+                object obj = ResourceManager.GetObject("gear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gearpng {
+            get {
+                object obj = ResourceManager.GetObject("gearpng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gearpng1 {
+            get {
+                object obj = ResourceManager.GetObject("gearpng1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_size {
+            get {
+                object obj = ResourceManager.GetObject("icons8_size", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap line {
             get {
                 object obj = ResourceManager.GetObject("line", resourceCulture);
@@ -123,6 +163,36 @@ namespace BookWarm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap resize {
+            get {
+                object obj = ResourceManager.GetObject("resize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap resizegif {
+            get {
+                object obj = ResourceManager.GetObject("resizegif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap resizepng {
+            get {
+                object obj = ResourceManager.GetObject("resizepng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap squre {
             get {
                 object obj = ResourceManager.GetObject("squre", resourceCulture);
@@ -135,7 +205,7 @@ namespace BookWarm.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Без_назви_1 {
             get {
-                object obj = ResourceManager.GetObject("Без назви-1", resourceCulture);
+                object obj = ResourceManager.GetObject("Без_назви_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

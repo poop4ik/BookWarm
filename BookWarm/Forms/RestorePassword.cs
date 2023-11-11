@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BookWarm
 {
-    public partial class RestorePassword : Form
+    public partial class RestorePassword : KryptonForm
     {
         public RestorePassword()
         {

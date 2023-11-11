@@ -16,5 +16,6 @@ namespace BookWarm.Data.Models
         public int Age { get; set; }
         public byte[] ProfilePhoto { get; set; }
         public string PasswordHash { get; set; }
+        public string Description { get; set; }
     }
 }

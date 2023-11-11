@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
-    public partial class Registration : Form
+    public partial class Registration : KryptonForm
     {
         public Registration()
         {

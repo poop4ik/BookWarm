@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace BookWarm
 {
-    public partial class ChangePassword : Form
+    public partial class ChangePassword : KryptonForm
     {
         public string Username { get; set; }
 

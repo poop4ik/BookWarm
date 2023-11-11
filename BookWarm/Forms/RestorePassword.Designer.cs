@@ -47,6 +47,7 @@
             this.LogoMain = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             Text = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
@@ -56,6 +57,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
+            this.AuthenticationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Text
@@ -118,7 +121,7 @@
             // Back
             // 
             this.Back.AutoSize = true;
-            this.Back.BackColor = System.Drawing.Color.Transparent;
+            this.Back.BackColor = System.Drawing.Color.Silver;
             this.Back.Font = new System.Drawing.Font("Arial Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Back.Location = new System.Drawing.Point(-1, -5);
             this.Back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -145,8 +148,17 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BookReadsTableAdapter = null;
+            this.tableAdapterManager.BooksTableAdapter = null;
+            this.tableAdapterManager.BookViewsTableAdapter = null;
+            this.tableAdapterManager.ForeignBooksTableAdapter = null;
+            this.tableAdapterManager.MainBooksTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UserFavoritesTableAdapter = null;
+            this.tableAdapterManager.UserPreferencesTableAdapter = null;
+            this.tableAdapterManager.UserReviewsTableAdapter = null;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
+            this.tableAdapterManager.UserStatisticsTableAdapter = null;
             // 
             // ValidLoginAndEmail
             // 
@@ -162,10 +174,10 @@
             // Exit
             // 
             this.Exit.AutoSize = true;
-            this.Exit.BackColor = System.Drawing.Color.Transparent;
+            this.Exit.BackColor = System.Drawing.Color.Silver;
             this.Exit.Font = new System.Drawing.Font("Arial Black", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Exit.ForeColor = System.Drawing.Color.Black;
-            this.Exit.Location = new System.Drawing.Point(704, 9);
+            this.Exit.Location = new System.Drawing.Point(706, 10);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(23, 24);
             this.Exit.TabIndex = 27;
@@ -229,6 +241,17 @@
             this.pictureBox3.TabIndex = 56;
             this.pictureBox3.TabStop = false;
             // 
+            // AuthenticationPanel
+            // 
+            this.AuthenticationPanel.Controls.Add(this.Exit);
+            this.AuthenticationPanel.Location = new System.Drawing.Point(-2, -5);
+            this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.AuthenticationPanel.Name = "AuthenticationPanel";
+            this.AuthenticationPanel.Size = new System.Drawing.Size(741, 41);
+            this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
+            this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
+            this.AuthenticationPanel.TabIndex = 57;
+            // 
             // RestorePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,22 +265,29 @@
             this.Controls.Add(usernameLabel);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.Back);
-            this.Controls.Add(this.Exit);
             this.Controls.Add(this.ValidLoginAndEmail);
             this.Controls.Add(ChangePassword);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.AuthenticationPanel);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.LogoMain);
-            this.Controls.Add(this.pictureBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RestorePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.Rounding = 10;
             this.Text = "RestorePassword";
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
+            this.AuthenticationPanel.ResumeLayout(false);
+            this.AuthenticationPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,5 +307,6 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel AuthenticationPanel;
     }
 }

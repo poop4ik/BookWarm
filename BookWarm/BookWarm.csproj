@@ -74,10 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="Authentication.cs">
+    <Compile Include="Forms\Authentication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authentication.Designer.cs">
+    <Compile Include="Forms\Authentication.Designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
     </Compile>
     <Compile Include="BookWarmDBDataSet.Designer.cs">
@@ -85,10 +85,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookWarmDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ChangePassword.cs">
+    <Compile Include="Forms\ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangePassword.Designer.cs">
+    <Compile Include="Forms\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Elements\CustomeCirclePicture.cs">
@@ -98,76 +98,71 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\Models\User.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registration.cs">
+    <Compile Include="Forms\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registration.Designer.cs">
+    <Compile Include="Forms\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-    <Compile Include="RestorePassword.cs">
+    <Compile Include="Forms\RestorePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RestorePassword.Designer.cs">
+    <Compile Include="Forms\RestorePassword.Designer.cs">
       <DependentUpon>RestorePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Success.cs">
+    <Compile Include="Forms\Success.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Success.Designer.cs">
+    <Compile Include="Forms\Success.Designer.cs">
       <DependentUpon>Success.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserProfile.cs">
+    <Compile Include="Forms\UserProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserProfile.Designer.cs">
+    <Compile Include="Forms\UserProfile.Designer.cs">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Authentication.resx">
+    <EmbeddedResource Include="Forms\Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangePassword.resx">
+    <EmbeddedResource Include="Forms\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Registration.resx">
+    <EmbeddedResource Include="Forms\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RestorePassword.resx">
+    <EmbeddedResource Include="Forms\RestorePassword.resx">
       <DependentUpon>RestorePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Success.resx">
+    <EmbeddedResource Include="Forms\Success.resx">
       <DependentUpon>Success.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserProfile.resx">
+    <EmbeddedResource Include="Forms\UserProfile.resx">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BookWarmDBDataSet.xsc">
@@ -186,6 +181,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -196,10 +196,31 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Без назви-1.png" />
+    <None Include="Resources\gear.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gearpng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gearpng1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-size.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linev2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Profile.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rectangle.png" />
@@ -208,17 +229,19 @@
     <None Include="Resources\rectanglev2.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\resize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resizegif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resizepng.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\squre.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\linev2.png" />
+    <None Include="Resources\Без назви-1.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Profile.jpg" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
