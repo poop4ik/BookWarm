@@ -30,37 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.Exit = new System.Windows.Forms.Label();
             this.bookWarmDBDataSet = new BookWarm.BookWarmDBDataSet();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
             this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
             this.Minimize = new System.Windows.Forms.Label();
             this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.LineLogo = new System.Windows.Forms.PictureBox();
             this.Resize = new System.Windows.Forms.PictureBox();
             this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
+            this.LineLogo = new System.Windows.Forms.PictureBox();
+            this.Exit = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LineLogo)).BeginInit();
+            this.AuthenticationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LineLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Exit
-            // 
-            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Exit.AutoSize = true;
-            this.Exit.BackColor = System.Drawing.Color.Silver;
-            this.Exit.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Exit.ForeColor = System.Drawing.Color.Black;
-            this.Exit.Location = new System.Drawing.Point(716, 9);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(22, 23);
-            this.Exit.TabIndex = 5;
-            this.Exit.Text = "Х";
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // bookWarmDBDataSet
             // 
@@ -110,6 +98,7 @@
             this.AuthenticationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AuthenticationPanel.AutoSize = true;
+            this.AuthenticationPanel.Controls.Add(this.Exit);
             this.AuthenticationPanel.Location = new System.Drawing.Point(0, -2);
             this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(2);
             this.AuthenticationPanel.Name = "AuthenticationPanel";
@@ -118,24 +107,12 @@
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
             this.AuthenticationPanel.TabIndex = 63;
             // 
-            // LineLogo
-            // 
-            this.LineLogo.BackColor = System.Drawing.Color.Transparent;
-            this.LineLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LineLogo.Image = ((System.Drawing.Image)(resources.GetObject("LineLogo.Image")));
-            this.LineLogo.Location = new System.Drawing.Point(0, 407);
-            this.LineLogo.Name = "LineLogo";
-            this.LineLogo.Size = new System.Drawing.Size(750, 81);
-            this.LineLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.LineLogo.TabIndex = 56;
-            this.LineLogo.TabStop = false;
-            // 
             // Resize
             // 
             this.Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Resize.BackColor = System.Drawing.Color.Silver;
-            this.Resize.Image = ((System.Drawing.Image)(resources.GetObject("Resize.Image")));
-            this.Resize.Location = new System.Drawing.Point(693, 10);
+            this.Resize.Image = global::BookWarm.Properties.Resources.resize;
+            this.Resize.Location = new System.Drawing.Point(694, 10);
             this.Resize.Name = "Resize";
             this.Resize.Size = new System.Drawing.Size(20, 20);
             this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -161,6 +138,31 @@
             this.profilePhotoPictureBox.TabStop = false;
             this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
             // 
+            // LineLogo
+            // 
+            this.LineLogo.BackColor = System.Drawing.Color.Transparent;
+            this.LineLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LineLogo.Image = ((System.Drawing.Image)(resources.GetObject("LineLogo.Image")));
+            this.LineLogo.Location = new System.Drawing.Point(0, 407);
+            this.LineLogo.Name = "LineLogo";
+            this.LineLogo.Size = new System.Drawing.Size(750, 81);
+            this.LineLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LineLogo.TabIndex = 56;
+            this.LineLogo.TabStop = false;
+            // 
+            // Exit
+            // 
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit.BackColor = System.Drawing.Color.Transparent;
+            this.Exit.Image = global::BookWarm.Properties.Resources.exit;
+            this.Exit.Location = new System.Drawing.Point(718, 8);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(26, 26);
+            this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Exit.TabIndex = 70;
+            this.Exit.TabStop = false;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,7 +171,6 @@
             this.ClientSize = new System.Drawing.Size(750, 488);
             this.Controls.Add(this.Resize);
             this.Controls.Add(this.Minimize);
-            this.Controls.Add(this.Exit);
             this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.LineLogo);
             this.Controls.Add(this.AuthenticationPanel);
@@ -186,16 +187,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LineLogo)).EndInit();
+            this.AuthenticationPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LineLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label Exit;
         private System.Windows.Forms.PictureBox LineLogo;
         private BookWarmDBDataSet bookWarmDBDataSet;
         private System.Windows.Forms.BindingSource usersBindingSource;
@@ -205,6 +207,7 @@
         private System.Windows.Forms.Label Minimize;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel AuthenticationPanel;
         private System.Windows.Forms.PictureBox Resize;
+        private System.Windows.Forms.PictureBox Exit;
     }
 }
 

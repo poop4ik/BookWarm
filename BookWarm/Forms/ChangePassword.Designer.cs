@@ -191,7 +191,7 @@
             this.Exit.BackColor = System.Drawing.Color.Silver;
             this.Exit.Font = new System.Drawing.Font("Arial Black", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Exit.ForeColor = System.Drawing.Color.Black;
-            this.Exit.Location = new System.Drawing.Point(704, 10);
+            this.Exit.Location = new System.Drawing.Point(704, 5);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(23, 24);
             this.Exit.TabIndex = 41;

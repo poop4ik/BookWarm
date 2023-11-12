@@ -99,10 +99,14 @@ namespace BookWarm
 
             if (IsUserValid(username, password))
             {
+                // Зберегти ім'я користувача в налаштування
+                Properties.Settings.Default.Username = username;
+                Properties.Settings.Default.Save();
+
                 this.Close();
                 Success success = new Success();
                 success.ShowDialog();
-                
+
                 ValidLoginAndPassword.Visible = false;
                 Main mainForm = new Main(username);
                 UserProfile userProfile = new UserProfile(username);
@@ -113,6 +117,7 @@ namespace BookWarm
                 ValidLoginAndPassword.Visible = true;
             }
         }
+
 
 
         private bool IsUserValid(string username, string password)

@@ -21,73 +21,78 @@ namespace BookWarm
 
         public Main(string username)
         {
-            InitializeComponent();
 
-            originPhotoLocation = profilePhotoPictureBox.Location;
-            originPhotoSize = profilePhotoPictureBox.Size;
-
-            Resize_Click(this, EventArgs.Empty);
-
-            Resize.MouseEnter += new EventHandler(Resize_MouseEnter);
-            Resize.MouseLeave += new EventHandler(Resize_MouseLeave);
-
-            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            if (string.IsNullOrEmpty(username))
             {
-                string sqlQuery = "SELECT * FROM Users WHERE Username = @username;";
-                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@username", username);
-                    connection.Open();
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            user = new User
-                            {
-                                UserId = (int)reader["UserID"],
-                                FirstName = reader["FirstName"].ToString(),
-                                LastName = reader["LastName"].ToString(),
-                                UserName = reader["UserName"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                Age = (int)reader["Age"],
-                                PasswordHash = reader["PasswordHash"].ToString(),
-                                Description = reader["Description"].ToString(),
-                                ProfilePhoto = (reader["ProfilePhoto"] == DBNull.Value ? null : (byte[])reader["ProfilePhoto"])
-                            };
-                        }
-                    }
-                }
-            }
-
-            if (user.ProfilePhoto != null) // User has a photo.
-            {
-                using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
-                {
-                    profilePhotoPictureBox.Image = Image.FromStream(ms);
-                }
+                // Якщо ім'я користувача порожнє, перейти до форми аутентифікації
+                Authentication authForm = new Authentication();
+                authForm.Show();
+                this.Close();
             }
             else
             {
-                profilePhotoPictureBox.Image = Properties.Resources.logo;
+                InitializeComponent();
+
+                originPhotoLocation = profilePhotoPictureBox.Location;
+                originPhotoSize = profilePhotoPictureBox.Size;
+
+                Resize_Click(this, EventArgs.Empty);
+
+                Resize.MouseEnter += new EventHandler(Resize_MouseEnter);
+                Resize.MouseLeave += new EventHandler(Resize_MouseLeave);
+
+                Exit.MouseEnter += new EventHandler(Exit_MouseEnter);
+                Exit.MouseLeave += new EventHandler(Exit_MouseLeave);
+
+                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                {
+                    string sqlQuery = "SELECT * FROM Users WHERE Username = @username;";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username);
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                user = new User
+                                {
+                                    UserId = (int)reader["UserID"],
+                                    FirstName = reader["FirstName"].ToString(),
+                                    LastName = reader["LastName"].ToString(),
+                                    UserName = reader["UserName"].ToString(),
+                                    Email = reader["Email"].ToString(),
+                                    Age = (int)reader["Age"],
+                                    PasswordHash = reader["PasswordHash"].ToString(),
+                                    Description = reader["Description"].ToString(),
+                                    ProfilePhoto = (reader["ProfilePhoto"] == DBNull.Value ? null : (byte[])reader["ProfilePhoto"])
+                                };
+                            }
+                        }
+                    }
+                }
+
+                if (user != null)
+                {
+                    
+                }
+
+                if (user.ProfilePhoto != null) // User has a photo.
+                {
+                    using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
+                    {
+                        profilePhotoPictureBox.Image = Image.FromStream(ms);
+
+                    }
+                }
+                else
+                {
+                    profilePhotoPictureBox.Image = Properties.Resources.logo;
+                }
             }
         }
 
-
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            // Отримуємо список всіх відкритих форм
-            Form[] openForms = Application.OpenForms.Cast<Form>().ToArray();
-
-            // Закриваємо кожну з них
-            foreach (var form in openForms)
-            {
-                form.Close();
-            }
-
-            // Завершуємо додаток
-            Application.Exit();
-        }
 
         private void Resize_Click(object sender, EventArgs e)
         {
@@ -134,11 +139,13 @@ namespace BookWarm
 
         private void profilePhotoPictureBox_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            // Відкриття форми Main
-            UserProfile userProfile = new UserProfile(user.UserName);
-            userProfile.ShowDialog();
-            this.Show();
+            if (!string.IsNullOrEmpty(user.UserName))
+            {
+                this.Hide();
+                // Відкриття форми Main
+                UserProfile userProfile = new UserProfile(user.UserName);
+                userProfile.Show();
+            }
         }
 
         private void Minimize_Click(object sender, EventArgs e)
@@ -161,6 +168,23 @@ namespace BookWarm
         {
             // Повернутися до попереднього зображення при виході миші
             Resize.Image = Properties.Resources.resizepng;
+        }
+
+        private void Exit_MouseEnter(object sender, EventArgs e)
+        {
+            // Змінити зображення при наведенні
+            Exit.Image = Properties.Resources.exitgif;
+        }
+
+        private void Exit_MouseLeave(object sender, EventArgs e)
+        {
+            // Повернутися до попереднього зображення при виході миші
+            Exit.Image = Properties.Resources.exit;
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

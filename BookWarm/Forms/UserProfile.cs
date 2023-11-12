@@ -27,6 +27,12 @@ namespace BookWarm
             Resize.MouseEnter     += new EventHandler(Resize_MouseEnter);
             Resize.MouseLeave    += new EventHandler(Resize_MouseLeave);
 
+            Exit.MouseEnter += new EventHandler(Exit_MouseEnter);
+            Exit.MouseLeave += new EventHandler(Exit_MouseLeave);
+
+            Logout.MouseEnter += new EventHandler(Logout_MouseEnter);
+            Logout.MouseLeave += new EventHandler(Logout_MouseLeave);
+
             using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
                 string sqlQuery = "SELECT * FROM Users WHERE Username = @username;";
@@ -85,9 +91,9 @@ namespace BookWarm
         private void Back_Click(object sender, EventArgs e)
         {
             this.Close();
-            // Відкриття форми Main
-            //Main mainForm = new Main();
-            //mainForm.Show();
+            //Відкриття форми Main
+            Main mainForm = new Main(user.UserName);
+            mainForm.Show();
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -152,12 +158,49 @@ namespace BookWarm
             Resize.Image = Properties.Resources.resizepng;
         }
 
+        private void Exit_MouseEnter(object sender, EventArgs e)
+        {
+            // Змінити зображення при наведенні
+            Exit.Image = Properties.Resources.exitgif;
+        }
+
+        private void Exit_MouseLeave(object sender, EventArgs e)
+        {
+            // Повернутися до попереднього зображення при виході миші
+            Exit.Image = Properties.Resources.exit;
+        }
         private void ChangeInfo_Click(object sender, EventArgs e)
         {
             this.Hide();
             ChangeUserInfo changeUserInfo = new ChangeUserInfo(user.UserName);
             changeUserInfo.ShowDialog();
             this.Show();
+        }
+
+        private void Logout_MouseLeave(object sender, EventArgs e)
+        {
+            // Повернутися до попереднього зображення при виході миші
+            Logout.Image = Properties.Resources.exitacc;
+        }
+
+        private void Logout_MouseEnter(object sender, EventArgs e)
+        {
+            // Змінити зображення при наведенні
+            Logout.Image = Properties.Resources.exitaccgif;
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            // Скидаємо ім'я користувача в налаштуваннях
+            Properties.Settings.Default.Username = string.Empty;
+            Properties.Settings.Default.Save();
+
+            // Відкриваємо форму Authentication
+            Authentication authForm = new Authentication();
+            authForm.Show();
+
+            // Закриваємо поточну форму
+            this.Close();
         }
     }
 }

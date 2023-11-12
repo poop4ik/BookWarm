@@ -29,36 +29,25 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfile));
-            this.Exit = new System.Windows.Forms.Label();
             this.Back = new System.Windows.Forms.Label();
             this.Minimize = new System.Windows.Forms.Label();
             this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.ChangeInfo = new System.Windows.Forms.PictureBox();
-            this.Resize = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
+            this.Logout = new System.Windows.Forms.PictureBox();
+            this.Exit = new System.Windows.Forms.PictureBox();
+            this.Resize = new System.Windows.Forms.PictureBox();
+            this.ChangeInfo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ChangeInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeInfo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Exit
-            // 
-            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Exit.AutoSize = true;
-            this.Exit.BackColor = System.Drawing.Color.Silver;
-            this.Exit.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Exit.ForeColor = System.Drawing.Color.Black;
-            this.Exit.Location = new System.Drawing.Point(716, 9);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(22, 23);
-            this.Exit.TabIndex = 6;
-            this.Exit.Text = "Х";
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // Back
             // 
@@ -79,7 +68,7 @@
             this.Minimize.AutoSize = true;
             this.Minimize.BackColor = System.Drawing.Color.Silver;
             this.Minimize.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Minimize.Location = new System.Drawing.Point(648, 9);
+            this.Minimize.Location = new System.Drawing.Point(615, 9);
             this.Minimize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(23, 19);
@@ -91,6 +80,8 @@
             // 
             this.AuthenticationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.AuthenticationPanel.Controls.Add(this.Logout);
+            this.AuthenticationPanel.Controls.Add(this.Exit);
             this.AuthenticationPanel.Controls.Add(this.Resize);
             this.AuthenticationPanel.Controls.Add(this.ChangeInfo);
             this.AuthenticationPanel.Location = new System.Drawing.Point(-2, -5);
@@ -100,32 +91,6 @@
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
             this.AuthenticationPanel.TabIndex = 64;
-            // 
-            // ChangeInfo
-            // 
-            this.ChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeInfo.BackColor = System.Drawing.Color.Transparent;
-            this.ChangeInfo.Image = ((System.Drawing.Image)(resources.GetObject("ChangeInfo.Image")));
-            this.ChangeInfo.Location = new System.Drawing.Point(695, 13);
-            this.ChangeInfo.Name = "ChangeInfo";
-            this.ChangeInfo.Size = new System.Drawing.Size(24, 24);
-            this.ChangeInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ChangeInfo.TabIndex = 68;
-            this.ChangeInfo.TabStop = false;
-            this.ChangeInfo.Click += new System.EventHandler(this.ChangeInfo_Click);
-            // 
-            // Resize
-            // 
-            this.Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Resize.BackColor = System.Drawing.Color.Transparent;
-            this.Resize.Image = global::BookWarm.Properties.Resources.resizepng;
-            this.Resize.Location = new System.Drawing.Point(675, 15);
-            this.Resize.Name = "Resize";
-            this.Resize.Size = new System.Drawing.Size(20, 20);
-            this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Resize.TabIndex = 68;
-            this.Resize.TabStop = false;
-            this.Resize.Click += new System.EventHandler(this.Resize_Click);
             // 
             // lblUsername
             // 
@@ -181,6 +146,58 @@
             this.profilePhotoPictureBox.TabIndex = 33;
             this.profilePhotoPictureBox.TabStop = false;
             // 
+            // Logout
+            // 
+            this.Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Logout.BackColor = System.Drawing.Color.Transparent;
+            this.Logout.Image = global::BookWarm.Properties.Resources.exitacc;
+            this.Logout.Location = new System.Drawing.Point(691, 10);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(28, 28);
+            this.Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logout.TabIndex = 68;
+            this.Logout.TabStop = false;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
+            // 
+            // Exit
+            // 
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit.BackColor = System.Drawing.Color.Transparent;
+            this.Exit.Image = global::BookWarm.Properties.Resources.exit;
+            this.Exit.Location = new System.Drawing.Point(718, 11);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(26, 26);
+            this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Exit.TabIndex = 68;
+            this.Exit.TabStop = false;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // Resize
+            // 
+            this.Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Resize.BackColor = System.Drawing.Color.Transparent;
+            this.Resize.Image = global::BookWarm.Properties.Resources.resizepng;
+            this.Resize.Location = new System.Drawing.Point(641, 15);
+            this.Resize.Name = "Resize";
+            this.Resize.Size = new System.Drawing.Size(20, 20);
+            this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Resize.TabIndex = 68;
+            this.Resize.TabStop = false;
+            this.Resize.Click += new System.EventHandler(this.Resize_Click);
+            // 
+            // ChangeInfo
+            // 
+            this.ChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangeInfo.BackColor = System.Drawing.Color.Transparent;
+            this.ChangeInfo.Image = ((System.Drawing.Image)(resources.GetObject("ChangeInfo.Image")));
+            this.ChangeInfo.Location = new System.Drawing.Point(665, 13);
+            this.ChangeInfo.Name = "ChangeInfo";
+            this.ChangeInfo.Size = new System.Drawing.Size(24, 24);
+            this.ChangeInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ChangeInfo.TabIndex = 68;
+            this.ChangeInfo.TabStop = false;
+            this.ChangeInfo.Click += new System.EventHandler(this.ChangeInfo_Click);
+            // 
             // UserProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,7 +208,6 @@
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblFullName);
-            this.Controls.Add(this.Exit);
             this.Controls.Add(this.Minimize);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.AuthenticationPanel);
@@ -207,17 +223,17 @@
             this.Text = "UserProfile";
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
             this.AuthenticationPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ChangeInfo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Resize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Resize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label Exit;
         private System.Windows.Forms.Label Back;
         private Data.Elements.CustomeCirclePicture profilePhotoPictureBox;
         private System.Windows.Forms.Label Minimize;
@@ -227,5 +243,7 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.PictureBox Resize;
         private System.Windows.Forms.PictureBox ChangeInfo;
+        private System.Windows.Forms.PictureBox Exit;
+        private System.Windows.Forms.PictureBox Logout;
     }
 }

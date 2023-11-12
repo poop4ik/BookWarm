@@ -6,18 +6,27 @@ using System.Windows.Forms;
 
 namespace BookWarm
 {
-    internal static class Program
+    static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main("vaalerie"));          
-            //Application.Run(new Authentication());
+
+            // Отримуємо ім'я користувача з налаштувань
+            string username = Properties.Settings.Default.Username;
+
+            // Якщо ім'я користувача порожнє, викликаємо форму Authentication
+            if (string.IsNullOrEmpty(username))
+            {
+                Application.Run(new Authentication());
+            }
+            else
+            {
+                // Якщо ім'я користувача не порожнє, викликаємо форму Main
+                Application.Run(new Main(username));
+            }
         }
     }
 }
