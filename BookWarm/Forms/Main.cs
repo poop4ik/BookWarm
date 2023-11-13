@@ -153,11 +153,6 @@ namespace BookWarm
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void AuthenticationPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Resize_MouseEnter(object sender, EventArgs e)
         {
             // Змінити зображення при наведенні

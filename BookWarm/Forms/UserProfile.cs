@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
@@ -171,10 +172,12 @@ namespace BookWarm
         }
         private void ChangeInfo_Click(object sender, EventArgs e)
         {
-            this.Hide();
             ChangeUserInfo changeUserInfo = new ChangeUserInfo(user.UserName);
+            this.Close();
             changeUserInfo.ShowDialog();
-            this.Show();
+            this.Close();
+            UserProfile userProfile = new UserProfile(user.UserName);
+            userProfile.Show();
         }
 
         private void Logout_MouseLeave(object sender, EventArgs e)

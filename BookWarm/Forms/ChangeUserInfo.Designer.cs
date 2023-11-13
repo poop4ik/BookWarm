@@ -32,6 +32,8 @@
             this.Minimize = new System.Windows.Forms.Label();
             this.Back = new System.Windows.Forms.Label();
             this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.Change = new System.Windows.Forms.PictureBox();
+            this.Save = new System.Windows.Forms.PictureBox();
             this.Username = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.Label();
             this.FirstName = new System.Windows.Forms.Label();
@@ -71,26 +73,24 @@
             this.Delete = new System.Windows.Forms.PictureBox();
             this.Reset = new System.Windows.Forms.PictureBox();
             this.ChangePhoto = new System.Windows.Forms.PictureBox();
-            this.Change = new System.Windows.Forms.PictureBox();
-            this.Save = new System.Windows.Forms.PictureBox();
-            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Change)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Save)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SavePhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Reset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangePhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Change)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Save)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Minimize
@@ -134,6 +134,30 @@
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
             this.AuthenticationPanel.TabIndex = 72;
+            // 
+            // Change
+            // 
+            this.Change.BackColor = System.Drawing.Color.Transparent;
+            this.Change.Image = global::BookWarm.Properties.Resources.changepng;
+            this.Change.Location = new System.Drawing.Point(688, 10);
+            this.Change.Name = "Change";
+            this.Change.Size = new System.Drawing.Size(22, 22);
+            this.Change.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Change.TabIndex = 99;
+            this.Change.TabStop = false;
+            this.Change.Click += new System.EventHandler(this.Change_Click);
+            // 
+            // Save
+            // 
+            this.Save.BackColor = System.Drawing.Color.Transparent;
+            this.Save.Image = global::BookWarm.Properties.Resources.savepng;
+            this.Save.Location = new System.Drawing.Point(714, 9);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(26, 26);
+            this.Save.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Save.TabIndex = 97;
+            this.Save.TabStop = false;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // Username
             // 
@@ -581,48 +605,6 @@
             this.ChangePhoto.TabStop = false;
             this.ChangePhoto.Click += new System.EventHandler(this.ChangePhoto_Click);
             // 
-            // Change
-            // 
-            this.Change.BackColor = System.Drawing.Color.Transparent;
-            this.Change.Image = global::BookWarm.Properties.Resources.changepng;
-            this.Change.Location = new System.Drawing.Point(688, 10);
-            this.Change.Name = "Change";
-            this.Change.Size = new System.Drawing.Size(22, 22);
-            this.Change.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Change.TabIndex = 99;
-            this.Change.TabStop = false;
-            this.Change.Click += new System.EventHandler(this.Change_Click);
-            // 
-            // Save
-            // 
-            this.Save.BackColor = System.Drawing.Color.Transparent;
-            this.Save.Image = global::BookWarm.Properties.Resources.savepng;
-            this.Save.Location = new System.Drawing.Point(714, 9);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(26, 26);
-            this.Save.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Save.TabIndex = 97;
-            this.Save.TabStop = false;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
-            // 
-            // profilePhotoPictureBox
-            // 
-            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.profilePhotoPictureBox.Border = 1;
-            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
-            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.Gradiant = 50F;
-            this.profilePhotoPictureBox.Location = new System.Drawing.Point(24, 65);
-            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2);
-            this.profilePhotoPictureBox.MaximumSize = new System.Drawing.Size(200, 200);
-            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
-            this.profilePhotoPictureBox.Size = new System.Drawing.Size(200, 200);
-            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profilePhotoPictureBox.TabIndex = 70;
-            this.profilePhotoPictureBox.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -666,6 +648,25 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 98;
             this.pictureBox4.TabStop = false;
+            // 
+            // profilePhotoPictureBox
+            // 
+            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.profilePhotoPictureBox.Border = 1;
+            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
+            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.Gradiant = 50F;
+            this.profilePhotoPictureBox.Location = new System.Drawing.Point(24, 65);
+            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.profilePhotoPictureBox.MaximumSize = new System.Drawing.Size(200, 200);
+            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
+            this.profilePhotoPictureBox.Size = new System.Drawing.Size(200, 200);
+            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.profilePhotoPictureBox.TabIndex = 70;
+            this.profilePhotoPictureBox.TabStop = false;
+            this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
             // 
             // ChangeUserInfo
             // 
@@ -731,17 +732,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
             this.AuthenticationPanel.ResumeLayout(false);
             this.AuthenticationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Change)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Save)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SavePhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Reset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangePhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Change)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Save)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

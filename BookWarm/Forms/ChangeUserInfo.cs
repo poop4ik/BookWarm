@@ -16,7 +16,6 @@ namespace BookWarm.Forms
     {
         private User user;
         private Image previousImage;
-        private Image profileImage;
         public ChangeUserInfo(string username)
         {
             InitializeComponent();
@@ -95,9 +94,6 @@ namespace BookWarm.Forms
         private void Back_Click(object sender, EventArgs e)
         {
             this.Close();
-            // Відкриття форми Main
-            //Main mainForm = new Main();
-            //mainForm.Show();
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -629,6 +625,22 @@ namespace BookWarm.Forms
 
             // Приховати кнопку для збереження фотографії
             SavePhoto.Visible = false;
+        }
+
+        private void profilePhotoPictureBox_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Завантаження вибраного зображення в PictureBox
+                profilePhotoPictureBox.Image = Image.FromFile(openFileDialog.FileName);
+
+                // Приховування зображення logo
+                profilePhotoPictureBox.Border = 1;
+                SavePhoto.Visible = true;
+            }
         }
     }
 }
