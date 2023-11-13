@@ -54,13 +54,6 @@
             this.FirstNameBox = new System.Windows.Forms.TextBox();
             this.DescriptionBox = new System.Windows.Forms.TextBox();
             this.EmailBox = new System.Windows.Forms.TextBox();
-            this.Change = new System.Windows.Forms.PictureBox();
-            this.Save = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             this.ShowPassword = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.EmailExist = new System.Windows.Forms.Label();
@@ -74,15 +67,30 @@
             this.EmailRepeat = new System.Windows.Forms.Label();
             this.PasswordEmpty = new System.Windows.Forms.Label();
             this.EmailEmpty = new System.Windows.Forms.Label();
+            this.SavePhoto = new System.Windows.Forms.PictureBox();
+            this.Delete = new System.Windows.Forms.PictureBox();
+            this.Reset = new System.Windows.Forms.PictureBox();
+            this.ChangePhoto = new System.Windows.Forms.PictureBox();
+            this.Change = new System.Windows.Forms.PictureBox();
+            this.Save = new System.Windows.Forms.PictureBox();
+            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SavePhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Delete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangePhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Change)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Save)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Minimize
@@ -369,6 +377,7 @@
             this.DescriptionBox.Name = "DescriptionBox";
             this.DescriptionBox.Size = new System.Drawing.Size(183, 97);
             this.DescriptionBox.TabIndex = 95;
+            this.DescriptionBox.TextChanged += new System.EventHandler(this.DescriptionBox_TextChanged);
             // 
             // EmailBox
             // 
@@ -379,92 +388,6 @@
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(171, 13);
             this.EmailBox.TabIndex = 96;
-            // 
-            // Change
-            // 
-            this.Change.BackColor = System.Drawing.Color.Transparent;
-            this.Change.Image = global::BookWarm.Properties.Resources.changepng;
-            this.Change.Location = new System.Drawing.Point(688, 10);
-            this.Change.Name = "Change";
-            this.Change.Size = new System.Drawing.Size(22, 22);
-            this.Change.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Change.TabIndex = 99;
-            this.Change.TabStop = false;
-            this.Change.Click += new System.EventHandler(this.Change_Click);
-            // 
-            // Save
-            // 
-            this.Save.BackColor = System.Drawing.Color.Transparent;
-            this.Save.Image = global::BookWarm.Properties.Resources.savepng;
-            this.Save.Location = new System.Drawing.Point(714, 9);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(26, 26);
-            this.Save.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Save.TabIndex = 97;
-            this.Save.TabStop = false;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::BookWarm.Properties.Resources.rectanglev2;
-            this.pictureBox1.Location = new System.Drawing.Point(-20, 234);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(475, 283);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 93;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::BookWarm.Properties.Resources.rectanglev2;
-            this.pictureBox2.Location = new System.Drawing.Point(356, 238);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(472, 272);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 94;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::BookWarm.Properties.Resources.rectanglev2;
-            this.pictureBox3.Location = new System.Drawing.Point(252, -6);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(249, 358);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 97;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::BookWarm.Properties.Resources.rectanglev2;
-            this.pictureBox4.Location = new System.Drawing.Point(519, -6);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(205, 358);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 98;
-            this.pictureBox4.TabStop = false;
-            // 
-            // profilePhotoPictureBox
-            // 
-            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.profilePhotoPictureBox.Border = 1;
-            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
-            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.Gradiant = 50F;
-            this.profilePhotoPictureBox.Location = new System.Drawing.Point(47, 76);
-            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2);
-            this.profilePhotoPictureBox.MaximumSize = new System.Drawing.Size(200, 200);
-            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
-            this.profilePhotoPictureBox.Size = new System.Drawing.Size(200, 200);
-            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profilePhotoPictureBox.TabIndex = 70;
-            this.profilePhotoPictureBox.TabStop = false;
             // 
             // ShowPassword
             // 
@@ -610,12 +533,150 @@
             this.EmailEmpty.Text = "Поле з новим Email пусте";
             this.EmailEmpty.Visible = false;
             // 
+            // SavePhoto
+            // 
+            this.SavePhoto.Image = global::BookWarm.Properties.Resources.done;
+            this.SavePhoto.Location = new System.Drawing.Point(169, 253);
+            this.SavePhoto.Name = "SavePhoto";
+            this.SavePhoto.Size = new System.Drawing.Size(24, 24);
+            this.SavePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SavePhoto.TabIndex = 114;
+            this.SavePhoto.TabStop = false;
+            this.SavePhoto.Visible = false;
+            this.SavePhoto.Click += new System.EventHandler(this.SavePhoto_Click);
+            // 
+            // Delete
+            // 
+            this.Delete.BackColor = System.Drawing.Color.Transparent;
+            this.Delete.Image = global::BookWarm.Properties.Resources.deletepng;
+            this.Delete.Location = new System.Drawing.Point(108, 270);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(28, 28);
+            this.Delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Delete.TabIndex = 113;
+            this.Delete.TabStop = false;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
+            // Reset
+            // 
+            this.Reset.BackColor = System.Drawing.Color.Transparent;
+            this.Reset.Image = global::BookWarm.Properties.Resources.reset;
+            this.Reset.Location = new System.Drawing.Point(142, 270);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(22, 22);
+            this.Reset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Reset.TabIndex = 112;
+            this.Reset.TabStop = false;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            // 
+            // ChangePhoto
+            // 
+            this.ChangePhoto.BackColor = System.Drawing.Color.Transparent;
+            this.ChangePhoto.Image = global::BookWarm.Properties.Resources.changephotopng;
+            this.ChangePhoto.Location = new System.Drawing.Point(82, 270);
+            this.ChangePhoto.Name = "ChangePhoto";
+            this.ChangePhoto.Size = new System.Drawing.Size(22, 22);
+            this.ChangePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ChangePhoto.TabIndex = 100;
+            this.ChangePhoto.TabStop = false;
+            this.ChangePhoto.Click += new System.EventHandler(this.ChangePhoto_Click);
+            // 
+            // Change
+            // 
+            this.Change.BackColor = System.Drawing.Color.Transparent;
+            this.Change.Image = global::BookWarm.Properties.Resources.changepng;
+            this.Change.Location = new System.Drawing.Point(688, 10);
+            this.Change.Name = "Change";
+            this.Change.Size = new System.Drawing.Size(22, 22);
+            this.Change.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Change.TabIndex = 99;
+            this.Change.TabStop = false;
+            this.Change.Click += new System.EventHandler(this.Change_Click);
+            // 
+            // Save
+            // 
+            this.Save.BackColor = System.Drawing.Color.Transparent;
+            this.Save.Image = global::BookWarm.Properties.Resources.savepng;
+            this.Save.Location = new System.Drawing.Point(714, 9);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(26, 26);
+            this.Save.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Save.TabIndex = 97;
+            this.Save.TabStop = false;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // profilePhotoPictureBox
+            // 
+            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.profilePhotoPictureBox.Border = 1;
+            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
+            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.Gradiant = 50F;
+            this.profilePhotoPictureBox.Location = new System.Drawing.Point(24, 65);
+            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.profilePhotoPictureBox.MaximumSize = new System.Drawing.Size(200, 200);
+            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
+            this.profilePhotoPictureBox.Size = new System.Drawing.Size(200, 200);
+            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.profilePhotoPictureBox.TabIndex = 70;
+            this.profilePhotoPictureBox.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::BookWarm.Properties.Resources.rectanglev2;
+            this.pictureBox1.Location = new System.Drawing.Point(-20, 234);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(475, 283);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 93;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::BookWarm.Properties.Resources.rectanglev2;
+            this.pictureBox2.Location = new System.Drawing.Point(356, 238);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(472, 272);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 94;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::BookWarm.Properties.Resources.rectanglev2;
+            this.pictureBox3.Location = new System.Drawing.Point(252, -6);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(249, 358);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 97;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::BookWarm.Properties.Resources.rectanglev2;
+            this.pictureBox4.Location = new System.Drawing.Point(519, -6);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(205, 358);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 98;
+            this.pictureBox4.TabStop = false;
+            // 
             // ChangeUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(750, 488);
+            this.Controls.Add(this.SavePhoto);
+            this.Controls.Add(this.Delete);
+            this.Controls.Add(this.Reset);
+            this.Controls.Add(this.ChangePhoto);
             this.Controls.Add(this.EmailRepeat);
             this.Controls.Add(this.EmailEmpty);
             this.Controls.Add(this.PasswordEmpty);
@@ -670,13 +731,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
             this.AuthenticationPanel.ResumeLayout(false);
             this.AuthenticationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SavePhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Delete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangePhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Change)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Save)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -728,5 +793,9 @@
         private System.Windows.Forms.Label EmailRepeat;
         private System.Windows.Forms.Label PasswordEmpty;
         private System.Windows.Forms.Label EmailEmpty;
+        private System.Windows.Forms.PictureBox ChangePhoto;
+        private System.Windows.Forms.PictureBox Reset;
+        private System.Windows.Forms.PictureBox Delete;
+        private System.Windows.Forms.PictureBox SavePhoto;
     }
 }

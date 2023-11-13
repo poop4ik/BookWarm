@@ -264,6 +264,13 @@
     <None Include="Resources\exitaccgif.gif" />
     <None Include="Resources\changepng.png" />
     <None Include="Resources\changegif.gif" />
+    <None Include="Resources\changephotopng.png" />
+    <None Include="Resources\changephotogif.gif" />
+    <None Include="Resources\reset.png" />
+    <None Include="Resources\resetgif.gif" />
+    <None Include="Resources\deletepng.png" />
+    <None Include="Resources\deletegif.gif" />
+    <None Include="Resources\done.png" />
     <Content Include="Без-назви-3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
