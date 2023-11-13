@@ -15,9 +15,8 @@ namespace BookWarm.Forms
     public partial class ChangeUserInfo : KryptonForm
     {
         private User user;
-        private Image currentImage;
-        private string selectedImagePath;
-        private OpenFileDialog openFileDialog = new OpenFileDialog();
+        private Image previousImage;
+        private Image profileImage;
         public ChangeUserInfo(string username)
         {
             InitializeComponent();
@@ -530,142 +529,107 @@ namespace BookWarm.Forms
             }
         }
 
-        private bool SaveProfileImageToDatabase(string username)
+        private bool SaveProfileImageToDatabase(string username, Image image)
         {
-
-            // Визначити формат зображення на основі розширення файлу
-            ImageFormat imageFormat = ImageFormat.Png; // за замовчуванням - PNG
-
-            string extension = Path.GetExtension(selectedImagePath);
-            if (!string.IsNullOrEmpty(extension))
+            try
             {
-                switch (extension.ToLower())
+                // Перевірка, чи є зображення
+                if (image == null)
                 {
-                    case ".jpg":
-                    case ".jpeg":
-                        imageFormat = ImageFormat.Jpeg;
-                        break;
-                    case ".png":
-                        imageFormat = ImageFormat.Png;
-                        break;
-                    // Додайте інші можливі розширення за необхідності
-                    default:
-                        MessageBox.Show("Непідтримуване розширення файлу.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false; // Повертаємо false, щоб показати, що збереження не вдалося
+                    return false;
                 }
-            }
 
-            using (MemoryStream ms = new MemoryStream())
-            {
-                // Зберегти зображення у визначений формат у пам'яті
-                profilePhotoPictureBox.Image.Save(ms, imageFormat);
+                // Перетворення зображення в byte[]
+                byte[] imageData;
 
-                // Оновити зображення в базі даних
-                byte[] imageBytes = ms.ToArray();
-
-                try
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                    image.Save(ms, ImageFormat.Png); // Збереження у форматі PNG (можна використовувати інший формат)
+                    imageData = ms.ToArray();
+                }
+
+                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                {
+                    connection.Open();
+
+                    // Припускаючи, що у вас є стовпець 'ProfilePhoto' типу varbinary(MAX) для зберігання зображення
+                    string updateQuery = "UPDATE Users SET ProfilePhoto = @ProfilePhoto WHERE UserName = @UserName";
+
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
                     {
-                        connection.Open();
+                        cmd.Parameters.AddWithValue("@ProfilePhoto", imageData);
+                        cmd.Parameters.AddWithValue("@UserName", username);
 
-                        // SQL-запит для оновлення зображення профілю
-                        string updateQuery = "UPDATE Users SET ProfilePhoto = @ProfilePhoto WHERE UserName = @Username";
-
-                        using (SqlCommand command = new SqlCommand(updateQuery, connection))
-                        {
-                            // Параметри
-                            command.Parameters.AddWithValue("@ProfilePhoto", imageBytes);
-                            command.Parameters.AddWithValue("@Username", username);
-
-                            // Виконати SQL-запит
-                            command.ExecuteNonQuery();
-                        }
+                        cmd.ExecuteNonQuery();
                     }
 
-                    // Присвоїти null поточному зображенню (currentImage), оскільки нове зображення тепер є актуальним
-                    currentImage = null;
-
-                    return true; // Збереження пройшло успішно
+                    return true;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Помилка збереження фотографії в базі даних: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false; // Збереження не вдалося через помилку
-                }
+            }
+            catch (Exception ex)
+            {
+                // Обробка або логування помилки
+                Console.WriteLine(ex.Message);
+                return false;
             }
         }
 
         private void ChangePhoto_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                openFileDialog.Title = "Виберіть зображення";
-                openFileDialog.Filter = "Зображення|*.jpg;*.jpeg;*.png;|Всі файли|*.*";
+                // Завантаження вибраного зображення в PictureBox
+                profilePhotoPictureBox.Image = Image.FromFile(openFileDialog.FileName);
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    // Зберегти поточне зображення
-                    currentImage = profilePhotoPictureBox.Image;
-
-                    // Отримати шлях до обраного файлу
-                    selectedImagePath = openFileDialog.FileName;
-
-                    // Встановити зображення у profilePhotoPictureBox
-                    profilePhotoPictureBox.Image = Image.FromFile(selectedImagePath);
-                }
+                // Приховування зображення logo
+                profilePhotoPictureBox.Border = 1;
+                SavePhoto.Visible = true;
             }
-        }
-
-        private void Reset_Click(object sender, EventArgs e)
-        {
-            // Перевірити, чи є збережене зображення
-            if (currentImage != null)
-            {
-                // Повернути до попереднього зображення
-                profilePhotoPictureBox.Image = currentImage;
-
-                // Приховати кнопку SavePhoto, оскільки зображення не змінено
-                SavePhoto.Visible = false;
-            }
-            // Якщо currentImage == null, нічого не робити
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            // Зберегти поточне зображення
-            currentImage = profilePhotoPictureBox.Image;
-            // Зміна зображення у profilePhotoPictureBox на logo
+            // Збереження поточного зображення як попереднього перед видаленням
+            previousImage = profilePhotoPictureBox.Image;
+
+            // Видалення зображення користувача
             profilePhotoPictureBox.Image = Properties.Resources.logo;
+
+            // Показуємо кнопку для збереження фотографії
+            SavePhoto.Visible = true;
+        }
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            // Встановлення зображення з пам'яті або використання попереднього зображення, якщо воно існує
+            profilePhotoPictureBox.Image = previousImage ?? Properties.Resources.logo;
+
+            // Встановлення рамки в залежності від наявності фотографії
+            profilePhotoPictureBox.Border = (profilePhotoPictureBox.Image == Properties.Resources.logo) ? 0 : 1;
+
+            // Показуємо кнопку для збереження фотографії
+            SavePhoto.Visible = true;
         }
 
         private void SavePhoto_Click(object sender, EventArgs e)
         {
-            // Перевірка, чи обрано нове зображення перед збереженням
-            if (string.IsNullOrEmpty(selectedImagePath))
+            // Виклик методу для збереження зображення в базі даних
+            if (SaveProfileImageToDatabase(user.UserName, profilePhotoPictureBox.Image))
             {
-                MessageBox.Show("Будь ласка, виберіть нове зображення.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Збереження фотографії профілю в базі даних
-            bool success = SaveProfileImageToDatabase(user.UserName);
-
-            // Виведення MessageBox тільки якщо збереження пройшло успішно
-            if (success)
-            {
-                MessageBox.Show("Дані профілю успішно збережені.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Очистити шлях до обраного файлу
-                selectedImagePath = null;
-
-                // Закрити форму чи виконати інші необхідні дії
+                // Фото профілю змінено
+                MessageBox.Show("Фото профілю змінено.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                // Обробка випадку, коли збереження не вдалося
-                MessageBox.Show("Дані профілю не вдалося змінити.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Помилка при зміні фото профілю
+                MessageBox.Show("Помилка при зміні фото профілю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // Приховати кнопку для збереження фотографії
+            SavePhoto.Visible = false;
         }
     }
 }
+    
