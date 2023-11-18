@@ -583,6 +583,9 @@ namespace BookWarm.Forms
                 // Приховування зображення logo
                 profilePhotoPictureBox.Border = 1;
                 SavePhoto.Visible = true;
+
+                Back.Enabled = false;
+                Save.Enabled = false;
             }
         }
 
@@ -596,7 +599,12 @@ namespace BookWarm.Forms
 
             // Показуємо кнопку для збереження фотографії
             SavePhoto.Visible = true;
+
+            // Вимикаємо кнопки Back та Save, оскільки SavePhoto видима
+            Back.Enabled = false;
+            Save.Enabled = false;
         }
+
         private void Reset_Click(object sender, EventArgs e)
         {
             // Встановлення зображення з пам'яті або використання попереднього зображення, якщо воно існує
@@ -607,6 +615,10 @@ namespace BookWarm.Forms
 
             // Показуємо кнопку для збереження фотографії
             SavePhoto.Visible = true;
+
+            // Вимикаємо кнопки Back та Save, оскільки SavePhoto видима
+            Back.Enabled = false;
+            Save.Enabled = false;
         }
 
         private void SavePhoto_Click(object sender, EventArgs e)
@@ -616,15 +628,19 @@ namespace BookWarm.Forms
             {
                 // Фото профілю змінено
                 MessageBox.Show("Фото профілю змінено.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Приховати кнопку для збереження фотографії
+                SavePhoto.Visible = false;
+
+                // Увімкнути кнопки Back та Save, оскільки SavePhoto прихована
+                Back.Enabled = true;
+                Save.Enabled = true;
             }
             else
             {
                 // Помилка при зміні фото профілю
                 MessageBox.Show("Помилка при зміні фото профілю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Приховати кнопку для збереження фотографії
-            SavePhoto.Visible = false;
         }
 
         private void profilePhotoPictureBox_Click(object sender, EventArgs e)

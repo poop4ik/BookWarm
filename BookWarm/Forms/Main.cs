@@ -1,17 +1,20 @@
 ﻿using BookWarm.Data.Models;
 using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace BookWarm
 {
     public partial class Main : KryptonForm
     {
+        private List<Book> books;
+        private List<BookStat> bookStatList;
         private User user;
         private Size originPhotoSize;
         private Point originPhotoLocation;
@@ -21,6 +24,7 @@ namespace BookWarm
 
         public Main(string username)
         {
+
 
             if (string.IsNullOrEmpty(username))
             {
@@ -33,6 +37,12 @@ namespace BookWarm
             {
                 InitializeComponent();
 
+                books = new List<Book>();
+                List<BookStat> bookStatList = new List<BookStat>();
+
+                Search.Leave += textBoxSearch_Leave;
+                Search.Enter += textBoxSearch_Enter;
+
                 originPhotoLocation = profilePhotoPictureBox.Location;
                 originPhotoSize = profilePhotoPictureBox.Size;
 
@@ -43,6 +53,7 @@ namespace BookWarm
 
                 Exit.MouseEnter += new EventHandler(Exit_MouseEnter);
                 Exit.MouseLeave += new EventHandler(Exit_MouseLeave);
+
 
                 using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                 {
@@ -75,7 +86,7 @@ namespace BookWarm
 
                 if (user != null)
                 {
-                    
+
                 }
 
                 if (user.ProfilePhoto != null) // User has a photo.
@@ -90,6 +101,127 @@ namespace BookWarm
                 {
                     profilePhotoPictureBox.Image = Properties.Resources.logo;
                 }
+
+                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                {
+                    string sqlQuery = "SELECT * FROM Books ";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Book book = new Book
+                                {
+                                    // Отримання даних для кожної книги
+                                    BookID = (int)reader["BookID"],
+                                    Title = reader["Title"].ToString(),
+                                    Author = reader["Author"].ToString(),
+                                    Description = reader["Description"].ToString(),
+                                    Language = reader["Language"].ToString(),
+                                    Year = (int)reader["Year"],
+                                    AgeCategory = (int)reader["AgeCategory"],
+                                    AverageRating = (decimal)reader["AverageRating"],
+                                    Content = reader["Content"].ToString(),
+                                    CoverImage = (reader["CoverImage"] == DBNull.Value ? null : (byte[])reader["CoverImage"])
+                                };
+
+                                books.Add(book);
+                            }
+                        }
+                    }
+                }
+
+                PopulateBookData();
+
+                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                {
+                    string sqlQuery = "SELECT BookID, COUNT(*) AS ReadsCount FROM BookReads GROUP BY BookID";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int bookID = (int)reader["BookID"];
+                                int readsCount = (int)reader["ReadsCount"];
+
+                                // Знайдемо книгу в списку книг
+                                Book book = books.FirstOrDefault(b => b.BookID == bookID);
+
+                                // Якщо книга знайдена, оновіть або створіть об'єкт BookStat
+                                if (book != null)
+                                {
+                                    // Якщо в списку вже існує об'єкт BookStat для цієї книги, оновіть його
+                                    if (bookStatList.Any(bs => bs.BookID == bookID))
+                                    {
+                                        BookStat bookStat = bookStatList.First(bs => bs.BookID == bookID);
+                                        bookStat.ReadsCount = readsCount;
+                                    }
+                                    else
+                                    {
+                                        // Інакше створіть новий об'єкт BookStat
+                                        BookStat bookStat = new BookStat
+                                        {
+                                            BookID = bookID,
+                                            ReadsCount = readsCount
+                                        };
+                                        bookStatList.Add(bookStat);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                {
+                    string sqlQuery = "SELECT BookID, COUNT(*) AS ViewCount FROM BookViews GROUP BY BookID";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int bookID = (int)reader["BookID"];
+                                int readsCount = (int)reader["ViewCount"];
+
+                                // Знайдемо книгу в списку книг
+                                Book book = books.FirstOrDefault(b => b.BookID == bookID);
+
+                                // Якщо книга знайдена, оновіть або створіть об'єкт BookStat
+                                if (book != null)
+                                {
+                                    // Якщо в списку вже існує об'єкт BookStat для цієї книги, оновіть його
+                                    if (bookStatList.Any(bs => bs.BookID == bookID))
+                                    {
+                                        BookStat bookStat = bookStatList.First(bs => bs.BookID == bookID);
+                                        bookStat.ReadsCount = readsCount;
+                                    }
+                                    else
+                                    {
+                                        // Інакше створіть новий об'єкт BookStat
+                                        BookStat bookStat = new BookStat
+                                        {
+                                            BookID = bookID,
+                                            ReadsCount = readsCount
+                                        };
+                                        bookStatList.Add(bookStat);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                PopularBookData();
+
             }
         }
 
@@ -181,5 +313,147 @@ namespace BookWarm
         {
             Application.Exit();
         }
+
+        private int previousScrollValue = 0;
+
+        private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            int scrollValue = vScrollBar.Value;
+
+            // Визначте напрямок прокрутки
+            int scrollDirection = scrollValue - previousScrollValue;
+
+            // Прокрутіть елементи на потрібне значення
+            New.Top -= scrollDirection;
+            Popular.Top -= scrollDirection;
+            flowLayoutPanelNew.Top -= scrollDirection;
+            flowLayoutPanelPopular.Top -= scrollDirection;
+
+            // Оновіть попереднє значення прокрутки
+            previousScrollValue = scrollValue;
+        }
+
+
+        private void textBoxSearch_Enter(object sender, EventArgs e)
+        {
+            // Очистити текст у TextBox при фокусі
+            Search.Text = "";
+        }
+
+        private void textBoxSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Search.Text))
+            {
+                Search.Text = "Search";
+            }
+        }
+
+        private void SeacrhClick_Click(object sender, EventArgs e)
+        {
+            /*Search.Visible = !Search.Visible;*/
+        }
+
+        private Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            using (MemoryStream ms = new MemoryStream(byteArrayIn))
+            {
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
+        }
+
+        private void PopulateBookData()
+        {
+            // Shuffle the books list
+            Shuffle(books);
+
+            // Now, update the vertical scrollbar range based on the content height
+            int totalHeight = 0;
+            const int maxBooksToShow = 8;
+
+            // Take the first 'maxBooksToShow' books after shuffling
+            for (int i = 0; i < Math.Min(books.Count, maxBooksToShow); i++)
+            {
+                Book book = books[i];
+
+                if (book.Year >= 2023)
+                {
+                    UserControlNewBook bookControl = new UserControlNewBook();
+                    bookControl.SetData(book.Title, book.Author, book.AverageRating);
+
+                    flowLayoutPanelNew.Controls.Add(bookControl);
+
+                    // Increment the total height based on the height of the added control
+                    totalHeight += bookControl.Height;
+                }
+            }
+        }
+
+        private void PopularBookData()
+        {
+            {
+                // Shuffle the books list
+                Shuffle(books);
+
+                // Now, update the vertical scrollbar range based on the content height
+                int totalHeight = 0;
+                const int maxBooksToShow = 8;
+
+                // Take the first 'maxBooksToShow' books after shuffling
+                for (int i = 0; i < Math.Min(books.Count, maxBooksToShow); i++)
+                {
+                    Book book = books[i];
+
+                    if (book.Year >= 2023)
+                    {
+                        UserControlNewBook bookControl = new UserControlNewBook();
+                        bookControl.SetData(book.Title, book.Author, book.AverageRating);
+
+                        flowLayoutPanelPopular.Controls.Add(bookControl);
+
+                        // Increment the total height based on the height of the added control
+                        totalHeight += bookControl.Height;
+                    }
+                }
+            }
+        }
+
+
+
+        // Shuffle method to randomize the order of books
+        private static void Shuffle<T>(List<T> list)
+        {
+            Random random = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+
+
+        private void SetupFlowLayout()
+        {
+            // Set WrapContents to false
+            flowLayoutPanelNew.WrapContents = false;
+
+            // Add controls to the FlowLayoutPanel
+            for (int i = 0; i < 10; i++)
+            {
+                // Add controls with a width that exceeds the FlowLayoutPanel's width
+                UserControlNewBook bookControl = new UserControlNewBook();
+                flowLayoutPanelNew.Controls.Add(bookControl);
+            }
+        }
+
+        private void Main_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
     }
 }
+

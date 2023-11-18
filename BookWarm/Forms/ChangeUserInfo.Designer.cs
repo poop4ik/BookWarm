@@ -573,7 +573,7 @@
             // 
             this.Delete.BackColor = System.Drawing.Color.Transparent;
             this.Delete.Image = global::BookWarm.Properties.Resources.deletepng;
-            this.Delete.Location = new System.Drawing.Point(108, 270);
+            this.Delete.Location = new System.Drawing.Point(109, 270);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(28, 28);
             this.Delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
