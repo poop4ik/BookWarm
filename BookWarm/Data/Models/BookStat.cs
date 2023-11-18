@@ -10,7 +10,9 @@ namespace BookWarm.Data.Models
     public class BookStat
     {
         public int BookID { get; set; }
+        public int ReadID { get; set; }
         public int ReadsCount { get; set; }
+        public int ViewID { get; set; }
         public int ViewCount { get; set; }
     }
 }

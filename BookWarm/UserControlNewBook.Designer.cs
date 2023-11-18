@@ -99,7 +99,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox3.Location = new System.Drawing.Point(20, 221);
+            this.pictureBox3.Location = new System.Drawing.Point(20, 224);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(186, 80);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -112,7 +112,7 @@
             this.Read.Location = new System.Drawing.Point(35, 247);
             this.Read.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Read.Name = "Read";
-            this.Read.Size = new System.Drawing.Size(155, 22);
+            this.Read.Size = new System.Drawing.Size(155, 30);
             this.Read.TabIndex = 52;
             this.Read.Text = "Переглянути";
             this.Read.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -3,6 +3,7 @@ using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace BookWarm
         private bool isMaximized = false; // Перевірка стану максимізації
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
+        private static Random random = new Random();
 
         public Main(string username)
         {
@@ -38,7 +40,7 @@ namespace BookWarm
                 InitializeComponent();
 
                 books = new List<Book>();
-                List<BookStat> bookStatList = new List<BookStat>();
+                bookStatList = new List<BookStat>();
 
                 Search.Leave += textBoxSearch_Leave;
                 Search.Enter += textBoxSearch_Enter;
@@ -104,11 +106,11 @@ namespace BookWarm
 
                 using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                 {
+                    // Отримання книг з бази даних
                     string sqlQuery = "SELECT * FROM Books ";
                     using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
                         connection.Open();
-
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -132,17 +134,13 @@ namespace BookWarm
                             }
                         }
                     }
-                }
 
-                PopulateBookData();
+                    PopulateBookData();
 
-                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
-                {
-                    string sqlQuery = "SELECT BookID, COUNT(*) AS ReadsCount FROM BookReads GROUP BY BookID";
-                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    // Отримання даних про прочитані книги з бази даних
+                    string readsQuery = "SELECT * FROM BookReads";
+                    using (SqlCommand command = new SqlCommand(readsQuery, connection))
                     {
-                        connection.Open();
-
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -153,14 +151,14 @@ namespace BookWarm
                                 // Знайдемо книгу в списку книг
                                 Book book = books.FirstOrDefault(b => b.BookID == bookID);
 
-                                // Якщо книга знайдена, оновіть або створіть об'єкт BookStat
+                                // Оновимо об'єкт BookStat
                                 if (book != null)
                                 {
                                     // Якщо в списку вже існує об'єкт BookStat для цієї книги, оновіть його
                                     if (bookStatList.Any(bs => bs.BookID == bookID))
                                     {
                                         BookStat bookStat = bookStatList.First(bs => bs.BookID == bookID);
-                                        bookStat.ReadsCount = readsCount;
+                                        bookStat.ReadsCount += readsCount;  // Змінено тут
                                     }
                                     else
                                     {
@@ -176,34 +174,29 @@ namespace BookWarm
                             }
                         }
                     }
-                }
 
-
-                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
-                {
-                    string sqlQuery = "SELECT BookID, COUNT(*) AS ViewCount FROM BookViews GROUP BY BookID";
-                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    // Отримання даних про переглядені книги з бази даних
+                    string viewsQuery = "SELECT * FROM BookViews";
+                    using (SqlCommand command = new SqlCommand(viewsQuery, connection))
                     {
-                        connection.Open();
-
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
                                 int bookID = (int)reader["BookID"];
-                                int readsCount = (int)reader["ViewCount"];
+                                int viewCount = (int)reader["ViewCount"];
 
                                 // Знайдемо книгу в списку книг
                                 Book book = books.FirstOrDefault(b => b.BookID == bookID);
 
-                                // Якщо книга знайдена, оновіть або створіть об'єкт BookStat
+                                // Оновимо об'єкт BookStat
                                 if (book != null)
                                 {
                                     // Якщо в списку вже існує об'єкт BookStat для цієї книги, оновіть його
                                     if (bookStatList.Any(bs => bs.BookID == bookID))
                                     {
                                         BookStat bookStat = bookStatList.First(bs => bs.BookID == bookID);
-                                        bookStat.ReadsCount = readsCount;
+                                        bookStat.ViewCount += viewCount;  // Змінено тут
                                     }
                                     else
                                     {
@@ -211,7 +204,7 @@ namespace BookWarm
                                         BookStat bookStat = new BookStat
                                         {
                                             BookID = bookID,
-                                            ReadsCount = readsCount
+                                            ViewCount = viewCount
                                         };
                                         bookStatList.Add(bookStat);
                                     }
@@ -219,9 +212,10 @@ namespace BookWarm
                             }
                         }
                     }
-                }
-                PopularBookData();
 
+                    // Виклик функції для відображення популярних книг
+                    PopularBookData();
+                }
             }
         }
 
@@ -391,39 +385,31 @@ namespace BookWarm
 
         private void PopularBookData()
         {
+            Shuffle(books);
+            flowLayoutPanelPopular.Controls.Clear();
+            int totalHeight = 0;
+            const int maxBooksToShow = 8;
+
+            foreach (Book book in books.Take(maxBooksToShow))
             {
-                // Shuffle the books list
-                Shuffle(books);
+                // Знайдіть відповідний об'єкт BookStat для цієї книги
+                BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
 
-                // Now, update the vertical scrollbar range based on the content height
-                int totalHeight = 0;
-                const int maxBooksToShow = 8;
+                // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
+                UserControlPopularBook bookControl = new UserControlPopularBook();
+                bookControl.SetData(book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                flowLayoutPanelPopular.Controls.Add(bookControl);
 
-                // Take the first 'maxBooksToShow' books after shuffling
-                for (int i = 0; i < Math.Min(books.Count, maxBooksToShow); i++)
-                {
-                    Book book = books[i];
-
-                    if (book.Year >= 2023)
-                    {
-                        UserControlNewBook bookControl = new UserControlNewBook();
-                        bookControl.SetData(book.Title, book.Author, book.AverageRating);
-
-                        flowLayoutPanelPopular.Controls.Add(bookControl);
-
-                        // Increment the total height based on the height of the added control
-                        totalHeight += bookControl.Height;
-                    }
-                }
+                totalHeight += bookControl.Height;
             }
         }
+
 
 
 
         // Shuffle method to randomize the order of books
         private static void Shuffle<T>(List<T> list)
         {
-            Random random = new Random();
             int n = list.Count;
             while (n > 1)
             {

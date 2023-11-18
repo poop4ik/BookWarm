@@ -36,7 +36,6 @@
             this.flowLayoutPanelNew = new System.Windows.Forms.FlowLayoutPanel();
             this.New = new System.Windows.Forms.Label();
             this.vScrollBar = new System.Windows.Forms.VScrollBar();
-            this.Popular = new System.Windows.Forms.Label();
             this.flowLayoutPanelPopular = new System.Windows.Forms.FlowLayoutPanel();
             this.SeacrhClick = new System.Windows.Forms.PictureBox();
             this.Exit = new System.Windows.Forms.PictureBox();
@@ -48,6 +47,7 @@
             this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
             this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
             this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
+            this.Popular = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SeacrhClick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
@@ -122,10 +122,10 @@
             // New
             // 
             this.New.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.New.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.New.Location = new System.Drawing.Point(324, 79);
+            this.New.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
+            this.New.Location = new System.Drawing.Point(285, 80);
             this.New.Name = "New";
-            this.New.Size = new System.Drawing.Size(87, 23);
+            this.New.Size = new System.Drawing.Size(159, 23);
             this.New.TabIndex = 75;
             this.New.Text = "Новинки";
             this.New.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -142,18 +142,6 @@
             this.vScrollBar.SmallChange = 50;
             this.vScrollBar.TabIndex = 76;
             this.vScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar_Scroll);
-            // 
-            // Popular
-            // 
-            this.Popular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Popular.BackColor = System.Drawing.Color.Transparent;
-            this.Popular.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Popular.Location = new System.Drawing.Point(290, 181);
-            this.Popular.Name = "Popular";
-            this.Popular.Size = new System.Drawing.Size(153, 23);
-            this.Popular.TabIndex = 77;
-            this.Popular.Text = "Популярні";
-            this.Popular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanelPopular
             // 
@@ -278,13 +266,24 @@
             this.profilePhotoPictureBox.TabStop = false;
             this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
             // 
+            // Popular
+            // 
+            this.Popular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Popular.BackColor = System.Drawing.Color.Transparent;
+            this.Popular.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
+            this.Popular.Location = new System.Drawing.Point(290, 177);
+            this.Popular.Name = "Popular";
+            this.Popular.Size = new System.Drawing.Size(153, 33);
+            this.Popular.TabIndex = 77;
+            this.Popular.Text = "Популярні";
+            this.Popular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(750, 488);
-            this.Controls.Add(this.flowLayoutPanelPopular);
             this.Controls.Add(this.SeacrhClick);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.vScrollBar);
@@ -296,8 +295,9 @@
             this.Controls.Add(this.AuthenticationPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.New);
-            this.Controls.Add(this.Popular);
             this.Controls.Add(this.flowLayoutPanelNew);
+            this.Controls.Add(this.Popular);
+            this.Controls.Add(this.flowLayoutPanelPopular);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(750, 488);
@@ -339,9 +339,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNew;
         private System.Windows.Forms.Label New;
         private System.Windows.Forms.VScrollBar vScrollBar;
-        private System.Windows.Forms.Label Popular;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPopular;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label Popular;
     }
 }
 

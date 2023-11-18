@@ -31,13 +31,13 @@
             this.Author = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
             this.eventLog1 = new System.Diagnostics.EventLog();
-            this.Read = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BookImage = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.Rating = new System.Windows.Forms.Label();
             this.ReadsCount = new System.Windows.Forms.Label();
             this.ViewCount = new System.Windows.Forms.Label();
+            this.Read = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BookImage)).BeginInit();
@@ -67,17 +67,6 @@
             // 
             this.eventLog1.SynchronizingObject = this;
             // 
-            // Read
-            // 
-            this.Read.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Read.Location = new System.Drawing.Point(35, 247);
-            this.Read.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Read.Name = "Read";
-            this.Read.Size = new System.Drawing.Size(155, 22);
-            this.Read.TabIndex = 49;
-            this.Read.Text = "Переглянути";
-            this.Read.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -103,7 +92,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox3.Location = new System.Drawing.Point(20, 221);
+            this.pictureBox3.Location = new System.Drawing.Point(22, 228);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(186, 80);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -137,15 +126,26 @@
             this.ViewCount.Text = "View";
             this.ViewCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Read
+            // 
+            this.Read.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Read.Location = new System.Drawing.Point(38, 251);
+            this.Read.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Read.Name = "Read";
+            this.Read.Size = new System.Drawing.Size(155, 30);
+            this.Read.TabIndex = 53;
+            this.Read.Text = "Переглянути";
+            this.Read.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // UserControlPopularBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Read);
             this.Controls.Add(this.ViewCount);
             this.Controls.Add(this.ReadsCount);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Read);
             this.Controls.Add(this.BookImage);
             this.Controls.Add(this.Rating);
             this.Controls.Add(this.Author);
@@ -165,11 +165,11 @@
         private System.Windows.Forms.Label Title;
         private System.Diagnostics.EventLog eventLog1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label Read;
         private System.Windows.Forms.PictureBox BookImage;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label Rating;
         private System.Windows.Forms.Label ReadsCount;
         private System.Windows.Forms.Label ViewCount;
+        private System.Windows.Forms.Label Read;
     }
 }
