@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
 
 namespace BookWarm.Data.Models
+
 {
     public class Book
     {
@@ -17,6 +17,7 @@ namespace BookWarm.Data.Models
         public int AgeCategory { get; set; }
         public int Year { get; set; }
         public byte[] CoverImage { get; set; }
+        public Image CoverImageObject { get; set; }
         public string Language { get; set; }
         public decimal AverageRating { get; set; }
     }

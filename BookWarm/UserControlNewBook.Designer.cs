@@ -78,7 +78,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::BookWarm.Properties.Resources.star;
-            this.pictureBox1.Location = new System.Drawing.Point(130, 232);
+            this.pictureBox1.Location = new System.Drawing.Point(128, 231);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 14);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -92,6 +92,7 @@
             this.BookImage.Location = new System.Drawing.Point(62, 36);
             this.BookImage.Name = "BookImage";
             this.BookImage.Size = new System.Drawing.Size(105, 150);
+            this.BookImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.BookImage.TabIndex = 0;
             this.BookImage.TabStop = false;
             // 

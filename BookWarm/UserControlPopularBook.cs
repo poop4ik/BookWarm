@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BookWarm
@@ -16,13 +11,25 @@ namespace BookWarm
         {
             InitializeComponent();
         }
-        public void SetData(string title, string author, decimal averageRating, int readsCount, int viewCount)
+
+        public void SetData(Image coverImageObject, string title, string author, decimal averageRating, int readsCount, int viewCount)
         {
+            const int maxTitleLength = 16;
+
+            // Обрізати назву книги, якщо вона довша за максимальну довжину
+            if (title.Length > maxTitleLength)
+            {
+                title = title.Substring(0, maxTitleLength) + "...";
+            }
+
+            // Ваш код для використання title, author, averageRating, readsCount, viewCount і coverImage
             Title.Text = title;
             Author.Text = author;
             Rating.Text = averageRating.ToString();
-            ReadsCount.Text = $"Прочитало: {readsCount}";
-            ViewCount.Text = $"Переглянуло: {viewCount}";
+            ReadsCount.Text = $"📕 {readsCount}";
+            ViewCount.Text = $"👁 {viewCount}";
+            BookImage.Image = coverImageObject;
         }
+
     }
 }

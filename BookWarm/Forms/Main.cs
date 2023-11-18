@@ -127,18 +127,28 @@ namespace BookWarm
                                     AgeCategory = (int)reader["AgeCategory"],
                                     AverageRating = (decimal)reader["AverageRating"],
                                     Content = reader["Content"].ToString(),
+                                    // Отримання байтового масиву для зображення
+                                    // Отримання байтового масиву для зображення
                                     CoverImage = (reader["CoverImage"] == DBNull.Value ? null : (byte[])reader["CoverImage"])
                                 };
 
-                                books.Add(book);
+                                // Опціонально: перетворення байтового масиву в об'єкт Image
+                                if (book.CoverImage != null)
+                                {
+
+                                    // Використання ImageConverter для конвертації байтів у Image
+                                    ImageConverter converter = new ImageConverter();
+                                    Image img = (Image)converter.ConvertFrom(book.CoverImage);
+                                    book.CoverImageObject = img;
+
+                                    books.Add(book);
+                                }
                             }
                         }
                     }
 
-                    PopulateBookData();
-
-                    // Отримання даних про прочитані книги з бази даних
-                    string readsQuery = "SELECT * FROM BookReads";
+                // Отримання даних про прочитані книги з бази даних
+                string readsQuery = "SELECT * FROM BookReads";
                     using (SqlCommand command = new SqlCommand(readsQuery, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -214,7 +224,11 @@ namespace BookWarm
                     }
 
                     // Виклик функції для відображення популярних книг
+                    
                     PopularBookData();
+                    PopulateBookData();
+                    RatingBookData();
+                    
                 }
             }
         }
@@ -320,8 +334,10 @@ namespace BookWarm
             // Прокрутіть елементи на потрібне значення
             New.Top -= scrollDirection;
             Popular.Top -= scrollDirection;
+            Rating.Top -= scrollDirection;
             flowLayoutPanelNew.Top -= scrollDirection;
             flowLayoutPanelPopular.Top -= scrollDirection;
+            flowLayoutPanelRating.Top -= scrollDirection;
 
             // Оновіть попереднє значення прокрутки
             previousScrollValue = scrollValue;
@@ -372,8 +388,9 @@ namespace BookWarm
 
                 if (book.Year >= 2023)
                 {
-                    UserControlNewBook bookControl = new UserControlNewBook();
-                    bookControl.SetData(book.Title, book.Author, book.AverageRating);
+                    BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
+                    UserControlPopularBook bookControl = new UserControlPopularBook();
+                    bookControl.SetData(book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
 
                     flowLayoutPanelNew.Controls.Add(bookControl);
 
@@ -389,20 +406,49 @@ namespace BookWarm
             flowLayoutPanelPopular.Controls.Clear();
             int totalHeight = 0;
             const int maxBooksToShow = 8;
+            const int minViews = 15;
+            const int minReads = 5;
 
-            foreach (Book book in books.Take(maxBooksToShow))
+            foreach (Book book in books.Where(b =>
+            {
+                BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == b.BookID);
+                return (bookStat != null && bookStat.ViewCount > minViews && bookStat.ReadsCount > minReads);
+            }).Take(maxBooksToShow))
             {
                 // Знайдіть відповідний об'єкт BookStat для цієї книги
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
 
                 // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
                 UserControlPopularBook bookControl = new UserControlPopularBook();
-                bookControl.SetData(book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                bookControl.SetData(book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
                 flowLayoutPanelPopular.Controls.Add(bookControl);
 
                 totalHeight += bookControl.Height;
             }
         }
+
+
+        private void RatingBookData()
+        {
+            Shuffle(books);
+            flowLayoutPanelRating.Controls.Clear();
+            int totalHeight = 0;
+            const int maxBooksToShow = 8;
+
+            foreach (Book book in books.Where(b => Decimal.Compare(b.AverageRating, 4.5m) >= 0).Take(maxBooksToShow))
+            {
+                // Знайдіть відповідний об'єкт BookStat для цієї книги
+                BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
+
+                // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
+                UserControlPopularBook bookControl = new UserControlPopularBook();
+                bookControl.SetData(book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                flowLayoutPanelRating.Controls.Add(bookControl);
+
+                totalHeight += bookControl.Height;
+            }
+        }
+
 
 
 
