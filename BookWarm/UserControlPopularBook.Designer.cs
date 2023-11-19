@@ -34,7 +34,7 @@
             this.Rating = new System.Windows.Forms.Label();
             this.ReadsCount = new System.Windows.Forms.Label();
             this.ViewCount = new System.Windows.Forms.Label();
-            this.Read = new System.Windows.Forms.Label();
+            this.View = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BookImage = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -96,16 +96,16 @@
             this.ViewCount.Text = "View";
             this.ViewCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Read
+            // View
             // 
-            this.Read.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Read.Location = new System.Drawing.Point(33, 244);
-            this.Read.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Read.Name = "Read";
-            this.Read.Size = new System.Drawing.Size(155, 30);
-            this.Read.TabIndex = 53;
-            this.Read.Text = "Переглянути";
-            this.Read.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.View.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold);
+            this.View.Location = new System.Drawing.Point(33, 244);
+            this.View.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.View.Name = "View";
+            this.View.Size = new System.Drawing.Size(155, 30);
+            this.View.TabIndex = 53;
+            this.View.Text = "Переглянути";
+            this.View.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -145,7 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ViewCount);
-            this.Controls.Add(this.Read);
+            this.Controls.Add(this.View);
             this.Controls.Add(this.ReadsCount);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.pictureBox1);
@@ -154,7 +154,7 @@
             this.Controls.Add(this.Author);
             this.Controls.Add(this.pictureBox3);
             this.Name = "UserControlPopularBook";
-            this.Size = new System.Drawing.Size(225, 274);
+            this.Size = new System.Drawing.Size(225, 273);
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BookImage)).EndInit();
@@ -173,6 +173,6 @@
         private System.Windows.Forms.Label Rating;
         private System.Windows.Forms.Label ReadsCount;
         private System.Windows.Forms.Label ViewCount;
-        private System.Windows.Forms.Label Read;
+        private System.Windows.Forms.Label View;
     }
 }

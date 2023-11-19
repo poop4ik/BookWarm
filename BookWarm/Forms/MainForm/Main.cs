@@ -1,4 +1,5 @@
 ﻿using BookWarm.Data.Models;
+using BookWarm.Forms.MainForm;
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace BookWarm
 {
     public partial class Main : KryptonForm
     {
-        private List<Book> books;
-        private List<BookStat> bookStatList;
+        public static List<Book> books;
+        public static List<BookStat> bookStatList;
         private User user;
         private Size originPhotoSize;
         private Point originPhotoLocation;
@@ -128,7 +129,6 @@ namespace BookWarm
                                     AverageRating = (decimal)reader["AverageRating"],
                                     Content = reader["Content"].ToString(),
                                     // Отримання байтового масиву для зображення
-                                    // Отримання байтового масиву для зображення
                                     CoverImage = (reader["CoverImage"] == DBNull.Value ? null : (byte[])reader["CoverImage"])
                                 };
 
@@ -147,8 +147,8 @@ namespace BookWarm
                         }
                     }
 
-                // Отримання даних про прочитані книги з бази даних
-                string readsQuery = "SELECT * FROM BookReads";
+                    // Отримання даних про прочитані книги з бази даних
+                    string readsQuery = "SELECT * FROM BookReads";
                     using (SqlCommand command = new SqlCommand(readsQuery, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -224,11 +224,11 @@ namespace BookWarm
                     }
 
                     // Виклик функції для відображення популярних книг
-                    
+
                     PopularBookData();
                     PopulateBookData();
                     RatingBookData();
-                    
+
                 }
             }
         }
@@ -246,6 +246,8 @@ namespace BookWarm
                 isMaximized = false;
                 profilePhotoPictureBox.Size = originPhotoSize; // Збільшння розміру 
                 profilePhotoPictureBox.Location = originPhotoLocation;
+                Popular.Location = new Point(Popular.Location.X, Popular.Location.Y + 25);
+
                 //profilePhotoPictureBox.Location = new Point(440, 520);
             }
             else
@@ -254,7 +256,7 @@ namespace BookWarm
                 originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
-
+                Popular.Location = new Point(Popular.Location.X, Popular.Location.Y - 25);
                 // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
@@ -282,7 +284,6 @@ namespace BookWarm
             if (!string.IsNullOrEmpty(user.UserName))
             {
                 this.Hide();
-                // Відкриття форми Main
                 UserProfile userProfile = new UserProfile(user.UserName);
                 userProfile.Show();
             }
@@ -389,8 +390,9 @@ namespace BookWarm
                 if (book.Year >= 2023)
                 {
                     BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-                    UserControlPopularBook bookControl = new UserControlPopularBook();
-                    bookControl.SetData(book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                    UserControlPopularBook bookControl = new UserControlPopularBook(this);
+                    bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+
 
                     flowLayoutPanelNew.Controls.Add(bookControl);
 
@@ -419,8 +421,8 @@ namespace BookWarm
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
 
                 // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
-                UserControlPopularBook bookControl = new UserControlPopularBook();
-                bookControl.SetData(book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                UserControlPopularBook bookControl = new UserControlPopularBook(this);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
                 flowLayoutPanelPopular.Controls.Add(bookControl);
 
                 totalHeight += bookControl.Height;
@@ -441,15 +443,13 @@ namespace BookWarm
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
 
                 // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
-                UserControlPopularBook bookControl = new UserControlPopularBook();
-                bookControl.SetData(book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                UserControlPopularBook bookControl = new UserControlPopularBook(this);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
                 flowLayoutPanelRating.Controls.Add(bookControl);
 
                 totalHeight += bookControl.Height;
             }
         }
-
-
 
 
 

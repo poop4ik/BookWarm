@@ -1,6 +1,6 @@
 ﻿namespace BookWarm
 {
-    partial class RestorePassword
+    partial class ChangePassword
     {
         /// <summary>
         /// Required designer variable.
@@ -32,18 +32,20 @@
             System.Windows.Forms.Label Text;
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label usernameLabel;
-            System.Windows.Forms.Label ChangePassword;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RestorePassword));
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.Label ConfirmChange;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePassword));
+            this.passwordHashTextBox = new System.Windows.Forms.TextBox();
             this.Back = new System.Windows.Forms.Label();
             this.bookWarmDBDataSet = new BookWarm.BookWarmDBDataSet();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
             this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
-            this.ValidLoginAndEmail = new System.Windows.Forms.Label();
-            this.Exit = new System.Windows.Forms.Label();
+            this.confirmPasswordHashTextBox = new System.Windows.Forms.TextBox();
             this.emptytextbox = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.Exit = new System.Windows.Forms.Label();
+            this.ValidPassword = new System.Windows.Forms.Label();
+            this.ShowPassword = new System.Windows.Forms.Label();
+            this.ShowConfirmPassword = new System.Windows.Forms.Label();
             this.LogoMain = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -51,72 +53,71 @@
             Text = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
-            ChangePassword = new System.Windows.Forms.Label();
+            ConfirmChange = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
-            this.AuthenticationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Text
             // 
             Text.AutoSize = true;
             Text.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            Text.Location = new System.Drawing.Point(377, 104);
+            Text.Location = new System.Drawing.Point(413, 102);
             Text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             Text.Name = "Text";
-            Text.Size = new System.Drawing.Size(310, 27);
-            Text.TabIndex = 34;
-            Text.Text = "Меню відновлення паролю";
+            Text.Size = new System.Drawing.Size(228, 27);
+            Text.TabIndex = 47;
+            Text.Text = "Меню зміни пароля";
             // 
             // emailLabel
             // 
             emailLabel.AutoSize = true;
             emailLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            emailLabel.Location = new System.Drawing.Point(369, 193);
+            emailLabel.Location = new System.Drawing.Point(346, 193);
             emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(51, 18);
-            emailLabel.TabIndex = 32;
-            emailLabel.Text = "Email:";
+            emailLabel.Size = new System.Drawing.Size(143, 18);
+            emailLabel.TabIndex = 46;
+            emailLabel.Text = "Confirm password:";
             // 
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
             usernameLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            usernameLabel.Location = new System.Drawing.Point(369, 157);
+            usernameLabel.Location = new System.Drawing.Point(346, 157);
             usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(87, 18);
-            usernameLabel.TabIndex = 30;
-            usernameLabel.Text = "Username:";
+            usernameLabel.Size = new System.Drawing.Size(118, 18);
+            usernameLabel.TabIndex = 44;
+            usernameLabel.Text = "New password:";
             // 
-            // ChangePassword
+            // ConfirmChange
             // 
-            ChangePassword.AutoSize = true;
-            ChangePassword.BackColor = System.Drawing.Color.Transparent;
-            ChangePassword.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            ChangePassword.Location = new System.Drawing.Point(440, 254);
-            ChangePassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            ChangePassword.Name = "ChangePassword";
-            ChangePassword.Size = new System.Drawing.Size(181, 27);
-            ChangePassword.TabIndex = 37;
-            ChangePassword.Text = "Змінити пароль";
-            ChangePassword.Click += new System.EventHandler(this.ChangePassword_Click);
+            ConfirmChange.AutoSize = true;
+            ConfirmChange.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            ConfirmChange.Location = new System.Drawing.Point(447, 241);
+            ConfirmChange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            ConfirmChange.Name = "ConfirmChange";
+            ConfirmChange.Size = new System.Drawing.Size(144, 27);
+            ConfirmChange.TabIndex = 48;
+            ConfirmChange.Text = "Підтвердити";
+            ConfirmChange.Click += new System.EventHandler(this.ConfirmChange_Click);
             // 
-            // usernameTextBox
+            // passwordHashTextBox
             // 
-            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.usernameTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.usernameTextBox.Location = new System.Drawing.Point(477, 157);
-            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.usernameTextBox.Size = new System.Drawing.Size(192, 19);
-            this.usernameTextBox.TabIndex = 31;
+            this.passwordHashTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passwordHashTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordHashTextBox.Location = new System.Drawing.Point(495, 157);
+            this.passwordHashTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.passwordHashTextBox.Name = "passwordHashTextBox";
+            this.passwordHashTextBox.PasswordChar = '*';
+            this.passwordHashTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.passwordHashTextBox.Size = new System.Drawing.Size(192, 19);
+            this.passwordHashTextBox.TabIndex = 45;
             // 
             // Back
             // 
@@ -127,7 +128,7 @@
             this.Back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(47, 41);
-            this.Back.TabIndex = 29;
+            this.Back.TabIndex = 43;
             this.Back.Text = "←";
             this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
@@ -160,16 +161,29 @@
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             this.tableAdapterManager.UserStatisticsTableAdapter = null;
             // 
-            // ValidLoginAndEmail
+            // confirmPasswordHashTextBox
             // 
-            this.ValidLoginAndEmail.AutoSize = true;
-            this.ValidLoginAndEmail.ForeColor = System.Drawing.Color.Firebrick;
-            this.ValidLoginAndEmail.Location = new System.Drawing.Point(474, 214);
-            this.ValidLoginAndEmail.Name = "ValidLoginAndEmail";
-            this.ValidLoginAndEmail.Size = new System.Drawing.Size(236, 13);
-            this.ValidLoginAndEmail.TabIndex = 38;
-            this.ValidLoginAndEmail.Text = "Користувача або email введено не правильно";
-            this.ValidLoginAndEmail.Visible = false;
+            this.confirmPasswordHashTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.confirmPasswordHashTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.confirmPasswordHashTextBox.Location = new System.Drawing.Point(495, 193);
+            this.confirmPasswordHashTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.confirmPasswordHashTextBox.Name = "confirmPasswordHashTextBox";
+            this.confirmPasswordHashTextBox.PasswordChar = '*';
+            this.confirmPasswordHashTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.confirmPasswordHashTextBox.Size = new System.Drawing.Size(192, 19);
+            this.confirmPasswordHashTextBox.TabIndex = 51;
+            // 
+            // emptytextbox
+            // 
+            this.emptytextbox.AutoSize = true;
+            this.emptytextbox.BackColor = System.Drawing.Color.Transparent;
+            this.emptytextbox.ForeColor = System.Drawing.Color.Firebrick;
+            this.emptytextbox.Location = new System.Drawing.Point(492, 215);
+            this.emptytextbox.Name = "emptytextbox";
+            this.emptytextbox.Size = new System.Drawing.Size(185, 26);
+            this.emptytextbox.TabIndex = 50;
+            this.emptytextbox.Text = "Будь ласка, заповніть обидва поля\r\n.";
+            this.emptytextbox.Visible = false;
             // 
             // Exit
             // 
@@ -177,35 +191,45 @@
             this.Exit.BackColor = System.Drawing.Color.Silver;
             this.Exit.Font = new System.Drawing.Font("Arial Black", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Exit.ForeColor = System.Drawing.Color.Black;
-            this.Exit.Location = new System.Drawing.Point(706, 10);
+            this.Exit.Location = new System.Drawing.Point(704, 5);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(23, 24);
-            this.Exit.TabIndex = 27;
+            this.Exit.TabIndex = 41;
             this.Exit.Text = "Х";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // emptytextbox
+            // ValidPassword
             // 
-            this.emptytextbox.AutoSize = true;
-            this.emptytextbox.BackColor = System.Drawing.Color.Transparent;
-            this.emptytextbox.ForeColor = System.Drawing.Color.Firebrick;
-            this.emptytextbox.Location = new System.Drawing.Point(474, 214);
-            this.emptytextbox.Name = "emptytextbox";
-            this.emptytextbox.Size = new System.Drawing.Size(185, 26);
-            this.emptytextbox.TabIndex = 39;
-            this.emptytextbox.Text = "Будь ласка, заповніть обидва поля\r\n.";
-            this.emptytextbox.Visible = false;
+            this.ValidPassword.AutoSize = true;
+            this.ValidPassword.ForeColor = System.Drawing.Color.Firebrick;
+            this.ValidPassword.Location = new System.Drawing.Point(492, 215);
+            this.ValidPassword.Name = "ValidPassword";
+            this.ValidPassword.Size = new System.Drawing.Size(122, 13);
+            this.ValidPassword.TabIndex = 49;
+            this.ValidPassword.Text = "Паролі не співпадають";
+            this.ValidPassword.Visible = false;
             // 
-            // emailTextBox
+            // ShowPassword
             // 
-            this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.emailTextBox.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailTextBox.Location = new System.Drawing.Point(477, 193);
-            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.emailTextBox.Size = new System.Drawing.Size(192, 19);
-            this.emailTextBox.TabIndex = 40;
+            this.ShowPassword.AutoSize = true;
+            this.ShowPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowPassword.Location = new System.Drawing.Point(694, 157);
+            this.ShowPassword.Name = "ShowPassword";
+            this.ShowPassword.Size = new System.Drawing.Size(27, 18);
+            this.ShowPassword.TabIndex = 52;
+            this.ShowPassword.Text = "👁️";
+            this.ShowPassword.Click += new System.EventHandler(this.ShowPassword_Click);
+            // 
+            // ShowConfirmPassword
+            // 
+            this.ShowConfirmPassword.AutoSize = true;
+            this.ShowConfirmPassword.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowConfirmPassword.Location = new System.Drawing.Point(694, 193);
+            this.ShowConfirmPassword.Name = "ShowConfirmPassword";
+            this.ShowConfirmPassword.Size = new System.Drawing.Size(27, 18);
+            this.ShowConfirmPassword.TabIndex = 53;
+            this.ShowConfirmPassword.Text = "👁️";
+            this.ShowConfirmPassword.Click += new System.EventHandler(this.ShowConfirmPassword_Click);
             // 
             // LogoMain
             // 
@@ -216,7 +240,7 @@
             this.LogoMain.Name = "LogoMain";
             this.LogoMain.Size = new System.Drawing.Size(363, 299);
             this.LogoMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.LogoMain.TabIndex = 28;
+            this.LogoMain.TabIndex = 42;
             this.LogoMain.TabStop = false;
             // 
             // pictureBox8
@@ -227,84 +251,87 @@
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(100, 389);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 41;
+            this.pictureBox8.TabIndex = 54;
             this.pictureBox8.TabStop = false;
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox3.Location = new System.Drawing.Point(429, 229);
+            this.pictureBox3.Location = new System.Drawing.Point(430, 215);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(204, 80);
+            this.pictureBox3.Size = new System.Drawing.Size(183, 80);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 56;
+            this.pictureBox3.TabIndex = 55;
             this.pictureBox3.TabStop = false;
             // 
             // AuthenticationPanel
             // 
-            this.AuthenticationPanel.Controls.Add(this.Exit);
-            this.AuthenticationPanel.Location = new System.Drawing.Point(-2, -5);
+            this.AuthenticationPanel.Location = new System.Drawing.Point(-16, -5);
             this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(2);
             this.AuthenticationPanel.Name = "AuthenticationPanel";
-            this.AuthenticationPanel.Size = new System.Drawing.Size(741, 41);
+            this.AuthenticationPanel.Size = new System.Drawing.Size(790, 41);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
-            this.AuthenticationPanel.TabIndex = 57;
+            this.AuthenticationPanel.TabIndex = 59;
             // 
-            // RestorePassword
+            // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(739, 377);
-            this.Controls.Add(this.emailTextBox);
-            this.Controls.Add(this.emptytextbox);
+            this.Controls.Add(this.ShowConfirmPassword);
+            this.Controls.Add(this.ShowPassword);
             this.Controls.Add(Text);
             this.Controls.Add(emailLabel);
             this.Controls.Add(usernameLabel);
-            this.Controls.Add(this.usernameTextBox);
+            this.Controls.Add(this.passwordHashTextBox);
             this.Controls.Add(this.Back);
-            this.Controls.Add(this.ValidLoginAndEmail);
-            this.Controls.Add(ChangePassword);
+            this.Controls.Add(ConfirmChange);
+            this.Controls.Add(this.confirmPasswordHashTextBox);
+            this.Controls.Add(this.emptytextbox);
+            this.Controls.Add(this.Exit);
+            this.Controls.Add(this.ValidPassword);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.AuthenticationPanel);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.LogoMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RestorePassword";
+            this.Name = "ChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.Rounding = 10;
-            this.Text = "RestorePassword";
+            this.Text = "BookWorm";
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogoMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
-            this.AuthenticationPanel.ResumeLayout(false);
-            this.AuthenticationPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox usernameTextBox;
+
+        private System.Windows.Forms.TextBox passwordHashTextBox;
         private System.Windows.Forms.Label Back;
         private System.Windows.Forms.PictureBox LogoMain;
         private BookWarmDBDataSet bookWarmDBDataSet;
         private System.Windows.Forms.BindingSource usersBindingSource;
         private BookWarmDBDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private BookWarmDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Label ValidLoginAndEmail;
-        private System.Windows.Forms.Label Exit;
+        private System.Windows.Forms.TextBox confirmPasswordHashTextBox;
         private System.Windows.Forms.Label emptytextbox;
-        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.Label Exit;
+        private System.Windows.Forms.Label ValidPassword;
+        private System.Windows.Forms.Label ShowPassword;
+        private System.Windows.Forms.Label ShowConfirmPassword;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox3;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel AuthenticationPanel;

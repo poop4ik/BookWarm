@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookWarm.Forms.MainForm;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -7,12 +8,14 @@ namespace BookWarm
 {
     public partial class UserControlPopularBook : UserControl
     {
-        public UserControlPopularBook()
+        private Main mainForm;
+        public UserControlPopularBook(Main mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
-        public void SetData(Image coverImageObject, string title, string author, decimal averageRating, int readsCount, int viewCount)
+        public void SetData(int bookID, Image coverImageObject, string title, string author, decimal averageRating, int readsCount, int viewCount)
         {
             const int maxTitleLength = 16;
 
@@ -29,7 +32,16 @@ namespace BookWarm
             ReadsCount.Text = $"📕 {readsCount}";
             ViewCount.Text = $"👁 {viewCount}";
             BookImage.Image = coverImageObject;
+
+            BookImage.Click += (sender, e) => OpenBookInfoForm(bookID);
+            View.Click += (sender, e) => OpenBookInfoForm(bookID);
         }
 
+        private void OpenBookInfoForm(int bookID)
+        {
+            BookInfo bookInfoForm = new BookInfo(bookID, mainForm);
+            bookInfoForm.Show();
+            mainForm.WindowState = FormWindowState.Minimized;
+        }
     }
 }

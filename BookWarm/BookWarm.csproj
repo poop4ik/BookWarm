@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,10 +95,16 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Data\Models\Book.cs" />
     <Compile Include="Data\Models\BookStat.cs" />
-    <Compile Include="Forms\Authentication.cs">
+    <Compile Include="Forms\MainForm\BookInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Authentication.Designer.cs">
+    <Compile Include="Forms\MainForm\BookInfo.Designer.cs">
+      <DependentUpon>BookInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ToolForm\Authentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolForm\Authentication.Designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
     </Compile>
     <Compile Include="BookWarmDBDataSet.Designer.cs">
@@ -91,10 +112,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookWarmDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChangePassword.cs">
+    <Compile Include="Forms\UserForm\ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ChangePassword.Designer.cs">
+    <Compile Include="Forms\UserForm\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Elements\CustomeCirclePicture.cs">
@@ -104,48 +125,48 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\Models\User.cs" />
-    <Compile Include="Forms\ChangeUserInfo.cs">
+    <Compile Include="Forms\UserForm\ChangeUserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ChangeUserInfo.Designer.cs">
+    <Compile Include="Forms\UserForm\ChangeUserInfo.Designer.cs">
       <DependentUpon>ChangeUserInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Login.cs">
+    <Compile Include="Forms\ToolForm\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Login.Designer.cs">
+    <Compile Include="Forms\ToolForm\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="Forms\MainForm\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
+    <Compile Include="Forms\MainForm\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\Registration.cs">
+    <Compile Include="Forms\ToolForm\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Registration.Designer.cs">
+    <Compile Include="Forms\ToolForm\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RestorePassword.cs">
+    <Compile Include="Forms\UserForm\RestorePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RestorePassword.Designer.cs">
+    <Compile Include="Forms\UserForm\RestorePassword.Designer.cs">
       <DependentUpon>RestorePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Success.cs">
+    <Compile Include="Forms\ToolForm\Success.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Success.Designer.cs">
+    <Compile Include="Forms\ToolForm\Success.Designer.cs">
       <DependentUpon>Success.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UserProfile.cs">
+    <Compile Include="Forms\UserForm\UserProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UserProfile.Designer.cs">
+    <Compile Include="Forms\UserForm\UserProfile.Designer.cs">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlNewBook.cs">
@@ -160,19 +181,22 @@
     <Compile Include="UserControlPopularBook.Designer.cs">
       <DependentUpon>UserControlPopularBook.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Authentication.resx">
+    <EmbeddedResource Include="Forms\MainForm\BookInfo.resx">
+      <DependentUpon>BookInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolForm\Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ChangePassword.resx">
+    <EmbeddedResource Include="Forms\UserForm\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ChangeUserInfo.resx">
+    <EmbeddedResource Include="Forms\UserForm\ChangeUserInfo.resx">
       <DependentUpon>ChangeUserInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Login.resx">
+    <EmbeddedResource Include="Forms\ToolForm\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
+    <EmbeddedResource Include="Forms\MainForm\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -180,16 +204,16 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Registration.resx">
+    <EmbeddedResource Include="Forms\ToolForm\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RestorePassword.resx">
+    <EmbeddedResource Include="Forms\UserForm\RestorePassword.resx">
       <DependentUpon>RestorePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Success.resx">
+    <EmbeddedResource Include="Forms\ToolForm\Success.resx">
       <DependentUpon>Success.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserProfile.resx">
+    <EmbeddedResource Include="Forms\UserForm\UserProfile.resx">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlNewBook.resx">
@@ -299,6 +323,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\UserControl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
