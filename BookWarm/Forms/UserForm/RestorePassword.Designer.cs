@@ -151,10 +151,7 @@
             this.tableAdapterManager.BookReadsTableAdapter = null;
             this.tableAdapterManager.BooksTableAdapter = null;
             this.tableAdapterManager.BookViewsTableAdapter = null;
-            this.tableAdapterManager.ForeignBooksTableAdapter = null;
-            this.tableAdapterManager.MainBooksTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UserFavoritesTableAdapter = null;
             this.tableAdapterManager.UserPreferencesTableAdapter = null;
             this.tableAdapterManager.UserReviewsTableAdapter = null;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;

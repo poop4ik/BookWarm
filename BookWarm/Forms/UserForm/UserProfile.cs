@@ -16,7 +16,8 @@ namespace BookWarm
         private bool isMaximized = false; // Перевірка стану максимізації
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
-        public UserProfile(string username)
+        private Main mainForm;
+        public UserProfile(string username, Main mainForm)
         {
             InitializeComponent();
 
@@ -33,6 +34,8 @@ namespace BookWarm
 
             Logout.MouseEnter += new EventHandler(Logout_MouseEnter);
             Logout.MouseLeave += new EventHandler(Logout_MouseLeave);
+
+            this.mainForm = mainForm;
 
             using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
@@ -92,9 +95,6 @@ namespace BookWarm
         private void Back_Click(object sender, EventArgs e)
         {
             this.Close();
-            //Відкриття форми Main
-            Main mainForm = new Main(user.UserName);
-            mainForm.Show();
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -172,12 +172,10 @@ namespace BookWarm
         }
         private void ChangeInfo_Click(object sender, EventArgs e)
         {
-            ChangeUserInfo changeUserInfo = new ChangeUserInfo(user.UserName);
-            this.Close();
+            ChangeUserInfo changeUserInfo = new ChangeUserInfo(user.UserName, mainForm);
+            this.Hide();
             changeUserInfo.ShowDialog();
             this.Close();
-            UserProfile userProfile = new UserProfile(user.UserName);
-            userProfile.Show();
         }
 
         private void Logout_MouseLeave(object sender, EventArgs e)

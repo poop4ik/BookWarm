@@ -46,10 +46,10 @@
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new BookWarm.BookWarmDBDataSetTableAdapters.UsersTableAdapter();
             this.tableAdapterManager = new BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager();
-            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             this.Popular = new System.Windows.Forms.Label();
             this.Rating = new System.Windows.Forms.Label();
             this.flowLayoutPanelRating = new System.Windows.Forms.FlowLayoutPanel();
+            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SeacrhClick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
@@ -67,7 +67,7 @@
             this.Minimize.AutoSize = true;
             this.Minimize.BackColor = System.Drawing.Color.Silver;
             this.Minimize.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Minimize.Location = new System.Drawing.Point(662, 9);
+            this.Minimize.Location = new System.Drawing.Point(687, 9);
             this.Minimize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(23, 19);
@@ -124,7 +124,7 @@
             // 
             this.New.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.New.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.New.Location = new System.Drawing.Point(288, 83);
+            this.New.Location = new System.Drawing.Point(290, 83);
             this.New.Name = "New";
             this.New.Size = new System.Drawing.Size(159, 23);
             this.New.TabIndex = 75;
@@ -193,6 +193,7 @@
             this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Resize.TabIndex = 69;
             this.Resize.TabStop = false;
+            this.Resize.Visible = false;
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
             // 
             // LineLogo
@@ -235,18 +236,54 @@
             // 
             // tableAdapterManager
             // 
+            this.tableAdapterManager.AuthorBookRelationTableAdapter = null;
+            this.tableAdapterManager.AuthorTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.BookReadsTableAdapter = null;
             this.tableAdapterManager.BooksTableAdapter = null;
             this.tableAdapterManager.BookViewsTableAdapter = null;
-            this.tableAdapterManager.ForeignBooksTableAdapter = null;
-            this.tableAdapterManager.MainBooksTableAdapter = null;
+            this.tableAdapterManager.GenresTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UserFavoritesTableAdapter = null;
             this.tableAdapterManager.UserPreferencesTableAdapter = null;
             this.tableAdapterManager.UserReviewsTableAdapter = null;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             this.tableAdapterManager.UserStatisticsTableAdapter = null;
+            // 
+            // Popular
+            // 
+            this.Popular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Popular.BackColor = System.Drawing.Color.Transparent;
+            this.Popular.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
+            this.Popular.Location = new System.Drawing.Point(288, 181);
+            this.Popular.Name = "Popular";
+            this.Popular.Size = new System.Drawing.Size(169, 33);
+            this.Popular.TabIndex = 77;
+            this.Popular.Text = "Популярні";
+            this.Popular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Rating
+            // 
+            this.Rating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Rating.BackColor = System.Drawing.Color.Transparent;
+            this.Rating.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
+            this.Rating.Location = new System.Drawing.Point(280, 544);
+            this.Rating.Name = "Rating";
+            this.Rating.Size = new System.Drawing.Size(188, 35);
+            this.Rating.TabIndex = 80;
+            this.Rating.Text = "Рейтингові";
+            this.Rating.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanelRating
+            // 
+            this.flowLayoutPanelRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelRating.AutoScroll = true;
+            this.flowLayoutPanelRating.AutoSize = true;
+            this.flowLayoutPanelRating.Location = new System.Drawing.Point(30, 590);
+            this.flowLayoutPanelRating.MaximumSize = new System.Drawing.Size(0, 310);
+            this.flowLayoutPanelRating.MinimumSize = new System.Drawing.Size(710, 52);
+            this.flowLayoutPanelRating.Name = "flowLayoutPanelRating";
+            this.flowLayoutPanelRating.Size = new System.Drawing.Size(710, 52);
+            this.flowLayoutPanelRating.TabIndex = 81;
             // 
             // profilePhotoPictureBox
             // 
@@ -266,42 +303,6 @@
             this.profilePhotoPictureBox.TabStop = false;
             this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
             // 
-            // Popular
-            // 
-            this.Popular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Popular.BackColor = System.Drawing.Color.Transparent;
-            this.Popular.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.Popular.Location = new System.Drawing.Point(282, 181);
-            this.Popular.Name = "Popular";
-            this.Popular.Size = new System.Drawing.Size(169, 33);
-            this.Popular.TabIndex = 77;
-            this.Popular.Text = "Популярні";
-            this.Popular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Rating
-            // 
-            this.Rating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Rating.BackColor = System.Drawing.Color.Transparent;
-            this.Rating.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.Rating.Location = new System.Drawing.Point(275, 550);
-            this.Rating.Name = "Rating";
-            this.Rating.Size = new System.Drawing.Size(188, 35);
-            this.Rating.TabIndex = 80;
-            this.Rating.Text = "Рейтингові";
-            this.Rating.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // flowLayoutPanelRating
-            // 
-            this.flowLayoutPanelRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelRating.AutoScroll = true;
-            this.flowLayoutPanelRating.AutoSize = true;
-            this.flowLayoutPanelRating.Location = new System.Drawing.Point(30, 600);
-            this.flowLayoutPanelRating.MaximumSize = new System.Drawing.Size(0, 310);
-            this.flowLayoutPanelRating.MinimumSize = new System.Drawing.Size(710, 52);
-            this.flowLayoutPanelRating.Name = "flowLayoutPanelRating";
-            this.flowLayoutPanelRating.Size = new System.Drawing.Size(710, 52);
-            this.flowLayoutPanelRating.TabIndex = 81;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,12 +311,12 @@
             this.AutoScrollMinSize = new System.Drawing.Size(-100, -100);
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(750, 488);
+            this.Controls.Add(this.Minimize);
             this.Controls.Add(this.SeacrhClick);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.vScrollBar);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Resize);
-            this.Controls.Add(this.Minimize);
             this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.LineLogo);
             this.Controls.Add(this.AuthenticationPanel);
@@ -335,6 +336,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.Rounding = 10;
+            this.Text = "BookWorm";
             this.Load += new System.EventHandler(this.Main_Load);
             this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Main_Scroll);
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();

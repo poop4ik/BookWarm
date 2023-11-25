@@ -93,8 +93,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="BookWarmDBDataSet.cs">
+      <DependentUpon>BookWarmDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\Author.cs" />
     <Compile Include="Data\Models\Book.cs" />
     <Compile Include="Data\Models\BookStat.cs" />
+    <Compile Include="Forms\MainForm\AuthorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm\AuthorInfo.Designer.cs">
+      <DependentUpon>AuthorInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm\BookInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,11 +179,11 @@
     <Compile Include="Forms\UserForm\UserProfile.Designer.cs">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlNewBook.cs">
+    <Compile Include="UserControlAuthor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlNewBook.Designer.cs">
-      <DependentUpon>UserControlNewBook.cs</DependentUpon>
+    <Compile Include="UserControlAuthor.Designer.cs">
+      <DependentUpon>UserControlAuthor.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlPopularBook.cs">
       <SubType>UserControl</SubType>
@@ -181,6 +191,9 @@
     <Compile Include="UserControlPopularBook.Designer.cs">
       <DependentUpon>UserControlPopularBook.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\MainForm\AuthorInfo.resx">
+      <DependentUpon>AuthorInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\BookInfo.resx">
       <DependentUpon>BookInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,8 +229,8 @@
     <EmbeddedResource Include="Forms\UserForm\UserProfile.resx">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlNewBook.resx">
-      <DependentUpon>UserControlNewBook.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlAuthor.resx">
+      <DependentUpon>UserControlAuthor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlPopularBook.resx">
       <DependentUpon>UserControlPopularBook.cs</DependentUpon>

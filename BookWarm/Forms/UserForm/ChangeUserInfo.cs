@@ -16,7 +16,8 @@ namespace BookWarm.Forms
     {
         private User user;
         private Image previousImage;
-        public ChangeUserInfo(string username)
+        private Main mainForm;
+        public ChangeUserInfo(string username, Main mainForm)
         {
             InitializeComponent();
 
@@ -36,6 +37,8 @@ namespace BookWarm.Forms
 
             Delete.MouseEnter += new EventHandler(Delete_MouseEnter);
             Delete.MouseLeave += new EventHandler(Delete_MouseLeave);
+
+            this.mainForm = mainForm;
 
             using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
@@ -89,6 +92,8 @@ namespace BookWarm.Forms
                     profilePhotoPictureBox.Border = 0;
                 }
             }
+
+
         }
 
         private void Back_Click(object sender, EventArgs e)
@@ -358,14 +363,17 @@ namespace BookWarm.Forms
 
             if (success)
             {
+                
                 ClearAllLabels();
                 MessageBox.Show("Дані профілю успішно збережено.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+                mainForm.UpdatePhoto();
             }
             else
             {
                 MessageBox.Show("Помилка при збереженні даних профілю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
 

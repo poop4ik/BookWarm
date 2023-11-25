@@ -1,28 +1,33 @@
 ﻿using BookWarm.Data.Models;
 using ComponentFactory.Krypton.Toolkit;
-using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
-
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BookWarm.Forms.MainForm
 {
-    
-    public partial class BookInfo : KryptonForm
+    public partial class AuthorInfo : KryptonForm
     {
         private User user;
-        private int bookID;
+        private string author;
         private int authorID;
         private bool isMaximized = false;
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
         private Main mainForm;
-        public BookInfo(int authorID, int bookID, Main mainForm)
+
+
+        public AuthorInfo(int authorID, Main mainForm)
         {
             this.mainForm = mainForm;
             InitializeComponent();
-            this.bookID = bookID;
             this.authorID = authorID;
 
             Resize_Click(this, EventArgs.Empty);
@@ -32,34 +37,48 @@ namespace BookWarm.Forms.MainForm
 
             Exit.MouseEnter += new EventHandler(Exit_MouseEnter);
             Exit.MouseLeave += new EventHandler(Exit_MouseLeave);
-            SetBookInfo();
+
+            SetAuthorInfo();
+
+            Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
+
+            PopulateBooksByAuthor(authorID);
         }
 
-        private void SetBookInfo()
+
+        private void SetAuthorInfo()
         {
-            Book book = Main.books.FirstOrDefault(b => b.BookID == bookID);
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
-            // Check if the book is found
-            if (book != null)
+
+            // Check if the author is found
+            if (author != null)
             {
-                // Display title on the form
-                titleText.Text = book.Title;
-
-                // Access the AuthorName property through the Author property
-                authorText.Text = author?.AuthorName ?? "Unknown Author";
-
-                BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == bookID);
-
-                // Check if BookStat is found
-                if (bookStat != null)
-                {
-                    // Use bookStat.ReadsCount and bookStat.ViewCount as needed
-                    // For example:
-                    ReadsCount.Text = $"📕 {bookStat.ReadsCount}";
-                    ViewCount.Text = $"👁 {bookStat.ViewCount}";
-                }
+                // Display author information on the form
+                AuthorNameText.Text = author.AuthorName;
+                CountryText.Text = author.Country;
+                AuthorID.Text = $"{author.AuthorID}";
+                RelationID.Text = $"{author.RelationID}";
             }
         }
+
+        private void PopulateBooksByAuthor(int authorID)
+        {
+            // Clear existing controls in the FlowLayoutPanel
+            flowLayoutPanelAuthorBooks.Controls.Clear();
+
+            // Iterate through the books and create a UserControl for each book by the specified author
+            foreach (Book book in Main.books.Where(b => b.AuthorID == authorID))
+            {
+                // Get the corresponding BookStat for the current book
+                BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
+
+                // You may need to adjust the constructor parameters based on your UserControl implementation
+                UserControlAuthor bookControl = new UserControlAuthor(mainForm);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
+                flowLayoutPanelAuthorBooks.Controls.Add(bookControl);
+            }
+        }
+
 
 
         private void Minimize_Click(object sender, EventArgs e)
@@ -94,9 +113,6 @@ namespace BookWarm.Forms.MainForm
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
-            mainForm.PopulateBookData();
-            mainForm.RatingBookData();
-            mainForm.PopularBookData();
         }
 
         private void Back_Click(object sender, EventArgs e)
@@ -105,6 +121,7 @@ namespace BookWarm.Forms.MainForm
             this.Close();
 
         }
+
         private void Resize_Click(object sender, EventArgs e)
         {
             if (isMaximized)

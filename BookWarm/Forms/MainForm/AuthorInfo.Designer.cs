@@ -1,6 +1,6 @@
 ﻿namespace BookWarm.Forms.MainForm
 {
-    partial class BookInfo
+    partial class AuthorInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookInfo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorInfo));
+            this.CountryText = new System.Windows.Forms.Label();
+            this.AuthorNameText = new System.Windows.Forms.Label();
+            this.RelationID = new System.Windows.Forms.Label();
+            this.AuthorID = new System.Windows.Forms.Label();
+            this.flowLayoutPanelAuthorBooks = new System.Windows.Forms.FlowLayoutPanel();
+            this.Back = new System.Windows.Forms.Label();
             this.Exit = new System.Windows.Forms.PictureBox();
             this.Resize = new System.Windows.Forms.PictureBox();
             this.Minimize = new System.Windows.Forms.Label();
             this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.Back = new System.Windows.Forms.Label();
-            this.titleText = new System.Windows.Forms.Label();
-            this.authorText = new System.Windows.Forms.Label();
-            this.ViewCount = new System.Windows.Forms.Label();
-            this.ReadsCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // CountryText
+            // 
+            this.CountryText.AutoSize = true;
+            this.CountryText.Location = new System.Drawing.Point(148, 65);
+            this.CountryText.Name = "CountryText";
+            this.CountryText.Size = new System.Drawing.Size(43, 13);
+            this.CountryText.TabIndex = 0;
+            this.CountryText.Text = "Country";
+            // 
+            // AuthorNameText
+            // 
+            this.AuthorNameText.AutoSize = true;
+            this.AuthorNameText.Location = new System.Drawing.Point(211, 65);
+            this.AuthorNameText.Name = "AuthorNameText";
+            this.AuthorNameText.Size = new System.Drawing.Size(66, 13);
+            this.AuthorNameText.TabIndex = 1;
+            this.AuthorNameText.Text = "AuthorName";
+            // 
+            // RelationID
+            // 
+            this.RelationID.AutoSize = true;
+            this.RelationID.Location = new System.Drawing.Point(211, 95);
+            this.RelationID.Name = "RelationID";
+            this.RelationID.Size = new System.Drawing.Size(57, 13);
+            this.RelationID.TabIndex = 2;
+            this.RelationID.Text = "RelationID";
+            // 
+            // AuthorID
+            // 
+            this.AuthorID.AutoSize = true;
+            this.AuthorID.Location = new System.Drawing.Point(148, 95);
+            this.AuthorID.Name = "AuthorID";
+            this.AuthorID.Size = new System.Drawing.Size(49, 13);
+            this.AuthorID.TabIndex = 3;
+            this.AuthorID.Text = "AuthorID";
+            // 
+            // flowLayoutPanelAuthorBooks
+            // 
+            this.flowLayoutPanelAuthorBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelAuthorBooks.AutoScroll = true;
+            this.flowLayoutPanelAuthorBooks.Location = new System.Drawing.Point(30, 124);
+            this.flowLayoutPanelAuthorBooks.MaximumSize = new System.Drawing.Size(0, 930);
+            this.flowLayoutPanelAuthorBooks.MinimumSize = new System.Drawing.Size(710, 52);
+            this.flowLayoutPanelAuthorBooks.Name = "flowLayoutPanelAuthorBooks";
+            this.flowLayoutPanelAuthorBooks.Size = new System.Drawing.Size(710, 310);
+            this.flowLayoutPanelAuthorBooks.TabIndex = 4;
+            // 
+            // Back
+            // 
+            this.Back.AutoSize = true;
+            this.Back.BackColor = System.Drawing.Color.Silver;
+            this.Back.Font = new System.Drawing.Font("Arial Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Back.Location = new System.Drawing.Point(4, -1);
+            this.Back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(47, 41);
+            this.Back.TabIndex = 75;
+            this.Back.Text = "←";
+            this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
             // Exit
             // 
@@ -53,7 +116,7 @@
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(26, 26);
             this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Exit.TabIndex = 74;
+            this.Exit.TabIndex = 78;
             this.Exit.TabStop = false;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -62,11 +125,11 @@
             this.Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Resize.BackColor = System.Drawing.Color.Silver;
             this.Resize.Image = global::BookWarm.Properties.Resources.resize;
-            this.Resize.Location = new System.Drawing.Point(688, 10);
+            this.Resize.Location = new System.Drawing.Point(688, 11);
             this.Resize.Name = "Resize";
             this.Resize.Size = new System.Drawing.Size(20, 20);
             this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Resize.TabIndex = 73;
+            this.Resize.TabIndex = 77;
             this.Resize.TabStop = false;
             this.Resize.Visible = false;
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
@@ -81,7 +144,7 @@
             this.Minimize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(23, 19);
-            this.Minimize.TabIndex = 71;
+            this.Minimize.TabIndex = 75;
             this.Minimize.Text = "—";
             this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
             // 
@@ -97,80 +160,32 @@
             this.AuthenticationPanel.Size = new System.Drawing.Size(750, 41);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
-            this.AuthenticationPanel.TabIndex = 72;
+            this.AuthenticationPanel.TabIndex = 76;
             // 
-            // Back
-            // 
-            this.Back.AutoSize = true;
-            this.Back.BackColor = System.Drawing.Color.Silver;
-            this.Back.Font = new System.Drawing.Font("Arial Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Back.Location = new System.Drawing.Point(4, 0);
-            this.Back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(47, 41);
-            this.Back.TabIndex = 75;
-            this.Back.Text = "←";
-            this.Back.Click += new System.EventHandler(this.Back_Click);
-            // 
-            // titleText
-            // 
-            this.titleText.AutoSize = true;
-            this.titleText.Location = new System.Drawing.Point(292, 93);
-            this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(27, 13);
-            this.titleText.TabIndex = 75;
-            this.titleText.Text = "Title";
-            // 
-            // authorText
-            // 
-            this.authorText.AutoSize = true;
-            this.authorText.Location = new System.Drawing.Point(292, 119);
-            this.authorText.Name = "authorText";
-            this.authorText.Size = new System.Drawing.Size(38, 13);
-            this.authorText.TabIndex = 76;
-            this.authorText.Text = "Author";
-            // 
-            // ViewCount
-            // 
-            this.ViewCount.Location = new System.Drawing.Point(270, 145);
-            this.ViewCount.Name = "ViewCount";
-            this.ViewCount.Size = new System.Drawing.Size(45, 13);
-            this.ViewCount.TabIndex = 78;
-            this.ViewCount.Text = "View";
-            this.ViewCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ReadsCount
-            // 
-            this.ReadsCount.Location = new System.Drawing.Point(313, 145);
-            this.ReadsCount.Name = "ReadsCount";
-            this.ReadsCount.Size = new System.Drawing.Size(41, 13);
-            this.ReadsCount.TabIndex = 77;
-            this.ReadsCount.Text = "Reads";
-            this.ReadsCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BookInfo
+            // AuthorInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(750, 488);
+            this.Controls.Add(this.AuthorID);
+            this.Controls.Add(this.RelationID);
+            this.Controls.Add(this.AuthorNameText);
+            this.Controls.Add(this.CountryText);
             this.Controls.Add(this.Minimize);
-            this.Controls.Add(this.ViewCount);
-            this.Controls.Add(this.ReadsCount);
-            this.Controls.Add(this.authorText);
-            this.Controls.Add(this.titleText);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Resize);
             this.Controls.Add(this.AuthenticationPanel);
+            this.Controls.Add(this.flowLayoutPanelAuthorBooks);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "BookInfo";
+            this.Name = "AuthorInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.Rounding = 10;
-            this.Text = "BookWorm";
+            this.Text = "AuthorInfo";
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
@@ -183,14 +198,15 @@
 
         #endregion
 
+        private System.Windows.Forms.Label CountryText;
+        private System.Windows.Forms.Label AuthorNameText;
+        private System.Windows.Forms.Label RelationID;
+        private System.Windows.Forms.Label AuthorID;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAuthorBooks;
+        private System.Windows.Forms.Label Back;
         private System.Windows.Forms.PictureBox Exit;
         private System.Windows.Forms.PictureBox Resize;
         private System.Windows.Forms.Label Minimize;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel AuthenticationPanel;
-        private System.Windows.Forms.Label Back;
-        private System.Windows.Forms.Label titleText;
-        private System.Windows.Forms.Label authorText;
-        private System.Windows.Forms.Label ViewCount;
-        private System.Windows.Forms.Label ReadsCount;
     }
 }

@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
@@ -17,12 +18,16 @@ namespace BookWarm
     {
         public static List<Book> books;
         public static List<BookStat> bookStatList;
+        public static List<Author> authorList;
         private User user;
         private Size originPhotoSize;
         private Point originPhotoLocation;
         private bool isMaximized = false; // Перевірка стану максимізації
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
+        private Point originPopularLocation;
+        private Point originRatingLocation;
+        private Point originNewLocation;
         private static Random random = new Random();
 
         public Main(string username)
@@ -42,12 +47,16 @@ namespace BookWarm
 
                 books = new List<Book>();
                 bookStatList = new List<BookStat>();
+                authorList = new List<Author>();
 
                 Search.Leave += textBoxSearch_Leave;
                 Search.Enter += textBoxSearch_Enter;
 
                 originPhotoLocation = profilePhotoPictureBox.Location;
                 originPhotoSize = profilePhotoPictureBox.Size;
+                originPopularLocation = Popular.Location;
+                originRatingLocation = Rating.Location;
+                originNewLocation = New.Location;
 
                 Resize_Click(this, EventArgs.Empty);
 
@@ -120,13 +129,13 @@ namespace BookWarm
                                 {
                                     // Отримання даних для кожної книги
                                     BookID = (int)reader["BookID"],
+                                    AuthorID = (int)reader["AuthorID"],
                                     Title = reader["Title"].ToString(),
-                                    Author = reader["Author"].ToString(),
                                     Description = reader["Description"].ToString(),
                                     Language = reader["Language"].ToString(),
                                     Year = (int)reader["Year"],
                                     AgeCategory = (int)reader["AgeCategory"],
-                                    AverageRating = (decimal)reader["AverageRating"],
+                                    AverageRating = reader["AverageRating"] == DBNull.Value ? 0m : Convert.ToDecimal(reader["AverageRating"]),
                                     Content = reader["Content"].ToString(),
                                     // Отримання байтового масиву для зображення
                                     CoverImage = (reader["CoverImage"] == DBNull.Value ? null : (byte[])reader["CoverImage"])
@@ -146,6 +155,44 @@ namespace BookWarm
                             }
                         }
                     }
+
+                    string authorQuery = "SELECT * FROM Author " +
+                     "INNER JOIN AuthorBookRelation ON Author.AuthorID = AuthorBookRelation.AuthorID";
+
+                    using (SqlCommand command = new SqlCommand(authorQuery, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Author author = new Author
+                                {
+                                    // Отримання даних для кожного автора
+                                    AuthorID = (int)reader["AuthorID"],
+                                    BookID = (int)reader["BookID"],
+                                    RelationID = (int)reader["RelationID"],
+                                    AuthorName = reader["AuthorName"].ToString(),
+                                    Country = reader["Country"].ToString(),
+                                    Age = (int)reader["Age"],
+                                    // Отримання байтового масиву для зображення
+                                    AuthorPhoto = (reader["AuthorPhoto"] == DBNull.Value ? null : (byte[])reader["AuthorPhoto"])
+                                };
+
+                                // Опціонально: перетворення байтового масиву в об'єкт Image
+                                if (author.AuthorPhoto != null)
+                                {
+
+                                    // Використання ImageConverter для конвертації байтів у Image
+                                    ImageConverter converter = new ImageConverter();
+                                    Image img = (Image)converter.ConvertFrom(author.AuthorPhoto);
+                                    author.AuthorPhotoObject = img;
+
+                                    authorList.Add(author);
+                                }
+                            }
+                        }
+                    }
+
 
                     // Отримання даних про прочитані книги з бази даних
                     string readsQuery = "SELECT * FROM BookReads";
@@ -238,17 +285,17 @@ namespace BookWarm
         {
             if (isMaximized)
             {
-                // Повертаємо вікно до звичайного розміру
+/*                // Повертаємо вікно до звичайного розміру
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = originalFormBorderStyle;
                 this.Size = originalSize;
                 CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                isMaximized = false;
                 profilePhotoPictureBox.Size = originPhotoSize; // Збільшння розміру 
                 profilePhotoPictureBox.Location = originPhotoLocation;
-                Popular.Location = new Point(Popular.Location.X, Popular.Location.Y + 25);
-
-                //profilePhotoPictureBox.Location = new Point(440, 520);
+                Popular.Location = originPopularLocation;
+                Rating.Location = originRatingLocation;
+                New.Location = originNewLocation;*/
+                isMaximized = false;
             }
             else
             {
@@ -256,7 +303,9 @@ namespace BookWarm
                 originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
-                Popular.Location = new Point(Popular.Location.X, Popular.Location.Y - 25);
+                Popular.Location = new Point(Popular.Location.X - 5, Popular.Location.Y - 25);
+                New.Location = new Point(New.Location.X - 5, New.Location.Y);
+                Rating.Location = new Point(Rating.Location.X - 8, Rating.Location.Y - 20);
                 // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
@@ -284,8 +333,9 @@ namespace BookWarm
             if (!string.IsNullOrEmpty(user.UserName))
             {
                 this.Hide();
-                UserProfile userProfile = new UserProfile(user.UserName);
-                userProfile.Show();
+                UserProfile userProfile = new UserProfile(user.UserName, this);
+                userProfile.ShowDialog();
+                this.Show();
             }
         }
 
@@ -373,11 +423,11 @@ namespace BookWarm
             }
         }
 
-        private void PopulateBookData()
+        public void PopulateBookData()
         {
             // Shuffle the books list
             Shuffle(books);
-
+            flowLayoutPanelNew.Controls.Clear();
             // Now, update the vertical scrollbar range based on the content height
             int totalHeight = 0;
             const int maxBooksToShow = 8;
@@ -386,13 +436,13 @@ namespace BookWarm
             for (int i = 0; i < Math.Min(books.Count, maxBooksToShow); i++)
             {
                 Book book = books[i];
-
                 if (book.Year >= 2023)
                 {
                     BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-                    UserControlPopularBook bookControl = new UserControlPopularBook(this);
-                    bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
 
+                    UserControlPopularBook bookControl = new UserControlPopularBook(this);
+                    // Pass the Author object instead of AuthorName
+                    bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
 
                     flowLayoutPanelNew.Controls.Add(bookControl);
 
@@ -402,7 +452,11 @@ namespace BookWarm
             }
         }
 
-        private void PopularBookData()
+
+
+
+
+        public void PopularBookData()
         {
             Shuffle(books);
             flowLayoutPanelPopular.Controls.Clear();
@@ -419,10 +473,9 @@ namespace BookWarm
             {
                 // Знайдіть відповідний об'єкт BookStat для цієї книги
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-
                 // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
                 UserControlPopularBook bookControl = new UserControlPopularBook(this);
-                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
                 flowLayoutPanelPopular.Controls.Add(bookControl);
 
                 totalHeight += bookControl.Height;
@@ -430,7 +483,7 @@ namespace BookWarm
         }
 
 
-        private void RatingBookData()
+        public void RatingBookData()
         {
             Shuffle(books);
             flowLayoutPanelRating.Controls.Clear();
@@ -441,10 +494,9 @@ namespace BookWarm
             {
                 // Знайдіть відповідний об'єкт BookStat для цієї книги
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-
                 // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
                 UserControlPopularBook bookControl = new UserControlPopularBook(this);
-                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.Author, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
                 flowLayoutPanelRating.Controls.Add(bookControl);
 
                 totalHeight += bookControl.Height;
@@ -466,25 +518,54 @@ namespace BookWarm
                 list[n] = value;
             }
         }
-
-
-        private void SetupFlowLayout()
-        {
-            // Set WrapContents to false
-            flowLayoutPanelNew.WrapContents = false;
-
-            // Add controls to the FlowLayoutPanel
-            for (int i = 0; i < 10; i++)
-            {
-                // Add controls with a width that exceeds the FlowLayoutPanel's width
-                UserControlNewBook bookControl = new UserControlNewBook();
-                flowLayoutPanelNew.Controls.Add(bookControl);
-            }
-        }
-
         private void Main_Scroll(object sender, ScrollEventArgs e)
         {
 
+        }
+
+        public void UpdatePhoto()
+        {
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                string sqlQuery = "SELECT * FROM Users WHERE Username = @username;";
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@username", user.UserName);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            user = new User
+                            {
+                                UserId = (int)reader["UserID"],
+                                FirstName = reader["FirstName"].ToString(),
+                                LastName = reader["LastName"].ToString(),
+                                UserName = reader["UserName"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Age = (int)reader["Age"],
+                                PasswordHash = reader["PasswordHash"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                ProfilePhoto = (reader["ProfilePhoto"] == DBNull.Value ? null : (byte[])reader["ProfilePhoto"])
+                            };
+                        }
+                    }
+                }
+            }
+
+            if (user.ProfilePhoto != null) // User has a photo.
+            {
+                using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
+                {
+                    profilePhotoPictureBox.Image = Image.FromStream(ms);
+
+                }
+            }
+            else
+            {
+                profilePhotoPictureBox.Image = Properties.Resources.logo;
+            }
         }
     }
 }

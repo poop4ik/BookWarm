@@ -109,7 +109,7 @@ namespace BookWarm
 
                 ValidLoginAndPassword.Visible = false;
                 Main mainForm = new Main(username);
-                UserProfile userProfile = new UserProfile(username);
+                UserProfile userProfile = new UserProfile(username, mainForm);
                 mainForm.Show();
             }
             else

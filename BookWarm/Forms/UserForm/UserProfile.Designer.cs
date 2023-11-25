@@ -68,7 +68,7 @@
             this.Minimize.AutoSize = true;
             this.Minimize.BackColor = System.Drawing.Color.Silver;
             this.Minimize.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Minimize.Location = new System.Drawing.Point(615, 9);
+            this.Minimize.Location = new System.Drawing.Point(637, 9);
             this.Minimize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(23, 19);
@@ -129,6 +129,7 @@
             this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Resize.TabIndex = 68;
             this.Resize.TabStop = false;
+            this.Resize.Visible = false;
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
             // 
             // ChangeInfo
@@ -204,11 +205,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(750, 488);
+            this.Controls.Add(this.Minimize);
             this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblFullName);
-            this.Controls.Add(this.Minimize);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.AuthenticationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

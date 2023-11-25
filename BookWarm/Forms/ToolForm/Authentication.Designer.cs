@@ -125,10 +125,7 @@
             this.tableAdapterManager.BookReadsTableAdapter = null;
             this.tableAdapterManager.BooksTableAdapter = null;
             this.tableAdapterManager.BookViewsTableAdapter = null;
-            this.tableAdapterManager.ForeignBooksTableAdapter = null;
-            this.tableAdapterManager.MainBooksTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UserFavoritesTableAdapter = null;
             this.tableAdapterManager.UserPreferencesTableAdapter = null;
             this.tableAdapterManager.UserReviewsTableAdapter = null;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
@@ -223,7 +220,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.Rounding = 10;
-            this.Text = "Authentication";
+            this.Text = "BookWorm";
             this.Load += new System.EventHandler(this.Authentication_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
