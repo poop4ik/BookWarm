@@ -184,7 +184,8 @@ namespace BookWarm.Forms.MainForm
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-
+                int newBookPngX = AuthorBooks.Location.X + 500;
+                BookPng.Location = new Point(newBookPngX, BookPng.Location.Y);
                 isMaximized = true;
             }
         }

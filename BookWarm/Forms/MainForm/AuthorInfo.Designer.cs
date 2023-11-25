@@ -46,6 +46,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.AvarageRatingAuthor = new System.Windows.Forms.Label();
             this.numberOfBooksAuthor = new System.Windows.Forms.Label();
+            this.BookPng = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
@@ -55,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BookPng)).BeginInit();
             this.SuspendLayout();
             // 
             // CountryAuthor
@@ -147,6 +149,7 @@
             this.AuthenticationPanel.Size = new System.Drawing.Size(750, 41);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
+            this.AuthenticationPanel.StateCommon.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.AuthenticationPanel.TabIndex = 76;
             // 
             // AuthorImage
@@ -273,12 +276,26 @@
             this.numberOfBooksAuthor.Text = "NumberOfBooksAuthor";
             this.numberOfBooksAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BookPng
+            // 
+            this.BookPng.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BookPng.Image = global::BookWarm.Properties.Resources.book;
+            this.BookPng.Location = new System.Drawing.Point(213, 404);
+            this.BookPng.MaximumSize = new System.Drawing.Size(50, 50);
+            this.BookPng.Name = "BookPng";
+            this.BookPng.Size = new System.Drawing.Size(50, 50);
+            this.BookPng.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BookPng.TabIndex = 90;
+            this.BookPng.TabStop = false;
+            // 
             // AuthorInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(750, 488);
+            this.Controls.Add(this.BookPng);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.AvarageRatingAuthor);
@@ -302,6 +319,7 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Border.Rounding = 10;
             this.Text = "AuthorInfo";
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
@@ -314,6 +332,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BookPng)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,5 +357,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label AvarageRatingAuthor;
         private System.Windows.Forms.Label numberOfBooksAuthor;
+        private System.Windows.Forms.PictureBox BookPng;
     }
 }

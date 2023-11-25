@@ -33,7 +33,7 @@ namespace BookWarm
             }
 
             // Ваш код для використання title, author, averageRating, readsCount, viewCount і coverImage
-            Title.Text = title;
+            Title.Text = $"«{title}»";
 
             // Find the author with the given authorID
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);

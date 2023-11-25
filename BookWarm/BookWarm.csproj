@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Data\Models\Author.cs" />
     <Compile Include="Data\Models\Book.cs" />
+    <Compile Include="Data\Models\BookGenre.cs" />
     <Compile Include="Data\Models\BookStat.cs" />
     <Compile Include="Forms\MainForm\AuthorInfo.cs">
       <SubType>Form</SubType>
@@ -332,6 +333,7 @@
     <None Include="Resources\search.png" />
     <None Include="Resources\star.png" />
     <None Include="Resources\searchv2.png" />
+    <None Include="Resources\book.png" />
     <Content Include="Без-назви-3.ico" />
   </ItemGroup>
   <ItemGroup>

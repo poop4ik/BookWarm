@@ -86,6 +86,7 @@
             this.AuthenticationPanel.Size = new System.Drawing.Size(750, 41);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
+            this.AuthenticationPanel.StateCommon.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.AuthenticationPanel.TabIndex = 63;
             // 
             // Search
@@ -102,6 +103,7 @@
             this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.Search.StateCommon.Border.Rounding = 7F;
             this.Search.TabIndex = 100;
             this.Search.Text = "Search";
@@ -162,7 +164,7 @@
             // 
             this.SeacrhClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SeacrhClick.BackColor = System.Drawing.Color.Transparent;
-            this.SeacrhClick.Image = global::BookWarm.Properties.Resources.searchv2;
+            this.SeacrhClick.Image = ((System.Drawing.Image)(resources.GetObject("SeacrhClick.Image")));
             this.SeacrhClick.Location = new System.Drawing.Point(523, 44);
             this.SeacrhClick.Name = "SeacrhClick";
             this.SeacrhClick.Size = new System.Drawing.Size(21, 28);
@@ -175,7 +177,7 @@
             // 
             this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Exit.BackColor = System.Drawing.Color.Silver;
-            this.Exit.Image = global::BookWarm.Properties.Resources.exit;
+            this.Exit.Image = ((System.Drawing.Image)(resources.GetObject("Exit.Image")));
             this.Exit.Location = new System.Drawing.Point(712, 6);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(26, 26);
@@ -188,7 +190,7 @@
             // 
             this.Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Resize.BackColor = System.Drawing.Color.Silver;
-            this.Resize.Image = global::BookWarm.Properties.Resources.resize;
+            this.Resize.Image = ((System.Drawing.Image)(resources.GetObject("Resize.Image")));
             this.Resize.Location = new System.Drawing.Point(688, 10);
             this.Resize.Name = "Resize";
             this.Resize.Size = new System.Drawing.Size(20, 20);
@@ -341,6 +343,7 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Border.Rounding = 10;
             this.Text = "BookWorm";
             this.Load += new System.EventHandler(this.Main_Load);

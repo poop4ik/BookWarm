@@ -122,7 +122,7 @@
             // 
             // ViewCount
             // 
-            this.ViewCount.Location = new System.Drawing.Point(65, 223);
+            this.ViewCount.Location = new System.Drawing.Point(65, 227);
             this.ViewCount.Name = "ViewCount";
             this.ViewCount.Size = new System.Drawing.Size(45, 13);
             this.ViewCount.TabIndex = 54;
@@ -131,7 +131,7 @@
             // 
             // ReadsCount
             // 
-            this.ReadsCount.Location = new System.Drawing.Point(108, 223);
+            this.ReadsCount.Location = new System.Drawing.Point(108, 227);
             this.ReadsCount.Name = "ReadsCount";
             this.ReadsCount.Size = new System.Drawing.Size(41, 13);
             this.ReadsCount.TabIndex = 53;

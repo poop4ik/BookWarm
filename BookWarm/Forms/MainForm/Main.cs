@@ -19,6 +19,7 @@ namespace BookWarm
         public static List<Book> books;
         public static List<BookStat> bookStatList;
         public static List<Author> authorList;
+        public static List<BookGenre> bookGenresList;
         private User user;
         private Size originPhotoSize;
         private Point originPhotoLocation;
@@ -50,6 +51,7 @@ namespace BookWarm
                 books = new List<Book>();
                 bookStatList = new List<BookStat>();
                 authorList = new List<Author>();
+                bookGenresList = new List<BookGenre>();
 
                 Search.Leave += textBoxSearch_Leave;
                 Search.Enter += textBoxSearch_Enter;
@@ -119,7 +121,8 @@ namespace BookWarm
                 using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                 {
                     // Отримання книг з бази даних
-                    string sqlQuery = "SELECT * FROM Books ";
+                    string sqlQuery = "SELECT * FROM BOOKS";
+
                     using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
                         connection.Open();
@@ -137,9 +140,8 @@ namespace BookWarm
                                     Language = reader["Language"].ToString(),
                                     Year = (int)reader["Year"],
                                     AgeCategory = (int)reader["AgeCategory"],
-                                    AverageRating = reader["AverageRating"] == DBNull.Value ? 0m : Convert.ToDecimal(reader["AverageRating"]),
                                     Content = reader["Content"].ToString(),
-                                    // Отримання байтового масиву для зображення
+                                    AverageRating = reader["AverageRating"] == DBNull.Value ? 0m : Convert.ToDecimal(reader["AverageRating"]),
                                     CoverImage = (reader["CoverImage"] == DBNull.Value ? null : (byte[])reader["CoverImage"])
                                 };
 
@@ -157,6 +159,32 @@ namespace BookWarm
                             }
                         }
                     }
+
+                    string sqlGenreQuery = "SELECT G.GenreID, G.GenreName, GBR.GenreBookRelationID " +
+                                          "FROM Genres G " +
+                                          "JOIN GenreBookRelation GBR ON G.GenreID = GBR.GenreID";
+
+                    using (SqlCommand command = new SqlCommand(sqlGenreQuery, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                BookGenre bookGenre = new BookGenre
+                                {
+                                    GenreID = (int)reader["GenreID"],
+                                    GenreName = reader["GenreName"].ToString(),
+                                    GenreBookRelationID = (int)reader["GenreBookRelationID"]
+                                };
+
+                                bookGenresList.Add(bookGenre);
+                                Console.WriteLine($"{bookGenre.GenreBookRelationID} {bookGenre.GenreName} {bookGenre.GenreID}");
+                            }
+                        }
+                        
+                    }
+
+                   
 
                     string authorQuery = "SELECT * FROM Author " +
                      "INNER JOIN AuthorBookRelation ON Author.AuthorID = AuthorBookRelation.AuthorID";
