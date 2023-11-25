@@ -50,16 +50,58 @@ namespace BookWarm.Forms.MainForm
         {
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
 
-            // Check if the author is found
+            // Перевірка, чи знайдено автора
             if (author != null)
             {
-                // Display author information on the form
-                AuthorNameText.Text = author.AuthorName;
-                CountryText.Text = author.Country;
-                AuthorID.Text = $"{author.AuthorID}";
-                RelationID.Text = $"{author.RelationID}";
+                // Очищення значень
+                AvarageRatingAuthor.Text = "";
+
+                // Змінні для обчислення середньої оцінки
+                decimal totalRating = 0;
+                int numberOfBooks = 0;
+
+                // Перебір книг, пов'язаних з автором
+                foreach (Book book in Main.books.Where(b => b.AuthorID == authorID))
+                {
+                    // Отримання відповідного об'єкта BookStat для поточної книги
+                    BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
+
+                    // Оновлення значень для виведення на форму
+                    AvarageRatingAuthor.Text += $"{book.AverageRating}\n";
+
+                    // Обчислення суми оцінок і кількості книг
+                    totalRating += book.AverageRating;
+                    numberOfBooks++;
+                }
+
+                // Перевірка, чи є книги для обчислення середньої оцінки
+                if (numberOfBooks > 0)
+                {
+                    // Обчислення середньої оцінки
+                    decimal averageRating = totalRating / numberOfBooks;
+
+                    // Визначення кількості зірок (округлення середньої оцінки до ближайшого цілого)
+                    int starCount = (int)Math.Round(averageRating);
+
+                    // Виведення кількості зірок та пустих зірок на форму
+                    string stars = new string('★', starCount);
+                    string emptyStars = new string('☆', 5 - starCount);
+
+                    // Виведення середньої оцінки на форму
+                    AvarageRatingAuthor.Text = $"Середня оцінка: {averageRating} {stars}{emptyStars}";
+
+                    // Виведення інших даних про автора на форму
+                    numberOfBooksAuthor.Text = $"Кількість книг: {numberOfBooks} ";
+                    AuthorName.Text = author.AuthorName;
+                    CountryAuthor.Text = $"Країна: {author.Country}";
+                    AgeAuthor.Text = $"Вік: {author.Age}";
+                    AuthorImage.Image = author.AuthorPhotoObject;
+                }
             }
         }
+
+
+
 
         private void PopulateBooksByAuthor(int authorID)
         {

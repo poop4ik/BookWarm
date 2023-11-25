@@ -154,7 +154,7 @@
             this.Controls.Add(this.Author);
             this.Controls.Add(this.pictureBox3);
             this.Name = "UserControlPopularBook";
-            this.Size = new System.Drawing.Size(225, 273);
+            this.Size = new System.Drawing.Size(225, 280);
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BookImage)).EndInit();

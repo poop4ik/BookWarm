@@ -94,6 +94,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Search.Location = new System.Drawing.Point(206, 45);
             this.Search.Name = "Search";
+            this.Search.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Search.Size = new System.Drawing.Size(311, 27);
             this.Search.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Search.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
@@ -102,8 +103,9 @@
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Search.StateCommon.Border.Rounding = 7F;
-            this.Search.TabIndex = 72;
+            this.Search.TabIndex = 100;
             this.Search.Text = "Search";
+            this.Search.UseMnemonic = false;
             this.Search.Enter += new System.EventHandler(this.textBoxSearch_Enter);
             this.Search.Leave += new System.EventHandler(this.textBoxSearch_Leave);
             // 
@@ -242,9 +244,13 @@
             this.tableAdapterManager.BookReadsTableAdapter = null;
             this.tableAdapterManager.BooksTableAdapter = null;
             this.tableAdapterManager.BookViewsTableAdapter = null;
+            this.tableAdapterManager.GenreBookRelationTableAdapter = null;
             this.tableAdapterManager.GenresTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UserHistoryTableAdapter = null;
             this.tableAdapterManager.UserPreferencesTableAdapter = null;
+            this.tableAdapterManager.UserReadNowTableAdapter = null;
+            this.tableAdapterManager.UserReadTableAdapter = null;
             this.tableAdapterManager.UserReviewsTableAdapter = null;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             this.tableAdapterManager.UserStatisticsTableAdapter = null;

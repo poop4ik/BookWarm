@@ -45,6 +45,8 @@ namespace BookWarm
             {
                 InitializeComponent();
 
+                
+
                 books = new List<Book>();
                 bookStatList = new List<BookStat>();
                 authorList = new List<Author>();
@@ -394,18 +396,21 @@ namespace BookWarm
             previousScrollValue = scrollValue;
         }
 
+        private void textBoxSearch_Leave(object sender, EventArgs e)
+        {
+            // Перевірити, чи текстове поле не має фокусу та чи не введено жодного тексту
+            if (!Search.Focused && string.IsNullOrWhiteSpace(Search.Text))
+            {
+                Search.Text = "Search";
+            }
+        }
 
         private void textBoxSearch_Enter(object sender, EventArgs e)
         {
-            // Очистити текст у TextBox при фокусі
-            Search.Text = "";
-        }
-
-        private void textBoxSearch_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(Search.Text))
+            // Очистити текст у TextBox при фокусі, тільки якщо він містить "Search"
+            if (Search.Text == "Search")
             {
-                Search.Text = "Search";
+                Search.Text = "";
             }
         }
 
