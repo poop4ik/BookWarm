@@ -1,5 +1,6 @@
 ﻿using BookWarm.Data.Models;
 using BookWarm.Forms.MainForm;
+using BookWarm.Forms.ToolForm;
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace BookWarm
         public static List<BookStat> bookStatList;
         public static List<Author> authorList;
         public static List<BookGenre> bookGenresList;
-        private User user;
+        public static List<Review> userReviewList;
+        public static User user;
         private Size originPhotoSize;
         private Point originPhotoLocation;
         private bool isMaximized = false; // Перевірка стану максимізації
@@ -34,7 +36,6 @@ namespace BookWarm
         public Main(string username)
         {
 
-
             if (string.IsNullOrEmpty(username))
             {
                 // Якщо ім'я користувача порожнє, перейти до форми аутентифікації
@@ -46,12 +47,11 @@ namespace BookWarm
             {
                 InitializeComponent();
 
-                
-
                 books = new List<Book>();
                 bookStatList = new List<BookStat>();
                 authorList = new List<Author>();
                 bookGenresList = new List<BookGenre>();
+                userReviewList = new List<Review>();
 
                 Search.Leave += textBoxSearch_Leave;
                 Search.Enter += textBoxSearch_Enter;
@@ -112,6 +112,9 @@ namespace BookWarm
                         profilePhotoPictureBox.Image = Image.FromStream(ms);
 
                     }
+                    ImageConverter converter = new ImageConverter();
+                    Image img = (Image)converter.ConvertFrom(user.ProfilePhoto);
+                    user.ProfilePhotoObject = img;
                 }
                 else
                 {
@@ -178,13 +181,35 @@ namespace BookWarm
                                 };
 
                                 bookGenresList.Add(bookGenre);
-                                Console.WriteLine($"{bookGenre.GenreBookRelationID} {bookGenre.GenreName} {bookGenre.GenreID}");
                             }
                         }
                         
                     }
 
-                   
+                    string sqlReviewQuery = "SELECT * FROM UserReviews";
+
+                    using (SqlCommand command = new SqlCommand(sqlReviewQuery, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Review review = new Review
+                                {
+                                    ReviewID = (int)reader["ReviewID"],
+                                    UserID = (int)reader["UserID"],
+                                    BookID = (int)reader["BookID"],
+                                    ReviewText = reader["ReviewText"].ToString(),
+                                    ReviewDate = reader["ReviewDate"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["ReviewDate"]),
+                                    Rate = reader["Rate"] == DBNull.Value ? 0m : Convert.ToDecimal(reader["Rate"])
+                                };
+
+                                userReviewList.Add(review);
+                            }
+                        }
+                    }
+
+
 
                     string authorQuery = "SELECT * FROM Author " +
                      "INNER JOIN AuthorBookRelation ON Author.AuthorID = AuthorBookRelation.AuthorID";
@@ -299,7 +324,6 @@ namespace BookWarm
                             }
                         }
                     }
-
                     // Виклик функції для відображення популярних книг
 
                     PopularBookData();
@@ -484,10 +508,6 @@ namespace BookWarm
                 }
             }
         }
-
-
-
-
 
         public void PopularBookData()
         {

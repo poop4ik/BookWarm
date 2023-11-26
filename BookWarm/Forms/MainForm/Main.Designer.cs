@@ -86,7 +86,6 @@
             this.AuthenticationPanel.Size = new System.Drawing.Size(750, 41);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
-            this.AuthenticationPanel.StateCommon.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.AuthenticationPanel.TabIndex = 63;
             // 
             // Search
@@ -103,7 +102,6 @@
             this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Search.StateCommon.Border.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.Search.StateCommon.Border.Rounding = 7F;
             this.Search.TabIndex = 100;
             this.Search.Text = "Search";
@@ -302,10 +300,10 @@
             this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
             this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
             this.profilePhotoPictureBox.Gradiant = 50F;
-            this.profilePhotoPictureBox.Location = new System.Drawing.Point(345, 426);
+            this.profilePhotoPictureBox.Location = new System.Drawing.Point(345, 419);
             this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
-            this.profilePhotoPictureBox.Size = new System.Drawing.Size(45, 45);
+            this.profilePhotoPictureBox.Size = new System.Drawing.Size(60, 60);
             this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profilePhotoPictureBox.TabIndex = 61;
             this.profilePhotoPictureBox.TabStop = false;
@@ -343,7 +341,6 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Border.Rounding = 10;
             this.Text = "BookWorm";
             this.Load += new System.EventHandler(this.Main_Load);

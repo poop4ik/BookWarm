@@ -1,9 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
-using BookWarm.Data.Models;
+﻿using System.Drawing;
 
 
 namespace BookWarm.Data.Models
