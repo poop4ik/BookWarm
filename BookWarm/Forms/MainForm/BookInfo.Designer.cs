@@ -60,6 +60,7 @@
             this.Exit = new System.Windows.Forms.PictureBox();
             this.Resize = new System.Windows.Forms.PictureBox();
             this.WriteReview = new System.Windows.Forms.Label();
+            this.ReadLater = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BookPng2)).BeginInit();
@@ -255,7 +256,7 @@
             this.Description.Multiline = true;
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
-            this.Description.Size = new System.Drawing.Size(631, 212);
+            this.Description.Size = new System.Drawing.Size(631, 87);
             this.Description.TabIndex = 211;
             this.Description.Text = "Description";
             // 
@@ -264,7 +265,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Arial Black", 16F);
-            this.label6.Location = new System.Drawing.Point(623, 520);
+            this.label6.Location = new System.Drawing.Point(623, 502);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 31);
             this.label6.TabIndex = 214;
@@ -273,11 +274,11 @@
             // 
             // ReadBook
             // 
-            this.ReadBook.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReadBook.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ReadBook.BackColor = System.Drawing.Color.Silver;
             this.ReadBook.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ReadBook.Font = new System.Drawing.Font("Arial Black", 14F);
-            this.ReadBook.Location = new System.Drawing.Point(885, 307);
+            this.ReadBook.Location = new System.Drawing.Point(873, 725);
             this.ReadBook.Name = "ReadBook";
             this.ReadBook.Size = new System.Drawing.Size(192, 31);
             this.ReadBook.TabIndex = 215;
@@ -291,7 +292,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ReviewGeneral.BackColor = System.Drawing.Color.Transparent;
             this.ReviewGeneral.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.ReviewGeneral.Location = new System.Drawing.Point(555, 624);
+            this.ReviewGeneral.Location = new System.Drawing.Point(555, 597);
             this.ReviewGeneral.Name = "ReviewGeneral";
             this.ReviewGeneral.Size = new System.Drawing.Size(207, 27);
             this.ReviewGeneral.TabIndex = 219;
@@ -303,8 +304,10 @@
             this.flowLayoutPanelReview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelReview.AutoScroll = true;
+            this.flowLayoutPanelReview.AutoScrollMargin = new System.Drawing.Size(1, 1);
+            this.flowLayoutPanelReview.AutoScrollMinSize = new System.Drawing.Size(1, 1);
             this.flowLayoutPanelReview.AutoSize = true;
-            this.flowLayoutPanelReview.Location = new System.Drawing.Point(393, 673);
+            this.flowLayoutPanelReview.Location = new System.Drawing.Point(393, 646);
             this.flowLayoutPanelReview.MaximumSize = new System.Drawing.Size(0, 310);
             this.flowLayoutPanelReview.MinimumSize = new System.Drawing.Size(710, 52);
             this.flowLayoutPanelReview.Name = "flowLayoutPanelReview";
@@ -317,7 +320,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BookPng2.BackColor = System.Drawing.Color.Transparent;
             this.BookPng2.Image = global::BookWarm.Properties.Resources.book;
-            this.BookPng2.Location = new System.Drawing.Point(520, 613);
+            this.BookPng2.Location = new System.Drawing.Point(520, 586);
             this.BookPng2.MaximumSize = new System.Drawing.Size(50, 50);
             this.BookPng2.Name = "BookPng2";
             this.BookPng2.Size = new System.Drawing.Size(50, 50);
@@ -358,7 +361,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox3.Location = new System.Drawing.Point(496, 534);
+            this.pictureBox3.Location = new System.Drawing.Point(496, 516);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(311, 80);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -429,11 +432,11 @@
             // 
             // WriteReview
             // 
-            this.WriteReview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.WriteReview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.WriteReview.BackColor = System.Drawing.Color.Silver;
             this.WriteReview.Cursor = System.Windows.Forms.Cursors.Hand;
             this.WriteReview.Font = new System.Drawing.Font("Arial Black", 14F);
-            this.WriteReview.Location = new System.Drawing.Point(687, 307);
+            this.WriteReview.Location = new System.Drawing.Point(334, 725);
             this.WriteReview.Name = "WriteReview";
             this.WriteReview.Size = new System.Drawing.Size(192, 31);
             this.WriteReview.TabIndex = 222;
@@ -441,21 +444,36 @@
             this.WriteReview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.WriteReview.Click += new System.EventHandler(this.WriteReview_Click);
             // 
+            // ReadLater
+            // 
+            this.ReadLater.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReadLater.BackColor = System.Drawing.Color.Silver;
+            this.ReadLater.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReadLater.Font = new System.Drawing.Font("Arial Black", 12F);
+            this.ReadLater.Location = new System.Drawing.Point(865, 278);
+            this.ReadLater.Name = "ReadLater";
+            this.ReadLater.Size = new System.Drawing.Size(192, 31);
+            this.ReadLater.TabIndex = 223;
+            this.ReadLater.Text = "Відкласти на потім";
+            this.ReadLater.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ReadLater.Click += new System.EventHandler(this.ReadLater_Click);
+            // 
             // BookInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1224, 792);
-            this.Controls.Add(this.BookPng);
+            this.Controls.Add(this.ReadLater);
             this.Controls.Add(this.WriteReview);
+            this.Controls.Add(this.ReadBook);
+            this.Controls.Add(this.BookPng);
             this.Controls.Add(this.flowLayoutPanelReview);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.BookPng2);
             this.Controls.Add(this.ReviewGeneral);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.ReadBook);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.Description);
@@ -535,5 +553,6 @@
         private Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelReview;
         private System.Windows.Forms.Label WriteReview;
+        private System.Windows.Forms.Label ReadLater;
     }
 }

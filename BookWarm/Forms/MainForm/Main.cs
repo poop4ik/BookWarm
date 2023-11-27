@@ -143,7 +143,7 @@ namespace BookWarm
                                     Language = reader["Language"].ToString(),
                                     Year = (int)reader["Year"],
                                     AgeCategory = (int)reader["AgeCategory"],
-                                    Content = reader["Content"].ToString(),
+                                    Content = (reader["Content"] == DBNull.Value ? null : (byte[])reader["Content"]),
                                     AverageRating = reader["AverageRating"] == DBNull.Value ? 0m : Convert.ToDecimal(reader["AverageRating"]),
                                     CoverImage = (reader["CoverImage"] == DBNull.Value ? null : (byte[])reader["CoverImage"])
                                 };

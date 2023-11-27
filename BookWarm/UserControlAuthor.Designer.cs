@@ -47,7 +47,7 @@
             // Title
             // 
             this.Title.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
-            this.Title.Location = new System.Drawing.Point(-17, 163);
+            this.Title.Location = new System.Drawing.Point(-17, 164);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(250, 19);
             this.Title.TabIndex = 1;

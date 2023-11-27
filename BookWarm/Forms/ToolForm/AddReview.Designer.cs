@@ -32,20 +32,20 @@
             this.ReviewText = new System.Windows.Forms.TextBox();
             this.Rating = new System.Windows.Forms.Label();
             this.Username = new System.Windows.Forms.Label();
-            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             this.SendReview = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.ChooseRating = new System.Windows.Forms.NumericUpDown();
             this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.Back = new System.Windows.Forms.Label();
-            this.Exit = new System.Windows.Forms.PictureBox();
             this.StarRate = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.Exit = new System.Windows.Forms.PictureBox();
+            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ChooseRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // ReviewText
@@ -90,24 +90,6 @@
             this.Username.Text = "UserName";
             this.Username.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // profilePhotoPictureBox
-            // 
-            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.profilePhotoPictureBox.Border = 1;
-            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
-            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.Gradiant = 50F;
-            this.profilePhotoPictureBox.Location = new System.Drawing.Point(11, 36);
-            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2);
-            this.profilePhotoPictureBox.MaximumSize = new System.Drawing.Size(200, 200);
-            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
-            this.profilePhotoPictureBox.Size = new System.Drawing.Size(79, 79);
-            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profilePhotoPictureBox.TabIndex = 213;
-            this.profilePhotoPictureBox.TabStop = false;
-            // 
             // SendReview
             // 
             this.SendReview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -120,19 +102,6 @@
             this.SendReview.Text = "Надіслати відгук";
             this.SendReview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SendReview.Click += new System.EventHandler(this.SendReview_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox3.Location = new System.Drawing.Point(493, 154);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(202, 80);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 219;
-            this.pictureBox3.TabStop = false;
             // 
             // ChooseRating
             // 
@@ -183,6 +152,17 @@
             this.Back.Text = "←";
             this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
+            // StarRate
+            // 
+            this.StarRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StarRate.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.StarRate.Location = new System.Drawing.Point(278, 64);
+            this.StarRate.Name = "StarRate";
+            this.StarRate.Size = new System.Drawing.Size(179, 33);
+            this.StarRate.TabIndex = 301;
+            this.StarRate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Exit
             // 
             this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -196,16 +176,36 @@
             this.Exit.TabStop = false;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // StarRate
+            // profilePhotoPictureBox
             // 
-            this.StarRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.profilePhotoPictureBox.Border = 0;
+            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
+            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.Gradiant = 50F;
+            this.profilePhotoPictureBox.Location = new System.Drawing.Point(11, 36);
+            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.profilePhotoPictureBox.MaximumSize = new System.Drawing.Size(200, 200);
+            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
+            this.profilePhotoPictureBox.Size = new System.Drawing.Size(79, 79);
+            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.profilePhotoPictureBox.TabIndex = 213;
+            this.profilePhotoPictureBox.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StarRate.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.StarRate.Location = new System.Drawing.Point(278, 64);
-            this.StarRate.Name = "StarRate";
-            this.StarRate.Size = new System.Drawing.Size(179, 33);
-            this.StarRate.TabIndex = 301;
-            this.StarRate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
+            this.pictureBox3.Location = new System.Drawing.Point(493, 154);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(202, 80);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 219;
+            this.pictureBox3.TabStop = false;
             // 
             // BookWorm
             // 
@@ -232,13 +232,13 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.Rounding = 10;
             this.Text = "Review";
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChooseRating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
             this.AuthenticationPanel.ResumeLayout(false);
             this.AuthenticationPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

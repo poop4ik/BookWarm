@@ -195,13 +195,8 @@ namespace BookWarm
             // Скидаємо ім'я користувача в налаштуваннях
             Properties.Settings.Default.Username = string.Empty;
             Properties.Settings.Default.Save();
+            Application.Exit();
 
-            // Відкриваємо форму Authentication
-            Authentication authForm = new Authentication();
-            authForm.Show();
-
-            // Закриваємо поточну форму
-            this.Close();
         }
     }
 }

@@ -86,7 +86,6 @@ namespace BookWarm.Forms.MainForm
                     genreListBox.Items.Add(string.Join(", ", bookGenres.Select(genre => genre.GenreName)));
 
                     // Populate the FlowLayoutPanel with reviews
-                    // Populate the FlowLayoutPanel with reviews
                     List<Review> bookReviews = GetBookReviews(bookID);
 
                     // Sort the reviews by review date in descending order
@@ -367,9 +366,10 @@ namespace BookWarm.Forms.MainForm
 
         private void WriteReview_Click(object sender, EventArgs e)
         {
-            BookWorm setReview = new BookWorm(bookID, mainForm);
+            ToolForm.BookWorm setReview = new ToolForm.BookWorm(bookID, mainForm);
             setReview.ShowDialog();
             ReviewUpdate();
+            
         }
 
         public void ReviewUpdate()
@@ -400,7 +400,82 @@ namespace BookWarm.Forms.MainForm
             }
         }
 
+        private void AddUserReadRecord(int userID, int bookID)
+        {
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                string sqlQuery = "INSERT INTO [dbo].[UserReadNow] (UserID, BookID) VALUES (@UserID, @BookID)";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@BookID", bookID);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private bool IsUserReadingBook(int userID, int bookID)
+        {
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                string sqlQuery = "SELECT COUNT(*) FROM [dbo].[UserReadNow] WHERE UserID = @UserID AND BookID = @BookID";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@BookID", bookID);
+
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
+        }
+
+        private bool IsUserReadBook(int userID, int bookID)
+        {
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                string sqlQuery = "SELECT COUNT(*) FROM [dbo].[UserRead] WHERE UserID = @UserID AND BookID = @BookID";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@BookID", bookID);
+
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
+        }
+
         private void ReadBook_Click(object sender, EventArgs e)
+        {
+            int userID = Main.user.UserId;
+
+            // Перевірка, чи користувач вже читає цю книгу
+            if (!IsUserReadingBook(userID, bookID))
+            {
+                // Якщо користувач не читає книгу, вставте запис
+                AddUserReadRecord(userID, bookID);
+            }
+
+            // Перевірка, чи користувач вже завершив читати цю книгу
+            if (!IsUserReadBook(userID, bookID))
+            {
+                // Якщо користувач ще не завершив читати книгу, відкривайте BookRead
+                BookRead readBook = new BookRead(bookID, mainForm, authorID);
+                readBook.ShowDialog();
+            }
+        }
+
+        private void ReadLater_Click(object sender, EventArgs e)
         {
 
         }

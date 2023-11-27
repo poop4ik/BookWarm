@@ -10,7 +10,7 @@ namespace BookWarm.Data.Models
         public int AuthorID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Content { get; set; }
+        public byte[] Content { get; set; }
         public int AgeCategory { get; set; }
         public int Year { get; set; }
         public byte[] CoverImage { get; set; }

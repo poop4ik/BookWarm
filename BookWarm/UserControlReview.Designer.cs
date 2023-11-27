@@ -43,7 +43,7 @@
             this.Username.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
             this.Username.Location = new System.Drawing.Point(109, 16);
             this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(166, 33);
+            this.Username.Size = new System.Drawing.Size(102, 23);
             this.Username.TabIndex = 66;
             this.Username.Text = "UserName";
             this.Username.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -90,7 +90,7 @@
             // profilePhotoPictureBox
             // 
             this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.profilePhotoPictureBox.Border = 1;
+            this.profilePhotoPictureBox.Border = 0;
             this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
             this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
@@ -109,6 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.ReviewText);
             this.Controls.Add(this.Rating);
             this.Controls.Add(this.DateTime);

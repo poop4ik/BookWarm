@@ -25,7 +25,7 @@ namespace BookWarm
             else
             {
                 // Якщо ім'я користувача не порожнє, викликаємо форму Main
-                Application.Run(new Main("vaalerie"));
+                Application.Run(new Main(username));
             }
 
         }
