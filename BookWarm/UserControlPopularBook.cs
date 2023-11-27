@@ -53,39 +53,10 @@ namespace BookWarm
 
         private void OpenBookInfoForm(int authorID, int bookID)
         {
-            // Отримати книгу зі списку книг
-            Book book = Main.books.FirstOrDefault(b => b.BookID == bookID);
-            Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
-            // Знайти відповідний об'єкт BookStat
-            BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == bookID);
 
-            // Перевірка, чи книга знайдена
-            if (book != null && bookStat != null)
-            {
-                // Оновити ViewCount в базі даних 
-                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
-                {
-                    // SQL-запит для оновлення ViewCount
-                    string sqlQuery = "UPDATE BookViews SET ViewCount = ViewCount + 1 WHERE BookID = @bookID";
-
-                    // Використовуйте параметри для уникнення SQL-ін'єкцій
-                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@bookID", bookID);
-
-                        // Відкриття підключення та виконання запиту
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-                }
-
-                // Оновити ViewCount у локальному об'єкті BookStat
-                bookStat.ViewCount++;
-
-                // Показати форму BookInfo
-                BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
-                bookInfoForm.Show();
-            }
+            // Показати форму BookInfo
+            BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
+            bookInfoForm.Show();
         }
 
 

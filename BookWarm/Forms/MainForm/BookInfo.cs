@@ -305,44 +305,25 @@ namespace BookWarm.Forms.MainForm
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
-            mainForm.PopulateBookData();
-            mainForm.RatingBookData();
-            mainForm.PopularBookData();
         }
 
         private void Back_Click(object sender, EventArgs e)
         {
 
             this.Close();
-            mainForm.PopulateBookData();
-            mainForm.RatingBookData();
-            mainForm.PopularBookData();
         }
         private void Resize_Click(object sender, EventArgs e)
         {
             if (isMaximized)
             {
-                // Повертаємо вікно до звичайного розміру
-                this.WindowState = FormWindowState.Normal;
-                this.FormBorderStyle = originalFormBorderStyle;
-                this.Size = originalSize;
-                CenterToScreen(); // Розміщуємо вікно в центрі екрану
                 isMaximized = false;
-
             }
             else
             {
-                this.WindowState = FormWindowState.Normal;
-                originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
-                this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
+                // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-
-                int newBookPngX = DescriptionTitle.Location.X + 70;
-                BookPng.Location = new Point(newBookPngX, BookPng.Location.Y);
-                int newBookPng2X= ReviewGeneral.Location.X + 70;
-                BookPng2.Location = new Point(newBookPng2X, BookPng2.Location.Y);
 
                 isMaximized = true;
             }
@@ -459,21 +440,19 @@ namespace BookWarm.Forms.MainForm
         {
             int userID = Main.user.UserId;
 
-            // Перевірка, чи користувач вже читає цю книгу
-            if (!IsUserReadingBook(userID, bookID))
+            // Перевірка, чи користувач вже читає або завершив читання цієї книги
+            if (!IsUserReadingBook(userID, bookID) && !IsUserReadBook(userID, bookID))
             {
-                // Якщо користувач не читає книгу, вставте запис
+                // Якщо користувач не читає і не завершив читання книги, вставте запис
                 AddUserReadRecord(userID, bookID);
+
             }
 
-            // Перевірка, чи користувач вже завершив читати цю книгу
-            if (!IsUserReadBook(userID, bookID))
-            {
-                // Якщо користувач ще не завершив читати книгу, відкривайте BookRead
-                BookRead readBook = new BookRead(bookID, mainForm, authorID);
-                readBook.ShowDialog();
-            }
+            // Відкривайте BookRead
+            BookRead readBook = new BookRead(bookID, mainForm, authorID);
+            readBook.ShowDialog();
         }
+
 
         private void ReadLater_Click(object sender, EventArgs e)
         {

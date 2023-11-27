@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Resize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAANhJREFUSEvtlEEKwjAQRQsiHkAUPalLXXoTV7ryJCp4Bk+h/0EGhpBJ2kVW9sGj
+        Npn5aWJ1mJnKt+BRRhxkqSckL6yFG6VFQnzRR25lC2qo9b0hPpzrU9YWYY4a34MhTHIsG/lI92+5lzmE
+        +5qdtOMKOaUr+Kd7ybU0+MwYc/kufUYT28lVLhlILORFRrubBE/rww3G/K7+mK5HZG/SXa4YSBB+k5O/
+        5O6vKQ1nOeaHVqohnPsQJrHrX4VJQy3coMaHY4gvQo6rhR2LNyQvxNoipXCcGcsw/AANWXBtfagMTQAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="SeacrhClick.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -207,16 +217,6 @@
         U6hEWX4lT5FMDvS+eyc5NAhWPx0mz5W3yS6WbPImulVyzEMlmZs996mTBYvJtSRLN/eSJ8qzJPNobpDk
         2yTH/hNycnSaP/N3/Bs/w8/yf9hh/wTJ7yJtJL+bYziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO
         4ziO4ziO44yUefP+C2r4XclcTj4qAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="Resize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAANhJREFUSEvtlEEKwjAQRQsiHkAUPalLXXoTV7ryJCp4Bk+h/0EGhpBJ2kVW9sGj
-        Npn5aWJ1mJnKt+BRRhxkqSckL6yFG6VFQnzRR25lC2qo9b0hPpzrU9YWYY4a34MhTHIsG/lI92+5lzmE
-        +5qdtOMKOaUr+Kd7ybU0+MwYc/kufUYT28lVLhlILORFRrubBE/rww3G/K7+mK5HZG/SXa4YSBB+k5O/
-        5O6vKQ1nOeaHVqohnPsQJrHrX4VJQy3coMaHY4gvQo6rhR2LNyQvxNoipXCcGcsw/AANWXBtfagMTQAA
-        AABJRU5ErkJggg==
 </value>
   </data>
   <data name="LineLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -55,10 +55,10 @@
             this.AuthenticationPanel.AutoSize = true;
             this.AuthenticationPanel.Controls.Add(this.Back);
             this.AuthenticationPanel.Controls.Add(this.Exit);
-            this.AuthenticationPanel.Location = new System.Drawing.Point(-3, 2);
-            this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.AuthenticationPanel.Location = new System.Drawing.Point(-4, 2);
+            this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AuthenticationPanel.Name = "AuthenticationPanel";
-            this.AuthenticationPanel.Size = new System.Drawing.Size(1039, 37);
+            this.AuthenticationPanel.Size = new System.Drawing.Size(1385, 47);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
             this.AuthenticationPanel.TabIndex = 222;
@@ -68,10 +68,10 @@
             this.Back.AutoSize = true;
             this.Back.BackColor = System.Drawing.Color.Silver;
             this.Back.Font = new System.Drawing.Font("Arial Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Back.Location = new System.Drawing.Point(7, -4);
-            this.Back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Back.Location = new System.Drawing.Point(9, -5);
+            this.Back.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(47, 41);
+            this.Back.Size = new System.Drawing.Size(59, 52);
             this.Back.TabIndex = 301;
             this.Back.Text = "←";
             this.Back.Click += new System.EventHandler(this.Back_Click);
@@ -81,9 +81,10 @@
             this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Exit.BackColor = System.Drawing.Color.Transparent;
             this.Exit.Image = global::BookWarm.Properties.Resources.exit;
-            this.Exit.Location = new System.Drawing.Point(1000, 4);
+            this.Exit.Location = new System.Drawing.Point(1329, 5);
+            this.Exit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(26, 26);
+            this.Exit.Size = new System.Drawing.Size(35, 32);
             this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Exit.TabIndex = 302;
             this.Exit.TabStop = false;
@@ -95,9 +96,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox8.Location = new System.Drawing.Point(3, 33);
+            this.pictureBox8.Location = new System.Drawing.Point(4, 41);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(100, 648);
+            this.pictureBox8.Size = new System.Drawing.Size(133, 798);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 223;
             this.pictureBox8.TabStop = false;
@@ -108,9 +110,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox1.Location = new System.Drawing.Point(933, 33);
+            this.pictureBox1.Location = new System.Drawing.Point(1244, 41);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 648);
+            this.pictureBox1.Size = new System.Drawing.Size(133, 798);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 224;
             this.pictureBox1.TabStop = false;
@@ -120,9 +123,10 @@
             this.ViewCount.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ViewCount.AutoSize = true;
             this.ViewCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ViewCount.Location = new System.Drawing.Point(522, 322);
+            this.ViewCount.Location = new System.Drawing.Point(696, 396);
+            this.ViewCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ViewCount.Name = "ViewCount";
-            this.ViewCount.Size = new System.Drawing.Size(43, 18);
+            this.ViewCount.Size = new System.Drawing.Size(53, 23);
             this.ViewCount.TabIndex = 228;
             this.ViewCount.Text = "View";
             this.ViewCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,9 +136,10 @@
             this.ReadsCount.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ReadsCount.AutoSize = true;
             this.ReadsCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ReadsCount.Location = new System.Drawing.Point(448, 322);
+            this.ReadsCount.Location = new System.Drawing.Point(597, 396);
+            this.ReadsCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ReadsCount.Name = "ReadsCount";
-            this.ReadsCount.Size = new System.Drawing.Size(54, 18);
+            this.ReadsCount.Size = new System.Drawing.Size(67, 23);
             this.ReadsCount.TabIndex = 227;
             this.ReadsCount.Text = "Reads";
             this.ReadsCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -142,9 +147,10 @@
             // BookImage
             // 
             this.BookImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BookImage.Location = new System.Drawing.Point(435, 60);
+            this.BookImage.Location = new System.Drawing.Point(580, 74);
+            this.BookImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BookImage.Name = "BookImage";
-            this.BookImage.Size = new System.Drawing.Size(142, 212);
+            this.BookImage.Size = new System.Drawing.Size(189, 261);
             this.BookImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.BookImage.TabIndex = 230;
             this.BookImage.TabStop = false;
@@ -155,9 +161,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleText.BackColor = System.Drawing.Color.Transparent;
             this.titleText.Font = new System.Drawing.Font("Arial Black", 16F);
-            this.titleText.Location = new System.Drawing.Point(474, 283);
+            this.titleText.Location = new System.Drawing.Point(632, 348);
+            this.titleText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(69, 31);
+            this.titleText.Size = new System.Drawing.Size(92, 38);
             this.titleText.TabIndex = 225;
             this.titleText.Text = "Title";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,9 +176,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BookContent.BackColor = System.Drawing.Color.LightGray;
             this.BookContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookContent.Location = new System.Drawing.Point(109, 440);
+            this.BookContent.Location = new System.Drawing.Point(145, 542);
+            this.BookContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BookContent.Name = "BookContent";
-            this.BookContent.Size = new System.Drawing.Size(818, 227);
+            this.BookContent.Size = new System.Drawing.Size(1091, 279);
             this.BookContent.TabIndex = 231;
             this.BookContent.Text = "";
             // 
@@ -181,9 +189,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Download.BackColor = System.Drawing.Color.Transparent;
             this.Download.Font = new System.Drawing.Font("Arial Black", 16F);
-            this.Download.Location = new System.Drawing.Point(410, 351);
+            this.Download.Location = new System.Drawing.Point(547, 432);
+            this.Download.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Download.Name = "Download";
-            this.Download.Size = new System.Drawing.Size(194, 31);
+            this.Download.Size = new System.Drawing.Size(259, 38);
             this.Download.TabIndex = 232;
             this.Download.Text = "Скачати книгу";
             this.Download.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -195,9 +204,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EndRead.BackColor = System.Drawing.Color.Transparent;
             this.EndRead.Font = new System.Drawing.Font("Arial Black", 16F);
-            this.EndRead.Location = new System.Drawing.Point(347, 391);
+            this.EndRead.Location = new System.Drawing.Point(463, 481);
+            this.EndRead.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EndRead.Name = "EndRead";
-            this.EndRead.Size = new System.Drawing.Size(326, 31);
+            this.EndRead.Size = new System.Drawing.Size(435, 38);
             this.EndRead.TabIndex = 233;
             this.EndRead.Text = "Завершити читання";
             this.EndRead.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -205,10 +215,10 @@
             // 
             // BookRead
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1035, 679);
+            this.ClientSize = new System.Drawing.Size(1380, 836);
             this.Controls.Add(this.EndRead);
             this.Controls.Add(this.Download);
             this.Controls.Add(this.BookContent);
@@ -220,6 +230,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BookRead";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 

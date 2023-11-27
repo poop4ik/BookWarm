@@ -357,9 +357,9 @@ namespace BookWarm
                 originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
                 this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
-                Popular.Location = new Point(Popular.Location.X - 5, Popular.Location.Y - 25);
-                New.Location = new Point(New.Location.X - 5, New.Location.Y);
-                Rating.Location = new Point(Rating.Location.X - 8, Rating.Location.Y - 20);
+                Popular.Location = new Point(Popular.Location.X, Popular.Location.Y - 25);
+                New.Location = new Point(New.Location.X, New.Location.Y);
+                Rating.Location = new Point(Rating.Location.X, Rating.Location.Y - 20);
                 // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
@@ -487,7 +487,7 @@ namespace BookWarm
             flowLayoutPanelNew.Controls.Clear();
             // Now, update the vertical scrollbar range based on the content height
             int totalHeight = 0;
-            const int maxBooksToShow = 8;
+            const int maxBooksToShow = 6;
 
             // Take the first 'maxBooksToShow' books after shuffling
             for (int i = 0; i < Math.Min(books.Count, maxBooksToShow); i++)
@@ -514,7 +514,7 @@ namespace BookWarm
             Shuffle(books);
             flowLayoutPanelPopular.Controls.Clear();
             int totalHeight = 0;
-            const int maxBooksToShow = 8;
+            const int maxBooksToShow = 6;
             const int minViews = 15;
             const int minReads = 5;
 
@@ -541,7 +541,7 @@ namespace BookWarm
             Shuffle(books);
             flowLayoutPanelRating.Controls.Clear();
             int totalHeight = 0;
-            const int maxBooksToShow = 8;
+            const int maxBooksToShow = 6;
 
             foreach (Book book in books.Where(b => Decimal.Compare(b.AverageRating, 4.5m) >= 0).Take(maxBooksToShow))
             {

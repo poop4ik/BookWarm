@@ -171,7 +171,7 @@ namespace BookWarm
         {
             using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
-                string sqlQuery = "INSERT INTO [dbo].[UserReadNow] (UserID, BookID) VALUES (@UserID, @BookID)";
+                string sqlQuery = "INSERT INTO [dbo].[UserRead] (UserID, BookID) VALUES (@UserID, @BookID)";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
@@ -221,12 +221,11 @@ namespace BookWarm
             {
                 // Видалення книги з UserReadNow
                 RemoveUserReadNowRecord(userID, bookID);
+                AddUserReadRecord(userID, bookID);
 
                 // Перевірка, чи користувач вже завершив читати цю книгу
                 if (!IsUserReadBook(userID, bookID))
                 {
-                    // Якщо користувач ще не завершив читати книгу, вставте запис в UserRead
-                    AddUserReadRecord(userID, bookID);
                 }
             }
             this.Close();

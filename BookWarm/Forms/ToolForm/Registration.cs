@@ -130,25 +130,43 @@ namespace BookWarm
                 else
                 {
                     // Тут виконайте вставку даних у вашу базу даних
+                    int userId;
+
                     using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                     {
                         connection.Open();
 
-                        string insertQuery = "INSERT INTO Users (Username, FirstName, PasswordHash, LastName, Email, Age) " +
+                        // Додайте користувача до таблиці Users та отримайте ідентифікатор вставленого запису
+                        string insertUserQuery = "INSERT INTO Users (Username, FirstName, PasswordHash, LastName, Email, Age) " +
+                            "OUTPUT INSERTED.UserID " +
                             "VALUES (@Username, @FirstName, @PasswordHash, @LastName, @Email, @Age)";
 
-                        using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                        using (SqlCommand userCommand = new SqlCommand(insertUserQuery, connection))
                         {
-                            command.Parameters.AddWithValue("@Username", username);
-                            command.Parameters.AddWithValue("@FirstName", firstName);
-                            command.Parameters.AddWithValue("@PasswordHash", passwordHash);
-                            command.Parameters.AddWithValue("@LastName", lastName);
-                            command.Parameters.AddWithValue("@Email", email);
-                            command.Parameters.AddWithValue("@Age", age);
+                            userCommand.Parameters.AddWithValue("@Username", username);
+                            userCommand.Parameters.AddWithValue("@FirstName", firstName);
+                            userCommand.Parameters.AddWithValue("@PasswordHash", passwordHash);
+                            userCommand.Parameters.AddWithValue("@LastName", lastName);
+                            userCommand.Parameters.AddWithValue("@Email", email);
+                            userCommand.Parameters.AddWithValue("@Age", age);
 
-                            command.ExecuteNonQuery();
+                            // Отримайте ідентифікатор вставленого користувача
+                            userId = (int)userCommand.ExecuteScalar();
+                        }
+
+                        // Додайте користувача до таблиці UserStatistics
+                        string insertUserStatisticsQuery = "INSERT INTO UserStatistics (UserID, TotalReads, TotalViews) " +
+                            "VALUES (@UserID, 0, 0)";
+
+                        using (SqlCommand userStatisticsCommand = new SqlCommand(insertUserStatisticsQuery, connection))
+                        {
+                            userStatisticsCommand.Parameters.AddWithValue("@UserID", userId);
+
+                            userStatisticsCommand.ExecuteNonQuery();
                         }
                     }
+
+
                     UsernameExist.Visible = false;
                     EmailExist.Visible = false;
 
