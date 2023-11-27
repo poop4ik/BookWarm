@@ -499,7 +499,7 @@ namespace BookWarm
 
                     UserControlPopularBook bookControl = new UserControlPopularBook(this);
                     // Pass the Author object instead of AuthorName
-                    bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
+                    bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
 
                     flowLayoutPanelNew.Controls.Add(bookControl);
 
@@ -528,7 +528,7 @@ namespace BookWarm
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
                 // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
                 UserControlPopularBook bookControl = new UserControlPopularBook(this);
-                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
                 flowLayoutPanelPopular.Controls.Add(bookControl);
 
                 totalHeight += bookControl.Height;
@@ -549,7 +549,7 @@ namespace BookWarm
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
                 // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
                 UserControlPopularBook bookControl = new UserControlPopularBook(this);
-                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
                 flowLayoutPanelRating.Controls.Add(bookControl);
 
                 totalHeight += bookControl.Height;

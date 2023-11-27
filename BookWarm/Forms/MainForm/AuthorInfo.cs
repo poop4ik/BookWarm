@@ -116,7 +116,7 @@ namespace BookWarm.Forms.MainForm
 
                 // You may need to adjust the constructor parameters based on your UserControl implementation
                 UserControlAuthor bookControl = new UserControlAuthor(mainForm);
-                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID);
+                bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
                 flowLayoutPanelAuthorBooks.Controls.Add(bookControl);
             }
         }

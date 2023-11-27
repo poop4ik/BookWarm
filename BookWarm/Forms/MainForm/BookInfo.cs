@@ -18,6 +18,7 @@ namespace BookWarm.Forms.MainForm
         private User user;
         private int bookID;
         private int authorID;
+        private int userID;
         private bool isMaximized = false;
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
@@ -29,8 +30,13 @@ namespace BookWarm.Forms.MainForm
             InitializeComponent();
             this.bookID = bookID;
             this.authorID = authorID;
+            this.userID = Main.user.UserId;
 
-            
+            bool isBookInPreferences = CheckIfBookInPreferences(userID, bookID);
+
+            SaveToPreference.Visible = !isBookInPreferences;
+            DeleteFromPreference.Visible = isBookInPreferences;
+
             allUserList = new List<AllUsers>();
 
             genreListBox.DrawMode = DrawMode.OwnerDrawFixed;
@@ -76,6 +82,8 @@ namespace BookWarm.Forms.MainForm
                     BookImage.Image = book.CoverImageObject;
                     DescriptionTitle.Text = $"Короткий зміст книги: «{book.Title}» — {author?.AuthorName ?? "Unknown Author"} (анотація)";
                     ReviewGeneral.Text = $"Відгуки на книгу «{book.Title}» — {author?.AuthorName ?? "Unknown Author"}";
+                    AgeCategory.Text = $"{book.AgeCategory}+";
+                    Language.Text = $"{book.Language}";
 
                     const int maxTitleLength = 1000;
                     Description.Text = TrimDescription(book.Description, maxTitleLength);
@@ -436,6 +444,65 @@ namespace BookWarm.Forms.MainForm
             }
         }
 
+        private bool CheckIfBookInPreferences(int userID, int bookID)
+        {
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                connection.Open();
+
+                // Перевірте наявність книги в UserPreference для користувача
+                string query = "SELECT COUNT(*) FROM UserPreference WHERE UserID = @UserID AND BookID = @BookID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@BookID", bookID);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
+        }
+
+        private void AddBookToPreferences(int userID, int bookID)
+        {
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                connection.Open();
+
+                // Додайте запис до таблиці UserPreference
+                string insertQuery = "INSERT INTO UserPreference (UserID, BookID) VALUES (@UserID, @BookID)";
+
+                using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@BookID", bookID);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void RemoveBookFromPreferences(int userID, int bookID)
+        {
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                connection.Open();
+
+                // Видаліть запис з таблиці UserPreference
+                string deleteQuery = "DELETE FROM UserPreference WHERE UserID = @UserID AND BookID = @BookID";
+
+                using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@BookID", bookID);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         private void ReadBook_Click(object sender, EventArgs e)
         {
             int userID = Main.user.UserId;
@@ -453,10 +520,24 @@ namespace BookWarm.Forms.MainForm
             readBook.ShowDialog();
         }
 
+        private void SaveToPreference_Click(object sender, EventArgs e)
+        { 
+            // Додайте книгу до обраних
+            AddBookToPreferences(userID, bookID);
 
-        private void ReadLater_Click(object sender, EventArgs e)
+            // Оновіть видимість кнопок
+            SaveToPreference.Visible = false;
+            DeleteFromPreference.Visible = true;
+        }
+
+        private void DeleteFromPreference_Click(object sender, EventArgs e)
         {
+            // Видаліть книгу з обраних
+            RemoveBookFromPreferences(userID, bookID);
 
+            // Оновіть видимість кнопок
+            SaveToPreference.Visible = true;
+            DeleteFromPreference.Visible = false;
         }
     }
 }

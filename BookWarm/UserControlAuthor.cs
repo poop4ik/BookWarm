@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
@@ -22,7 +23,7 @@ namespace BookWarm
             this.mainForm = mainForm;
         }
 
-        public void SetData(int bookID, Image coverImageObject, string title, decimal averageRating, int readsCount, int viewCount, int authorID)
+        public void SetData(int bookID, Image coverImageObject, string title, decimal averageRating, int readsCount, int viewCount, int authorID, int ageCategory)
         {
             const int maxTitleLength = 16;
 
@@ -33,7 +34,7 @@ namespace BookWarm
             }
 
             // Ваш код для використання title, author, averageRating, readsCount, viewCount і coverImage
-            Title.Text = $"«{title}»";
+            Title.Text = $"«{title}» {ageCategory}+";
 
             // Find the author with the given authorID
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
@@ -45,14 +46,25 @@ namespace BookWarm
             ViewCount.Text = $"👁 {viewCount}";
             BookImage.Image = coverImageObject;
 
-            BookImage.Click += (sender, e) => OpenBookInfoForm(authorID, bookID);
-            View.Click += (sender, e) => OpenBookInfoForm(authorID, bookID);
+            int userAge = Main.user.Age;
+
+            BookImage.Click += (sender, e) => OpenBookInfoForm(authorID, bookID, userAge, ageCategory);
+            View.Click += (sender, e) => OpenBookInfoForm(authorID, bookID, userAge, ageCategory);
         }
 
-        private void OpenBookInfoForm(int authorID, int bookID)
+        private void OpenBookInfoForm(int authorID, int bookID, int userAge, int ageCategory)
         {
-            BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
-            bookInfoForm.Show();
+            // Додайте вашу умову перевірки віку тут (наприклад, 18 років і старше)
+            if (userAge >= ageCategory)
+            {
+                BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
+                bookInfoForm.Show();
+            }
+            else
+            {
+                AgeCategory errorAge = new AgeCategory(ageCategory);
+                errorAge.ShowDialog();
+            }
         }
     }
 }

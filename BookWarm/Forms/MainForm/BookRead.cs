@@ -51,7 +51,7 @@ namespace BookWarm
                     titleText.Text = $"Книга: «{book.Title}» — {author?.AuthorName ?? "Unknown Author"}";
                     ReadsCount.Text = $"📕 {bookStat.ReadsCount}";
                     ViewCount.Text = $"👁 {bookStat.ViewCount}";
-                    BookImage.Image = book.CoverImageObject;
+                    BookWorm.Image = book.CoverImageObject;
 
                     // Відобразити RTF-контент в існуючому RichTextBox
                     DisplayRTFContent(book.Content);

@@ -50,19 +50,23 @@
             this.ReviewGeneral = new System.Windows.Forms.Label();
             this.kryptonContextMenu1 = new Krypton.Toolkit.KryptonContextMenu();
             this.flowLayoutPanelReview = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.WriteReview = new System.Windows.Forms.Label();
+            this.DeleteFromPreference = new System.Windows.Forms.Label();
+            this.AgeCategory = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Language = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.BookImage = new System.Windows.Forms.PictureBox();
             this.Exit = new System.Windows.Forms.PictureBox();
             this.Resize = new System.Windows.Forms.PictureBox();
-            this.WriteReview = new System.Windows.Forms.Label();
-            this.ReadLater = new System.Windows.Forms.Label();
+            this.SaveToPreference = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BookImage)).BeginInit();
@@ -125,10 +129,10 @@
             // authorText
             // 
             this.authorText.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.authorText.Location = new System.Drawing.Point(529, 203);
+            this.authorText.Location = new System.Drawing.Point(529, 188);
             this.authorText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.authorText.Name = "authorText";
-            this.authorText.Size = new System.Drawing.Size(112, 21);
+            this.authorText.Size = new System.Drawing.Size(263, 21);
             this.authorText.TabIndex = 76;
             this.authorText.Text = "Author";
             this.authorText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,7 +140,7 @@
             // ViewCount
             // 
             this.ViewCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ViewCount.Location = new System.Drawing.Point(615, 309);
+            this.ViewCount.Location = new System.Drawing.Point(615, 293);
             this.ViewCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ViewCount.Name = "ViewCount";
             this.ViewCount.Size = new System.Drawing.Size(112, 32);
@@ -147,7 +151,7 @@
             // ReadsCount
             // 
             this.ReadsCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ReadsCount.Location = new System.Drawing.Point(593, 273);
+            this.ReadsCount.Location = new System.Drawing.Point(593, 258);
             this.ReadsCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ReadsCount.Name = "ReadsCount";
             this.ReadsCount.Size = new System.Drawing.Size(112, 31);
@@ -163,7 +167,7 @@
             this.genreListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.genreListBox.Font = new System.Drawing.Font("Arial", 12F);
             this.genreListBox.ItemHeight = 23;
-            this.genreListBox.Location = new System.Drawing.Point(547, 350);
+            this.genreListBox.Location = new System.Drawing.Point(547, 359);
             this.genreListBox.Margin = new System.Windows.Forms.Padding(4);
             this.genreListBox.MultiColumn = true;
             this.genreListBox.Name = "genreListBox";
@@ -174,7 +178,7 @@
             // Year
             // 
             this.Year.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Year.Location = new System.Drawing.Point(500, 236);
+            this.Year.Location = new System.Drawing.Point(500, 221);
             this.Year.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Year.Name = "Year";
             this.Year.Size = new System.Drawing.Size(112, 31);
@@ -185,7 +189,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.label1.Location = new System.Drawing.Point(436, 196);
+            this.label1.Location = new System.Drawing.Point(436, 181);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 33);
@@ -196,7 +200,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.label2.Location = new System.Drawing.Point(436, 233);
+            this.label2.Location = new System.Drawing.Point(436, 218);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 33);
@@ -207,7 +211,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.label3.Location = new System.Drawing.Point(448, 270);
+            this.label3.Location = new System.Drawing.Point(448, 255);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(151, 33);
@@ -218,7 +222,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.label4.Location = new System.Drawing.Point(447, 306);
+            this.label4.Location = new System.Drawing.Point(447, 291);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(177, 33);
@@ -229,7 +233,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.label5.Location = new System.Drawing.Point(443, 343);
+            this.label5.Location = new System.Drawing.Point(443, 352);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 33);
@@ -323,19 +327,69 @@
             this.flowLayoutPanelReview.Size = new System.Drawing.Size(600, 64);
             this.flowLayoutPanelReview.TabIndex = 221;
             // 
-            // pictureBox2
+            // WriteReview
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox2.Location = new System.Drawing.Point(219, 420);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 524);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 217;
-            this.pictureBox2.TabStop = false;
+            this.WriteReview.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.WriteReview.BackColor = System.Drawing.Color.Silver;
+            this.WriteReview.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.WriteReview.Font = new System.Drawing.Font("Arial Black", 14F);
+            this.WriteReview.Location = new System.Drawing.Point(360, 891);
+            this.WriteReview.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.WriteReview.Name = "WriteReview";
+            this.WriteReview.Size = new System.Drawing.Size(256, 38);
+            this.WriteReview.TabIndex = 222;
+            this.WriteReview.Text = "Написати відгук";
+            this.WriteReview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.WriteReview.Click += new System.EventHandler(this.WriteReview_Click);
+            // 
+            // DeleteFromPreference
+            // 
+            this.DeleteFromPreference.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteFromPreference.BackColor = System.Drawing.Color.Silver;
+            this.DeleteFromPreference.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteFromPreference.Font = new System.Drawing.Font("Arial Black", 12F);
+            this.DeleteFromPreference.Location = new System.Drawing.Point(692, 382);
+            this.DeleteFromPreference.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DeleteFromPreference.Name = "DeleteFromPreference";
+            this.DeleteFromPreference.Size = new System.Drawing.Size(317, 38);
+            this.DeleteFromPreference.TabIndex = 223;
+            this.DeleteFromPreference.Text = "Видалити з обраних";
+            this.DeleteFromPreference.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DeleteFromPreference.Visible = false;
+            this.DeleteFromPreference.Click += new System.EventHandler(this.DeleteFromPreference_Click);
+            // 
+            // AgeCategory
+            // 
+            this.AgeCategory.Font = new System.Drawing.Font("Arial Black", 12F);
+            this.AgeCategory.Location = new System.Drawing.Point(245, 422);
+            this.AgeCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AgeCategory.Name = "AgeCategory";
+            this.AgeCategory.Size = new System.Drawing.Size(81, 33);
+            this.AgeCategory.TabIndex = 224;
+            this.AgeCategory.Text = "Age";
+            this.AgeCategory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Arial Black", 12F);
+            this.label7.Location = new System.Drawing.Point(433, 323);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 33);
+            this.label7.TabIndex = 225;
+            this.label7.Text = "Мова:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Language
+            // 
+            this.Language.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Language.Location = new System.Drawing.Point(529, 324);
+            this.Language.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Language.Name = "Language";
+            this.Language.Size = new System.Drawing.Size(223, 32);
+            this.Language.TabIndex = 226;
+            this.Language.Text = "Language";
+            this.Language.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox3
             // 
@@ -349,6 +403,20 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 216;
             this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::BookWarm.Properties.Resources.linev2;
+            this.pictureBox2.Location = new System.Drawing.Point(219, 459);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(133, 485);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 217;
+            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -417,35 +485,21 @@
             this.Resize.Visible = false;
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
             // 
-            // WriteReview
+            // SaveToPreference
             // 
-            this.WriteReview.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.WriteReview.BackColor = System.Drawing.Color.Silver;
-            this.WriteReview.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.WriteReview.Font = new System.Drawing.Font("Arial Black", 14F);
-            this.WriteReview.Location = new System.Drawing.Point(360, 891);
-            this.WriteReview.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.WriteReview.Name = "WriteReview";
-            this.WriteReview.Size = new System.Drawing.Size(256, 38);
-            this.WriteReview.TabIndex = 222;
-            this.WriteReview.Text = "Написати відгук";
-            this.WriteReview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.WriteReview.Click += new System.EventHandler(this.WriteReview_Click);
-            // 
-            // ReadLater
-            // 
-            this.ReadLater.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReadLater.BackColor = System.Drawing.Color.Silver;
-            this.ReadLater.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ReadLater.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.ReadLater.Location = new System.Drawing.Point(748, 382);
-            this.ReadLater.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ReadLater.Name = "ReadLater";
-            this.ReadLater.Size = new System.Drawing.Size(256, 38);
-            this.ReadLater.TabIndex = 223;
-            this.ReadLater.Text = "Зберегти";
-            this.ReadLater.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ReadLater.Click += new System.EventHandler(this.ReadLater_Click);
+            this.SaveToPreference.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveToPreference.BackColor = System.Drawing.Color.Silver;
+            this.SaveToPreference.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SaveToPreference.Font = new System.Drawing.Font("Arial Black", 12F);
+            this.SaveToPreference.Location = new System.Drawing.Point(692, 382);
+            this.SaveToPreference.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SaveToPreference.Name = "SaveToPreference";
+            this.SaveToPreference.Size = new System.Drawing.Size(317, 38);
+            this.SaveToPreference.TabIndex = 227;
+            this.SaveToPreference.Text = "Додати в обрані";
+            this.SaveToPreference.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SaveToPreference.Visible = false;
+            this.SaveToPreference.Click += new System.EventHandler(this.SaveToPreference_Click);
             // 
             // BookInfo
             // 
@@ -453,10 +507,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1149, 938);
+            this.Controls.Add(this.SaveToPreference);
+            this.Controls.Add(this.Language);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.AgeCategory);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.Description);
-            this.Controls.Add(this.ReadLater);
+            this.Controls.Add(this.DeleteFromPreference);
             this.Controls.Add(this.WriteReview);
             this.Controls.Add(this.ReadBook);
             this.Controls.Add(this.flowLayoutPanelReview);
@@ -494,8 +552,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
             this.AuthenticationPanel.ResumeLayout(false);
             this.AuthenticationPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BookImage)).EndInit();
@@ -537,6 +595,10 @@
         private Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelReview;
         private System.Windows.Forms.Label WriteReview;
-        private System.Windows.Forms.Label ReadLater;
+        private System.Windows.Forms.Label DeleteFromPreference;
+        private System.Windows.Forms.Label AgeCategory;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Language;
+        private System.Windows.Forms.Label SaveToPreference;
     }
 }

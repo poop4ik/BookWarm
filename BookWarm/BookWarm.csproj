@@ -95,6 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ToolForm\AgeCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolForm\AgeCategory.Designer.cs">
+      <DependentUpon>AgeCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm\BookRead.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\BookInfo.resx">
       <DependentUpon>BookInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolForm\AgeCategory.resx">
+      <DependentUpon>AgeCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolForm\Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>

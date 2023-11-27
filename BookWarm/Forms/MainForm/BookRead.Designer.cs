@@ -35,7 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ViewCount = new System.Windows.Forms.Label();
             this.ReadsCount = new System.Windows.Forms.Label();
-            this.BookImage = new System.Windows.Forms.PictureBox();
+            this.BookWorm = new System.Windows.Forms.PictureBox();
             this.titleText = new System.Windows.Forms.Label();
             this.BookContent = new System.Windows.Forms.RichTextBox();
             this.Download = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BookImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BookWorm)).BeginInit();
             this.SuspendLayout();
             // 
             // AuthenticationPanel
@@ -144,16 +144,16 @@
             this.ReadsCount.Text = "Reads";
             this.ReadsCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BookImage
+            // BookWorm
             // 
-            this.BookImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BookImage.Location = new System.Drawing.Point(580, 74);
-            this.BookImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BookImage.Name = "BookImage";
-            this.BookImage.Size = new System.Drawing.Size(189, 261);
-            this.BookImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BookImage.TabIndex = 230;
-            this.BookImage.TabStop = false;
+            this.BookWorm.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BookWorm.Location = new System.Drawing.Point(580, 74);
+            this.BookWorm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BookWorm.Name = "BookWorm";
+            this.BookWorm.Size = new System.Drawing.Size(189, 261);
+            this.BookWorm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BookWorm.TabIndex = 230;
+            this.BookWorm.TabStop = false;
             // 
             // titleText
             // 
@@ -225,7 +225,7 @@
             this.Controls.Add(this.ReadsCount);
             this.Controls.Add(this.titleText);
             this.Controls.Add(this.ViewCount);
-            this.Controls.Add(this.BookImage);
+            this.Controls.Add(this.BookWorm);
             this.Controls.Add(this.AuthenticationPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox8);
@@ -244,7 +244,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BookImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BookWorm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,7 +259,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label ViewCount;
         private System.Windows.Forms.Label ReadsCount;
-        private System.Windows.Forms.PictureBox BookImage;
+        private System.Windows.Forms.PictureBox BookWorm;
         private System.Windows.Forms.Label titleText;
         private System.Windows.Forms.RichTextBox BookContent;
         private System.Windows.Forms.Label Download;
