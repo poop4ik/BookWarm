@@ -33,7 +33,7 @@
             this.Minimize = new System.Windows.Forms.Label();
             this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.Resize = new System.Windows.Forms.PictureBox();
-            this.Search = new Krypton.Toolkit.KryptonTextBox();
+            this.SearchBox = new Krypton.Toolkit.KryptonTextBox();
             this.flowLayoutPanelNew = new System.Windows.Forms.FlowLayoutPanel();
             this.New = new System.Windows.Forms.Label();
             this.vScrollBar = new System.Windows.Forms.VScrollBar();
@@ -53,6 +53,7 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.LastView = new System.Windows.Forms.Label();
             this.flowLayoutPanelHistory = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelSearch = new System.Windows.Forms.FlowLayoutPanel();
             this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
@@ -110,27 +111,27 @@
             this.Resize.Visible = false;
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
             // 
-            // Search
+            // SearchBox
             // 
-            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Search.Location = new System.Drawing.Point(325, 55);
-            this.Search.Margin = new System.Windows.Forms.Padding(4);
-            this.Search.Name = "Search";
-            this.Search.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Search.Size = new System.Drawing.Size(350, 31);
-            this.Search.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Search.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
-            this.Search.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
-            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.SearchBox.Location = new System.Drawing.Point(325, 55);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.SearchBox.Size = new System.Drawing.Size(350, 31);
+            this.SearchBox.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SearchBox.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
+            this.SearchBox.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
+            this.SearchBox.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Search.StateCommon.Border.Rounding = 7F;
-            this.Search.TabIndex = 100;
-            this.Search.Text = "Search";
-            this.Search.UseMnemonic = false;
-            this.Search.Enter += new System.EventHandler(this.textBoxSearch_Enter);
-            this.Search.Leave += new System.EventHandler(this.textBoxSearch_Leave);
+            this.SearchBox.StateCommon.Border.Rounding = 7F;
+            this.SearchBox.TabIndex = 100;
+            this.SearchBox.Text = "Search";
+            this.SearchBox.UseMnemonic = false;
+            this.SearchBox.Enter += new System.EventHandler(this.textBoxSearch_Enter);
+            this.SearchBox.Leave += new System.EventHandler(this.textBoxSearch_Leave);
             // 
             // flowLayoutPanelNew
             // 
@@ -195,7 +196,7 @@
             this.SeacrhClick.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SeacrhClick.TabIndex = 73;
             this.SeacrhClick.TabStop = false;
-            this.SeacrhClick.Click += new System.EventHandler(this.SeacrhClick_Click);
+            this.SeacrhClick.Click += new System.EventHandler(this.Searсh_Click);
             // 
             // Exit
             // 
@@ -362,6 +363,22 @@
             this.flowLayoutPanelHistory.Size = new System.Drawing.Size(800, 64);
             this.flowLayoutPanelHistory.TabIndex = 218;
             // 
+            // flowLayoutPanelSearch
+            // 
+            this.flowLayoutPanelSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelSearch.AutoScroll = true;
+            this.flowLayoutPanelSearch.AutoSize = true;
+            this.flowLayoutPanelSearch.Location = new System.Drawing.Point(106, 153);
+            this.flowLayoutPanelSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanelSearch.MaximumSize = new System.Drawing.Size(0, 1750);
+            this.flowLayoutPanelSearch.MinimumSize = new System.Drawing.Size(1000, 64);
+            this.flowLayoutPanelSearch.Name = "flowLayoutPanelSearch";
+            this.flowLayoutPanelSearch.Size = new System.Drawing.Size(1000, 350);
+            this.flowLayoutPanelSearch.TabIndex = 219;
+            this.flowLayoutPanelSearch.Visible = false;
+            // 
             // profilePhotoPictureBox
             // 
             this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -389,18 +406,19 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1000, 1102);
             this.Controls.Add(this.vScrollBar);
-            this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Minimize);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.AuthenticationPanel);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.SeacrhClick);
-            this.Controls.Add(this.Search);
+            this.Controls.Add(this.SearchBox);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.flowLayoutPanelSearch);
+            this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.LineLogo);
             this.Controls.Add(this.LastView);
             this.Controls.Add(this.flowLayoutPanelHistory);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.New);
             this.Controls.Add(this.flowLayoutPanelNew);
             this.Controls.Add(this.Popular);
@@ -448,7 +466,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel AuthenticationPanel;
         private System.Windows.Forms.PictureBox Resize;
         private System.Windows.Forms.PictureBox Exit;
-        private Krypton.Toolkit.KryptonTextBox Search;
+        private Krypton.Toolkit.KryptonTextBox SearchBox;
         private System.Windows.Forms.PictureBox SeacrhClick;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNew;
         private System.Windows.Forms.Label New;
@@ -462,6 +480,7 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label LastView;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHistory;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSearch;
     }
 }
 

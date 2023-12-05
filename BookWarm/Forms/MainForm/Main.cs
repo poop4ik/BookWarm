@@ -56,8 +56,9 @@ namespace BookWarm
                 bookGenresList = new List<BookGenre>();
                 userReviewList = new List<Review>();
 
-                Search.Leave += textBoxSearch_Leave;
-                Search.Enter += textBoxSearch_Enter;
+                SearchBox.Leave += textBoxSearch_Leave;
+                SearchBox.Enter += textBoxSearch_Enter;
+                SearchBox.KeyPress += SearchBox_KeyPress;
 
                 originPhotoLocation = profilePhotoPictureBox.Location;
                 originPhotoSize = profilePhotoPictureBox.Size;
@@ -194,7 +195,7 @@ namespace BookWarm
                         }
                     }
 
-                    string sqlGenreQuery = "SELECT G.GenreID, G.GenreName, GBR.GenreBookRelationID " +
+                    string sqlGenreQuery = "SELECT GBR.BookID, G.GenreID, G.GenreName, GBR.GenreBookRelationID " +
                                           "FROM Genres G " +
                                           "JOIN GenreBookRelation GBR ON G.GenreID = GBR.GenreID";
 
@@ -206,6 +207,7 @@ namespace BookWarm
                             {
                                 BookGenre bookGenre = new BookGenre
                                 {
+                                    BookID = (int)reader["BookID"],
                                     GenreID = (int)reader["GenreID"],
                                     GenreName = reader["GenreName"].ToString(),
                                     GenreBookRelationID = (int)reader["GenreBookRelationID"]
@@ -507,6 +509,7 @@ namespace BookWarm
             flowLayoutPanelPopular.Top -= scrollDirection;
             flowLayoutPanelRating.Top -= scrollDirection;
             flowLayoutPanelHistory.Top -= scrollDirection;
+            flowLayoutPanelSearch.Top -= scrollDirection;
             // Оновіть попереднє значення прокрутки
             previousScrollValue = scrollValue;
         }
@@ -514,24 +517,87 @@ namespace BookWarm
         private void textBoxSearch_Leave(object sender, EventArgs e)
         {
             // Перевірити, чи текстове поле не має фокусу та чи не введено жодного тексту
-            if (!Search.Focused && string.IsNullOrWhiteSpace(Search.Text))
+            if (!SearchBox.Focused && string.IsNullOrWhiteSpace(SearchBox.Text))
             {
-                Search.Text = "Search";
+                SearchBox.Text = "Search";
             }
         }
 
         private void textBoxSearch_Enter(object sender, EventArgs e)
         {
             // Очистити текст у TextBox при фокусі, тільки якщо він містить "Search"
-            if (Search.Text == "Search")
+            if (SearchBox.Text == "Search")
             {
-                Search.Text = "";
+                SearchBox.Text = "";
             }
         }
 
-        private void SeacrhClick_Click(object sender, EventArgs e)
+        private void Searсh_Click(object sender, EventArgs e)
         {
-            /*Search.Visible = !Search.Visible;*/
+            string searchText = SearchBox.Text.Trim();
+
+            flowLayoutPanelSearch.Controls.Clear();
+
+            // Perform a search in the existing list of books
+            List<Book> searchResults = SearchBooks(searchText);
+
+            // Display the search results in the flowLayoutPanelSearch
+            foreach (Book book in searchResults)
+            {
+                BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
+                // Create a UserControl or any other control to display book information
+                UserControlPopularBook searchResultItem = new UserControlPopularBook(this);
+                searchResultItem.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
+                flowLayoutPanelSearch.Controls.Add(searchResultItem);
+            }
+
+            // Update panel visibility based on search results
+            if (string.IsNullOrEmpty(searchText) || searchResults.Count == 0)
+            {
+                // No search results or empty search text
+                flowLayoutPanelSearch.Visible = false;
+                flowLayoutPanelHistory.Visible = true;
+                flowLayoutPanelRating.Visible = true;
+                flowLayoutPanelPopular.Visible = true;
+                flowLayoutPanelNew.Visible = true;
+                New.Visible = true;
+                Popular.Visible = true;
+                Rating.Visible = true;
+                LastView.Visible = true;
+            }
+            else
+            {
+                // Search results found
+                flowLayoutPanelSearch.Visible = true;
+                flowLayoutPanelHistory.Visible = false;
+                flowLayoutPanelRating.Visible = false;
+                flowLayoutPanelPopular.Visible = false;
+                flowLayoutPanelNew.Visible = false;
+                New.Visible = false;
+                Popular.Visible = false;
+                Rating.Visible = false;
+                LastView.Visible = false;
+            }
+        }
+
+
+        private List<Book> SearchBooks(string searchText)
+        {
+            // Use case-insensitive search
+            searchText = searchText.ToLower();
+
+            List<Book> searchResults = books
+                .Where(book =>
+                    book.Title.ToLower().Contains(searchText) ||
+                    authorList.Any(author => author.BookID == book.BookID && author.AuthorName.ToLower().Contains(searchText)) ||
+                    bookGenresList
+                        .Where(relation => relation.GenreName.ToLower().Contains(searchText))
+                        .Select(relation => relation.BookID)
+                        .Contains(book.BookID)
+                )
+                .ToList();
+
+            return searchResults;
         }
 
         private Image byteArrayToImage(byte[] byteArrayIn)
@@ -717,6 +783,18 @@ namespace BookWarm
             else
             {
                 profilePhotoPictureBox.Image = Properties.Resources.logo;
+            }
+        }
+
+        private void SearchBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Enter key is pressed, trigger the Search_Click event
+                Searсh_Click(sender, e);
+
+                // Consume the key press to prevent it from being processed further
+                e.Handled = true;
             }
         }
     }
