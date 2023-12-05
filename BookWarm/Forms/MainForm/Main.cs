@@ -564,6 +564,7 @@ namespace BookWarm
                 Popular.Visible = true;
                 Rating.Visible = true;
                 LastView.Visible = true;
+                SearchResult.Visible = false;
             }
             else
             {
@@ -577,6 +578,7 @@ namespace BookWarm
                 Popular.Visible = false;
                 Rating.Visible = false;
                 LastView.Visible = false;
+                SearchResult.Visible = true;
             }
         }
 

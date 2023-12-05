@@ -55,6 +55,7 @@
             this.flowLayoutPanelHistory = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelSearch = new System.Windows.Forms.FlowLayoutPanel();
             this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
+            this.SearchResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
@@ -397,6 +398,20 @@
             this.profilePhotoPictureBox.TabStop = false;
             this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
             // 
+            // SearchResult
+            // 
+            this.SearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResult.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
+            this.SearchResult.Location = new System.Drawing.Point(319, 93);
+            this.SearchResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SearchResult.Name = "SearchResult";
+            this.SearchResult.Size = new System.Drawing.Size(356, 36);
+            this.SearchResult.TabIndex = 220;
+            this.SearchResult.Text = "Результати пошуку";
+            this.SearchResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SearchResult.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -405,6 +420,7 @@
             this.AutoScrollMinSize = new System.Drawing.Size(-100, -100);
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1000, 1102);
+            this.Controls.Add(this.SearchResult);
             this.Controls.Add(this.vScrollBar);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Minimize);
@@ -481,6 +497,7 @@
         private System.Windows.Forms.Label LastView;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHistory;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSearch;
+        private System.Windows.Forms.Label SearchResult;
     }
 }
 
