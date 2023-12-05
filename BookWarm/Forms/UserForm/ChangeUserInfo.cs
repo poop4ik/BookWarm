@@ -40,36 +40,8 @@ namespace BookWarm.Forms
 
             this.mainForm = mainForm;
 
-            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
-            {
-                string sqlQuery = "SELECT * FROM Users WHERE Username = @username;";
-                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@username", username);
-                    connection.Open();
+            user = GetUserByUsername(username);
 
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            user = new User
-                            {
-                                UserId = (int)reader["UserID"],
-                                FirstName = reader["FirstName"].ToString(),
-                                LastName = reader["LastName"].ToString(),
-                                UserName = reader["UserName"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                Age = (int)reader["Age"],
-                                PasswordHash = reader["PasswordHash"].ToString(),
-                                Description = reader["Description"].ToString(),
-                                ProfilePhoto = (reader["ProfilePhoto"] == DBNull.Value ? null : (byte[])reader["ProfilePhoto"])
-                            };
-                        }
-                    }
-                }
-            }
-
-            // Перевірка чи користувач існує
             if (user != null)
             {
                 UserNameBox.Text = user.UserName;
@@ -92,13 +64,12 @@ namespace BookWarm.Forms
                     profilePhotoPictureBox.Border = 0;
                 }
             }
-
-
         }
 
         private void Back_Click(object sender, EventArgs e)
         {
             this.Close();
+            mainForm.UpdatePhoto();
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -190,7 +161,7 @@ namespace BookWarm.Forms
             else
             {
                 // Якщо всі поля вимкнені, увімкнути всі
-                UserNameBox.Enabled = true;
+                UserNameBox.Enabled = false;
                 LastNameBox.Enabled = true;
                 FirstNameBox.Enabled = true;
                 AgeBox.Enabled = true;
@@ -358,22 +329,18 @@ namespace BookWarm.Forms
                 DescriptionLimit.Visible = false;
             }
 
-
             bool success = SaveProfileDataToDatabase(user.UserName);
 
             if (success)
             {
-                
                 ClearAllLabels();
                 MessageBox.Show("Дані профілю успішно збережено.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-                mainForm.UpdatePhoto();
             }
             else
             {
                 MessageBox.Show("Помилка при збереженні даних профілю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
 
@@ -474,6 +441,58 @@ namespace BookWarm.Forms
                 DescriptionLimit.Visible = false;
             }
         }
+
+        public static User GetUserByUsername(string username)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                {
+                    connection.Open();
+
+                    string selectQuery = "SELECT * FROM Users WHERE UserName = @UserName";
+
+                    using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@UserName", username);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                User user = new User
+                                {
+                                    UserId = Convert.ToInt32(reader["UserId"]),
+                                    UserName = Convert.ToString(reader["UserName"]),
+                                    FirstName = Convert.ToString(reader["FirstName"]),
+                                    LastName = Convert.ToString(reader["LastName"]),
+                                    Age = Convert.ToInt32(reader["Age"]),
+                                    Email = Convert.ToString(reader["Email"]),
+                                    PasswordHash = Convert.ToString(reader["PasswordHash"]),
+                                    Description = Convert.ToString(reader["Description"]),
+                                };
+
+                                // Assuming ProfilePhoto is stored as byte[] in the database
+                                if (reader["ProfilePhoto"] != DBNull.Value)
+                                {
+                                    user.ProfilePhoto = (byte[])reader["ProfilePhoto"];
+                                }
+
+                                return user;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                Console.WriteLine(ex.Message);
+            }
+
+            return null; // Return null if the user is not found or an error occurs
+        }
+
         private bool SaveProfileDataToDatabase(string username)
         {
             try
@@ -518,6 +537,8 @@ namespace BookWarm.Forms
                             // Hash the password or apply your password storage mechanism here
                             cmd.Parameters.AddWithValue("@PasswordHash", NewPasswordBox.Text);
                         }
+
+                        user.UpdateProfile(FirstNameBox.Text, LastNameBox.Text, NewEmailBox.Text, int.Parse(AgeBox.Text), DescriptionBox.Text);
 
                         cmd.ExecuteNonQuery();
                     }

@@ -1,4 +1,5 @@
 ﻿using BookWarm.Data.Models;
+using BookWarm.Forms;
 using BookWarm.Forms.MainForm;
 using BookWarm.Forms.ToolForm;
 using ComponentFactory.Krypton.Toolkit;
@@ -11,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
@@ -23,6 +25,7 @@ namespace BookWarm
         public static List<BookGenre> bookGenresList;
         public static List<Review> userReviewList;
         public static User user;
+        public static UserStatistics userstat;
         private Size originPhotoSize;
         private Point originPhotoLocation;
         private bool isMaximized = false; // Перевірка стану максимізації
@@ -61,6 +64,7 @@ namespace BookWarm
                 originPopularLocation = Popular.Location;
                 originRatingLocation = Rating.Location;
                 originNewLocation = New.Location;
+                
 
                 Resize_Click(this, EventArgs.Empty);
 
@@ -73,7 +77,8 @@ namespace BookWarm
 
                 using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                 {
-                    string sqlQuery = "SELECT * FROM Users WHERE Username = @username;";
+                    string sqlQuery = "SELECT * FROM Users WHERE UserName = @username";
+
                     using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
@@ -102,23 +107,49 @@ namespace BookWarm
 
                 if (user != null)
                 {
-
-                }
-
-                if (user.ProfilePhoto != null) // User has a photo.
-                {
-                    using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
+                    // Additional logic with user data
+                    if (user.ProfilePhoto != null)
                     {
-                        profilePhotoPictureBox.Image = Image.FromStream(ms);
-
+                        using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
+                        {
+                            profilePhotoPictureBox.Image = Image.FromStream(ms);
+                        }
+                        ImageConverter converter = new ImageConverter();
+                        Image img = (Image)converter.ConvertFrom(user.ProfilePhoto);
+                        user.ProfilePhotoObject = img;
                     }
-                    ImageConverter converter = new ImageConverter();
-                    Image img = (Image)converter.ConvertFrom(user.ProfilePhoto);
-                    user.ProfilePhotoObject = img;
-                }
-                else
-                {
-                    profilePhotoPictureBox.Image = Properties.Resources.logo;
+                    else
+                    {
+                        profilePhotoPictureBox.Image = Properties.Resources.logo;
+                    }
+
+                    // Retrieve UserStatistics
+                    using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                    {
+                        connection.Open();
+
+                        string query = "SELECT * FROM UserStatistics WHERE UserID = @userID";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@userID", user.UserId);
+
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    // Update UserStatistics object
+                                    userstat = new UserStatistics
+                                    {
+                                        StatisticID = (int)reader["StatisticID"],
+                                        UserID = user.UserId,
+                                        TotalViews = (int)reader["TotalViews"],
+                                        TotalReads = (int)reader["TotalReads"]
+                                    };
+                                }
+                            }
+                        }
+                    }
                 }
 
                 using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
@@ -329,9 +360,39 @@ namespace BookWarm
                     PopularBookData();
                     PopulateBookData();
                     RatingBookData();
-
+                    PopulateUserHistory();
                 }
             }
+        }
+
+        private List<UserHistoryItem> GetUserHistory(int userID)
+        {
+            List<UserHistoryItem> userHistory = new List<UserHistoryItem>();
+
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT BookID, ViewDate FROM UserHistory WHERE UserID = @UserID ORDER BY ViewDate DESC";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int bookID = reader.GetInt32(reader.GetOrdinal("BookID"));
+                            DateTime viewDate = reader.GetDateTime(reader.GetOrdinal("ViewDate"));
+
+                            userHistory.Add(new UserHistoryItem(bookID, viewDate));
+                        }
+                    }
+                }
+            }
+
+            return userHistory;
         }
 
 
@@ -390,6 +451,7 @@ namespace BookWarm
                 UserProfile userProfile = new UserProfile(user.UserName, this);
                 userProfile.ShowDialog();
                 this.Show();
+                UpdatePhoto();
             }
         }
 
@@ -440,10 +502,11 @@ namespace BookWarm
             New.Top -= scrollDirection;
             Popular.Top -= scrollDirection;
             Rating.Top -= scrollDirection;
+            LastView.Top -= scrollDirection;
             flowLayoutPanelNew.Top -= scrollDirection;
             flowLayoutPanelPopular.Top -= scrollDirection;
             flowLayoutPanelRating.Top -= scrollDirection;
-
+            flowLayoutPanelHistory.Top -= scrollDirection;
             // Оновіть попереднє значення прокрутки
             previousScrollValue = scrollValue;
         }
@@ -556,6 +619,42 @@ namespace BookWarm
             }
         }
 
+        public void PopulateUserHistory()
+        {
+            List<UserHistoryItem> userHistory = GetUserHistory(Main.user.UserId);
+
+            // Очистіть вміст flowLayoutPanelHistory
+            flowLayoutPanelHistory.Controls.Clear();
+
+            // Обмежте кількість доданих UserControl до 6
+            const int maxBooksToShow = 6;
+            int booksAdded = 0;
+
+            // Додайте UserControl для кожного елемента історії переглядів
+            foreach (UserHistoryItem historyItem in userHistory)
+            {
+                // Шукайте книгу в списку books
+                Book book = books.FirstOrDefault(b => b.BookID == historyItem.BookID);
+
+                if (book != null)
+                {
+                    // Шукайте BookStat в списку bookStatList
+                    BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == historyItem.BookID);
+
+                    UserControlPopularBook historyControlItem = new UserControlPopularBook(this);
+                    historyControlItem.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
+                    flowLayoutPanelHistory.Controls.Add(historyControlItem);
+
+                    booksAdded++;
+
+                    // Перевірте, чи додано вже 6 книжок
+                    if (booksAdded >= maxBooksToShow)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
 
 
         // Shuffle method to randomize the order of books

@@ -20,5 +20,13 @@ namespace BookWarm.Data.Models
         public byte[] ProfilePhoto { get; set; }
         public Image ProfilePhotoObject { get; set; }
 
+        public void UpdateProfile(string firstName, string lastName, string email, int age, string description)
+        { 
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Age = age;
+            Description = description;
+        }
     }
 }

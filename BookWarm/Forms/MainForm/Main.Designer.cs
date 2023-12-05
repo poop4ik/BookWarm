@@ -49,9 +49,11 @@
             this.Popular = new System.Windows.Forms.Label();
             this.Rating = new System.Windows.Forms.Label();
             this.flowLayoutPanelRating = new System.Windows.Forms.FlowLayoutPanel();
-            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.LastView = new System.Windows.Forms.Label();
+            this.flowLayoutPanelHistory = new System.Windows.Forms.FlowLayoutPanel();
+            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
@@ -61,9 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Minimize
@@ -162,7 +164,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vScrollBar.LargeChange = 80;
             this.vScrollBar.Location = new System.Drawing.Point(987, 50);
-            this.vScrollBar.Maximum = 600;
+            this.vScrollBar.Maximum = 820;
             this.vScrollBar.Name = "vScrollBar";
             this.vScrollBar.Size = new System.Drawing.Size(10, 1000);
             this.vScrollBar.SmallChange = 40;
@@ -262,7 +264,7 @@
             this.tableAdapterManager.GenresTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = BookWarm.BookWarmDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserHistoryTableAdapter = null;
-            this.tableAdapterManager.UserPreferencesTableAdapter = null;
+            this.tableAdapterManager.UserPreferenceTableAdapter = null;
             this.tableAdapterManager.UserReadNowTableAdapter = null;
             this.tableAdapterManager.UserReadTableAdapter = null;
             this.tableAdapterManager.UserReviewsTableAdapter = null;
@@ -299,31 +301,13 @@
             // 
             this.flowLayoutPanelRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelRating.AutoSize = true;
-            this.flowLayoutPanelRating.Location = new System.Drawing.Point(103, 991);
+            this.flowLayoutPanelRating.Location = new System.Drawing.Point(103, 990);
             this.flowLayoutPanelRating.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelRating.MaximumSize = new System.Drawing.Size(0, 350);
             this.flowLayoutPanelRating.MinimumSize = new System.Drawing.Size(800, 64);
             this.flowLayoutPanelRating.Name = "flowLayoutPanelRating";
             this.flowLayoutPanelRating.Size = new System.Drawing.Size(800, 64);
             this.flowLayoutPanelRating.TabIndex = 81;
-            // 
-            // profilePhotoPictureBox
-            // 
-            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.profilePhotoPictureBox.Border = 0;
-            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
-            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
-            this.profilePhotoPictureBox.Gradiant = 50F;
-            this.profilePhotoPictureBox.Location = new System.Drawing.Point(460, 808);
-            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
-            this.profilePhotoPictureBox.Size = new System.Drawing.Size(80, 80);
-            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profilePhotoPictureBox.TabIndex = 61;
-            this.profilePhotoPictureBox.TabStop = false;
-            this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
             // 
             // pictureBox2
             // 
@@ -353,6 +337,49 @@
             this.pictureBox8.TabIndex = 215;
             this.pictureBox8.TabStop = false;
             // 
+            // LastView
+            // 
+            this.LastView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LastView.BackColor = System.Drawing.Color.Transparent;
+            this.LastView.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
+            this.LastView.Location = new System.Drawing.Point(319, 1375);
+            this.LastView.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LastView.Name = "LastView";
+            this.LastView.Size = new System.Drawing.Size(356, 36);
+            this.LastView.TabIndex = 217;
+            this.LastView.Text = "Нещодавно переглянуті";
+            this.LastView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanelHistory
+            // 
+            this.flowLayoutPanelHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelHistory.AutoSize = true;
+            this.flowLayoutPanelHistory.Location = new System.Drawing.Point(103, 1435);
+            this.flowLayoutPanelHistory.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanelHistory.MaximumSize = new System.Drawing.Size(0, 350);
+            this.flowLayoutPanelHistory.MinimumSize = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelHistory.Name = "flowLayoutPanelHistory";
+            this.flowLayoutPanelHistory.Size = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelHistory.TabIndex = 218;
+            // 
+            // profilePhotoPictureBox
+            // 
+            this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.profilePhotoPictureBox.Border = 0;
+            this.profilePhotoPictureBox.BorderCap = System.Drawing.Drawing2D.DashCap.Flat;
+            this.profilePhotoPictureBox.Borderstyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
+            this.profilePhotoPictureBox.Gradiant = 50F;
+            this.profilePhotoPictureBox.Location = new System.Drawing.Point(470, 818);
+            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
+            this.profilePhotoPictureBox.Size = new System.Drawing.Size(60, 60);
+            this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.profilePhotoPictureBox.TabIndex = 61;
+            this.profilePhotoPictureBox.TabStop = false;
+            this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -361,8 +388,8 @@
             this.AutoScrollMinSize = new System.Drawing.Size(-100, -100);
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1000, 1102);
-            this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.vScrollBar);
+            this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Minimize);
             this.Controls.Add(this.Exit);
@@ -370,8 +397,10 @@
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.SeacrhClick);
             this.Controls.Add(this.Search);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LineLogo);
+            this.Controls.Add(this.LastView);
+            this.Controls.Add(this.flowLayoutPanelHistory);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.New);
             this.Controls.Add(this.flowLayoutPanelNew);
             this.Controls.Add(this.Popular);
@@ -400,9 +429,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookWarmDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,6 +460,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRating;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label LastView;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHistory;
     }
 }
 

@@ -218,6 +218,11 @@
     <Compile Include="UserControlReview.Designer.cs">
       <DependentUpon>UserControlReview.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Models\UserHistoryItem.cs" />
+    <Compile Include="Data\Models\UserStatistics.cs" />
+    <Compile Include="Data\Models\UserPreferenceItem.cs" />
+    <Compile Include="Data\Models\UserReadNowItem.cs" />
+    <Compile Include="Data\Models\UserReadItem.cs" />
     <EmbeddedResource Include="Forms\MainForm\BookRead.resx">
       <DependentUpon>BookRead.cs</DependentUpon>
     </EmbeddedResource>

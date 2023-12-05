@@ -81,20 +81,56 @@ namespace BookWarm.Forms.ToolForm
             this.Close();
         }
 
+        public Image GetProfilePhoto(string username)
+        {
+            Image profilePhoto = null;
+
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+            {
+                string query = "SELECT ProfilePhoto FROM Users WHERE UserName = @username";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
+                    connection.Open();
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != DBNull.Value && result != null)
+                    {
+                        // Convert the byte array to Image
+                        byte[] photoBytes = (byte[])result;
+
+                        ImageConverter converter = new ImageConverter();
+                        Image img = (Image)converter.ConvertFrom(photoBytes);
+                        profilePhoto = img;
+                    }
+                }
+            }
+
+            return profilePhoto;
+        }
+
+
         public void SetInfo()
         {
             StarRate.Text = "☆☆☆☆☆";
             Username.Text = Main.user.UserName;
 
-            if (Main.user.ProfilePhotoObject != null) // User has a photo.
+            // Retrieve the profile photo directly from the database
+            Image profilePhoto = GetProfilePhoto(Main.user.UserName);
+
+            if (profilePhoto != null)
             {
-                profilePhotoPictureBox.Image = Main.user.ProfilePhotoObject;
+                profilePhotoPictureBox.Image = profilePhoto;
+                Main.user.ProfilePhotoObject = profilePhoto;
             }
             else
             {
                 profilePhotoPictureBox.Image = Properties.Resources.logo;
             }
         }
+
 
         private void ChooseRating_ValueChanged(object sender, EventArgs e)
         {

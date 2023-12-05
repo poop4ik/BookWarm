@@ -58,12 +58,14 @@ namespace BookWarm
             if (userAge >= ageCategory)
             {
                 BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
-                bookInfoForm.Show();
+                bookInfoForm.ShowDialog();
+                mainForm.PopulateUserHistory();
             }
             else
             {
                 AgeCategory errorAge = new AgeCategory(ageCategory);
                 errorAge.ShowDialog();
+                mainForm.PopulateUserHistory();
             }
         }
     }

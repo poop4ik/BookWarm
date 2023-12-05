@@ -88,13 +88,13 @@ namespace BookWarm.Forms.MainForm
                     string emptyStars = new string('☆', 5 - starCount);
 
                     // Виведення середньої оцінки на форму
-                    AvarageRatingAuthor.Text = $"Середня оцінка: {averageRating} {stars}{emptyStars}";
+                    AvarageRatingAuthor.Text = $"{stars}{emptyStars}";
 
                     // Виведення інших даних про автора на форму
-                    numberOfBooksAuthor.Text = $"Кількість книг: {numberOfBooks} ";
+                    numberOfBooksAuthor.Text = $"{numberOfBooks}";
                     AuthorName.Text = author.AuthorName;
-                    CountryAuthor.Text = $"Країна: {author.Country}";
-                    AgeAuthor.Text = $"Вік: {author.Age}";
+                    CountryAuthor.Text = $"{author.Country}";
+                    AgeAuthor.Text = $"{author.Age}";
                     AuthorImage.Image = author.AuthorPhotoObject;
                 }
             }

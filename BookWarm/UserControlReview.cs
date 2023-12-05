@@ -22,13 +22,13 @@ namespace BookWarm
             this.mainForm = mainForm;
         }
 
-        public void SetData(string username, Image profilePhoto, DateTime reviewDate, decimal rate, string reviewText)
+        public void SetData(string username, Image ProfilePhotoObject, DateTime reviewDate, decimal rate, string reviewText)
         {
             // Set username
             Username.Text = username;
 
             // Set profile photo
-            profilePhotoPictureBox.Image = profilePhoto;
+            profilePhotoPictureBox.Image = ProfilePhotoObject;
 
             // Set review date
             DateTime.Text = reviewDate.ToString("dd.MM.yyyy HH:mm");

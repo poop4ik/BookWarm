@@ -7,22 +7,22 @@
 <DiagramLayout xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ex:showrelationlabel="False" ViewPortX="0" ViewPortY="0" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:BookReads" ZOrder="33" X="70" Y="70" Height="134" Width="209" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:Books" ZOrder="32" X="386" Y="70" Height="248" Width="180" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:Books" ZOrder="32" X="386" Y="70" Height="342" Width="209" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="283" />
     <Shape ID="DesignTable:BookViews" ZOrder="31" X="665" Y="70" Height="134" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:UserPreferences" ZOrder="30" X="1964" Y="70" Height="134" Width="238" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:UserReviews" ZOrder="29" X="2316" Y="70" Height="204" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="145" />
-    <Shape ID="DesignTable:Users" ZOrder="28" X="2642" Y="70" Height="273" Width="204" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="214" />
-    <Shape ID="DesignTable:UserStatistics" ZOrder="27" X="2916" Y="70" Height="153" Width="222" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
-    <Shape ID="DesignTable:Author" ZOrder="19" X="3248" Y="70" Height="172" Width="185" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
-    <Shape ID="DesignTable:AuthorBookRelation" ZOrder="18" X="3503" Y="70" Height="134" Width="263" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:Genres" ZOrder="17" X="3836" Y="70" Height="115" Width="184" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:GenreBookRelation" ZOrder="14" X="4090" Y="70" Height="134" Width="257" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:UserHistory" ZOrder="13" X="4417" Y="70" Height="134" Width="213" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:UserRead" ZOrder="12" X="4700" Y="70" Height="134" Width="199" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:UserReadNow" ZOrder="11" X="4969" Y="70" Height="134" Width="227" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:UserReviews" ZOrder="30" X="2316" Y="70" Height="227" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="168" />
+    <Shape ID="DesignTable:Users" ZOrder="29" X="2642" Y="70" Height="273" Width="204" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="214" />
+    <Shape ID="DesignTable:UserStatistics" ZOrder="28" X="2916" Y="70" Height="153" Width="222" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
+    <Shape ID="DesignTable:Author" ZOrder="22" X="3248" Y="70" Height="172" Width="185" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
+    <Shape ID="DesignTable:AuthorBookRelation" ZOrder="21" X="3503" Y="70" Height="134" Width="263" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:Genres" ZOrder="20" X="3836" Y="70" Height="115" Width="184" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
+    <Shape ID="DesignTable:GenreBookRelation" ZOrder="17" X="4090" Y="70" Height="134" Width="257" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:UserHistory" ZOrder="16" X="4417" Y="70" Height="181" Width="250" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="122" />
+    <Shape ID="DesignTable:UserRead" ZOrder="15" X="4700" Y="70" Height="134" Width="199" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:UserReadNow" ZOrder="14" X="4969" Y="70" Height="134" Width="227" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:UserPreference" ZOrder="3" X="5266" Y="70" Height="158" Width="275" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="99" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK__BookReads__BookI__395884C4" ZOrder="26" LineWidth="11">
+    <Connector ID="DesignRelation:FK__BookReads__BookI__395884C4" ZOrder="27" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>386</X>
@@ -34,10 +34,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__BookViews__BookI__3587F3E0" ZOrder="25" LineWidth="11">
+    <Connector ID="DesignRelation:FK__BookViews__BookI__3587F3E0" ZOrder="26" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>144</Y>
         </Point>
         <Point>
@@ -46,34 +46,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserPrefe__BookI__31B762FC" ZOrder="24" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserRevie__BookI__45BE5BA9" ZOrder="25" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>566</X>
-          <Y>96</Y>
-        </Point>
-        <Point>
-          <X>1964</X>
-          <Y>96</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK__UserPrefe__UserI__30C33EC3" ZOrder="23" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>2642</X>
-          <Y>88</Y>
-        </Point>
-        <Point>
-          <X>2202</X>
-          <Y>88</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK__UserRevie__BookI__45BE5BA9" ZOrder="22" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>172</Y>
         </Point>
         <Point>
@@ -82,7 +58,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserRevie__UserI__44CA3770" ZOrder="21" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserRevie__UserI__44CA3770" ZOrder="24" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>2642</X>
@@ -94,7 +70,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserStati__UserI__41EDCAC5" ZOrder="20" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserStati__UserI__41EDCAC5" ZOrder="23" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>2846</X>
@@ -106,7 +82,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__AuthorBoo__Autho__0E391C95" ZOrder="16" LineWidth="11">
+    <Connector ID="DesignRelation:FK__AuthorBoo__Autho__0E391C95" ZOrder="19" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>3433</X>
@@ -118,10 +94,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__AuthorBoo__BookI__0F2D40CE" ZOrder="15" LineWidth="11">
+    <Connector ID="DesignRelation:FK__AuthorBoo__BookI__0F2D40CE" ZOrder="18" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>196</Y>
         </Point>
         <Point>
@@ -130,34 +106,34 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__Books__AuthorID__1C873BEC" ZOrder="10" LineWidth="11">
+    <Connector ID="DesignRelation:FK__Books__AuthorID__1C873BEC" ZOrder="13" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>3248</X>
           <Y>136</Y>
         </Point>
         <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>136</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__Books__GenreID__1B9317B3" ZOrder="9" LineWidth="11">
+    <Connector ID="DesignRelation:FK__Books__GenreID__1B9317B3" ZOrder="12" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>3836</X>
           <Y>127</Y>
         </Point>
         <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>127</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__GenreBook__BookI__2EA5EC27" ZOrder="8" LineWidth="11">
+    <Connector ID="DesignRelation:FK__GenreBook__BookI__2EA5EC27" ZOrder="11" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>119</Y>
         </Point>
         <Point>
@@ -166,7 +142,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__GenreBook__Genre__2F9A1060" ZOrder="7" LineWidth="11">
+    <Connector ID="DesignRelation:FK__GenreBook__Genre__2F9A1060" ZOrder="10" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>4020</X>
@@ -178,42 +154,42 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserHisto__BookI__3B0BC30C" ZOrder="6" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserHisto__BookI__3B0BC30C" ZOrder="9" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>566</X>
-          <Y>221</Y>
+          <X>595</X>
+          <Y>259</Y>
         </Point>
         <Point>
           <X>4434</X>
-          <Y>221</Y>
+          <Y>259</Y>
         </Point>
         <Point>
           <X>4434</X>
-          <Y>204</Y>
+          <Y>251</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserHisto__UserI__3A179ED3" ZOrder="5" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserHisto__UserI__3A179ED3" ZOrder="8" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>2846</X>
-          <Y>229</Y>
+          <Y>259</Y>
         </Point>
         <Point>
           <X>4442</X>
-          <Y>229</Y>
+          <Y>259</Y>
         </Point>
         <Point>
           <X>4442</X>
-          <Y>204</Y>
+          <Y>251</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserRead__BookID__373B3228" ZOrder="4" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserRead__BookID__373B3228" ZOrder="7" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>237</Y>
         </Point>
         <Point>
@@ -226,7 +202,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserRead__UserID__36470DEF" ZOrder="3" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserRead__UserID__36470DEF" ZOrder="6" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>2846</X>
@@ -242,10 +218,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserReadN__BookI__336AA144" ZOrder="2" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserReadN__BookI__336AA144" ZOrder="5" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>566</X>
+          <X>595</X>
           <Y>253</Y>
         </Point>
         <Point>
@@ -258,7 +234,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__UserReadN__UserI__32767D0B" ZOrder="1" LineWidth="11">
+    <Connector ID="DesignRelation:FK__UserReadN__UserI__32767D0B" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>2846</X>
@@ -271,6 +247,30 @@
         <Point>
           <X>4994</X>
           <Y>204</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK__UserPrefe__BookI__31B762FC" ZOrder="2" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>595</X>
+          <Y>103</Y>
+        </Point>
+        <Point>
+          <X>5266</X>
+          <Y>103</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK__UserPrefe__UserI__30C33EC3" ZOrder="1" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>2846</X>
+          <Y>95</Y>
+        </Point>
+        <Point>
+          <X>5266</X>
+          <Y>95</Y>
         </Point>
       </RoutePoints>
     </Connector>

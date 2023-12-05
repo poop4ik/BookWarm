@@ -46,23 +46,86 @@ namespace BookWarm
 
             int userAge = Main.user.Age;
 
-            BookImage.Click += (sender, e) => OpenBookInfoForm(authorID, bookID, userAge, ageCategory);
-            View.Click += (sender, e) => OpenBookInfoForm(authorID, bookID, userAge, ageCategory);
+            BookImage.Click += (sender, e) => OpenBookInfoForm(authorID, bookID, ageCategory);
+            View.Click += (sender, e) => OpenBookInfoForm(authorID, bookID, ageCategory);
             Author.Click += (sender, e) => OpenAuthorInfoForm(authorID);
         }
 
-        private void OpenBookInfoForm(int authorID, int bookID, int userAge, int ageCategory)
+        private void UpdateUserHistory(int userID, int bookID)
         {
-            // Додайте вашу умову перевірки віку тут (наприклад, 18 років і старше)
-            if (userAge >= ageCategory)
+            using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
-                BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
-                bookInfoForm.Show();
+                connection.Open();
+
+                // Перевірте наявність запису користувача та книги в історії
+                string checkQuery = "SELECT COUNT(*) FROM UserHistory WHERE UserID = @UserID AND BookID = @BookID";
+
+                using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@UserID", userID);
+                    checkCommand.Parameters.AddWithValue("@BookID", bookID);
+
+                    int count = (int)checkCommand.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        // Якщо запис існує, оновіть дату перегляду
+                        string updateQuery = "UPDATE UserHistory SET ViewDate = GETDATE() WHERE UserID = @UserID AND BookID = @BookID";
+
+                        using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                        {
+                            updateCommand.Parameters.AddWithValue("@UserID", userID);
+                            updateCommand.Parameters.AddWithValue("@BookID", bookID);
+
+                            updateCommand.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        // Якщо запис не існує, вставте новий запис
+                        string insertQuery = "INSERT INTO UserHistory (UserID, BookID, ViewDate) VALUES (@UserID, @BookID, GETDATE())";
+
+                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                        {
+                            insertCommand.Parameters.AddWithValue("@UserID", userID);
+                            insertCommand.Parameters.AddWithValue("@BookID", bookID);
+
+                            insertCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void OpenBookInfoForm(int authorID, int bookID, int ageCategory)
+        {
+            // Ensure that the User property is accessible from the Main form
+            if (Main.user != null)
+            {
+                int userAge = Main.user.Age;
+
+                // Add your age condition here (e.g., 18 years and older)
+                if (userAge >= ageCategory)
+                {
+                    UpdateUserHistory(Main.user.UserId, bookID);
+
+                    BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
+                    bookInfoForm.ShowDialog();
+                    mainForm.PopulateUserHistory();
+                }
+                else
+                {
+                    AgeCategory errorAge = new AgeCategory(ageCategory);
+                    errorAge.ShowDialog();
+                    mainForm.PopulateUserHistory();
+                }
             }
             else
             {
                 AgeCategory errorAge = new AgeCategory(ageCategory);
                 errorAge.ShowDialog();
+                mainForm.PopulateUserHistory();
             }
         }
 
