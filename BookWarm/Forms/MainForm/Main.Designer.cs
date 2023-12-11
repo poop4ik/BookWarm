@@ -76,9 +76,10 @@
             this.Minimize.AutoSize = true;
             this.Minimize.BackColor = System.Drawing.Color.Silver;
             this.Minimize.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Minimize.Location = new System.Drawing.Point(912, 11);
+            this.Minimize.Location = new System.Drawing.Point(684, 9);
+            this.Minimize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(27, 24);
+            this.Minimize.Size = new System.Drawing.Size(23, 19);
             this.Minimize.TabIndex = 62;
             this.Minimize.Text = "—";
             this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
@@ -90,9 +91,9 @@
             this.AuthenticationPanel.AutoSize = true;
             this.AuthenticationPanel.Controls.Add(this.Resize);
             this.AuthenticationPanel.Location = new System.Drawing.Point(0, -2);
-            this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AuthenticationPanel.Name = "AuthenticationPanel";
-            this.AuthenticationPanel.Size = new System.Drawing.Size(1403, 50);
+            this.AuthenticationPanel.Size = new System.Drawing.Size(1052, 41);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
             this.AuthenticationPanel.TabIndex = 63;
@@ -102,10 +103,9 @@
             this.Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Resize.BackColor = System.Drawing.Color.Silver;
             this.Resize.Image = ((System.Drawing.Image)(resources.GetObject("Resize.Image")));
-            this.Resize.Location = new System.Drawing.Point(1319, 13);
-            this.Resize.Margin = new System.Windows.Forms.Padding(4);
+            this.Resize.Location = new System.Drawing.Point(989, 11);
             this.Resize.Name = "Resize";
-            this.Resize.Size = new System.Drawing.Size(27, 25);
+            this.Resize.Size = new System.Drawing.Size(20, 20);
             this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Resize.TabIndex = 69;
             this.Resize.TabStop = false;
@@ -116,11 +116,10 @@
             // 
             this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBox.Location = new System.Drawing.Point(325, 55);
-            this.SearchBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SearchBox.Location = new System.Drawing.Point(244, 45);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SearchBox.Size = new System.Drawing.Size(350, 31);
+            this.SearchBox.Size = new System.Drawing.Size(262, 27);
             this.SearchBox.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.SearchBox.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.SearchBox.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
@@ -139,12 +138,11 @@
             this.flowLayoutPanelNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelNew.AutoSize = true;
-            this.flowLayoutPanelNew.Location = new System.Drawing.Point(103, 153);
-            this.flowLayoutPanelNew.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanelNew.MaximumSize = new System.Drawing.Size(0, 350);
-            this.flowLayoutPanelNew.MinimumSize = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelNew.Location = new System.Drawing.Point(77, 124);
+            this.flowLayoutPanelNew.MaximumSize = new System.Drawing.Size(0, 284);
+            this.flowLayoutPanelNew.MinimumSize = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelNew.Name = "flowLayoutPanelNew";
-            this.flowLayoutPanelNew.Size = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelNew.Size = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelNew.TabIndex = 74;
             // 
             // New
@@ -152,10 +150,9 @@
             this.New.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.New.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.New.Location = new System.Drawing.Point(319, 90);
-            this.New.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.New.Location = new System.Drawing.Point(239, 73);
             this.New.Name = "New";
-            this.New.Size = new System.Drawing.Size(356, 36);
+            this.New.Size = new System.Drawing.Size(267, 29);
             this.New.TabIndex = 75;
             this.New.Text = "Новинки";
             this.New.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -165,10 +162,10 @@
             this.vScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vScrollBar.LargeChange = 80;
-            this.vScrollBar.Location = new System.Drawing.Point(987, 50);
+            this.vScrollBar.Location = new System.Drawing.Point(740, 41);
             this.vScrollBar.Maximum = 820;
             this.vScrollBar.Name = "vScrollBar";
-            this.vScrollBar.Size = new System.Drawing.Size(10, 1000);
+            this.vScrollBar.Size = new System.Drawing.Size(10, 812);
             this.vScrollBar.SmallChange = 40;
             this.vScrollBar.TabIndex = 76;
             this.vScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar_Scroll);
@@ -177,12 +174,11 @@
             // 
             this.flowLayoutPanelPopular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelPopular.AutoSize = true;
-            this.flowLayoutPanelPopular.Location = new System.Drawing.Point(103, 534);
-            this.flowLayoutPanelPopular.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanelPopular.MaximumSize = new System.Drawing.Size(0, 350);
-            this.flowLayoutPanelPopular.MinimumSize = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelPopular.Location = new System.Drawing.Point(77, 438);
+            this.flowLayoutPanelPopular.MaximumSize = new System.Drawing.Size(0, 284);
+            this.flowLayoutPanelPopular.MinimumSize = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelPopular.Name = "flowLayoutPanelPopular";
-            this.flowLayoutPanelPopular.Size = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelPopular.Size = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelPopular.TabIndex = 78;
             // 
             // SeacrhClick
@@ -190,10 +186,9 @@
             this.SeacrhClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SeacrhClick.BackColor = System.Drawing.Color.Transparent;
             this.SeacrhClick.Image = ((System.Drawing.Image)(resources.GetObject("SeacrhClick.Image")));
-            this.SeacrhClick.Location = new System.Drawing.Point(678, 54);
-            this.SeacrhClick.Margin = new System.Windows.Forms.Padding(4);
+            this.SeacrhClick.Location = new System.Drawing.Point(508, 44);
             this.SeacrhClick.Name = "SeacrhClick";
-            this.SeacrhClick.Size = new System.Drawing.Size(28, 34);
+            this.SeacrhClick.Size = new System.Drawing.Size(21, 28);
             this.SeacrhClick.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SeacrhClick.TabIndex = 73;
             this.SeacrhClick.TabStop = false;
@@ -204,10 +199,9 @@
             this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Exit.BackColor = System.Drawing.Color.Silver;
             this.Exit.Image = ((System.Drawing.Image)(resources.GetObject("Exit.Image")));
-            this.Exit.Location = new System.Drawing.Point(945, 7);
-            this.Exit.Margin = new System.Windows.Forms.Padding(4);
+            this.Exit.Location = new System.Drawing.Point(709, 6);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(35, 32);
+            this.Exit.Size = new System.Drawing.Size(26, 26);
             this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Exit.TabIndex = 70;
             this.Exit.TabStop = false;
@@ -219,10 +213,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LineLogo.BackColor = System.Drawing.Color.Transparent;
             this.LineLogo.Image = ((System.Drawing.Image)(resources.GetObject("LineLogo.Image")));
-            this.LineLogo.Location = new System.Drawing.Point(-21, 799);
-            this.LineLogo.Margin = new System.Windows.Forms.Padding(4);
+            this.LineLogo.Location = new System.Drawing.Point(-16, 649);
             this.LineLogo.Name = "LineLogo";
-            this.LineLogo.Size = new System.Drawing.Size(1042, 100);
+            this.LineLogo.Size = new System.Drawing.Size(782, 81);
             this.LineLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LineLogo.TabIndex = 56;
             this.LineLogo.TabStop = false;
@@ -233,10 +226,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-11, -6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(-8, -5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(998, 95);
+            this.pictureBox1.Size = new System.Drawing.Size(748, 77);
             this.pictureBox1.TabIndex = 79;
             this.pictureBox1.TabStop = false;
             // 
@@ -278,10 +270,9 @@
             this.Popular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Popular.BackColor = System.Drawing.Color.Transparent;
             this.Popular.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.Popular.Location = new System.Drawing.Point(319, 494);
-            this.Popular.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Popular.Location = new System.Drawing.Point(239, 408);
             this.Popular.Name = "Popular";
-            this.Popular.Size = new System.Drawing.Size(356, 36);
+            this.Popular.Size = new System.Drawing.Size(267, 29);
             this.Popular.TabIndex = 77;
             this.Popular.Text = "Популярні";
             this.Popular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -291,10 +282,9 @@
             this.Rating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Rating.BackColor = System.Drawing.Color.Transparent;
             this.Rating.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.Rating.Location = new System.Drawing.Point(319, 930);
-            this.Rating.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Rating.Location = new System.Drawing.Point(239, 756);
             this.Rating.Name = "Rating";
-            this.Rating.Size = new System.Drawing.Size(356, 36);
+            this.Rating.Size = new System.Drawing.Size(267, 29);
             this.Rating.TabIndex = 80;
             this.Rating.Text = "Рейтингові";
             this.Rating.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -303,12 +293,11 @@
             // 
             this.flowLayoutPanelRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelRating.AutoSize = true;
-            this.flowLayoutPanelRating.Location = new System.Drawing.Point(103, 990);
-            this.flowLayoutPanelRating.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanelRating.MaximumSize = new System.Drawing.Size(0, 350);
-            this.flowLayoutPanelRating.MinimumSize = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelRating.Location = new System.Drawing.Point(77, 804);
+            this.flowLayoutPanelRating.MaximumSize = new System.Drawing.Size(0, 284);
+            this.flowLayoutPanelRating.MinimumSize = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelRating.Name = "flowLayoutPanelRating";
-            this.flowLayoutPanelRating.Size = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelRating.Size = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelRating.TabIndex = 81;
             // 
             // pictureBox2
@@ -317,10 +306,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox2.Location = new System.Drawing.Point(897, 47);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(673, 38);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 908);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 738);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 216;
             this.pictureBox2.TabStop = false;
@@ -331,10 +319,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox8.Location = new System.Drawing.Point(-35, 38);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox8.Location = new System.Drawing.Point(-26, 31);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(133, 897);
+            this.pictureBox8.Size = new System.Drawing.Size(100, 729);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 215;
             this.pictureBox8.TabStop = false;
@@ -344,10 +331,9 @@
             this.LastView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LastView.BackColor = System.Drawing.Color.Transparent;
             this.LastView.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.LastView.Location = new System.Drawing.Point(319, 1375);
-            this.LastView.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LastView.Location = new System.Drawing.Point(239, 1117);
             this.LastView.Name = "LastView";
-            this.LastView.Size = new System.Drawing.Size(356, 36);
+            this.LastView.Size = new System.Drawing.Size(267, 29);
             this.LastView.TabIndex = 217;
             this.LastView.Text = "Нещодавно переглянуті";
             this.LastView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -356,12 +342,11 @@
             // 
             this.flowLayoutPanelHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelHistory.AutoSize = true;
-            this.flowLayoutPanelHistory.Location = new System.Drawing.Point(103, 1435);
-            this.flowLayoutPanelHistory.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanelHistory.MaximumSize = new System.Drawing.Size(0, 350);
-            this.flowLayoutPanelHistory.MinimumSize = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelHistory.Location = new System.Drawing.Point(77, 1166);
+            this.flowLayoutPanelHistory.MaximumSize = new System.Drawing.Size(0, 284);
+            this.flowLayoutPanelHistory.MinimumSize = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelHistory.Name = "flowLayoutPanelHistory";
-            this.flowLayoutPanelHistory.Size = new System.Drawing.Size(800, 64);
+            this.flowLayoutPanelHistory.Size = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelHistory.TabIndex = 218;
             // 
             // flowLayoutPanelSearch
@@ -371,12 +356,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelSearch.AutoScroll = true;
             this.flowLayoutPanelSearch.AutoSize = true;
-            this.flowLayoutPanelSearch.Location = new System.Drawing.Point(106, 153);
-            this.flowLayoutPanelSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanelSearch.MaximumSize = new System.Drawing.Size(0, 1750);
-            this.flowLayoutPanelSearch.MinimumSize = new System.Drawing.Size(1000, 64);
+            this.flowLayoutPanelSearch.Location = new System.Drawing.Point(80, 124);
+            this.flowLayoutPanelSearch.MaximumSize = new System.Drawing.Size(0, 1422);
+            this.flowLayoutPanelSearch.MinimumSize = new System.Drawing.Size(750, 52);
             this.flowLayoutPanelSearch.Name = "flowLayoutPanelSearch";
-            this.flowLayoutPanelSearch.Size = new System.Drawing.Size(1000, 350);
+            this.flowLayoutPanelSearch.Size = new System.Drawing.Size(750, 284);
             this.flowLayoutPanelSearch.TabIndex = 219;
             this.flowLayoutPanelSearch.Visible = false;
             // 
@@ -389,10 +373,10 @@
             this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
             this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
             this.profilePhotoPictureBox.Gradiant = 50F;
-            this.profilePhotoPictureBox.Location = new System.Drawing.Point(470, 818);
-            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.profilePhotoPictureBox.Location = new System.Drawing.Point(352, 665);
+            this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
-            this.profilePhotoPictureBox.Size = new System.Drawing.Size(60, 60);
+            this.profilePhotoPictureBox.Size = new System.Drawing.Size(45, 45);
             this.profilePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profilePhotoPictureBox.TabIndex = 61;
             this.profilePhotoPictureBox.TabStop = false;
@@ -403,10 +387,9 @@
             this.SearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchResult.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.SearchResult.Location = new System.Drawing.Point(319, 93);
-            this.SearchResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SearchResult.Location = new System.Drawing.Point(239, 76);
             this.SearchResult.Name = "SearchResult";
-            this.SearchResult.Size = new System.Drawing.Size(356, 36);
+            this.SearchResult.Size = new System.Drawing.Size(267, 29);
             this.SearchResult.TabIndex = 220;
             this.SearchResult.Text = "Результати пошуку";
             this.SearchResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -414,12 +397,12 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(-100, -100);
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1000, 1102);
+            this.ClientSize = new System.Drawing.Size(750, 894);
             this.Controls.Add(this.SearchResult);
             this.Controls.Add(this.vScrollBar);
             this.Controls.Add(this.pictureBox2);
@@ -443,8 +426,7 @@
             this.Controls.Add(this.flowLayoutPanelRating);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1000, 1040);
+            this.MinimumSize = new System.Drawing.Size(750, 845);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 

@@ -200,22 +200,22 @@
       <DependentUpon>UserProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Models\Review.cs" />
-    <Compile Include="UserControlAuthor.cs">
+    <Compile Include="Data\UserControl\UserControlAuthor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAuthor.Designer.cs">
+    <Compile Include="Data\UserControl\UserControlAuthor.Designer.cs">
       <DependentUpon>UserControlAuthor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlPopularBook.cs">
+    <Compile Include="Data\UserControl\UserControlPopularBook.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlPopularBook.Designer.cs">
+    <Compile Include="Data\UserControl\UserControlPopularBook.Designer.cs">
       <DependentUpon>UserControlPopularBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlReview.cs">
+    <Compile Include="Data\UserControl\UserControlReview.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlReview.Designer.cs">
+    <Compile Include="Data\UserControl\UserControlReview.Designer.cs">
       <DependentUpon>UserControlReview.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Models\UserHistoryItem.cs" />
@@ -270,13 +270,13 @@
     <EmbeddedResource Include="Forms\UserForm\UserProfile.resx">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAuthor.resx">
+    <EmbeddedResource Include="Data\UserControl\UserControlAuthor.resx">
       <DependentUpon>UserControlAuthor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlPopularBook.resx">
+    <EmbeddedResource Include="Data\UserControl\UserControlPopularBook.resx">
       <DependentUpon>UserControlPopularBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlReview.resx">
+    <EmbeddedResource Include="Data\UserControl\UserControlReview.resx">
       <DependentUpon>UserControlReview.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BookWarmDBDataSet.xsc">
@@ -379,9 +379,7 @@
     <None Include="Resources\book.png" />
     <Content Include="Без-назви-3.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\UserControl\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>

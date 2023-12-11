@@ -624,7 +624,7 @@ namespace BookWarm
             for (int i = 0; i < Math.Min(books.Count, maxBooksToShow); i++)
             {
                 Book book = books[i];
-                if (book.Year >= 2023)
+                if (book.Year >= 2015)
                 {
                     BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
 
