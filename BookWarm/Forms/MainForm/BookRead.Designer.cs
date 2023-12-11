@@ -82,7 +82,7 @@
             this.Exit.BackColor = System.Drawing.Color.Transparent;
             this.Exit.Image = global::BookWarm.Properties.Resources.exit;
             this.Exit.Location = new System.Drawing.Point(1329, 5);
-            this.Exit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Exit.Margin = new System.Windows.Forms.Padding(4);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(35, 32);
             this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -97,7 +97,7 @@
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::BookWarm.Properties.Resources.linev2;
             this.pictureBox8.Location = new System.Drawing.Point(4, 41);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(133, 798);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -111,7 +111,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::BookWarm.Properties.Resources.linev2;
             this.pictureBox1.Location = new System.Drawing.Point(1244, 41);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 798);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -148,7 +148,7 @@
             // 
             this.BookWorm.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BookWorm.Location = new System.Drawing.Point(580, 74);
-            this.BookWorm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BookWorm.Margin = new System.Windows.Forms.Padding(4);
             this.BookWorm.Name = "BookWorm";
             this.BookWorm.Size = new System.Drawing.Size(189, 261);
             this.BookWorm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -177,8 +177,9 @@
             this.BookContent.BackColor = System.Drawing.Color.LightGray;
             this.BookContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BookContent.Location = new System.Drawing.Point(145, 542);
-            this.BookContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BookContent.Margin = new System.Windows.Forms.Padding(4);
             this.BookContent.Name = "BookContent";
+            this.BookContent.ReadOnly = true;
             this.BookContent.Size = new System.Drawing.Size(1091, 279);
             this.BookContent.TabIndex = 231;
             this.BookContent.Text = "";
@@ -189,12 +190,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Download.BackColor = System.Drawing.Color.Transparent;
             this.Download.Font = new System.Drawing.Font("Arial Black", 16F);
-            this.Download.Location = new System.Drawing.Point(547, 432);
+            this.Download.Location = new System.Drawing.Point(542, 432);
             this.Download.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Download.Name = "Download";
-            this.Download.Size = new System.Drawing.Size(259, 38);
+            this.Download.Size = new System.Drawing.Size(275, 38);
             this.Download.TabIndex = 232;
-            this.Download.Text = "Скачати книгу";
+            this.Download.Text = "Завантажити";
             this.Download.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Download.Click += new System.EventHandler(this.Download_Click);
             // 
@@ -230,7 +231,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BookRead";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 

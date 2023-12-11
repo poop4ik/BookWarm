@@ -32,10 +32,10 @@
             this.Back = new System.Windows.Forms.Label();
             this.Minimize = new System.Windows.Forms.Label();
             this.AuthenticationPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.Logout = new System.Windows.Forms.PictureBox();
-            this.Exit = new System.Windows.Forms.PictureBox();
-            this.Resize = new System.Windows.Forms.PictureBox();
             this.ChangeInfo = new System.Windows.Forms.PictureBox();
+            this.Resize = new System.Windows.Forms.PictureBox();
+            this.Exit = new System.Windows.Forms.PictureBox();
+            this.Logout = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -55,10 +55,10 @@
             this.History = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangeInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -106,33 +106,19 @@
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
             this.AuthenticationPanel.TabIndex = 64;
             // 
-            // Logout
+            // ChangeInfo
             // 
-            this.Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Logout.BackColor = System.Drawing.Color.Transparent;
-            this.Logout.Image = global::BookWarm.Properties.Resources.exitacc;
-            this.Logout.Location = new System.Drawing.Point(921, 12);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4);
-            this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(37, 34);
-            this.Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Logout.TabIndex = 68;
-            this.Logout.TabStop = false;
-            this.Logout.Click += new System.EventHandler(this.Logout_Click);
-            // 
-            // Exit
-            // 
-            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Exit.BackColor = System.Drawing.Color.Transparent;
-            this.Exit.Image = global::BookWarm.Properties.Resources.exit;
-            this.Exit.Location = new System.Drawing.Point(957, 14);
-            this.Exit.Margin = new System.Windows.Forms.Padding(4);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(35, 32);
-            this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Exit.TabIndex = 68;
-            this.Exit.TabStop = false;
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            this.ChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangeInfo.BackColor = System.Drawing.Color.Transparent;
+            this.ChangeInfo.Image = ((System.Drawing.Image)(resources.GetObject("ChangeInfo.Image")));
+            this.ChangeInfo.Location = new System.Drawing.Point(887, 16);
+            this.ChangeInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.ChangeInfo.Name = "ChangeInfo";
+            this.ChangeInfo.Size = new System.Drawing.Size(32, 30);
+            this.ChangeInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ChangeInfo.TabIndex = 68;
+            this.ChangeInfo.TabStop = false;
+            this.ChangeInfo.Click += new System.EventHandler(this.ChangeInfo_Click);
             // 
             // Resize
             // 
@@ -149,19 +135,33 @@
             this.Resize.Visible = false;
             this.Resize.Click += new System.EventHandler(this.Resize_Click);
             // 
-            // ChangeInfo
+            // Exit
             // 
-            this.ChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeInfo.BackColor = System.Drawing.Color.Transparent;
-            this.ChangeInfo.Image = ((System.Drawing.Image)(resources.GetObject("ChangeInfo.Image")));
-            this.ChangeInfo.Location = new System.Drawing.Point(887, 16);
-            this.ChangeInfo.Margin = new System.Windows.Forms.Padding(4);
-            this.ChangeInfo.Name = "ChangeInfo";
-            this.ChangeInfo.Size = new System.Drawing.Size(32, 30);
-            this.ChangeInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ChangeInfo.TabIndex = 68;
-            this.ChangeInfo.TabStop = false;
-            this.ChangeInfo.Click += new System.EventHandler(this.ChangeInfo_Click);
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit.BackColor = System.Drawing.Color.Transparent;
+            this.Exit.Image = global::BookWarm.Properties.Resources.exit;
+            this.Exit.Location = new System.Drawing.Point(957, 14);
+            this.Exit.Margin = new System.Windows.Forms.Padding(4);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(35, 32);
+            this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Exit.TabIndex = 68;
+            this.Exit.TabStop = false;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // Logout
+            // 
+            this.Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Logout.BackColor = System.Drawing.Color.Transparent;
+            this.Logout.Image = global::BookWarm.Properties.Resources.exitacc;
+            this.Logout.Location = new System.Drawing.Point(921, 12);
+            this.Logout.Margin = new System.Windows.Forms.Padding(4);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(37, 34);
+            this.Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logout.TabIndex = 68;
+            this.Logout.TabStop = false;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // lblUsername
             // 
@@ -259,7 +259,6 @@
             this.ReadsNow.TabIndex = 70;
             this.ReadsNow.Text = "Читаю";
             this.ReadsNow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ReadsNow.Click += new System.EventHandler(this.ReadsNow_Click);
             // 
             // Reads
             // 
@@ -274,7 +273,6 @@
             this.Reads.TabIndex = 71;
             this.Reads.Text = "Прочитані";
             this.Reads.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Reads.Click += new System.EventHandler(this.Reads_Click);
             // 
             // Preference
             // 
@@ -289,7 +287,6 @@
             this.Preference.TabIndex = 72;
             this.Preference.Text = "Обрані";
             this.Preference.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Preference.Click += new System.EventHandler(this.Preference_Click);
             // 
             // pictureBox2
             // 
@@ -344,7 +341,6 @@
             this.flowLayoutPanelHistory.Name = "flowLayoutPanelHistory";
             this.flowLayoutPanelHistory.Size = new System.Drawing.Size(1000, 65);
             this.flowLayoutPanelHistory.TabIndex = 220;
-            this.flowLayoutPanelHistory.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelHistory_Paint);
             // 
             // flowLayoutPanelPreference
             // 
@@ -359,7 +355,6 @@
             this.flowLayoutPanelPreference.Name = "flowLayoutPanelPreference";
             this.flowLayoutPanelPreference.Size = new System.Drawing.Size(1000, 65);
             this.flowLayoutPanelPreference.TabIndex = 221;
-            this.flowLayoutPanelPreference.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelPreference_Paint);
             // 
             // flowLayoutPanelReads
             // 
@@ -374,7 +369,6 @@
             this.flowLayoutPanelReads.Name = "flowLayoutPanelReads";
             this.flowLayoutPanelReads.Size = new System.Drawing.Size(1000, 64);
             this.flowLayoutPanelReads.TabIndex = 222;
-            this.flowLayoutPanelReads.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelReads_Paint);
             // 
             // flowLayoutPanelReadsNow
             // 
@@ -389,7 +383,6 @@
             this.flowLayoutPanelReadsNow.Name = "flowLayoutPanelReadsNow";
             this.flowLayoutPanelReadsNow.Size = new System.Drawing.Size(1000, 65);
             this.flowLayoutPanelReadsNow.TabIndex = 223;
-            this.flowLayoutPanelReadsNow.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelReadsNow_Paint);
             // 
             // History
             // 
@@ -443,10 +436,10 @@
             this.Text = "BookWorm";
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).EndInit();
             this.AuthenticationPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Logout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Resize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangeInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Resize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();

@@ -113,11 +113,13 @@ namespace BookWarm
             // Отримати RTF-контент з RichTextBox (BookContent)
             byte[] rtfContent = GetRTFContent(BookContent);
             if (rtfContent != null)
+            book = Main.books.FirstOrDefault(b => b.BookID == bookID);
+            Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
             {
                 // Зберегти RTF-контент у файл
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "RTF Files (*.rtf)|*.rtf";
-                saveFileDialog.FileName = $"{book.Title}.rtf";
+                saveFileDialog.FileName = $"{author?.AuthorName ?? "Unknown Author"} - {book.Title}.rtf";
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {

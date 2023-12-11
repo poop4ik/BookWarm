@@ -167,7 +167,7 @@
             this.genreListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.genreListBox.Font = new System.Drawing.Font("Arial", 12F);
             this.genreListBox.ItemHeight = 23;
-            this.genreListBox.Location = new System.Drawing.Point(547, 359);
+            this.genreListBox.Location = new System.Drawing.Point(547, 357);
             this.genreListBox.Margin = new System.Windows.Forms.Padding(4);
             this.genreListBox.MultiColumn = true;
             this.genreListBox.Name = "genreListBox";
@@ -178,7 +178,7 @@
             // Year
             // 
             this.Year.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Year.Location = new System.Drawing.Point(500, 221);
+            this.Year.Location = new System.Drawing.Point(500, 220);
             this.Year.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Year.Name = "Year";
             this.Year.Size = new System.Drawing.Size(112, 31);
@@ -265,6 +265,7 @@
             this.Description.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Description.Location = new System.Drawing.Point(366, 484);
             this.Description.Margin = new System.Windows.Forms.Padding(4);
+            this.Description.MaxLength = 10;
             this.Description.Multiline = true;
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
@@ -276,7 +277,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Arial Black", 16F);
-            this.label6.Location = new System.Drawing.Point(526, 536);
+            this.label6.Location = new System.Drawing.Point(529, 561);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(205, 38);
@@ -322,9 +323,9 @@
             this.flowLayoutPanelReview.Location = new System.Drawing.Point(366, 693);
             this.flowLayoutPanelReview.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelReview.MaximumSize = new System.Drawing.Size(0, 185);
-            this.flowLayoutPanelReview.MinimumSize = new System.Drawing.Size(600, 64);
+            this.flowLayoutPanelReview.MinimumSize = new System.Drawing.Size(600, 65);
             this.flowLayoutPanelReview.Name = "flowLayoutPanelReview";
-            this.flowLayoutPanelReview.Size = new System.Drawing.Size(600, 64);
+            this.flowLayoutPanelReview.Size = new System.Drawing.Size(600, 65);
             this.flowLayoutPanelReview.TabIndex = 221;
             // 
             // WriteReview
@@ -396,7 +397,7 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox3.Location = new System.Drawing.Point(522, 554);
+            this.pictureBox3.Location = new System.Drawing.Point(522, 582);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(218, 98);
@@ -507,12 +508,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1149, 938);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.SaveToPreference);
             this.Controls.Add(this.Language);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.AgeCategory);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.Description);
             this.Controls.Add(this.DeleteFromPreference);
             this.Controls.Add(this.WriteReview);
@@ -539,6 +539,7 @@
             this.Controls.Add(this.DescriptionTitle);
             this.Controls.Add(this.genreListBox);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.pictureBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);

@@ -81,7 +81,7 @@ namespace BookWarm.Forms.MainForm
                     ViewCount.Text = $"👁 {bookStat.ViewCount}";
                     BookImage.Image = book.CoverImageObject;
                     DescriptionTitle.Text = $"Короткий зміст книги: «{book.Title}» — {author?.AuthorName ?? "Unknown Author"} (анотація)";
-                    ReviewGeneral.Text = $"Відгуки на книгу «{book.Title}» — {author?.AuthorName ?? "Unknown Author"}";
+
                     AgeCategory.Text = $"{book.AgeCategory}+";
                     Language.Text = $"{book.Language}";
 
@@ -115,6 +115,23 @@ namespace BookWarm.Forms.MainForm
 
                         reviewControl.SetData(reviewUser?.UserName ?? "Unknown User", profilePhoto, review.ReviewDate, review.Rate, review.ReviewText);
                         flowLayoutPanelReview.Controls.Add(reviewControl);
+                    }
+
+
+                    using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+                    {
+                        connection.Open();
+
+                        string query = "SELECT COUNT(*) FROM UserReviews WHERE BookID = @BookID";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@BookID", book.BookID);
+
+                            int reviewCount = (int)command.ExecuteScalar();
+
+                            ReviewGeneral.Text = $"Відгуки на книгу «{book.Title}» — {author?.AuthorName ?? "Unknown Author"} ({reviewCount})";
+                        }
                     }
                 }
             }
@@ -203,6 +220,8 @@ namespace BookWarm.Forms.MainForm
 
         private string TrimDescription(string description, int maxLength)
         {
+            maxLength = 731;
+
             if (description.Length > maxLength)
             {
                 // Trim the description to the specified length and append "..."

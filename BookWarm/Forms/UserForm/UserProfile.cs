@@ -513,45 +513,5 @@ namespace BookWarm
             Application.Exit();
 
         }
-
-        private void ReadsNow_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Preference_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void History_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Reads_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanelReadsNow_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanelHistory_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanelReads_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanelPreference_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

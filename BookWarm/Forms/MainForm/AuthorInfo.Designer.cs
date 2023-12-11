@@ -165,7 +165,7 @@
             // 
             this.AgeAuthor.AutoSize = true;
             this.AgeAuthor.Font = new System.Drawing.Font("Arial", 10F);
-            this.AgeAuthor.Location = new System.Drawing.Point(652, 198);
+            this.AgeAuthor.Location = new System.Drawing.Point(652, 197);
             this.AgeAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AgeAuthor.Name = "AgeAuthor";
             this.AgeAuthor.Size = new System.Drawing.Size(38, 19);
@@ -191,7 +191,7 @@
             // 
             this.AvarageRatingAuthor.AutoSize = true;
             this.AvarageRatingAuthor.Font = new System.Drawing.Font("Arial", 10F);
-            this.AvarageRatingAuthor.Location = new System.Drawing.Point(712, 309);
+            this.AvarageRatingAuthor.Location = new System.Drawing.Point(712, 308);
             this.AvarageRatingAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AvarageRatingAuthor.Name = "AvarageRatingAuthor";
             this.AvarageRatingAuthor.Size = new System.Drawing.Size(163, 19);
@@ -203,7 +203,7 @@
             // 
             this.numberOfBooksAuthor.AutoSize = true;
             this.numberOfBooksAuthor.Font = new System.Drawing.Font("Arial", 10F);
-            this.numberOfBooksAuthor.Location = new System.Drawing.Point(785, 272);
+            this.numberOfBooksAuthor.Location = new System.Drawing.Point(785, 271);
             this.numberOfBooksAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.numberOfBooksAuthor.Name = "numberOfBooksAuthor";
             this.numberOfBooksAuthor.Size = new System.Drawing.Size(176, 19);
