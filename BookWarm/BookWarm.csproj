@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Без-назви-3.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\Без-назви-3.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -377,7 +377,7 @@
     <None Include="Resources\star.png" />
     <None Include="Resources\searchv2.png" />
     <None Include="Resources\book.png" />
-    <Content Include="Без-назви-3.ico" />
+    <Content Include="Properties\Без-назви-3.ico" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
