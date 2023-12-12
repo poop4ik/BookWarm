@@ -54,8 +54,8 @@
             this.LastView = new System.Windows.Forms.Label();
             this.flowLayoutPanelHistory = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelSearch = new System.Windows.Forms.FlowLayoutPanel();
-            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             this.SearchResult = new System.Windows.Forms.Label();
+            this.profilePhotoPictureBox = new BookWarm.Data.Elements.CustomeCirclePicture();
             ((System.ComponentModel.ISupportInitialize)(this.AuthenticationPanel)).BeginInit();
             this.AuthenticationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Resize)).BeginInit();
@@ -165,7 +165,7 @@
             this.vScrollBar.Location = new System.Drawing.Point(740, 41);
             this.vScrollBar.Maximum = 820;
             this.vScrollBar.Name = "vScrollBar";
-            this.vScrollBar.Size = new System.Drawing.Size(10, 812);
+            this.vScrollBar.Size = new System.Drawing.Size(10, 859);
             this.vScrollBar.SmallChange = 40;
             this.vScrollBar.TabIndex = 76;
             this.vScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar_Scroll);
@@ -174,7 +174,7 @@
             // 
             this.flowLayoutPanelPopular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelPopular.AutoSize = true;
-            this.flowLayoutPanelPopular.Location = new System.Drawing.Point(77, 438);
+            this.flowLayoutPanelPopular.Location = new System.Drawing.Point(77, 518);
             this.flowLayoutPanelPopular.MaximumSize = new System.Drawing.Size(0, 284);
             this.flowLayoutPanelPopular.MinimumSize = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelPopular.Name = "flowLayoutPanelPopular";
@@ -213,7 +213,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LineLogo.BackColor = System.Drawing.Color.Transparent;
             this.LineLogo.Image = ((System.Drawing.Image)(resources.GetObject("LineLogo.Image")));
-            this.LineLogo.Location = new System.Drawing.Point(-16, 649);
+            this.LineLogo.Location = new System.Drawing.Point(-16, 814);
             this.LineLogo.Name = "LineLogo";
             this.LineLogo.Size = new System.Drawing.Size(782, 81);
             this.LineLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -270,9 +270,9 @@
             this.Popular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Popular.BackColor = System.Drawing.Color.Transparent;
             this.Popular.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.Popular.Location = new System.Drawing.Point(239, 408);
+            this.Popular.Location = new System.Drawing.Point(239, 481);
             this.Popular.Name = "Popular";
-            this.Popular.Size = new System.Drawing.Size(267, 29);
+            this.Popular.Size = new System.Drawing.Size(267, 40);
             this.Popular.TabIndex = 77;
             this.Popular.Text = "Популярні";
             this.Popular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -282,7 +282,7 @@
             this.Rating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Rating.BackColor = System.Drawing.Color.Transparent;
             this.Rating.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.Rating.Location = new System.Drawing.Point(239, 756);
+            this.Rating.Location = new System.Drawing.Point(239, 845);
             this.Rating.Name = "Rating";
             this.Rating.Size = new System.Drawing.Size(267, 29);
             this.Rating.TabIndex = 80;
@@ -293,7 +293,7 @@
             // 
             this.flowLayoutPanelRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelRating.AutoSize = true;
-            this.flowLayoutPanelRating.Location = new System.Drawing.Point(77, 804);
+            this.flowLayoutPanelRating.Location = new System.Drawing.Point(77, 880);
             this.flowLayoutPanelRating.MaximumSize = new System.Drawing.Size(0, 284);
             this.flowLayoutPanelRating.MinimumSize = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelRating.Name = "flowLayoutPanelRating";
@@ -308,7 +308,7 @@
             this.pictureBox2.Image = global::BookWarm.Properties.Resources.linev2;
             this.pictureBox2.Location = new System.Drawing.Point(673, 38);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 738);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 876);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 216;
             this.pictureBox2.TabStop = false;
@@ -321,7 +321,7 @@
             this.pictureBox8.Image = global::BookWarm.Properties.Resources.linev2;
             this.pictureBox8.Location = new System.Drawing.Point(-26, 31);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(100, 729);
+            this.pictureBox8.Size = new System.Drawing.Size(100, 862);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 215;
             this.pictureBox8.TabStop = false;
@@ -331,7 +331,7 @@
             this.LastView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LastView.BackColor = System.Drawing.Color.Transparent;
             this.LastView.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.LastView.Location = new System.Drawing.Point(239, 1117);
+            this.LastView.Location = new System.Drawing.Point(239, 1190);
             this.LastView.Name = "LastView";
             this.LastView.Size = new System.Drawing.Size(267, 29);
             this.LastView.TabIndex = 217;
@@ -342,7 +342,7 @@
             // 
             this.flowLayoutPanelHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelHistory.AutoSize = true;
-            this.flowLayoutPanelHistory.Location = new System.Drawing.Point(77, 1166);
+            this.flowLayoutPanelHistory.Location = new System.Drawing.Point(77, 1250);
             this.flowLayoutPanelHistory.MaximumSize = new System.Drawing.Size(0, 284);
             this.flowLayoutPanelHistory.MinimumSize = new System.Drawing.Size(600, 52);
             this.flowLayoutPanelHistory.Name = "flowLayoutPanelHistory";
@@ -364,6 +364,19 @@
             this.flowLayoutPanelSearch.TabIndex = 219;
             this.flowLayoutPanelSearch.Visible = false;
             // 
+            // SearchResult
+            // 
+            this.SearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchResult.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
+            this.SearchResult.Location = new System.Drawing.Point(239, 76);
+            this.SearchResult.Name = "SearchResult";
+            this.SearchResult.Size = new System.Drawing.Size(267, 45);
+            this.SearchResult.TabIndex = 220;
+            this.SearchResult.Text = "Результати пошуку";
+            this.SearchResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SearchResult.Visible = false;
+            // 
             // profilePhotoPictureBox
             // 
             this.profilePhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -373,7 +386,7 @@
             this.profilePhotoPictureBox.ColorBorder = System.Drawing.Color.Black;
             this.profilePhotoPictureBox.ColorBorder2 = System.Drawing.Color.Black;
             this.profilePhotoPictureBox.Gradiant = 50F;
-            this.profilePhotoPictureBox.Location = new System.Drawing.Point(352, 665);
+            this.profilePhotoPictureBox.Location = new System.Drawing.Point(352, 831);
             this.profilePhotoPictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.profilePhotoPictureBox.Name = "profilePhotoPictureBox";
             this.profilePhotoPictureBox.Size = new System.Drawing.Size(45, 45);
@@ -381,19 +394,6 @@
             this.profilePhotoPictureBox.TabIndex = 61;
             this.profilePhotoPictureBox.TabStop = false;
             this.profilePhotoPictureBox.Click += new System.EventHandler(this.profilePhotoPictureBox_Click);
-            // 
-            // SearchResult
-            // 
-            this.SearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchResult.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.SearchResult.Location = new System.Drawing.Point(239, 76);
-            this.SearchResult.Name = "SearchResult";
-            this.SearchResult.Size = new System.Drawing.Size(267, 29);
-            this.SearchResult.TabIndex = 220;
-            this.SearchResult.Text = "Результати пошуку";
-            this.SearchResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SearchResult.Visible = false;
             // 
             // Main
             // 
@@ -403,7 +403,6 @@
             this.AutoScrollMinSize = new System.Drawing.Size(-100, -100);
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(750, 894);
-            this.Controls.Add(this.SearchResult);
             this.Controls.Add(this.vScrollBar);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Minimize);
@@ -413,6 +412,8 @@
             this.Controls.Add(this.SeacrhClick);
             this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Popular);
+            this.Controls.Add(this.SearchResult);
             this.Controls.Add(this.flowLayoutPanelSearch);
             this.Controls.Add(this.profilePhotoPictureBox);
             this.Controls.Add(this.LineLogo);
@@ -420,7 +421,6 @@
             this.Controls.Add(this.flowLayoutPanelHistory);
             this.Controls.Add(this.New);
             this.Controls.Add(this.flowLayoutPanelNew);
-            this.Controls.Add(this.Popular);
             this.Controls.Add(this.Rating);
             this.Controls.Add(this.flowLayoutPanelPopular);
             this.Controls.Add(this.flowLayoutPanelRating);
