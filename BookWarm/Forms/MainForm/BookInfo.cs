@@ -1,14 +1,11 @@
 ﻿using BookWarm.Data.Models;
 using ComponentFactory.Krypton.Toolkit;
-using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.IO;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using BookWarm.Forms.ToolForm;
+using System.Windows.Forms;
 
 namespace BookWarm.Forms.MainForm
 {
@@ -24,6 +21,7 @@ namespace BookWarm.Forms.MainForm
         private Size originalSize;
         private Main mainForm;
         public static List<AllUsers> allUserList;
+
         public BookInfo(int authorID, int bookID, Main mainForm)
         {
             this.mainForm = mainForm;
@@ -50,7 +48,7 @@ namespace BookWarm.Forms.MainForm
             Exit.MouseEnter += new EventHandler(Exit_MouseEnter);
             Exit.MouseLeave += new EventHandler(Exit_MouseLeave);
 
-            GetAllUsersFromDatabase(); // Fetch all users
+            GetAllUsersFromDatabase();
 
             
             SetBookInfo();
@@ -58,21 +56,17 @@ namespace BookWarm.Forms.MainForm
 
         }
 
-
         private void SetBookInfo()
         {
             Book book = Main.books.FirstOrDefault(b => b.BookID == bookID);
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
 
-            // Check if the book is found
             if (book != null)
             {
-                // Access the AuthorName property through the Author property
                 authorText.Text = author?.AuthorName ?? "Unknown Author";
 
                 BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == bookID);
 
-                // Check if BookStat is found
                 if (bookStat != null)
                 {
                     titleText.Text = $"Книга: «{book.Title}» — {author?.AuthorName ?? "Unknown Author"}";
@@ -88,31 +82,20 @@ namespace BookWarm.Forms.MainForm
                     const int maxTitleLength = 1000;
                     Description.Text = TrimDescription(book.Description, maxTitleLength);
 
-                    // Get the list of genres for the current book
                     List<BookGenre> bookGenres = GetBookGenres(bookID);
-                    // Concatenate genre names with commas and display in the ListBox
                     genreListBox.Items.Add(string.Join(", ", bookGenres.Select(genre => genre.GenreName)));
 
-                    // Populate the FlowLayoutPanel with reviews
-                    List<Review> bookReviews = GetBookReviews(bookID);
 
-                    // Sort the reviews by review date in descending order
+                    List<Review> bookReviews = GetBookReviews(bookID);
                     bookReviews = bookReviews.OrderByDescending(review => review.ReviewDate).ToList();
 
                     flowLayoutPanelReview.Controls.Clear();
 
-                    // Populate the FlowLayoutPanel with reviews
                     foreach (Review review in bookReviews)
                     {
-                        // Find the user who wrote the review
                         AllUsers reviewUser = allUserList.FirstOrDefault(user => user.UserId == review.UserID);
-
-                        // Create a UserControlReview and set its data
                         UserControlReview reviewControl = new UserControlReview(mainForm);
-
-                        // Set default profile photo if reviewUser is null or if its ProfilePhotoObject is null
                         Image profilePhoto = reviewUser?.ProfilePhotoObject ?? Properties.Resources.logo;
-
                         reviewControl.SetData(reviewUser?.UserName ?? "Unknown User", profilePhoto, review.ReviewDate, review.Rate, review.ReviewText);
                         flowLayoutPanelReview.Controls.Add(reviewControl);
                     }
@@ -164,8 +147,6 @@ namespace BookWarm.Forms.MainForm
 
                             if (user.ProfilePhoto != null)
                             {
-
-                                // Використання ImageConverter для конвертації байтів у Image
                                 ImageConverter converter = new ImageConverter();
                                 Image img = (Image)converter.ConvertFrom(user.ProfilePhoto);
                                 user.ProfilePhotoObject = img;
@@ -224,7 +205,6 @@ namespace BookWarm.Forms.MainForm
 
             if (description.Length > maxLength)
             {
-                // Trim the description to the specified length and append "..."
                 return description.Substring(0, maxLength - 3) + "...";
             }
 
@@ -260,7 +240,6 @@ namespace BookWarm.Forms.MainForm
                                 GenreBookRelationID = (int)reader["GenreBookRelationID"]
                             };
 
-                            // Add the genre to the local variable
                             bookGenres.Add(bookGenre);
                         }
                     }
@@ -272,7 +251,6 @@ namespace BookWarm.Forms.MainForm
 
         private void genreListBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            // Set background color for the selected item
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e = new DrawItemEventArgs(
@@ -287,17 +265,12 @@ namespace BookWarm.Forms.MainForm
                 e.DrawBackground();
             }
 
-
-
-            // Draw the text of the item
             e.Graphics.DrawString(
                 genreListBox.Items[e.Index].ToString(),
                 e.Font,
                 new SolidBrush(e.ForeColor),
                 e.Bounds.Left,
                 e.Bounds.Top + (e.Bounds.Height - e.Font.Height) / 2);
-
-            // Optionally, draw additional elements based on your requirements
         }
 
         private void Minimize_Click(object sender, EventArgs e)
@@ -307,25 +280,21 @@ namespace BookWarm.Forms.MainForm
 
         private void Resize_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Resize.Image = Properties.Resources.resizegif;
         }
 
         private void Resize_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Resize.Image = Properties.Resources.resizepng;
         }
 
         private void Exit_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Exit.Image = Properties.Resources.exitgif;
         }
 
         private void Exit_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Exit.Image = Properties.Resources.exit;
         }
 
@@ -348,7 +317,7 @@ namespace BookWarm.Forms.MainForm
             else
             {
                 originalSize = this.Size;
-                // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
+
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
 
@@ -360,13 +329,10 @@ namespace BookWarm.Forms.MainForm
         {
             using (Graphics g = textBox.CreateGraphics())
             {
-                // Отримати розмір тексту
                 Size textSize = TextRenderer.MeasureText(g, textBox.Text, textBox.Font);
 
-                // Визначте відстань від лівого краю тексту до лівого краю текстового поля
                 int textLeftMargin = (textBox.ClientSize.Width - textSize.Width) / 2;
 
-                // Встановіть новий внутрішній відступ
                 textBox.Padding = new Padding(textLeftMargin, 0, 0, 0);
             }
         }
@@ -387,20 +353,16 @@ namespace BookWarm.Forms.MainForm
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
             List<Review> bookReviews = GetBookReviews(bookID);
 
-            // Sort the reviews by review date in descending order
             bookReviews = bookReviews.OrderByDescending(review => review.ReviewDate).ToList();
 
             flowLayoutPanelReview.Controls.Clear();
 
             foreach (Review review in bookReviews)
             {
-                // Find the user who wrote the review
                 AllUsers reviewUser = allUserList.FirstOrDefault(user => user.UserId == review.UserID);
 
-                // Create a UserControlReview and set its data
                 UserControlReview reviewControl = new UserControlReview(mainForm);
 
-                // Set default profile photo if reviewUser is null or if its ProfilePhotoObject is null
                 Image profilePhoto = reviewUser?.ProfilePhotoObject ?? Properties.Resources.logo;
 
                 reviewControl.SetData(reviewUser?.UserName ?? "Unknown User", profilePhoto, review.ReviewDate, review.Rate, review.ReviewText);
@@ -490,7 +452,6 @@ namespace BookWarm.Forms.MainForm
             {
                 connection.Open();
 
-                // Додайте запис до таблиці UserPreference
                 string insertQuery = "INSERT INTO UserPreference (UserID, BookID) VALUES (@UserID, @BookID)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
@@ -509,7 +470,6 @@ namespace BookWarm.Forms.MainForm
             {
                 connection.Open();
 
-                // Видаліть запис з таблиці UserPreference
                 string deleteQuery = "DELETE FROM UserPreference WHERE UserID = @UserID AND BookID = @BookID";
 
                 using (SqlCommand command = new SqlCommand(deleteQuery, connection))
@@ -526,35 +486,27 @@ namespace BookWarm.Forms.MainForm
         {
             int userID = Main.user.UserId;
 
-            // Перевірка, чи користувач вже читає або завершив читання цієї книги
             if (!IsUserReadingBook(userID, bookID) && !IsUserReadBook(userID, bookID))
             {
-                // Якщо користувач не читає і не завершив читання книги, вставте запис
                 AddUserReadRecord(userID, bookID);
-
             }
 
-            // Відкривайте BookRead
             BookRead readBook = new BookRead(bookID, mainForm, authorID);
             readBook.ShowDialog();
         }
 
         private void SaveToPreference_Click(object sender, EventArgs e)
         { 
-            // Додайте книгу до обраних
             AddBookToPreferences(userID, bookID);
 
-            // Оновіть видимість кнопок
             SaveToPreference.Visible = false;
             DeleteFromPreference.Visible = true;
         }
 
         private void DeleteFromPreference_Click(object sender, EventArgs e)
         {
-            // Видаліть книгу з обраних
             RemoveBookFromPreferences(userID, bookID);
 
-            // Оновіть видимість кнопок
             SaveToPreference.Visible = true;
             DeleteFromPreference.Visible = false;
         }

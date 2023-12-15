@@ -1,19 +1,12 @@
 ﻿using BookWarm.Data.Models;
-using BookWarm.Forms;
-using BookWarm.Forms.MainForm;
-using BookWarm.Forms.ToolForm;
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm
 {
@@ -28,7 +21,7 @@ namespace BookWarm
         public static UserStatistics userstat;
         private Size originPhotoSize;
         private Point originPhotoLocation;
-        private bool isMaximized = false; // Перевірка стану максимізації
+        private bool isMaximized = false;
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
         private Point originPopularLocation;
@@ -41,7 +34,6 @@ namespace BookWarm
 
             if (string.IsNullOrEmpty(username))
             {
-                // Якщо ім'я користувача порожнє, перейти до форми аутентифікації
                 Authentication authForm = new Authentication();
                 authForm.Show();
                 this.Close();
@@ -108,7 +100,6 @@ namespace BookWarm
 
                 if (user != null)
                 {
-                    // Additional logic with user data
                     if (user.ProfilePhoto != null)
                     {
                         using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
@@ -124,7 +115,6 @@ namespace BookWarm
                         profilePhotoPictureBox.Image = Properties.Resources.logo;
                     }
 
-                    // Retrieve UserStatistics
                     using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                     {
                         connection.Open();
@@ -139,7 +129,6 @@ namespace BookWarm
                             {
                                 if (reader.Read())
                                 {
-                                    // Update UserStatistics object
                                     userstat = new UserStatistics
                                     {
                                         StatisticID = (int)reader["StatisticID"],
@@ -155,7 +144,6 @@ namespace BookWarm
 
                 using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
                 {
-                    // Отримання книг з бази даних
                     string sqlQuery = "SELECT * FROM BOOKS";
 
                     using (SqlCommand command = new SqlCommand(sqlQuery, connection))
@@ -167,7 +155,6 @@ namespace BookWarm
                             {
                                 Book book = new Book
                                 {
-                                    // Отримання даних для кожної книги
                                     BookID = (int)reader["BookID"],
                                     AuthorID = (int)reader["AuthorID"],
                                     Title = reader["Title"].ToString(),
@@ -180,11 +167,8 @@ namespace BookWarm
                                     CoverImage = (reader["CoverImage"] == DBNull.Value ? null : (byte[])reader["CoverImage"])
                                 };
 
-                                // Опціонально: перетворення байтового масиву в об'єкт Image
                                 if (book.CoverImage != null)
                                 {
-
-                                    // Використання ImageConverter для конвертації байтів у Image
                                     ImageConverter converter = new ImageConverter();
                                     Image img = (Image)converter.ConvertFrom(book.CoverImage);
                                     book.CoverImageObject = img;
@@ -242,8 +226,6 @@ namespace BookWarm
                         }
                     }
 
-
-
                     string authorQuery = "SELECT * FROM Author " +
                      "INNER JOIN AuthorBookRelation ON Author.AuthorID = AuthorBookRelation.AuthorID";
 
@@ -255,22 +237,17 @@ namespace BookWarm
                             {
                                 Author author = new Author
                                 {
-                                    // Отримання даних для кожного автора
                                     AuthorID = (int)reader["AuthorID"],
                                     BookID = (int)reader["BookID"],
                                     RelationID = (int)reader["RelationID"],
                                     AuthorName = reader["AuthorName"].ToString(),
                                     Country = reader["Country"].ToString(),
                                     Age = (int)reader["Age"],
-                                    // Отримання байтового масиву для зображення
                                     AuthorPhoto = (reader["AuthorPhoto"] == DBNull.Value ? null : (byte[])reader["AuthorPhoto"])
                                 };
 
-                                // Опціонально: перетворення байтового масиву в об'єкт Image
                                 if (author.AuthorPhoto != null)
                                 {
-
-                                    // Використання ImageConverter для конвертації байтів у Image
                                     ImageConverter converter = new ImageConverter();
                                     Image img = (Image)converter.ConvertFrom(author.AuthorPhoto);
                                     author.AuthorPhotoObject = img;
@@ -281,8 +258,6 @@ namespace BookWarm
                         }
                     }
 
-
-                    // Отримання даних про прочитані книги з бази даних
                     string readsQuery = "SELECT * FROM BookReads";
                     using (SqlCommand command = new SqlCommand(readsQuery, connection))
                     {
@@ -293,21 +268,18 @@ namespace BookWarm
                                 int bookID = (int)reader["BookID"];
                                 int readsCount = (int)reader["ReadsCount"];
 
-                                // Знайдемо книгу в списку книг
                                 Book book = books.FirstOrDefault(b => b.BookID == bookID);
 
-                                // Оновимо об'єкт BookStat
                                 if (book != null)
                                 {
-                                    // Якщо в списку вже існує об'єкт BookStat для цієї книги, оновіть його
+
                                     if (bookStatList.Any(bs => bs.BookID == bookID))
                                     {
                                         BookStat bookStat = bookStatList.First(bs => bs.BookID == bookID);
-                                        bookStat.ReadsCount += readsCount;  // Змінено тут
+                                        bookStat.ReadsCount += readsCount;  
                                     }
                                     else
                                     {
-                                        // Інакше створіть новий об'єкт BookStat
                                         BookStat bookStat = new BookStat
                                         {
                                             BookID = bookID,
@@ -320,7 +292,6 @@ namespace BookWarm
                         }
                     }
 
-                    // Отримання даних про переглядені книги з бази даних
                     string viewsQuery = "SELECT * FROM BookViews";
                     using (SqlCommand command = new SqlCommand(viewsQuery, connection))
                     {
@@ -331,21 +302,17 @@ namespace BookWarm
                                 int bookID = (int)reader["BookID"];
                                 int viewCount = (int)reader["ViewCount"];
 
-                                // Знайдемо книгу в списку книг
                                 Book book = books.FirstOrDefault(b => b.BookID == bookID);
 
-                                // Оновимо об'єкт BookStat
                                 if (book != null)
                                 {
-                                    // Якщо в списку вже існує об'єкт BookStat для цієї книги, оновіть його
                                     if (bookStatList.Any(bs => bs.BookID == bookID))
                                     {
                                         BookStat bookStat = bookStatList.First(bs => bs.BookID == bookID);
-                                        bookStat.ViewCount += viewCount;  // Змінено тут
+                                        bookStat.ViewCount += viewCount; 
                                     }
                                     else
                                     {
-                                        // Інакше створіть новий об'єкт BookStat
                                         BookStat bookStat = new BookStat
                                         {
                                             BookID = bookID,
@@ -357,7 +324,6 @@ namespace BookWarm
                             }
                         }
                     }
-                    // Виклик функції для відображення популярних книг
 
                     PopularBookData();
                     PopulateBookData();
@@ -402,16 +368,6 @@ namespace BookWarm
         {
             if (isMaximized)
             {
-/*                // Повертаємо вікно до звичайного розміру
-                this.WindowState = FormWindowState.Normal;
-                this.FormBorderStyle = originalFormBorderStyle;
-                this.Size = originalSize;
-                CenterToScreen(); // Розміщуємо вікно в центрі екрану
-                profilePhotoPictureBox.Size = originPhotoSize; // Збільшння розміру 
-                profilePhotoPictureBox.Location = originPhotoLocation;
-                Popular.Location = originPopularLocation;
-                Rating.Location = originRatingLocation;
-                New.Location = originNewLocation;*/
                 isMaximized = false;
             }
             else
@@ -419,11 +375,11 @@ namespace BookWarm
                 this.WindowState = FormWindowState.Normal;
                 originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
-                this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
+                this.FormBorderStyle = FormBorderStyle.None; 
                 Popular.Location = new Point(Popular.Location.X, Popular.Location.Y - 25);
                 New.Location = new Point(New.Location.X, New.Location.Y);
                 Rating.Location = new Point(Rating.Location.X, Rating.Location.Y - 20);
-                // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
+
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
 
@@ -441,7 +397,6 @@ namespace BookWarm
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bookWarmDBDataSet.Users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.bookWarmDBDataSet.Users);
         }
 
@@ -464,25 +419,21 @@ namespace BookWarm
 
         private void Resize_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Resize.Image = Properties.Resources.resizegif;
         }
 
         private void Resize_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Resize.Image = Properties.Resources.resizepng;
         }
 
         private void Exit_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Exit.Image = Properties.Resources.exitgif;
         }
 
         private void Exit_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Exit.Image = Properties.Resources.exit;
         }
 
@@ -496,11 +447,8 @@ namespace BookWarm
         private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             int scrollValue = vScrollBar.Value;
-
-            // Визначте напрямок прокрутки
             int scrollDirection = scrollValue - previousScrollValue;
 
-            // Прокрутіть елементи на потрібне значення
             New.Top -= scrollDirection;
             Popular.Top -= scrollDirection;
             Rating.Top -= scrollDirection;
@@ -510,13 +458,12 @@ namespace BookWarm
             flowLayoutPanelRating.Top -= scrollDirection;
             flowLayoutPanelHistory.Top -= scrollDirection;
             flowLayoutPanelSearch.Top -= scrollDirection;
-            // Оновіть попереднє значення прокрутки
+
             previousScrollValue = scrollValue;
         }
 
         private void textBoxSearch_Leave(object sender, EventArgs e)
         {
-            // Перевірити, чи текстове поле не має фокусу та чи не введено жодного тексту
             if (!SearchBox.Focused && string.IsNullOrWhiteSpace(SearchBox.Text))
             {
                 SearchBox.Text = "Search";
@@ -525,7 +472,6 @@ namespace BookWarm
 
         private void textBoxSearch_Enter(object sender, EventArgs e)
         {
-            // Очистити текст у TextBox при фокусі, тільки якщо він містить "Search"
             if (SearchBox.Text == "Search")
             {
                 SearchBox.Text = "";
@@ -538,23 +484,19 @@ namespace BookWarm
 
             flowLayoutPanelSearch.Controls.Clear();
 
-            // Perform a search in the existing list of books
             List<Book> searchResults = SearchBooks(searchText);
 
-            // Display the search results in the flowLayoutPanelSearch
             foreach (Book book in searchResults)
             {
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-                // Create a UserControl or any other control to display book information
+
                 UserControlPopularBook searchResultItem = new UserControlPopularBook(this);
                 searchResultItem.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
                 flowLayoutPanelSearch.Controls.Add(searchResultItem);
             }
 
-            // Update panel visibility based on search results
             if (string.IsNullOrEmpty(searchText) || searchResults.Count == 0)
             {
-                // No search results or empty search text
                 flowLayoutPanelSearch.Visible = false;
                 flowLayoutPanelHistory.Visible = true;
                 flowLayoutPanelRating.Visible = true;
@@ -568,7 +510,7 @@ namespace BookWarm
             }
             else
             {
-                // Search results found
+
                 flowLayoutPanelSearch.Visible = true;
                 flowLayoutPanelHistory.Visible = false;
                 flowLayoutPanelRating.Visible = false;
@@ -585,7 +527,6 @@ namespace BookWarm
 
         private List<Book> SearchBooks(string searchText)
         {
-            // Use case-insensitive search
             searchText = searchText.ToLower();
 
             List<Book> searchResults = books
@@ -602,25 +543,13 @@ namespace BookWarm
             return searchResults;
         }
 
-        private Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            using (MemoryStream ms = new MemoryStream(byteArrayIn))
-            {
-                Image returnImage = Image.FromStream(ms);
-                return returnImage;
-            }
-        }
-
         public void PopulateBookData()
         {
-            // Shuffle the books list
             Shuffle(books);
             flowLayoutPanelNew.Controls.Clear();
-            // Now, update the vertical scrollbar range based on the content height
             int totalHeight = 0;
             const int maxBooksToShow = 6;
 
-            // Take the first 'maxBooksToShow' books after shuffling
             for (int i = 0; i < Math.Min(books.Count, maxBooksToShow); i++)
             {
                 Book book = books[i];
@@ -629,12 +558,11 @@ namespace BookWarm
                     BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
 
                     UserControlPopularBook bookControl = new UserControlPopularBook(this);
-                    // Pass the Author object instead of AuthorName
+
                     bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
 
                     flowLayoutPanelNew.Controls.Add(bookControl);
 
-                    // Increment the total height based on the height of the added control
                     totalHeight += bookControl.Height;
                 }
             }
@@ -655,9 +583,9 @@ namespace BookWarm
                 return (bookStat != null && bookStat.ViewCount > minViews && bookStat.ReadsCount > minReads);
             }).Take(maxBooksToShow))
             {
-                // Знайдіть відповідний об'єкт BookStat для цієї книги
+
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-                // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
+
                 UserControlPopularBook bookControl = new UserControlPopularBook(this);
                 bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
                 flowLayoutPanelPopular.Controls.Add(bookControl);
@@ -676,9 +604,9 @@ namespace BookWarm
 
             foreach (Book book in books.Where(b => Decimal.Compare(b.AverageRating, 4.5m) >= 0).Take(maxBooksToShow))
             {
-                // Знайдіть відповідний об'єкт BookStat для цієї книги
+
                 BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-                // Створіть і додайте UserControlPopularBook до flowLayoutPanelPopular
+
                 UserControlPopularBook bookControl = new UserControlPopularBook(this);
                 bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
                 flowLayoutPanelRating.Controls.Add(bookControl);
@@ -690,23 +618,17 @@ namespace BookWarm
         public void PopulateUserHistory()
         {
             List<UserHistoryItem> userHistory = GetUserHistory(Main.user.UserId);
-
-            // Очистіть вміст flowLayoutPanelHistory
             flowLayoutPanelHistory.Controls.Clear();
 
-            // Обмежте кількість доданих UserControl до 6
             const int maxBooksToShow = 6;
             int booksAdded = 0;
 
-            // Додайте UserControl для кожного елемента історії переглядів
             foreach (UserHistoryItem historyItem in userHistory)
             {
-                // Шукайте книгу в списку books
                 Book book = books.FirstOrDefault(b => b.BookID == historyItem.BookID);
 
                 if (book != null)
                 {
-                    // Шукайте BookStat в списку bookStatList
                     BookStat bookStat = bookStatList.FirstOrDefault(bs => bs.BookID == historyItem.BookID);
 
                     UserControlPopularBook historyControlItem = new UserControlPopularBook(this);
@@ -715,7 +637,6 @@ namespace BookWarm
 
                     booksAdded++;
 
-                    // Перевірте, чи додано вже 6 книжок
                     if (booksAdded >= maxBooksToShow)
                     {
                         break;
@@ -724,8 +645,6 @@ namespace BookWarm
             }
         }
 
-
-        // Shuffle method to randomize the order of books
         private static void Shuffle<T>(List<T> list)
         {
             int n = list.Count;
@@ -774,7 +693,7 @@ namespace BookWarm
                 }
             }
 
-            if (user.ProfilePhoto != null) // User has a photo.
+            if (user.ProfilePhoto != null)
             {
                 using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
                 {
@@ -792,10 +711,8 @@ namespace BookWarm
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                // Enter key is pressed, trigger the Search_Click event
                 Searсh_Click(sender, e);
 
-                // Consume the key press to prevent it from being processed further
                 e.Handled = true;
             }
         }

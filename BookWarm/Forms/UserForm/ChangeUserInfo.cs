@@ -5,10 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BookWarm.Forms
 {
@@ -17,6 +14,7 @@ namespace BookWarm.Forms
         private User user;
         private Image previousImage;
         private Main mainForm;
+
         public ChangeUserInfo(string username, Main mainForm)
         {
             InitializeComponent();
@@ -51,7 +49,7 @@ namespace BookWarm.Forms
                 DescriptionBox.Text = user.Description;
                 EmailBox.Text = user.Email;
 
-                if (user.ProfilePhoto != null) // User has a photo.
+                if (user.ProfilePhoto != null)
                 {
                     using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
                     {
@@ -84,66 +82,56 @@ namespace BookWarm.Forms
 
         private void Save_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Save.Image = Properties.Resources.savegif;
         }
 
         private void Save_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Save.Image = Properties.Resources.savepng;
         }
 
         private void Change_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Change.Image = Properties.Resources.changegif;
         }
 
         private void Change_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Change.Image = Properties.Resources.changepng;
         }
 
         private void ChangePhoto_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             ChangePhoto.Image = Properties.Resources.changephotogif;
         }
 
         private void ChangePhoto_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             ChangePhoto.Image = Properties.Resources.changephotopng;
         }
 
         private void Reset_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Reset.Image = Properties.Resources.resetgif;
         }
 
         private void Reset_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Reset.Image = Properties.Resources.reset;
         }
 
         private void Delete_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
+
             Delete.Image = Properties.Resources.deletegif;
         }
 
         private void Delete_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Delete.Image = Properties.Resources.deletepng;
         }
         private void Change_Click(object sender, EventArgs e)
         {
-            // Якщо хоча б одне поле увімкнено, вимкнути всі
             if (UserNameBox.Enabled || LastNameBox.Enabled || FirstNameBox.Enabled ||
                 AgeBox.Enabled || DescriptionBox.Enabled || OldEmailBox.Enabled ||
                 NewEmailBox.Enabled || OldPasswordBox.Enabled || NewPasswordBox.Enabled)
@@ -160,7 +148,6 @@ namespace BookWarm.Forms
             }
             else
             {
-                // Якщо всі поля вимкнені, увімкнути всі
                 UserNameBox.Enabled = false;
                 LastNameBox.Enabled = true;
                 FirstNameBox.Enabled = true;
@@ -176,8 +163,6 @@ namespace BookWarm.Forms
 
         private void Save_Click(object sender, EventArgs e)
         {
-
-            // Перевірка наявності пустих полів
             ClearAllLabels();
             if (string.IsNullOrWhiteSpace(UserNameBox.Text) ||
                 string.IsNullOrWhiteSpace(FirstNameBox.Text) ||
@@ -188,7 +173,6 @@ namespace BookWarm.Forms
                 return;
             }
 
-            // Перевірка наявності нової пошти
             if (!string.IsNullOrWhiteSpace(OldEmailBox.Text) || !string.IsNullOrWhiteSpace(NewEmailBox.Text))
             {
                 if (string.IsNullOrWhiteSpace(NewEmailBox.Text))
@@ -204,7 +188,6 @@ namespace BookWarm.Forms
                 {
                     EmailEmpty.Visible = false;
 
-                    // Перевірка, чи стара пошта співпадає з новою
                     if (OldEmailBox.Text == NewEmailBox.Text)
                     {
                         EmailRepeat.Visible = true;
@@ -217,7 +200,6 @@ namespace BookWarm.Forms
                     {
                         EmailRepeat.Visible = false;
 
-                        // Перевірка валідності нової пошти
                         if (!IsValidEmail(NewEmailBox.Text))
                         {
                             ValidEmail.Visible = true;
@@ -229,7 +211,6 @@ namespace BookWarm.Forms
                         {
                             ValidEmail.Visible = false;
 
-                            // Перевірка, чи нова пошта не існує вже в базі
                             if (IsEmailExists(NewEmailBox.Text))
                             {
                                 EmailExist.Visible = true;
@@ -240,7 +221,6 @@ namespace BookWarm.Forms
                             {
                                 EmailExist.Visible = false;
 
-                                // Перевірка, чи стара пошта співпадає з новою
                                 if (OldEmailBox.Text != user.Email)
                                 {
                                     EmailCheck.Visible = true;
@@ -256,13 +236,12 @@ namespace BookWarm.Forms
                 }
             }
 
-            // Перевірка стосовно паролів
             if (!string.IsNullOrWhiteSpace(OldPasswordBox.Text) || !string.IsNullOrWhiteSpace(NewPasswordBox.Text))
             {
                 PasswordEmpty.Visible = false;
                 PasswordRepeat.Visible = false;
                 PasswordValid.Visible = false;
-                // Перевірка наявності нового пароля
+
                 if (string.IsNullOrWhiteSpace(NewPasswordBox.Text))
                 {
                     PasswordEmpty.Visible = true;
@@ -272,7 +251,6 @@ namespace BookWarm.Forms
                 {
                     PasswordEmpty.Visible = false;
 
-                    // Перевірка валідності старого пароля
                     if (OldPasswordBox.Text != user.PasswordHash)
                     {
                         PasswordValid.Visible = true;
@@ -282,7 +260,6 @@ namespace BookWarm.Forms
                     {
                         PasswordValid.Visible = false;
 
-                        // Перевірка, чи старий пароль співпадає з новим
                         if (OldPasswordBox.Text == NewPasswordBox.Text)
                         {
                             PasswordRepeat.Visible = true;
@@ -296,7 +273,6 @@ namespace BookWarm.Forms
                 }
             }
 
-            // Перевірка наявності користувача з введеним ім'ям
             if (UserNameBox.Text != user.UserName && IsUsernameExists(UserNameBox.Text))
             {
                 UserNameExist.Visible = true;
@@ -307,7 +283,6 @@ namespace BookWarm.Forms
                 UserNameExist.Visible = false;
             }
 
-            // Перевірка, чи вік є числовим значенням більше 0
             if (string.IsNullOrWhiteSpace(AgeBox.Text) || !int.TryParse(AgeBox.Text, out int age) || age <= 0)
             {
                 AgeValid.Visible = true;
@@ -318,7 +293,6 @@ namespace BookWarm.Forms
                 AgeValid.Visible = false;
             }
 
-            // Перевірка обмеження на кількість символів в описі
             if (DescriptionBox.Text.Length >= 80)
             {
                 DescriptionLimit.Visible = true;
@@ -354,7 +328,6 @@ namespace BookWarm.Forms
 
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
-                    // Визначаємо параметр @Username
                     command.Parameters.AddWithValue("@Username", username);
 
                     int count = (int)command.ExecuteScalar();
@@ -363,7 +336,6 @@ namespace BookWarm.Forms
             }
         }
 
-        // Відключення редагування текстових полів після збереження
         private void ClearAllLabels()
         {
             ValidEmail.Visible = false;
@@ -414,13 +386,11 @@ namespace BookWarm.Forms
         {
             if (NewPasswordBox.PasswordChar == '*' & OldPasswordBox.PasswordChar == '*')
             {
-                // Показувати текст паролю
-                NewPasswordBox.PasswordChar = '\0'; // '\0' відображає текст як звичайний текст
+                NewPasswordBox.PasswordChar = '\0';
                 OldPasswordBox.PasswordChar = '\0';
             }
             else
             {
-                // Приховувати текст паролю з зірочкою '*'
                 NewPasswordBox.PasswordChar = '*';
                 OldPasswordBox.PasswordChar = '*';
             }
@@ -428,10 +398,8 @@ namespace BookWarm.Forms
 
         private void DescriptionBox_TextChanged(object sender, EventArgs e)
         {
-            // Встановлення максимальної довжини для опису (наприклад, 80)
             int maxLength = 80;
 
-            // Перевірка, чи кількість символів перевищує максимальну довжину
             if (DescriptionBox.Text.Length >= maxLength)
             {
                 DescriptionLimit.Visible = true;
@@ -472,7 +440,6 @@ namespace BookWarm.Forms
                                     Description = Convert.ToString(reader["Description"]),
                                 };
 
-                                // Assuming ProfilePhoto is stored as byte[] in the database
                                 if (reader["ProfilePhoto"] != DBNull.Value)
                                 {
                                     user.ProfilePhoto = (byte[])reader["ProfilePhoto"];
@@ -486,11 +453,11 @@ namespace BookWarm.Forms
             }
             catch (Exception ex)
             {
-                // Log or handle the exception
+
                 Console.WriteLine(ex.Message);
             }
 
-            return null; // Return null if the user is not found or an error occurs
+            return null;
         }
 
         private bool SaveProfileDataToDatabase(string username)
@@ -501,16 +468,13 @@ namespace BookWarm.Forms
                 {
                     connection.Open();
 
-                    // Assuming you have a table named 'Users' with columns 'UserName', 'FirstName', 'LastName', 'Age', 'Email', 'Description', 'PasswordHash', etc.
                     string updateQuery = "UPDATE Users SET FirstName = @FirstName, LastName = @LastName, Age = @Age, Description = @Description";
 
-                    // Include email update only if NewEmailBox is not empty
                     if (!string.IsNullOrWhiteSpace(NewEmailBox.Text))
                     {
                         updateQuery += ", Email = @Email";
                     }
 
-                    // Include password update only if NewPasswordBox is not empty
                     if (!string.IsNullOrWhiteSpace(NewPasswordBox.Text))
                     {
                         updateQuery += ", PasswordHash = @PasswordHash";
@@ -522,11 +486,10 @@ namespace BookWarm.Forms
                     {
                         cmd.Parameters.AddWithValue("@FirstName", FirstNameBox.Text);
                         cmd.Parameters.AddWithValue("@LastName", LastNameBox.Text);
-                        cmd.Parameters.AddWithValue("@Age", int.Parse(AgeBox.Text)); // Assuming Age is an integer
+                        cmd.Parameters.AddWithValue("@Age", int.Parse(AgeBox.Text));
                         cmd.Parameters.AddWithValue("@Description", DescriptionBox.Text);
                         cmd.Parameters.AddWithValue("@UserName", username);
 
-                        // Add parameters for email and password only if not empty
                         if (!string.IsNullOrWhiteSpace(NewEmailBox.Text))
                         {
                             cmd.Parameters.AddWithValue("@Email", NewEmailBox.Text);
@@ -534,7 +497,6 @@ namespace BookWarm.Forms
 
                         if (!string.IsNullOrWhiteSpace(NewPasswordBox.Text))
                         {
-                            // Hash the password or apply your password storage mechanism here
                             cmd.Parameters.AddWithValue("@PasswordHash", NewPasswordBox.Text);
                         }
 
@@ -548,8 +510,6 @@ namespace BookWarm.Forms
             }
             catch (Exception ex)
             {
-                // Log or handle the exception
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -558,18 +518,16 @@ namespace BookWarm.Forms
         {
             try
             {
-                // Перевірка, чи є зображення
                 if (image == null)
                 {
                     return false;
                 }
 
-                // Перетворення зображення в byte[]
                 byte[] imageData;
 
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    image.Save(ms, ImageFormat.Png); // Збереження у форматі PNG (можна використовувати інший формат)
+                    image.Save(ms, ImageFormat.Png);
                     imageData = ms.ToArray();
                 }
 
@@ -577,7 +535,6 @@ namespace BookWarm.Forms
                 {
                     connection.Open();
 
-                    // Припускаючи, що у вас є стовпець 'ProfilePhoto' типу varbinary(MAX) для зберігання зображення
                     string updateQuery = "UPDATE Users SET ProfilePhoto = @ProfilePhoto WHERE UserName = @UserName";
 
                     using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
@@ -593,7 +550,6 @@ namespace BookWarm.Forms
             }
             catch (Exception ex)
             {
-                // Обробка або логування помилки
                 Console.WriteLine(ex.Message);
                 return false;
             }
@@ -606,10 +562,8 @@ namespace BookWarm.Forms
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Завантаження вибраного зображення в PictureBox
                 profilePhotoPictureBox.Image = Image.FromFile(openFileDialog.FileName);
 
-                // Приховування зображення logo
                 profilePhotoPictureBox.Border = 1;
                 SavePhoto.Visible = true;
 
@@ -620,54 +574,36 @@ namespace BookWarm.Forms
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            // Збереження поточного зображення як попереднього перед видаленням
             previousImage = profilePhotoPictureBox.Image;
-
-            // Видалення зображення користувача
             profilePhotoPictureBox.Image = Properties.Resources.logo;
 
-            // Показуємо кнопку для збереження фотографії
             SavePhoto.Visible = true;
-
-            // Вимикаємо кнопки Back та Save, оскільки SavePhoto видима
             Back.Enabled = false;
             Save.Enabled = false;
         }
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            // Встановлення зображення з пам'яті або використання попереднього зображення, якщо воно існує
             profilePhotoPictureBox.Image = previousImage ?? Properties.Resources.logo;
-
-            // Встановлення рамки в залежності від наявності фотографії
             profilePhotoPictureBox.Border = (profilePhotoPictureBox.Image == Properties.Resources.logo) ? 0 : 1;
 
-            // Показуємо кнопку для збереження фотографії
             SavePhoto.Visible = true;
-
-            // Вимикаємо кнопки Back та Save, оскільки SavePhoto видима
             Back.Enabled = false;
             Save.Enabled = false;
         }
 
         private void SavePhoto_Click(object sender, EventArgs e)
         {
-            // Виклик методу для збереження зображення в базі даних
             if (SaveProfileImageToDatabase(user.UserName, profilePhotoPictureBox.Image))
             {
-                // Фото профілю змінено
                 MessageBox.Show("Фото профілю змінено.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Приховати кнопку для збереження фотографії
                 SavePhoto.Visible = false;
-
-                // Увімкнути кнопки Back та Save, оскільки SavePhoto прихована
                 Back.Enabled = true;
                 Save.Enabled = true;
             }
             else
             {
-                // Помилка при зміні фото профілю
                 MessageBox.Show("Помилка при зміні фото профілю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -679,10 +615,8 @@ namespace BookWarm.Forms
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Завантаження вибраного зображення в PictureBox
                 profilePhotoPictureBox.Image = Image.FromFile(openFileDialog.FileName);
 
-                // Приховування зображення logo
                 profilePhotoPictureBox.Border = 1;
                 SavePhoto.Visible = true;
             }

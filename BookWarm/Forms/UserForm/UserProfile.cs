@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 using System.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Windows.Forms;
 
 namespace BookWarm
 {
@@ -16,11 +15,12 @@ namespace BookWarm
     {
         private User user;
         public static UserStatistics userstat;
-        private bool isMaximized = false; // Перевірка стану максимізації
+        private bool isMaximized = false;
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
         private Main mainForm;
         private Label selectedLabel;
+
         public UserProfile(string username, Main mainForm)
         {
             InitializeComponent();
@@ -74,15 +74,13 @@ namespace BookWarm
                 }
             }
 
-            // Перевірка чи користувач існує
             if (user != null)
             {
-                // Встановлення значень у відповідні елементи на формі
                 lblFullName.Text = $"{user.LastName} {user.FirstName}";
                 lblUsername.Text = user.UserName;
                 lblDescription.Text = user.Description;
 
-                if (user.ProfilePhoto != null) // User has a photo.
+                if (user.ProfilePhoto != null)
                 {
                     using (MemoryStream ms = new MemoryStream(user.ProfilePhoto))
                     {
@@ -96,7 +94,6 @@ namespace BookWarm
                 }
             }
 
-            // Retrieve UserStatistics
             using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
             {
                 connection.Open();
@@ -111,7 +108,6 @@ namespace BookWarm
                     {
                         if (reader.Read())
                         {
-                            // Update UserStatistics object
                             userstat = new UserStatistics
                             {
                                 StatisticID = (int)reader["StatisticID"],
@@ -138,36 +134,29 @@ namespace BookWarm
 
         private void InitializeLabels()
         {
-            // Add click event handlers for each label
             ReadsNow.Click += Label_Click;
             Reads.Click += Label_Click;
             Preference.Click += Label_Click;
             History.Click += Label_Click;
 
-            // Set the initial font for ReadsNow label
             ReadsNow.Font = new Font("Arial", 12, FontStyle.Bold);
             selectedLabel = ReadsNow;
         }
 
         private void Label_Click(object sender, EventArgs e)
         {
-            // Reset the font for the previously selected label
             selectedLabel.Font = new Font("Arial", 12, FontStyle.Regular);
-
-            // Set the font for the clicked label
             Label clickedLabel = (Label)sender;
             clickedLabel.Font = new Font("Arial Black", 12, FontStyle.Bold);
 
-            // Update the selected label
+
             selectedLabel = clickedLabel;
 
-            // Hide all panels initially
             flowLayoutPanelHistory.Visible = false;
             flowLayoutPanelPreference.Visible = false;
             flowLayoutPanelReads.Visible = false;
             flowLayoutPanelReadsNow.Visible = false;
 
-            // Check which label is clicked and show the corresponding panel
             if (selectedLabel == History)
             {
                 flowLayoutPanelHistory.Visible = true;
@@ -193,19 +182,15 @@ namespace BookWarm
         public void PopulateUserHistory()
         {
             List<UserHistoryItem> userHistory = GetUserHistory(Main.user.UserId);
-
-            // Очистіть вміст flowLayoutPanelHistory
             flowLayoutPanelHistory.Controls.Clear();
 
-            // Додайте UserControl для кожного елемента історії переглядів
             foreach (UserHistoryItem historyItem in userHistory)
             {
-                // Шукайте книгу в списку books
+
                 Book book = Main.books.FirstOrDefault(b => b.BookID == historyItem.BookID);
 
                 if (book != null)
                 {
-                    // Шукайте BookStat в списку bookStatList
                     BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == historyItem.BookID);
 
                     UserControlPopularBook historyControlItem = new UserControlPopularBook(mainForm);
@@ -218,11 +203,8 @@ namespace BookWarm
         public void PopulateUserPreference()
         {
             List<UserPreferenceItem> userPreference = GetUserPreference(Main.user.UserId);
-
-            // Clear the content of flowLayoutPanelPreference
             flowLayoutPanelPreference.Controls.Clear();
 
-            // Add UserControl for each preference item
             foreach (UserPreferenceItem preferenceItem in userPreference)
             {
                 Book book = Main.books.FirstOrDefault(b => b.BookID == preferenceItem.BookID);
@@ -241,11 +223,8 @@ namespace BookWarm
         public void PopulateUserReads()
         {
             List<UserReadItem> userReads = GetUserReads(Main.user.UserId);
-
-            // Clear the content of flowLayoutPanelReads
             flowLayoutPanelReads.Controls.Clear();
 
-            // Add UserControl for each read item
             foreach (UserReadItem readsItem in userReads)
             {
                 Book book = Main.books.FirstOrDefault(b => b.BookID == readsItem.BookID);
@@ -264,11 +243,8 @@ namespace BookWarm
         public void PopulateUserReadsNow()
         {
             List<UserReadNowItem> userReadsNow = GetUserReadsNow(Main.user.UserId);
-
-            // Clear the content of flowLayoutPanelReadsNow
             flowLayoutPanelReadsNow.Controls.Clear();
 
-            // Add UserControl for each reads now item
             foreach (UserReadNowItem readsNowItem in userReadsNow)
             {
                 Book book = Main.books.FirstOrDefault(b => b.BookID == readsNowItem.BookID);
@@ -283,7 +259,6 @@ namespace BookWarm
                 }
             }
         }
-
 
 
         private List<UserHistoryItem> GetUserHistory(int userID)
@@ -422,22 +397,18 @@ namespace BookWarm
         {
             if (isMaximized)
             {
-                // Повертаємо вікно до звичайного розміру
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = originalFormBorderStyle;
                 this.Size = originalSize;
-                CenterToScreen(); // Розміщуємо вікно в центрі екрану
+                CenterToScreen();
                 isMaximized = false;
             }
             else
             {
-                // Збільшуємо розмір вікна до розмірів екрана, залишаючи видимою панель завдань
                 this.WindowState = FormWindowState.Normal;
                 originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
-                this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
-
-                // Встановлюємо розмір вікна на розміри екрана, залишаючи простір для панелі завдань
+                this.FormBorderStyle = FormBorderStyle.None; 
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
 
@@ -452,37 +423,31 @@ namespace BookWarm
 
         private void ChangeInfo_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             ChangeInfo.Image = Properties.Resources.gear;
         }
 
         private void ChangeInfo_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             ChangeInfo.Image = Properties.Resources.gearpng1;
         }
 
         private void Resize_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Resize.Image = Properties.Resources.resizegif;
         }
 
         private void Resize_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Resize.Image = Properties.Resources.resizepng;
         }
 
         private void Exit_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Exit.Image = Properties.Resources.exitgif;
         }
 
         private void Exit_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Exit.Image = Properties.Resources.exit;
         }
         private void ChangeInfo_Click(object sender, EventArgs e)
@@ -495,19 +460,16 @@ namespace BookWarm
 
         private void Logout_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Logout.Image = Properties.Resources.exitacc;
         }
 
         private void Logout_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Logout.Image = Properties.Resources.exitaccgif;
         }
 
         private void Logout_Click(object sender, EventArgs e)
         {
-            // Скидаємо ім'я користувача в налаштуваннях
             Properties.Settings.Default.Username = string.Empty;
             Properties.Settings.Default.Save();
             Application.Exit();

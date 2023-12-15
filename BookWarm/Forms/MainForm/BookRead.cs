@@ -1,15 +1,10 @@
 ﻿using BookWarm.Data.Models;
 using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookWarm
@@ -24,6 +19,7 @@ namespace BookWarm
         private bool isMaximized = false;
         private FormBorderStyle originalFormBorderStyle;
         private Size originalSize;
+
         public BookRead(int bookID, Main mainForm, int authorID)
         {
             InitializeComponent();
@@ -40,12 +36,10 @@ namespace BookWarm
             book = Main.books.FirstOrDefault(b => b.BookID == bookID);
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
 
-            // Check if the book is found
             if (book != null)
             {
                 BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == bookID);
 
-                // Check if BookStat is found
                 if (bookStat != null)
                 {
                     titleText.Text = $"Книга: «{book.Title}» — {author?.AuthorName ?? "Unknown Author"}";
@@ -53,7 +47,6 @@ namespace BookWarm
                     ViewCount.Text = $"👁 {bookStat.ViewCount}";
                     BookWorm.Image = book.CoverImageObject;
 
-                    // Відобразити RTF-контент в існуючому RichTextBox
                     DisplayRTFContent(book.Content);
                 }
             }
@@ -65,13 +58,10 @@ namespace BookWarm
             {
                 using (MemoryStream ms = new MemoryStream(rtfContent))
                 {
-                    // Завантажити RTF-контент в існуючий RichTextBox (BookContent)
                     BookContent.LoadFile(ms, RichTextBoxStreamType.RichText);
                 }
             }
         }
-
-
 
         private void Exit_Click(object sender, EventArgs e)
         {
@@ -87,11 +77,10 @@ namespace BookWarm
         {
             if (isMaximized)
             {
-                // Повертаємо вікно до звичайного розміру
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = originalFormBorderStyle;
                 this.Size = originalSize;
-                CenterToScreen(); // Розміщуємо вікно в центрі екрану
+                CenterToScreen(); 
                 isMaximized = false;
 
             }
@@ -100,7 +89,7 @@ namespace BookWarm
                 this.WindowState = FormWindowState.Normal;
                 originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
-                this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
+                this.FormBorderStyle = FormBorderStyle.None;
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
 
@@ -110,13 +99,11 @@ namespace BookWarm
 
         private void Download_Click(object sender, EventArgs e)
         {
-            // Отримати RTF-контент з RichTextBox (BookContent)
             byte[] rtfContent = GetRTFContent(BookContent);
             if (rtfContent != null)
             book = Main.books.FirstOrDefault(b => b.BookID == bookID);
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
             {
-                // Зберегти RTF-контент у файл
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "RTF Files (*.rtf)|*.rtf";
                 saveFileDialog.FileName = $"{author?.AuthorName ?? "Unknown Author"} - {book.Title}.rtf";
@@ -125,7 +112,6 @@ namespace BookWarm
                 {
                     string filePath = saveFileDialog.FileName;
 
-                    // Записати RTF-контент у файл
                     File.WriteAllBytes(filePath, rtfContent);
 
                     MessageBox.Show($"Файл {filePath} був успішно збережений.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -149,7 +135,6 @@ namespace BookWarm
                 }
             }
         }
-
         private bool IsUserReadBook(int userID, int bookID)
         {
             using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
@@ -208,7 +193,6 @@ namespace BookWarm
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                // Зберегти RTF-контент в MemoryStream
                 richTextBox.SaveFile(ms, RichTextBoxStreamType.RichText);
                 return ms.ToArray();
             }
@@ -218,17 +202,10 @@ namespace BookWarm
         {
             int userID = Main.user.UserId;
 
-            // Перевірка, чи користувач читає цю книгу
             if (IsUserReadingBook(userID, bookID))
             {
-                // Видалення книги з UserReadNow
                 RemoveUserReadNowRecord(userID, bookID);
                 AddUserReadRecord(userID, bookID);
-
-                // Перевірка, чи користувач вже завершив читати цю книгу
-                if (!IsUserReadBook(userID, bookID))
-                {
-                }
             }
             this.Close();
         }

@@ -96,7 +96,7 @@
             this.AuthenticationPanel.Location = new System.Drawing.Point(0, -2);
             this.AuthenticationPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AuthenticationPanel.Name = "AuthenticationPanel";
-            this.AuthenticationPanel.Size = new System.Drawing.Size(1149, 52);
+            this.AuthenticationPanel.Size = new System.Drawing.Size(1149, 64);
             this.AuthenticationPanel.StateCommon.Color1 = System.Drawing.Color.Silver;
             this.AuthenticationPanel.StateCommon.Color2 = System.Drawing.Color.Transparent;
             this.AuthenticationPanel.TabIndex = 72;
@@ -168,11 +168,11 @@
             this.genreListBox.Font = new System.Drawing.Font("Arial", 12F);
             this.genreListBox.ItemHeight = 23;
             this.genreListBox.Location = new System.Drawing.Point(547, 357);
-            this.genreListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.genreListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.genreListBox.MultiColumn = true;
             this.genreListBox.Name = "genreListBox";
             this.genreListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.genreListBox.Size = new System.Drawing.Size(586, 46);
+            this.genreListBox.Size = new System.Drawing.Size(587, 23);
             this.genreListBox.TabIndex = 200;
             // 
             // Year
@@ -222,7 +222,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.label4.Location = new System.Drawing.Point(447, 291);
+            this.label4.Location = new System.Drawing.Point(447, 290);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(177, 33);
@@ -247,10 +247,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DescriptionTitle.BackColor = System.Drawing.Color.Transparent;
             this.DescriptionTitle.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.DescriptionTitle.Location = new System.Drawing.Point(522, 447);
+            this.DescriptionTitle.Location = new System.Drawing.Point(523, 447);
             this.DescriptionTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DescriptionTitle.Name = "DescriptionTitle";
-            this.DescriptionTitle.Size = new System.Drawing.Size(218, 33);
+            this.DescriptionTitle.Size = new System.Drawing.Size(219, 33);
             this.DescriptionTitle.TabIndex = 208;
             this.DescriptionTitle.Text = "DescriptionTitle";
             this.DescriptionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -263,8 +263,8 @@
             this.Description.BackColor = System.Drawing.Color.LightGray;
             this.Description.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Description.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Description.Location = new System.Drawing.Point(366, 484);
-            this.Description.Margin = new System.Windows.Forms.Padding(4);
+            this.Description.Location = new System.Drawing.Point(365, 484);
+            this.Description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Description.MaxLength = 10;
             this.Description.Multiline = true;
             this.Description.Name = "Description";
@@ -308,7 +308,7 @@
             this.ReviewGeneral.Location = new System.Drawing.Point(528, 656);
             this.ReviewGeneral.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ReviewGeneral.Name = "ReviewGeneral";
-            this.ReviewGeneral.Size = new System.Drawing.Size(210, 33);
+            this.ReviewGeneral.Size = new System.Drawing.Size(211, 33);
             this.ReviewGeneral.TabIndex = 219;
             this.ReviewGeneral.Text = "Review";
             this.ReviewGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,8 +320,8 @@
             this.flowLayoutPanelReview.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.flowLayoutPanelReview.AutoScrollMinSize = new System.Drawing.Size(1, 1);
             this.flowLayoutPanelReview.AutoSize = true;
-            this.flowLayoutPanelReview.Location = new System.Drawing.Point(366, 693);
-            this.flowLayoutPanelReview.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanelReview.Location = new System.Drawing.Point(365, 693);
+            this.flowLayoutPanelReview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanelReview.MaximumSize = new System.Drawing.Size(0, 185);
             this.flowLayoutPanelReview.MinimumSize = new System.Drawing.Size(600, 65);
             this.flowLayoutPanelReview.Name = "flowLayoutPanelReview";
@@ -373,7 +373,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Arial Black", 12F);
-            this.label7.Location = new System.Drawing.Point(433, 323);
+            this.label7.Location = new System.Drawing.Point(433, 322);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 33);
@@ -397,10 +397,10 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::BookWarm.Properties.Resources.line;
-            this.pictureBox3.Location = new System.Drawing.Point(522, 582);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(523, 582);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(218, 98);
+            this.pictureBox3.Size = new System.Drawing.Size(219, 98);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 216;
             this.pictureBox3.TabStop = false;
@@ -412,7 +412,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::BookWarm.Properties.Resources.linev2;
             this.pictureBox2.Location = new System.Drawing.Point(219, 459);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(133, 485);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -425,10 +425,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox1.Location = new System.Drawing.Point(1012, 47);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(1012, 62);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 897);
+            this.pictureBox1.Size = new System.Drawing.Size(133, 882);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 213;
             this.pictureBox1.TabStop = false;
@@ -439,10 +439,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::BookWarm.Properties.Resources.linev2;
-            this.pictureBox8.Location = new System.Drawing.Point(4, 48);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox8.Location = new System.Drawing.Point(4, 62);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(133, 897);
+            this.pictureBox8.Size = new System.Drawing.Size(133, 883);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 212;
             this.pictureBox8.TabStop = false;
@@ -450,7 +450,7 @@
             // BookImage
             // 
             this.BookImage.Location = new System.Drawing.Point(149, 100);
-            this.BookImage.Margin = new System.Windows.Forms.Padding(4);
+            this.BookImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BookImage.Name = "BookImage";
             this.BookImage.Size = new System.Drawing.Size(280, 320);
             this.BookImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -463,7 +463,7 @@
             this.Exit.BackColor = System.Drawing.Color.Silver;
             this.Exit.Image = ((System.Drawing.Image)(resources.GetObject("Exit.Image")));
             this.Exit.Location = new System.Drawing.Point(1095, 7);
-            this.Exit.Margin = new System.Windows.Forms.Padding(4);
+            this.Exit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(35, 32);
             this.Exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -476,8 +476,8 @@
             this.Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Resize.BackColor = System.Drawing.Color.Silver;
             this.Resize.Image = ((System.Drawing.Image)(resources.GetObject("Resize.Image")));
-            this.Resize.Location = new System.Drawing.Point(1066, 12);
-            this.Resize.Margin = new System.Windows.Forms.Padding(4);
+            this.Resize.Location = new System.Drawing.Point(1067, 12);
+            this.Resize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Resize.Name = "Resize";
             this.Resize.Size = new System.Drawing.Size(27, 25);
             this.Resize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -542,7 +542,7 @@
             this.Controls.Add(this.pictureBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BookInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 

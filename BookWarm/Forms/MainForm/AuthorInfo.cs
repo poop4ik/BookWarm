@@ -23,7 +23,6 @@ namespace BookWarm.Forms.MainForm
         private Size originalSize;
         private Main mainForm;
 
-
         public AuthorInfo(int authorID, Main mainForm)
         {
             this.mainForm = mainForm;
@@ -50,47 +49,29 @@ namespace BookWarm.Forms.MainForm
         {
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
 
-            // Перевірка, чи знайдено автора
             if (author != null)
             {
-                // Очищення значень
                 AvarageRatingAuthor.Text = "";
-
-                // Змінні для обчислення середньої оцінки
                 decimal totalRating = 0;
                 int numberOfBooks = 0;
 
-                // Перебір книг, пов'язаних з автором
                 foreach (Book book in Main.books.Where(b => b.AuthorID == authorID))
                 {
-                    // Отримання відповідного об'єкта BookStat для поточної книги
                     BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
-
-                    // Оновлення значень для виведення на форму
                     AvarageRatingAuthor.Text += $"{book.AverageRating}\n";
-
-                    // Обчислення суми оцінок і кількості книг
                     totalRating += book.AverageRating;
                     numberOfBooks++;
                 }
 
-                // Перевірка, чи є книги для обчислення середньої оцінки
                 if (numberOfBooks > 0)
                 {
-                    // Обчислення середньої оцінки
                     decimal averageRating = totalRating / numberOfBooks;
-
-                    // Визначення кількості зірок (округлення середньої оцінки до ближайшого цілого)
                     int starCount = (int)Math.Round(averageRating);
 
-                    // Виведення кількості зірок та пустих зірок на форму
                     string stars = new string('★', starCount);
                     string emptyStars = new string('☆', 5 - starCount);
 
-                    // Виведення середньої оцінки на форму
                     AvarageRatingAuthor.Text = $"{stars}{emptyStars}";
-
-                    // Виведення інших даних про автора на форму
                     numberOfBooksAuthor.Text = $"{numberOfBooks}";
                     AuthorName.Text = author.AuthorName;
                     CountryAuthor.Text = $"{author.Country}";
@@ -100,28 +81,19 @@ namespace BookWarm.Forms.MainForm
             }
         }
 
-
-
-
         private void PopulateBooksByAuthor(int authorID)
         {
-            // Clear existing controls in the FlowLayoutPanel
             flowLayoutPanelAuthorBooks.Controls.Clear();
 
-            // Iterate through the books and create a UserControl for each book by the specified author
             foreach (Book book in Main.books.Where(b => b.AuthorID == authorID))
             {
-                // Get the corresponding BookStat for the current book
                 BookStat bookStat = Main.bookStatList.FirstOrDefault(bs => bs.BookID == book.BookID);
 
-                // You may need to adjust the constructor parameters based on your UserControl implementation
                 UserControlAuthor bookControl = new UserControlAuthor(mainForm);
                 bookControl.SetData(book.BookID, book.CoverImageObject, book.Title, book.AverageRating, bookStat?.ReadsCount ?? 0, bookStat?.ViewCount ?? 0, book.AuthorID, book.AgeCategory);
                 flowLayoutPanelAuthorBooks.Controls.Add(bookControl);
             }
         }
-
-
 
         private void Minimize_Click(object sender, EventArgs e)
         {
@@ -130,25 +102,21 @@ namespace BookWarm.Forms.MainForm
 
         private void Resize_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Resize.Image = Properties.Resources.resizegif;
         }
 
         private void Resize_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Resize.Image = Properties.Resources.resizepng;
         }
 
         private void Exit_MouseEnter(object sender, EventArgs e)
         {
-            // Змінити зображення при наведенні
             Exit.Image = Properties.Resources.exitgif;
         }
 
         private void Exit_MouseLeave(object sender, EventArgs e)
         {
-            // Повернутися до попереднього зображення при виході миші
             Exit.Image = Properties.Resources.exit;
         }
 
@@ -167,11 +135,10 @@ namespace BookWarm.Forms.MainForm
         {
             if (isMaximized)
             {
-                // Повертаємо вікно до звичайного розміру
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = originalFormBorderStyle;
                 this.Size = originalSize;
-                CenterToScreen(); // Розміщуємо вікно в центрі екрану
+                CenterToScreen();
                 isMaximized = false;
 
             }
@@ -180,7 +147,7 @@ namespace BookWarm.Forms.MainForm
                 this.WindowState = FormWindowState.Normal;
                 originalFormBorderStyle = this.FormBorderStyle;
                 originalSize = this.Size;
-                this.FormBorderStyle = FormBorderStyle.None; // Видаляємо рамку вікна (опціонально)
+                this.FormBorderStyle = FormBorderStyle.None;
                 this.Size = Screen.PrimaryScreen.WorkingArea.Size;
                 this.Location = Screen.PrimaryScreen.WorkingArea.Location;
                 isMaximized = true;

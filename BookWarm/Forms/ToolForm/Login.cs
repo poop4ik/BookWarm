@@ -1,13 +1,8 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookWarm
@@ -15,6 +10,7 @@ namespace BookWarm
     public partial class Login : KryptonForm
     {
         public string Username { get; private set; }
+
         public Login()
         {
             InitializeComponent();
@@ -22,25 +18,20 @@ namespace BookWarm
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            // Отримуємо список всіх відкритих форм
             Form[] openForms = Application.OpenForms.Cast<Form>().ToArray();
 
-            // Закриваємо кожну з них
             foreach (var form in openForms)
             {
                 form.Close();
             }
 
-            // Завершуємо додаток
             Application.Exit();
         }
 
         private void Back_Click(object sender, EventArgs e)
         {
-            // Закрити поточну форму реєстрації
             this.Close();
 
-            // Створити і показати форму авторизації (передбачається, що ця форма називається "LoginForm")
             Authentication authentication = new Authentication();
             authentication.Show();
         }
@@ -63,7 +54,6 @@ namespace BookWarm
 
         private void Login_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bookWarmDBDataSet.Users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.bookWarmDBDataSet.Users);
 
         }
@@ -72,12 +62,10 @@ namespace BookWarm
         {
             if (passwordHashTextBox.PasswordChar == '*')
             {
-                // Показувати текст паролю
-                passwordHashTextBox.PasswordChar = '\0'; // '\0' відображає текст як звичайний текст
+                passwordHashTextBox.PasswordChar = '\0';
             }
             else
             {
-                // Приховувати текст паролю з зірочкою '*'
                 passwordHashTextBox.PasswordChar = '*';
             }
         }
@@ -99,13 +87,13 @@ namespace BookWarm
 
             if (IsUserValid(username, password))
             {
-                // Зберегти ім'я користувача в налаштування
                 Properties.Settings.Default.Username = username;
                 Properties.Settings.Default.Save();
 
                 this.Close();
                 Success success = new Success();
                 success.ShowDialog();
+
 
                 ValidLoginAndPassword.Visible = false;
                 Main mainForm = new Main(username);

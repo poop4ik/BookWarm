@@ -14,7 +14,8 @@ namespace BookWarm
     public partial class AgeCategory : KryptonForm
     {
         private Timer timer;
-        public AgeCategory(int ageCategory) // Додайте параметр username до конструктора
+
+        public AgeCategory(int ageCategory)
         {
             InitializeComponent();
 

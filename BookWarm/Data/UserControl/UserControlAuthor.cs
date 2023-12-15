@@ -17,6 +17,7 @@ namespace BookWarm
     public partial class UserControlAuthor : UserControl
     {
         private Main mainForm;
+
         public UserControlAuthor(Main mainForm)
         {
             InitializeComponent();
@@ -27,18 +28,14 @@ namespace BookWarm
         {
             const int maxTitleLength = 16;
 
-            // Обрізати назву книги, якщо вона довша за максимальну довжину
             if (title.Length > maxTitleLength)
             {
                 title = title.Substring(0, maxTitleLength) + "...";
             }
 
-            // Ваш код для використання title, author, averageRating, readsCount, viewCount і coverImage
             Title.Text = $"«{title}» {ageCategory}+";
 
-            // Find the author with the given authorID
             Author author = Main.authorList.FirstOrDefault(a => a.AuthorID == authorID);
-            // Use the AuthorName property directly
             Author.Text = author?.AuthorName ?? "Unknown Author";
 
             Rating.Text = averageRating.ToString();
@@ -54,7 +51,6 @@ namespace BookWarm
 
         private void OpenBookInfoForm(int authorID, int bookID, int userAge, int ageCategory)
         {
-            // Додайте вашу умову перевірки віку тут (наприклад, 18 років і старше)
             if (userAge >= ageCategory)
             {
                 BookInfo bookInfoForm = new BookInfo(authorID, bookID, mainForm);
